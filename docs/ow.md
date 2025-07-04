@@ -5,25 +5,28 @@
 
 파이프라인은 소스 asset에서 실행가능 asset으로 변환하거나, 캐싱, 분산 빌드, 패키징 등을 한다.
 
+```
 [Source Assets] ─▶ pull --sourcepull ─▶ SQLite ‘local asset DB’
                  ▲                             │
                  │ (Structured-Data Generator) │
                  │                             ▼
 [Builder per Type] ◀─ DataBuild --compile ──▶ [Compiled Asset Store]
+```
 
 genrator: json 유사 선언(SDLang)으로 타입-안전 C++/C# 클래스, 에디터 리플렉션 코드 자동생성. 산출물 위치는 Generated/<TypeName>.h/.cpp로 추정.
 
 builer: asset 타입별(메시, 머티리얼, 영웅 스크립트) DLL. 입력 SHA-1 해시와 CompilerID 조합으로 결과를 캐싱해, 이미 컴파일된 동일 입력은 전역 Compiled Asset Repository에서 그냥 당겨온다. 분산 빌드는 내부 빌드팜 30노드 기준 12h -> 4h 이다. 완성 자산을 기능 단위 Package로 묶고, 지역, 플랫폼별 암호화 규칙을 붙여 런처가 온-디맨드 스트리밍을 한다. 산출물 위치는 Compiled/<hash>/<guid>.bin로 추정.
 
+```
 1) Battle.net → /versions  → buildConfig, cdnConfig, keyRing
 2) buildConfig → root, encoding, install, download 해시 목록 확인
 3) cdnConfig  → 사용 가능한 CDN 도메인·아카이브 분할 규칙 확인
 4) 필요한 .idx / .data 조각 GET
 5) 인덱스 갱신 → 게임 실행 → shmem 업데이트
-
+```
 TACT 프로토콜이 ①~③을 담당하고, 실제 .data 조각 전송은 HTTPS GET으로 이뤄집니다.
 
-
+```
 Overwatch/
 ├─ Engine/                 # 런타임 코어
 │   ├─ Core/               # 메모리, Job, Math, ECS Core
@@ -48,7 +51,7 @@ Overwatch/
 │   └─ DataBuildCI/
 ├─ Content/                # ‘소스’ 자산(PSD, FBX, WAV…)
 └─ BuildScripts/           # CMake/SCons + 퍼블리셔 스크립트
-
+```
 
 실제로 우리가 내려받는 파일은 실행 파일과 라이브러리,  CASC 데이터 아카이브, 인덱스, 런처 메타데이터가 다이다.
 
@@ -75,7 +78,7 @@ iv. 실행 시 런처가 무결성 검사(해시->블록 확인) 후 실행.
 | **패키징·배포**                 | CASC v2 + TACT, SHA-1 암호화                         | **CASC v3** (AES-CTR 128 bit) · 증분 스트리밍 최적화 ([us.forums.blizzard.com][4])                                                                    |
 | **클라이언트 규모(PC)**           | 설치 25 \~ 30 GB                                    | 시즌 15 기준 **≈52 GB**, 패치 시 증분 다운로드                                                                                                            |
 
-### >엔진
+### > 엔진
 
 엔진은 게임이 실시간으로 진행되는 코드이다. ECS(Entitiy-Component-System) 기반 시뮬레이션 루프, 렌더러, 물리, 오디오, 플랫폼 래퍼 등으로 구성되어 있다.
 
@@ -128,6 +131,7 @@ for every tick N:
 
 100 ~ 200 바이트. 바이트 스트림 전체가 AES-CTR로 암호화돼 있다.
 A층 헤더. 6-8B
+
 | 필드            | 비트수 | 설명                              |
 | ------------- | --- | ------------------------------- |
 | `snapshotSeq` | 16  | 이번 스냅샷의 연속 번호                   |
@@ -140,6 +144,7 @@ Create/Update/Delete 비트 마스크 + 엔티티 ID 가변길이 VLQ
 ID는 EntityIndex << 6 | GenerationBits(6) 형태를 7bit VLQ로 압축.
 
 C층 Component Δ블록(entity별로 1~100B).
+
 | 순서             | 내용                   | 인코딩 방식·비트수 예                                                                           |
 | -------------- | -------------------- | -------------------------------------------------------------------------------------- |
 | ① `updateMask` | 이 엔티티에서 바뀐 컴포넌트 비트필드 | 최대 16 비트                                                                               |
@@ -154,10 +159,11 @@ C층 Component Δ블록(entity별로 1~100B).
 로컬 예측 결과와 비교해 차이가 나면 롤백.
 
 
-### >API
+### > API
 api? 소프트웨어끼리 약속한 대화 규칙이다. 어떤 프로그램이 다른 기능을 호출하거나 제어할 수 있도록 이름, 입력, 반환, 동작이 문서화된 인터페이스.
 
 오버워치에서 사용하는 api?
+
 | 구역                                                           | 무엇을 캡처할 수 있나                                              | 암/복호화 가능성                                                                                   | 추천 도구·방법                                                                                                                                                                                           |                                                   |
 | ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
 | ① **Battle.net HTTP API**<br>(로그인·OAuth·매치메이커·패치 메타)         | HTTPS - TLS 1.3                                           | TLS―브라우저와 동일.<br>클라에 **Pinning 없음** → `SSLKEYLOGFILE` + Wireshark로 복호화 가능 (윈도우 Schannel 기반) | <br>1. 환경변수 `SSLKEYLOGFILE=%USERPROFILE%\tls.keys` 설정<br>2. Wireshark ▸ TLS ▸ (Pre-)Master-Secret log 경로 지정<br>3. 필터 `tcp.port==443 && tls.handshake.extensions_server_name contains "battle.net"` | ([develop.battle.net][1])                         |
@@ -165,20 +171,22 @@ api? 소프트웨어끼리 약속한 대화 규칙이다. 어떤 프로그램이
 | ③ **게임플레이 UDP 스트림**<br>(Command ↔ Snapshot)                  | 전용 UDP (기본 63 Hz)<br>포트 **5060, 5062, 6250, 12000-64000** | **AES-CTR 전구간 암호화**<br>키는 런타임 메모리 안(OW2 = Key-Ring) → 외부에서 복호화 불가                           | <br>– Wireshark `udp.port >= 12000 && udp.port <= 64000`<br>– “Follow → UDP Stream”으로 **패킷 길이·RTT·손실** 통계만 확인<br>– Payload 해석은 사실상 불가능 (키 추출·메모리 후킹 필요)                                            | ([us.forums.blizzard.com][3], [blog.csdn.net][4]) |
 | ④ **클라이언트 로그·로컬 상태**                                         | `Overwatch/Logs/*.log` & CASC `data/shmem`, `.idx`        | 평문                                                                                          | 텍스트 뷰어·010 Editor                                                                                                                                                                                  | 
 
-# 1) TLS 키 로깅
+```
+1) TLS 키 로깅
 setx SSLKEYLOGFILE "%USERPROFILE%\tls.keys"
 
-# 2) 관리자 권한으로 Wireshark 실행
-#    - Capture filter: host 137.*.***.*** or udp
-#    - TLS ‣ (Pre-)Master-Secret log: %USERPROFILE%\tls.keys
+2) 관리자 권한으로 Wireshark 실행
+    - Capture filter: host 137.*.***.*** or udp
+    - TLS ‣ (Pre-)Master-Secret log: %USERPROFILE%\tls.keys
 
-# 3) Overwatch2 실행 → 로그인 → 한 판 플레이
+ 3) Overwatch2 실행 → 로그인 → 한 판 플레이
 
-# 4) Wireshark
-#    a) HTTP 스트림: tcp.port==443 && tls.app_data
-#       ­→ Follow TCP Stream → JSON Body 확인
-#    b) UDP 스트림: udp.port>=12000 && udp.port<=64000
-#       ­→ Statistics ▸ I/O Graph 로 틱 주기·손실률 확인
+ 4) Wireshark
+    a) HTTP 스트림: tcp.port==443 && tls.app_data
+       ­→ Follow TCP Stream → JSON Body 확인
+    b) UDP 스트림: udp.port>=12000 && udp.port<=64000
+      ­→ Statistics ▸ I/O Graph 로 틱 주기·손실률 확인
+```
 
 스냅샷 패킷 내부를 까볼 수 있나?
 
@@ -189,7 +197,7 @@ setx SSLKEYLOGFILE "%USERPROFILE%\tls.keys"
     엔티티 Table·컴포넌트 Δ-블록은 전부 암호화된 바이트 스트림입니다.
 
 
-### >메모리핵 방지
+### > 메모리핵 방지
 
 스냅샷이 AES-CTR로 암호화된다해도 네트워크 전송 중의 변조를 막아줄 뿐, 결국 클라이언트 메모리 안에서는 다시 평문이 된다. 따라서 그걸 읽어와 상대 데이터를 파악하고 그걸 바탕으로 본인 전송 command 패킷을 조작해서 보내면 된다.
 
@@ -201,12 +209,12 @@ iii. 서버 측 Defense matrix 백엔드를 통해 시즌 12 전후로 AI 분석
 iv. TLS 터널 내부에서도 시퀀스 넘버 + AES-CTR + HMAC을 써서 중간 삽입, 리플레이를 봉쇄한다.  (Statescript 세션 ‘security’ 항목) .
 v. 서버는 물리 한계 검증을 매 틱마다 수행해 수치가 비정상이면 바로 취소한다.
 
-### >클라우드 스트리밍 서비스
+### > 클라우드 스트리밍 서비스
 
 DTLS-UDP 채널에 컨트롤 패킷만 실려 간다. SRTP 채널은 반대로 서버가 인코딩한 영상, 오디오 스트림을 내려보낸다.
 
 
-### >전체 메모리 보기
+### > 전체 메모리 보기
 
 step 1. 실시간 사용량
 ```
@@ -263,7 +271,7 @@ step 4. 전공자용 정확한 합계
 ~$ smem -r
 ```
 
-### >프로세스 레벨로 메모리 확인
+### > 프로세스 레벨로 메모리 확인
 
 step 1. pmap -x 2589
 ```
@@ -281,7 +289,7 @@ Address           Kbytes     RSS   Dirty Mode  Mapping
 ```
 
 
-### >가능한 시나리오
+### > 가능한 시나리오
 
 메모리 단
 A. 프로세스 메모리 인젝션
