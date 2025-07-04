@@ -1,21 +1,21 @@
-kkongnyang2@kkongnyang2-930XCJ-931XCJ-930XCR:~$ git clone https://github.com/OpenRA/OpenRA.git
+~$ git clone https://github.com/OpenRA/OpenRA.git
 
-kkongnyang2@kkongnyang2-930XCJ-931XCJ-930XCR:~$ sudo apt update
+~$ sudo apt update
 
-kkongnyang2@kkongnyang2-930XCJ-931XCJ-930XCR:~$ sudo apt install 
+~$ sudo apt install 
 
 
-kkongnyang2@kkongnyang2-930XCJ-931XCJ-930XCR:~$ dotnet --version
+~$ dotnet --version
 6.0.136
-kkongnyang2@kkongnyang2-930XCJ-931XCJ-930XCR:~$ sudo apt install -y libsdl2-2.0-0 libsdl2-dev
+~$ sudo apt install -y libsdl2-2.0-0 libsdl2-dev
 
-kkongnyang2@kkongnyang2-930XCJ-931XCJ-930XCR:~$ cd OpenRA
+~$ cd OpenRA
 
-kkongnyang2@kkongnyang2-930XCJ-931XCJ-930XCR:~/OpenRA$ cd
-kkongnyang2@kkongnyang2-930XCJ-931XCJ-930XCR:~$ sudo apt install make
+~/OpenRA$ cd
+~$ sudo apt install make
 
-kkongnyang2@kkongnyang2-930XCJ-931XCJ-930XCR:~$ cd OpenRA
-kkongnyang2@kkongnyang2-930XCJ-931XCJ-930XCR:~/OpenRA$ make
+~$ cd OpenRA
+~/OpenRA$ make
 Compiling in Release mode...
 
 Welcome to .NET 6.0!
@@ -23,13 +23,13 @@ Welcome to .NET 6.0!
 SDK Version: 6.0.136
 
 
-kkongnyang2@kkongnyang2-930XCJ-931XCJ-930XCR:~/OpenRA$ cd
-kkongnyang2@kkongnyang2-930XCJ-931XCJ-930XCR:~$ sudo apt install -y dotnet-sdk-8.0
+~/OpenRA$ cd
+~$ sudo apt install -y dotnet-sdk-8.0
 
-kkongnyang2@kkongnyang2-930XCJ-931XCJ-930XCR:~$ dotnet --version
+~$ dotnet --version
 8.0.116
-kkongnyang2@kkongnyang2-930XCJ-931XCJ-930XCR:~$ cd OpenRA
-kkongnyang2@kkongnyang2-930XCJ-931XCJ-930XCR:~/OpenRA$ make
+~$ cd OpenRA
+~/OpenRA$ make
 Compiling in Release mode...
 
 Welcome to .NET 8.0!
@@ -37,11 +37,11 @@ Welcome to .NET 8.0!
 SDK Version: 8.0.116
 
 
-kkongnyang2@kkongnyang2-930XCJ-931XCJ-930XCR:~/OpenRA$ 
-kkongnyang2@kkongnyang2-930XCJ-931XCJ-930XCR:~/OpenRA$ nano /home/kkongnyang2/OpenRA/OpenRA.Game/Map/Map.cs
-kkongnyang2@kkongnyang2-930XCJ-931XCJ-930XCR:~/OpenRA$ nano /home/kkongnyang2/OpenRA/OpenRA.Game/Map/Map.cs
-kkongnyang2@kkongnyang2-930XCJ-931XCJ-930XCR:~/OpenRA$ nano /home/kkongnyang2/OpenRA/OpenRA.Game/Map/Map.cs
-kkongnyang2@kkongnyang2-930XCJ-931XCJ-930XCR:~/OpenRA$ make
+~/OpenRA$ 
+~/OpenRA$ nano /home/kkongnyang2/OpenRA/OpenRA.Game/Map/Map.cs
+~/OpenRA$ nano /home/kkongnyang2/OpenRA/OpenRA.Game/Map/Map.cs
+~/OpenRA$ nano /home/kkongnyang2/OpenRA/OpenRA.Game/Map/Map.cs
+~/OpenRA$ make
 Compiling in Release mode...
   Determining projects to restore...
   All projects are up-to-date for restore.
@@ -61,7 +61,7 @@ Build succeeded.
 
 Time Elapsed 00:00:16.55
 Downloading IP2Location GeoIP database.
-kkongnyang2@kkongnyang2-930XCJ-931XCJ-930XCR:~/OpenRA$ ./launch-game.sh
+~/OpenRA$ ./launch-game.sh
 Platform is Linux (X64)
 Engine version is {DEV_VERSION}
 Runtime: .NET CLR 8.0.16
@@ -87,7 +87,7 @@ External mods:
 	ra-{DEV_VERSION} ({DEV_VERSION})
 Loading mod: ra
 Loading mod: ra-content
-kkongnyang2@kkongnyang2-930XCJ-931XCJ-930XCR:~/OpenRA$ ./launch-game.sh
+~/OpenRA$ ./launch-game.sh
 Platform is Linux (X64)
 Engine version is {DEV_VERSION}
 Runtime: .NET CLR 8.0.16
@@ -113,7 +113,7 @@ External mods:
 	ra-{DEV_VERSION} ({DEV_VERSION})
 Loading mod: ra
 Loading mod: ra-content
-kkongnyang2@kkongnyang2-930XCJ-931XCJ-930XCR:~/OpenRA$ ./launch-game.sh
+~/OpenRA$ ./launch-game.sh
 Platform is Linux (X64)
 Engine version is {DEV_VERSION}
 Runtime: .NET CLR 8.0.16
