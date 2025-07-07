@@ -1,3 +1,11 @@
+## 오픈소스 게임을 살펴보자
+
+### 목표: 게임 구조 탐색
+작성자: kkongnyang2 작성일: 2025-07-06
+
+---
+
+
 ~$ git clone https://github.com/OpenRA/OpenRA.git
 
 ~$ sudo apt update
