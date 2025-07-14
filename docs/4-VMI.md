@@ -94,46 +94,53 @@ python setup.py install
 윈도우 이미지 설치를 위해선 두 개의 iso 파일과 빈 하드디스크 하나가 필요하다.
 
 win10_22H2_English_x64.iso : 부팅 가능한 DVD 역할. vm이 이걸로 첫 부팅하며 윈도우 setup 실행.
-virtio-win.iso : 드라이버 CD 역할. setup이 이 CD의 viostor.inf와 NetKVM.inf 를 읽어 virtio 가상 HDD를 인식하도록 함
+virtio-win.iso : 드라이버 CD 역할. setup이 이 viostor.inf와 NetKVM.inf 를 읽어 virtio 가상 HDD를 인식하도록 함
 win10.qcow2 : 빈 하드디스크. setup이 여기 파티션을 만들고 윈도우 파일을 복사하여 재부팅이 끝나면 윈도우가 들어 있는 디스크가 됨.
 
-qemu-img create -f qcow2 ~/vmi-lab/win10.qcow2 60G
-https://www.microsoft.com/ko-kr/software-download/windows10ISO?utm_source=chatgpt.com 들어가 영어(국제) 64비트 다운로드.
+qemu-img create -f qcow2 ~/win10_120g.qcow2 120G    # 어차피 가상 용량 껍데기라 실질 용량까지만 담김
+https://www.microsoft.com/ko-kr/software-download/windows10ISO?utm_source=chatgpt.com 들어가 영어(미국) 64비트 다운로드.
 https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/ 들어가 stable-virtio/virtio-win-0.1.271.iso 다운
 qemu-system-x86_64 \
   -machine q35,accel=kvm -cpu host -smp 4 -m 4G \
-  -drive file=~/win10.qcow2,if=virtio,format=qcow2,cache=none \
-  -cdrom ~/Downloads/Win10_22H2_EnglishInternational_x64v1.iso \
+  -drive file=~/win10_120g.qcow2,if=virtio,format=qcow2,cache=none \
+  -cdrom ~/Downloads/Win10_22H2_English_x64v1.iso \
   -drive file=~/Downloads/virtio-win-0.1.271.iso,media=cdrom \
   -monitor stdio \
   -qmp unix:/tmp/win10-qmp.sock,server,nowait \
   -display sdl \
   -boot order=d         # 처음에만 hdd가 아닌 dvd로 부팅하기 위해. 다음에는 이거 없애야 정상적으로 켜짐.
-setup 화면에서 드라이브 인식 못하니까 load driver 들가서 우리가 넣어놓은 것중 red hat virtio scsi controller(w10\viostor.inf) 드라이버 선택해 설치.
+윈도우 setup 화면에서 custom으로 선택.
+load driver 들가서 우리가 넣어놓은 것중 red hat virtio scsi controller(w10\viostor.inf) 드라이버 선택해 설치.
 설치 완료되면 넣어뒀던 빈 하드디스크 인식하니 클릭.
-그러면 알아서 윈도우 설치하고 들어가짐.
 qemu 화면 나오는건 ctrl+alt+g 
+
+다음 부팅부턴
+qemu-system-x86_64 \
+  -machine q35,accel=kvm -cpu host -smp 4 -m 4G \
+  -drive file=~/win10_120g.qcow2,if=virtio,format=qcow2,cache=none \
+  -monitor stdio \
+  -qmp unix:/tmp/win10-qmp.sock,server,nowait \
+  -display sdl
+
+### > 중간에 용량 모자라서
+
+윈도우 가서
+window+x 눌러 디스크 관리 들어가 윈도우 파티션 우클 누르고 볼륨 축소
+가능한 만큼 최대한 축소해 unallocated 파티션 만들기
+ubuntu 22.04 desktop.iso 파일 다운
+usb 꽂고 rufus 실행해 해당 파일로 gpt(uefi)로 만들기
+
+부팅 중 f10으로 들어가 usb로 부팅
+라이브 세션에서 터미널 들어가 sudo gparted로 파티션 재배치.
+우분투 파티션 누르고 resize/move를 눌러 빈 공간 없이 채워주기
+apply
+라이브 세션 종료
+
+다시 우분투로 돌아와서 실질 용량 늘어난거 확인
 
 
 ### > 게스트 측 준비
 
-cheat engine window 10 7.5 인터넷에서 다운
-battle.net 설치
-
-
-github 오픈소스 - LibVMI과 PyVMI 예제. Python 바인딩으로 프로세스 리스트와 메모리 읽기 데모.
-https://github.com/maxking/pyvmi_example?utm_source=chatgpt.com
-
-github 오픈소스 - r2vmi와 IntroVirt. LibVMI + Radare2 플러그인/KVM 전용 확장과 VMI 프레임워크
-https://github.com/Wenzel/r2vmi?utm_source=chatgpt.com
-https://github.com/IntroVirt/IntroVirt?utm_source=chatgpt.com
-
-github 오픈소스 - pixelbot
-https://github.com/AliShazly/pixelbot?utm_source=chatgpt.com
-
-
-치트 소스
-P. Karkallis, J. Blasco, G. Suarez-Tangil, and S. Pastrana. Detecting video-game injectors exchanged in game
-cheating communities. In Computer Security – ESORICS 2021: 26th European Symposium on Research
-in Computer Security, Darmstadt, Germany, October 4–8, 2021, Proceedings, Part I, page 305–324, Berlin,
-Heidelberg, 2021. Springer-Verlag.
+battle.net 다운 후 설치, 오버워치 설치
+cheat engine window 10 7.5 인터넷에서 다운 후 설치
+들어가서 help에 보면 tutorial(x86-64)있음.
