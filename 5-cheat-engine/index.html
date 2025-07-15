@@ -616,7 +616,34 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 오버워치 주소 찾기
+      &gt; 오버워치 그래픽 이해
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dma" class="md-nav__link">
+    <span class="md-ellipsis">
+      &gt; DMA 장치 이해
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      &gt; 패스스루 실행
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      &gt;
     </span>
   </a>
   
@@ -774,7 +801,34 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 오버워치 주소 찾기
+      &gt; 오버워치 그래픽 이해
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dma" class="md-nav__link">
+    <span class="md-ellipsis">
+      &gt; DMA 장치 이해
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      &gt; 패스스루 실행
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      &gt;
     </span>
   </a>
   
@@ -926,7 +980,173 @@ RSI=000000000162A820
 <div class="highlight"><pre><span></span><code>pointer scan for this address 자동 스캐너 이용.
 값 주소를 찾은 후 우클 누르고 해당 스캐너 클릭. max level은 보통 5로 , max offset은 0x3FF 정도로 설정. .ptr 파일에 후보 리스트가 저장되면 게임 재실행 후 pointer scan 누르고 rescan memory 하면 정말 static인 후보만 남는다. 그것들을 작업바로 옮긴다.
 </code></pre></div></p>
-<h3 id="_3">&gt; 오버워치 주소 찾기</h3>
+<h3 id="_3">&gt; 오버워치 그래픽 이해</h3>
+<p>[호스트 Linux] ──(VFIO/PCIe 패스스루)──► [게스트 Windows]<br />
+  │                                            │<br />
+  │   vfio-pci 바인딩                           │  공식 NVIDIA 드라이버<br />
+  │                                            │  DX11 Feature Level OK<br />
+  └─&gt; Hyper-V/VBS OFF  ◄────────────┐          │<br />
+                                    │          │<br />
+                    Overwatch 2 런처 + 안티치트 │<br />
+                    (벤더 ID·DX11·WDDM 검사)   │</p>
+<p>컴퓨터에는 물리 gpu 장치가 있고, 일반적으로 윈도우에 내장된 WDDM 드라이버를 이용해 directX 11 이라는 api로 그래픽 관련 소통한다. cpu가 아닌 전용 gpu로 그래픽을 처리하는 걸 가속이라고 부른다. 또한 cpu와의 전용 고속 버스를 PCIe라고 부르는데, 이를 가지는 장치는 gpu, 사운드카드 등이 있다.</p>
+<p>만약 가상머신 환경이라면 가상 장치를 에뮬레이션 하지만, 오버워치 2에서는 gpu 장치와 드라이버의 ID를 명확히 확인하며 directX 11만 받아들이기 때문에 게스트에 패스스루 해야한다. 리눅스 커널이 제공하는 패스스루용 프레임워크인 VFIO-PCI를 이용해 PCIe 장치들을 안전하게 넘길 수 있다.</p>
+<ul>
+<li>DX Feature Level 11_0 이상 &amp; 서명된 WDDM 2.x 조건도 검사</li>
+<li>“게임 ↔ Direct3D 11 ↔ WDDM 드라이버 ↔ PCIe GPU” 체인</li>
+<li>VFIO-PCI는 같은 IOMMU 그룹에 묶인 장치는 통째로 넘겨야 함</li>
+<li>다른 게임은 에뮬레이션인 virtio-gpu(VirGL)만으로 충분하기도 함</li>
+</ul>
+<p>┌────────────────────────────────────────────────────────────┐<br />
+│ 6. 애플리케이션 계층                                      │<br />
+│    • Overwatch 2 │ Battle.net 런처                         │<br />
+│      ↳ 실행 시 “GPU 벤더 ID + DirectX Feature Level 11_0   │<br />
+│        + 서명된 WDDM 2.x 드라이버” 여부를 점검            │<br />
+└────────────────────────────────────────────────────────────┘<br />
+            ▲ Direct3D 11 호출<br />
+┌────────────────────────────────────────────────────────────┐<br />
+│ 5. 그래픽 API 계층                                        │<br />
+│    ✔ Direct3D 11 (DirectX 11)                             │<br />
+│      🔧 OpenGL·Vulkan 등도 존재하지만 OW2는 미지원        │<br />
+└────────────────────────────────────────────────────────────┘<br />
+            ▲ API 호출을 드라이버가 수신<br />
+┌────────────────────────────────────────────────────────────┐<br />
+│ 4. OS 드라이버 계층                                       │<br />
+│    ✔ Windows WDDM 2.x 드라이버 (NVIDIA / AMD / Intel)     │<br />
+│      🔧 드라이버가 GPU의 기능(셰이더, 메모리 등)을 매핑    │<br />
+└────────────────────────────────────────────────────────────┘<br />
+            ▲ I/O 요청이 버스를 타고 이동<br />
+┌────────────────────────────────────────────────────────────┐<br />
+│ 3. 버스 계층                                              │<br />
+│    ✔ PCI Express (PCIe)                                   │<br />
+│      🔧 ‘PCI’는 병렬 규격, 오늘날 GPU는 모두 PCIe         │<br />
+│      🔧 각 장치는 <em>Vendor ID:Device ID</em> 쌍으로 식별        │<br />
+└────────────────────────────────────────────────────────────┘<br />
+            ▲ 전기적 신호<br />
+┌────────────────────────────────────────────────────────────┐<br />
+│ 2. 하드웨어 장치 계층                                     │<br />
+│    ✔ 물리 GPU (dGPU / iGPU)                               │<br />
+│      ↳ 전용 연산 유닛으로 <strong>하드웨어 가속</strong> 수행          │<br />
+└────────────────────────────────────────────────────────────┘<br />
+            ▲ (가상화 환경이라면) 장치 소유권 이전<br />
+┌────────────────────────────────────────────────────────────┐<br />
+│ 1. 가상화/패스스루 계층                                   │<br />
+│    • 리눅스 호스트: VFIO-PCI 모듈이 GPU를 “묶음”           │<br />
+│      🔧 IOMMU(-vtd/-vi)가 메모리 접근을 게스트로 격리     │<br />
+│    • 게스트 Windows: 실 GPU처럼 인식 → 드라이버 설치 OK   │<br />
+│    • 가상 GPU(virtio-gpu)만 사용할 경우 DirectX 11 미지원 │<br />
+└────────────────────────────────────────────────────────────┘</p>
+<h3 id="dma">&gt; DMA 장치 이해</h3>
+<p>패스스루를 하기 위해 DMA 장치들을 이해해보자.</p>
+<p>DMA? Direct Memory Access<br />
+CPU를 거치지 않고 디바이스(SSD, GPU, NIC)가 주 메모리로 직접 읽고 쓰기. 장치가 고속 버스(PCIe)를 통해 DMA 트랜잭션을 발행하면 메모리 컨트롤러가 전송 처리.</p>
+<p>IOMMU? I/O MMU<br />
+디바이스 전용 MMU.</p>
+<p>VT-d? Intel Virtualization Technology for Directed I/O<br />
+intel CPU 칩셋에 내장된 IOMMU 구현 브랜드명. AMD는 AMD-VI라 표기. ACPI DMAR 테이블에 DRHD(하드웨어 유닛)·RMRR(예약 메모리)·ATSR 등을 기록. 리눅스 intel_iommu (옵션 intel_iommu=on), Windows vtd.sys으로 작동.</p>
+<p>ACPI? Advanced configuration &amp; Power Interface<br />
+UEFI-&gt;OS로 건네주는 하드웨어, IRQ, 전원 관리 설명서. 테이블 형식으로 되어 있다.<br />
+RSDP(루트) → XSDT/RSDT가 여러 하위 테이블 주소를 나열.<br />
+• 대표 테이블: FADT(전원), MADT(APIC·CPU), DSDT(AML 코드), DMAR(IOMMU) 등</p>
+<p>DMAR? Direct Memory Access Remapping<br />
+ACPI 속 Intel VT-d(IOMMU)를 초기화하기 위한 전용 테이블 이름. DMAR 엔진이 어디에 몇 개가 달려 있으며 어떤 PCI 장치를 맡는가.<br />
+• DRHD(DMA Remapping Hardware Unit)은 IOMMU 레지스터 베이스, 관리 버스.<br />
+• RMRR(Resserved Memory Region Reporting)은 BIOS, iGPU, USB 레거시 등 특정 장치 부팅 중 DMA 해야 하는 예약 메모리.<br />
+• ATSR(Address-Translation Service Remap)</p>
+<p><div class="highlight"><pre><span></span><code># gpu 확인
+~$ lspci | grep -i vga
+00:02.0 VGA compatible controller: Intel Corporation CometLake-U GT2 [UHD Graphics] (rev 02)
+# IOMMU 활성 여부
+~$ sudo dmesg | grep -e IOMMU -e DMAR
+# DMAR 테이블은 intel 펌웨어가 제공했다
+[    0.023609] ACPI: DMAR 0x0000000084136000 0000A8 (v01 INTEL  EDK2     00000002      01000013)
+# DMAR 테이블 위치
+[    0.023660] ACPI: Reserving DMAR table memory at [mem 0x84136000-0x841360a7]
+# IOMMU가 39비트 물리 주소(512GB)까지 번역 가능
+[    0.116940] DMAR: Host address width 39
+# DRHD(DMA-Remapping Hardware Unit) 두개가 존재
+# flags 0x0 = 모든 버스 포함, flags 0x1 = 스코프 안 PCI 디바이스만
+[    0.116942] DMAR: DRHD base: 0x000000fed90000 flags: 0x0
+[    0.116957] DMAR: dmar0: reg_base_addr fed90000 ver 1:0 cap 1c0000c40660462 ecap 19e2ff0505e
+[    0.116962] DMAR: DRHD base: 0x000000fed91000 flags: 0x1
+[    0.116968] DMAR: dmar1: reg_base_addr fed91000 ver 1:0 cap d2008c40660462 ecap f050da
+# RMRR(Reserved Memory Region Reporting)로 항상 열어두는 영역
+[    0.116971] DMAR: RMRR base: 0x00000084cb2000 end: 0x00000084efbfff
+[    0.116976] DMAR: RMRR base: 0x00000087000000 end: 0x000000897fffff
+# IRQ remapping 기능 켜짐. Queued invlidation(TLB flush)까지 활성
+[    0.116979] DMAR-IR: IOAPIC id 2 under DRHD base  0xfed91000 IOMMU 1
+[    0.116982] DMAR-IR: HPET id 0 under DRHD base 0xfed91000
+[    0.116984] DMAR-IR: Queued invalidation will be enabled to support x2apic and Intr-remapping.
+[    0.119247] DMAR-IR: Enabled IRQ remapping in x2apic mode
+# 커널 퀀크가 iGPU(00:02.0)을 IOMMU에서 강제 제외. 따라서 이 IGD를 VFIO-PCI로 통째로 패스스루 하는 경로는 막힘
+[    0.389107] pci 0000:00:02.0: DMAR: Disabling IOMMU for graphics on this chipset
+# ATSR(Address-Translation Service Remap)와 SATC(System Agent Translation Cache) 없음. 상관없음
+[    0.513959] DMAR: No ATSR found
+[    0.513962] DMAR: No SATC found
+# 두 번째 DRHD도 queued invalidation 사용
+[    0.513965] DMAR: dmar1: Using Queued invalidation
+# 최종적으로 intel_iommu 모듈이 올라가면서 VT-d 활성 완료.
+[    0.516031] DMAR: Intel(R) Virtualization Technology for Directed I/O
+# GPU가 vfio-pci에 묶였는지
+~$ lspci -nnk | grep -A3 VGA
+# iGPU 벤더, 디바이스 ID: 8086:9b41, 드라이버: i915
+00:02.0 VGA compatible controller [0300]: Intel Corporation CometLake-U GT2 [UHD Graphics] [8086:9b41] (rev 02)
+    DeviceName: Onboard - Video
+    Subsystem: Samsung Electronics Co Ltd CometLake-U GT2 [UHD Graphics] [144d:c18a]
+    Kernel driver in use: i915
+</code></pre></div><br />
+즉, IOMMU(VT-d) 자체는 활성. irq remap, qi 지원까지 갖춰져 있어 USB,NVMe 카드 등은 바로 VFIO 패스스루 가능. 하지만 IGD(내장 GPU)는 IOMMU에서 제외.<br />
+따라서 내장그래픽 장치를 쪼개서 쓰는 GVT-g(vGPU) 밖에 불가능. 풀 VFIO 패스스루(GVT-d)를 시도한다면 막힘.</p>
+<h3 id="_4">&gt; 패스스루 실행</h3>
+<p>GVT-g(vCPU) 구성 방법</p>
+<p>step 1. 커널 매개변수<br />
+<div class="highlight"><pre><span></span><code>~$ sudo nano /etc/default/grub
+원본
+GRUB_DEFAULT=0
+GRUB_TIMEOUT_STYLE=hidden
+GRUB_TIMEOUT=10
+GRUB_DISTRIBUTOR=`lsb_release -i -s 2&gt; /dev/null || echo Debian`
+GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash&quot;
+GRUB_CMDLINE_LINUX=&quot;&quot;
+
+수정 후
+GRUB_DEFAULT=0
+GRUB_TIMEOUT_STYLE=hidden
+GRUB_TIMEOUT=10
+GRUB_DISTRIBUTOR=`lsb_release -i -s 2&gt; /dev/null || echo Debian`
+GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash intel_iommu=on i915.enable_gvt=1 kvm.ignore_msrs=1 iommu=pt&quot;
+GRUB_CMDLINE_LINUX=&quot;&quot;
+
+~$ sudo update-grub &amp;&amp; sudo reboot
+</code></pre></div><br />
+step 2. 모듈 준비<br />
+<div class="highlight"><pre><span></span><code>~$ sudo modprobe kvmgt mdev vfio-iommu-type1 vfio-pci
+# 지원 타입 확인
+~$ ls /sys/bus/pci/devices/0000:00:02.0/mdev_supported_types
+# 예) i915-GVTg_V5_4  i915-GVTg_V5_8 …
+
+# vGPU 1개 생성
+UUID=$(uuidgen)
+~$ echo $UUID | sudo tee \
+ /sys/bus/pci/devices/0000:00:02.0/mdev_supported_types/i915-GVTg_V5_4/create
+</code></pre></div><br />
+step 3. qemu 부팅<br />
+<div class="highlight"><pre><span></span><code>-device vfio-pci,sysfsdev=/sys/bus/mdev/devices/$UUID,\
+      display=on,x-igd-opregion=on,ramfb=on
+</code></pre></div></p>
+<p>GVT-d(풀 VFIO 패스스루) 구성 방법</p>
+<p>step 1. qemu 부팅<br />
+<div class="highlight"><pre><span></span><code>-device vfio-pci,host=01:00.0,x-vga=on,kvm=on
+</code></pre></div><br />
+step 2. 게스트 설정<br />
+<div class="highlight"><pre><span></span><code>    core isolation → Memory Integrity OFF
+    Optional: bcdedit /set hypervisorlaunchtype off
+</code></pre></div><br />
+step 3. 배틀넷 설정<br />
+<div class="highlight"><pre><span></span><code>    Battle.net → 설정 → 게임 내 옵션 초기화
+    윈도우 전원 옵션을 고성능으로 변경
+</code></pre></div></p>
+<h3 id="_5">&gt;</h3>
 
 
 
