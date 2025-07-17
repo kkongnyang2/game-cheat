@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../3-cheat/">
+        <link rel="prev" href="../3-cheats/">
       
       
-        <link rel="next" href="../5-cheat-engine/">
+        <link rel="next" href="../5-CE-tutorial/">
       
       
       <link rel="icon" href="../logo.svg">
@@ -244,13 +244,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="../2-memory/" class="md-tabs__link">
+      <a href="../10-anti-cheat/" class="md-tabs__link">
         
   
   
     
   
-  2 memory
+  10 anti cheat
 
       </a>
     </li>
@@ -263,13 +263,51 @@
   
   
     <li class="md-tabs__item">
-      <a href="../3-cheat/" class="md-tabs__link">
+      <a href="../11-openra/" class="md-tabs__link">
         
   
   
     
   
-  3 cheat
+  11 openra
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../2-mem/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  2 mem
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../3-cheats/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  3 cheats
 
       </a>
     </li>
@@ -303,13 +341,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="../5-cheat-engine/" class="md-tabs__link">
+      <a href="../5-CE-tutorial/" class="md-tabs__link">
         
   
   
     
   
-  5 cheat engine
+  5 CE tutorial
 
       </a>
     </li>
@@ -322,13 +360,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="../7-main-thread/" class="md-tabs__link">
+      <a href="../6-device/" class="md-tabs__link">
         
   
   
     
   
-  7 main thread
+  6 device
 
       </a>
     </li>
@@ -341,13 +379,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="../8-anti-cheat/" class="md-tabs__link">
+      <a href="../8-base-address/" class="md-tabs__link">
         
   
   
     
   
-  8 anti cheat
+  8 base address
 
       </a>
     </li>
@@ -360,13 +398,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="../9-openra/" class="md-tabs__link">
+      <a href="../9-main-thread/" class="md-tabs__link">
         
   
   
     
   
-  9 openra
+  9 main thread
 
       </a>
     </li>
@@ -456,12 +494,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../2-memory/" class="md-nav__link">
+      <a href="../10-anti-cheat/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    2 memory
+    10 anti cheat
     
   </span>
   
@@ -478,12 +516,56 @@
   
   
     <li class="md-nav__item">
-      <a href="../3-cheat/" class="md-nav__link">
+      <a href="../11-openra/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    3 cheat
+    11 openra
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-mem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2 mem
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-cheats/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3 cheats
     
   </span>
   
@@ -620,12 +702,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../5-cheat-engine/" class="md-nav__link">
+      <a href="../5-CE-tutorial/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    5 cheat engine
+    5 CE tutorial
     
   </span>
   
@@ -642,12 +724,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../7-main-thread/" class="md-nav__link">
+      <a href="../6-device/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    7 main thread
+    6 device
     
   </span>
   
@@ -664,12 +746,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../8-anti-cheat/" class="md-nav__link">
+      <a href="../8-base-address/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    8 anti cheat
+    8 base address
     
   </span>
   
@@ -686,12 +768,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../9-openra/" class="md-nav__link">
+      <a href="../9-main-thread/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    9 openra
+    9 main thread
     
   </span>
   
@@ -807,6 +889,18 @@
 <h3 id="vmi_1">목표: VMI 구현</h3>
 <p>작성자: kkongnyang2 작성일: 2025-07-10</p>
 <hr />
+<p>VMI란? 이미 실행 중인 VM 내부 상태(메모리, 레지스터, 파일시스템 등)를 바깥(하이퍼바이저)에서 들여다보거나 조작하는 기술.<br />
+게스트 밖에서 이뤄지므로 안티치트 입장에서는 아무것도 알 수 없다.</p>
+<p>┌─────────────────────────┐<br />
+│  호스트 OS / 하이퍼바이저│  ← LibVMI·DRAKVUF 같은 VMI 라이브러리<br />
+│  (VMI 대상 메모리 맵)   │<br />
+├─────────▽──────────────┤<br />
+│      게스트 VM          │  ← Windows 10 + 게임 + 안티치트<br />
+│  ┌───────────────┐      │<br />
+│  │  게임 프로세스 │      │<br />
+│  └───────────────┘      │<br />
+└─────────────────────────┘</p>
+<p>VMI 프로그램 구성</p>
 <p>┌───────────────────────────────┐<br />
 │         Python 레벨           │<br />
 │  ┌────────┐   ┌──────────┐    │<br />
@@ -972,8 +1066,7 @@ apply<br />
 <p>다시 우분투로 돌아와서 실질 용량 늘어난거 확인</p>
 <h3 id="_4">&gt; 게스트 측 준비</h3>
 <p>battle.net 다운 후 설치, 오버워치 설치<br />
-cheat engine window 10 7.5 인터넷에서 다운 후 설치<br />
-들어가서 help에 보면 tutorial(x86-64)있음.</p>
+cheat engine window 10 7.5 인터넷에서 다운 후 설치</p>
 
 
 
