@@ -1,6 +1,6 @@
 ## cheat engine 튜토리얼을 연습해보자
 
-### 목표: 메모리 내용의 이해
+### 목표: 메모리 찾기 사전연습
 작성자: kkongnyang2 작성일: 2025-07-14
 
 ---
@@ -9,7 +9,7 @@
 
 주소 탐색
 ```
-newscan 누르기
+newscan 누르기성
 창에 initial 값 입력 후 firstscan 누르기
 값 변화시키기
 창에 second 값 입력 후 nextscan 누르기

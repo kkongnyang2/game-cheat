@@ -16,3 +16,24 @@ P. Karkallis, J. Blasco, G. Suarez-Tangil, and S. Pastrana. Detecting video-game
 cheating communities. In Computer Security – ESORICS 2021: 26th European Symposium on Research
 in Computer Security, Darmstadt, Germany, October 4–8, 2021, Proceedings, Part I, page 305–324, Berlin,
 Heidelberg, 2021. Springer-Verlag.
+
+
+### > 게스트 측 보안 제거
+
+안티치트가 Hyper-V 커널 레이러를 감지하면 바로 블루스크린.
+
+step 1. 설정 › 앱 › 선택적 기능
+```
+    Hyper-V
+    Windows Hypervisor Platform
+    Virtual Machine Platform
+    Windows Sandbox
+    Windows Subsystem for Linux
+    → 전부 체크 해제(제거) ▸ 재부팅
+```
+
+step 2. 설정
+```
+    core isolation → Memory Integrity OFF
+    Optional: bcdedit /set hypervisorlaunchtype off
+```

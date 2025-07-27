@@ -1,11 +1,13 @@
-## VMI를 실행해보자
+## 구현에 필요한 툴들을 설치해보자
 
-### 목표: VMI 구현
+### 목표: 환경 구현
 작성자: kkongnyang2 작성일: 2025-07-10
 
 ---
 
-VMI란? 이미 실행 중인 VM 내부 상태(메모리, 레지스터, 파일시스템 등)를 바깥(하이퍼바이저)에서 들여다보거나 조작하는 기술.
+### > vmi 툴
+
+VMI란? 이미 실행 중인 VM 내부 상태(메모리, 레지스터, 파일시스템 등)를 바깥(하이퍼바이저)에서 들여다보거나 조작하는 기술.경
 게스트 밖에서 이뤄지므로 안티치트 입장에서는 아무것도 알 수 없다.
 
 ┌─────────────────────────┐
@@ -66,7 +68,7 @@ r2 vmi://winvm:explorer.exe
 Xen 환경이라면 altp2m=1 부트 옵션으로 다중-EPT 활성화 후 LibVMI altp2m_enable() 호출해 페이지 가드 성능 측정.
 
 
-### > 호스트 측 준비(폴링용)
+### > 호스트 측(폴링용)
 
 sudo apt install -y build-essential git cmake autoconf automake \
                     libglib2.0-dev libjansson-dev libsqlite3-dev \
@@ -155,7 +157,7 @@ apply
 다시 우분투로 돌아와서 실질 용량 늘어난거 확인
 
 
-### > 게스트 측 준비
+### > 게스트 측
 
 battle.net 다운 후 설치, 오버워치 설치
 cheat engine window 10 7.5 인터넷에서 다운 후 설치
