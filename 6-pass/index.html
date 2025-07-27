@@ -16,15 +16,15 @@
       
       
       <link rel="icon" href="../logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
     
     
       
-        <title>6 device - Game-Cheat</title>
+        <title>6 pass - Game-Cheat</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#vm" class="md-skip">
+        <a href="#gpu" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              6 device
+              6 pass
             
           </span>
         </div>
@@ -320,13 +320,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="../4-VMI/" class="md-tabs__link">
+      <a href="../4-install/" class="md-tabs__link">
         
   
   
     
   
-  4 VMI
+  4 install
 
       </a>
     </li>
@@ -366,7 +366,7 @@
   
     
   
-  6 device
+  6 pass
 
       </a>
     </li>
@@ -601,12 +601,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-VMI/" class="md-nav__link">
+      <a href="../4-install/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    4 VMI
+    4 install
     
   </span>
   
@@ -657,7 +657,7 @@
   
   
   <span class="md-ellipsis">
-    6 device
+    6 pass
     
   </span>
   
@@ -670,7 +670,7 @@
   
   
   <span class="md-ellipsis">
-    6 device
+    6 pass
     
   </span>
   
@@ -691,19 +691,19 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#vm" class="md-nav__link">
+  <a href="#gpu" class="md-nav__link">
     <span class="md-ellipsis">
-      VM 환경에서 디바이스들을 정돈하자
+      GPU 패스스루를 실행해보자
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="VM 환경에서 디바이스들을 정돈하자">
+    <nav class="md-nav" aria-label="GPU 패스스루를 실행해보자">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      목표: 장치들 이해
+      목표: 디스플레이
     </span>
   </a>
   
@@ -712,7 +712,16 @@
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 오버워치 그래픽 이해
+      &gt; 기본 그래픽 처리 흐름
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      &gt; VM 디스플레이
     </span>
   </a>
   
@@ -721,16 +730,7 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 기본 그래픽 처리 흐름
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vm_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      &gt; VM 디스플레이
+      &gt; 오버워치 디스플레이 이해
     </span>
   </a>
   
@@ -755,9 +755,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#-gvt-gvcpu" class="md-nav__link">
+  <a href="#-gvt-gvgpu" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 분할 패스스루 실행 - GVT-g(vCPU)
+      &gt; 분할 패스스루 실행 - GVT-g(vGPU)
     </span>
   </a>
   
@@ -767,15 +767,6 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       &gt; 번외
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      &gt; 게스트 측 보안 제거
     </span>
   </a>
   
@@ -885,19 +876,19 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#vm" class="md-nav__link">
+  <a href="#gpu" class="md-nav__link">
     <span class="md-ellipsis">
-      VM 환경에서 디바이스들을 정돈하자
+      GPU 패스스루를 실행해보자
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="VM 환경에서 디바이스들을 정돈하자">
+    <nav class="md-nav" aria-label="GPU 패스스루를 실행해보자">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      목표: 장치들 이해
+      목표: 디스플레이
     </span>
   </a>
   
@@ -906,7 +897,16 @@
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 오버워치 그래픽 이해
+      &gt; 기본 그래픽 처리 흐름
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      &gt; VM 디스플레이
     </span>
   </a>
   
@@ -915,16 +915,7 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 기본 그래픽 처리 흐름
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vm_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      &gt; VM 디스플레이
+      &gt; 오버워치 디스플레이 이해
     </span>
   </a>
   
@@ -949,9 +940,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#-gvt-gvcpu" class="md-nav__link">
+  <a href="#-gvt-gvgpu" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 분할 패스스루 실행 - GVT-g(vCPU)
+      &gt; 분할 패스스루 실행 - GVT-g(vGPU)
     </span>
   </a>
   
@@ -961,15 +952,6 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       &gt; 번외
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      &gt; 게스트 측 보안 제거
     </span>
   </a>
   
@@ -996,99 +978,13 @@
 
 
 
-  <h1>6 device</h1>
+  <h1>6 pass</h1>
 
-<h2 id="vm">VM 환경에서 디바이스들을 정돈하자</h2>
-<h3 id="_1">목표: 장치들 이해</h3>
+<h2 id="gpu">GPU 패스스루를 실행해보자</h2>
+<h3 id="_1">목표: 디스플레이</h3>
 <p>작성자: kkongnyang2 작성일: 2025-07-17</p>
 <hr />
-<h3 id="_2">&gt; 오버워치 그래픽 이해</h3>
-<p>[호스트 Linux] ──(VFIO/PCIe 패스스루)──► [게스트 Windows]<br />
-                                               │<br />
-                                               │  공식 NVIDIA 드라이버<br />
-                                               │  DX11 Feature Level OK<br />
-                                               │<br />
-                                Overwatch 2 런처 + 안티치트</p>
-<p>컴퓨터에는 gpu 장치가 있고, 윈도우에 내장된 드라이버와 api 도구로 그래픽 관련 처리를 한다. cpu가 아닌 gpu로 그래픽을 처리하는 걸 가속이라고 부른다. 또한 cpu와의 전용 고속 버스를 PCIe라고 부르는데, 이를 가지는 장치는 gpu, 사운드카드 등이 있다.</p>
-<p>가상머신 환경이라면 장치를 에뮬레이션 하지만, 오버워치 2에서는 gpu 장치와 드라이버의 ID를 명확히 확인하며 directX 11만 받아들이기 때문에 게스트에 패스스루 해야한다. 리눅스 커널이 제공하는 패스스루용 프레임워크인 VFIO-PCI를 이용해 PCIe 장치들을 안전하게 넘길 수 있다.</p>
-<ul>
-<li>벤더 ID, DX Feature Level 11_0 이상 &amp; 서명된 WDDM 2.x 조건도 검사</li>
-<li>Hyper-V/VBS OFF 해야지 못알아챔</li>
-<li>VFIO-PCI는 같은 IOMMU 그룹에 묶인 장치는 통째로 넘겨야 함</li>
-<li>다른 게임은 에뮬레이션인 virtio-gpu(VirGL)만으로 충분하기도 함</li>
-</ul>
-<p>┌────────────────────────────────────────────────────────────┐<br />
-│ 6. 애플리케이션                                              │<br />
-│    • Overwatch 2 │ Battle.net 런처                         │<br />
-└────────────────────────────────────────────────────────────┘<br />
-┌────────────────────────────────────────────────────────────┐<br />
-│ 5. 그래픽 API                                              │<br />
-│    ✔ Direct3D 11 (DirectX 11)                             │<br />
-└────────────────────────────────────────────────────────────┘<br />
-┌────────────────────────────────────────────────────────────┐<br />
-│ 4. OS 드라이버                                            │<br />
-│    ✔ Windows WDDM 2.x 드라이버 (NVIDIA / AMD / Intel)     │<br />
-└────────────────────────────────────────────────────────────┘<br />
-┌────────────────────────────────────────────────────────────┐<br />
-│ 3. 버스                                                   │<br />
-│    ✔ PCIe 각 장치는 <em>Vendor ID:Device ID</em> 쌍으로 식별        │<br />
-└────────────────────────────────────────────────────────────┘<br />
-┌────────────────────────────────────────────────────────────┐<br />
-│ 2. 하드웨어                                                 │<br />
-│    ✔ 물리 GPU (dGPU / iGPU) 전용 연산 유닛으로 하드웨어 가속       │<br />
-└────────────────────────────────────────────────────────────┘<br />
-┌────────────────────────────────────────────────────────────┐<br />
-│ 1. 가상화/패스스루                                            │<br />
-│    • 호스트: IOMMU에 묶여있는 GPU를 VFIO-PCI 모듈로 패스스루       │<br />
-└────────────────────────────────────────────────────────────┘</p>
-<h3 id="_3">&gt; 기본 그래픽 처리 흐름</h3>
-<table>
-<thead>
-<tr>
-<th>용어</th>
-<th>뜻</th>
-<th>포인트</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>렌더링(Rendering)</td>
-<td>앱이 데이터를 자신의 이미지 픽셀/버퍼로 그리는 과정. CPU 또는 GPU 사용</td>
-<td>“내 창 안의 내용” 생성.</td>
-</tr>
-<tr>
-<td>합성(Compositing)</td>
-<td>여러 윈도우 버퍼(배경, 창, 패널 등)를 하나의 최종 화면 이미지로 조립</td>
-<td>화면에 실제로 뭐가 보일지 결정</td>
-</tr>
-<tr>
-<td>프레임버퍼(Frame Buffer)</td>
-<td>디스플레이로 보낼 픽셀 메모리. 최종 합성 결과가 여기에 놓임</td>
-<td>디스플레이 컨트롤러가 읽어감</td>
-</tr>
-<tr>
-<td>백 버퍼/프런트 버퍼</td>
-<td>그릴 때 쓰는 임시 버퍼 vs 현재 화면 표시 중인 버퍼</td>
-<td>깜빡임 방지(더블 버퍼링)</td>
-</tr>
-<tr>
-<td>오버레이(Overlay Plane)</td>
-<td>합성 없이 특정 버퍼를 직접 화면 특정 영역에 하드웨어적으로 얹는 기능</td>
-<td>비디오 재생 최적화 등</td>
-</tr>
-</tbody>
-</table>
-<p>렌더링? 위치 데이터를 transform과 projection하여 화면에 그래픽을 그림<br />
-명령 생성: 응용 프로그램<br />
-명령 해석: 렌더링 API + GPU 드라이버<br />
-실제 연산: 하드웨어 GPU</p>
-<p>렌더링 API? 화면에 3D/2D 그래픽을 그리는 일을 도와주는 약속된 함수 집합 도구. drawTriagnles()같은 명령으로 실제로 삼각형을 그림. 정점 데이터를 GPU로 전송, 조명 계산, 픽셀에 색상 결정, GPU에 필요한 메모리 할당, 프레임버퍼 관리.</p>
-<p>GPU 드라이버? 렌더링 API 명령을 GPU 하드웨어 명령으로 번역</p>
-<p>cpu는 명령과 데이터를 준비하고, GPU가 대량 픽셀 연산을 수행한 뒤 결과를 메모리 상의 프레임버퍼에 쓴다. 디스플레이 하드웨어가 그 프레임버퍼를 직접 읽어 모니터에 띄운다.</p>
-<p>프레임버퍼는 자체 VRAM(video random access memory)라는 메모리에 있기도 하고, 그냥 DRAM의 일부를 프레임버퍼 용도로 사용하기도 한다. 어쨌거나 cpu가 그 픽셀을 복사하려하지 않고 주소나 레지스터만 업데이트하며 처리한다.</p>
-<p>깜빡임 방지를 위해 두세개의 버퍼를 사용한다.</p>
-<p>그리고 여러 개의 프로그램 창을 띄우면 다음과 같이 합성을 통해 진행된다. 본인 창이 차치하고 있는 영역의 크기를 알려주면 그에 맞게 각 렌더링 API들이 데이터를 만들어 합성기에 전달하여 하나의 최종 화면을 만드는 것이다.</p>
-<p>GPU 드라이버? 렌더링 API 명령을 GPU 하드웨어 명령으로 번역</p>
+<h3 id="_2">&gt; 기본 그래픽 처리 흐름</h3>
 <p>┌────────────────────────────────────────────────────────┐<br />
 │                      애플리케이션들                     │<br />
 │  App A  App B  App C ...                                │<br />
@@ -1112,7 +1008,17 @@
                       │<br />
                       ▼<br />
                  디스플레이 컨트롤러 → 모니터</p>
-<p>이때 특수하게 비디오 같은 프로그램은 합성이 아닌 오버레이 방식을 사용하여 overlay plane으로 덮는다. 너무 자주 바뀌어 합성이 힘드니 직접 디스플레이 컨트롤러의 오버레이 플레인에 말을 거는 것이다.</p>
+<p>렌더링? 위치 데이터를 transform과 projection하여 화면에 그래픽을 그림<br />
+명령 생성: 응용 프로그램<br />
+명령 해석: 렌더링 API + GPU 드라이버<br />
+실제 연산: 하드웨어 GPU</p>
+<p>렌더링 API? 화면에 3D/2D 그래픽을 그리는 일을 도와주는 약속된 함수 집합 도구. drawTriagnles()같은 명령으로 실제로 삼각형을 그림. 정점 데이터를 GPU로 전송, 조명 계산, 픽셀에 색상 결정, GPU에 필요한 메모리 할당, 프레임버퍼 관리.</p>
+<p>합성? 여러 윈도우 버퍼(배경, 창, 패널 등)를 하나의 최종 화면 이미지로 조립하여 화면에 실제로 뭐가 보일지 결정</p>
+<p>GPU 드라이버? 렌더링 API 명령을 GPU 하드웨어 명령으로 번역</p>
+<p>프레임버퍼? 디스플레이로 보낼 최종 합성 픽셀 메모리. 디스플레이 컨트롤러가 읽어간다. gpu 전용 VRAM(video random access memory)에 있기도 하고, DRAM의 일부를 프레임버퍼 용도로 사용하기도 한다. 어쨌거나 cpu가 그 픽셀을 복사하려하지 않고 주소나 레지스터만 업데이트하며 처리한다.</p>
+<p>백 버퍼/프런트 버퍼? 그릴 때 쓰는 임시 버퍼 vs 현재 화면 표시 중인 버퍼로 깜빡임을 방지</p>
+<p>한줄 요약하면 렌더링을 위해 응용 프로그램이 만든 명령을 cpu가 준비하고, GPU가 대량 픽셀 연산을 수행한 뒤 결과를 메모리 상의 프레임버퍼에 쓴다. 디스플레이 하드웨어가 그 프레임버퍼를 직접 읽어 모니터에 띄운다.</p>
+<p>오버레이(Overlay Plane)? 합성 없이 특정 버퍼를 직접 화면 특정 영역에 하드웨어적으로 얹는 기능. 비디오 같은 프로그램은 너무 자주 바뀌어 합성이 힘드니 직접 디스플레이 컨트롤러의 오버레이 플레인에 말을 거는 것이다.</p>
 <div class="highlight"><pre><span></span><code>           ┌───────────────────────┐
            │ Display Controller    │  ← 디스플레이 하드웨어
            │ (scanout engine)      │
@@ -1124,25 +1030,8 @@
                             │
                           HDMI/eDP/DP → 모니터
 </code></pre></div>
-<h3 id="vm_1">&gt; VM 디스플레이</h3>
-<p>그럼 VM은 어떤 방식으로 진행하냐?</p>
-<p>┌─────────────────────────────────────────────┐<br />
-│               게스트 OS                      │<br />
-│      앱 → 그래픽 API → GPU 드라이버             │─────┐<br />
-│       → 가상/패스스루 장치에 커맨드 전달           │     │<br />
-└─────────────────────────────────────────────      │<br />
-              ├─ virtio-gpu (가상)                   └─ vfio-pci (패스스루)<br />
-  ┌────────────────────────────────────────┐        │<br />
-  │               호스트 OS                 │         │<br />
-  │  ┌──────────────────────────────────┐  │        │<br />
-  │  │            QEMU 프로세스           │  │        │ <br />
-  │  │   ├─ gtk ( -display gtk )        │  │        │<br />
-  │  │   └─ sdl ( -display sdl )        │  │        │<br />
-  │  │       → 그래픽 API(gl=on)          │  │        │<br />
-  │  └──────────────────────────────────┘  │        │<br />
-  │           → GPU 드라이버                 │        │<br />
-  └────────────────────────────────────────┘        │ <br />
-                   하드웨어                          하드웨어</p>
+<h3 id="vm">&gt; VM 디스플레이</h3>
+<p>그럼 VM은 어떤 방식으로 진행하냐? 장치를 얼마나 넘겨주냐에 따라 다르다</p>
 <p>전체 패스스루 방식이면 (VFIO-PCI)<br />
 CPU도 그대로 사용(일부 trap만 따로 처리), RAM도 할당된 영역만큼 그대로 사용, GPU도 드라이버까지 설치해서 직접 사용.</p>
 <p>분할 패스스루 방식이면 (GVT-g)<br />
@@ -1164,6 +1053,20 @@ GPU를 넘겨줘서 연산은 하되 최종 프레임버퍼는 호스트가 합�
 <p>전통 VGA 방식이면<br />
 GPU 사용 없이 오직 그 위에서 장치를 구현해서 진짜 가상으로 연산 처리</p>
 <p>ramfb(RAM Framebuffer)는 게스트 os가 메모리에 픽셀 데이터를 쓰면 호스트가 그 메모리를 읽어와 화면에 그대로 표시하는 매커니즘(렌더링x). UEFI(OVMF) 부팅 중에 사용.</p>
+<h3 id="_3">&gt; 오버워치 디스플레이 이해</h3>
+<p>[호스트 Linux] ──(VFIO/PCIe 패스스루)──► [게스트 Windows]<br />
+                                               │<br />
+                                               │  공식 NVIDIA 드라이버<br />
+                                               │  DX11 Feature Level OK<br />
+                                               │<br />
+                                Overwatch 2 런처 + 안티치트</p>
+<p>가상머신 환경이라면 장치를 에뮬레이션 하지만, 오버워치 2에서는 gpu 장치와 드라이버의 ID를 명확히 확인하며 directX 11만 받아들이기 때문에 게스트에 패스스루 해야한다. 리눅스 커널이 제공하는 패스스루용 프레임워크인 VFIO-PCI를 이용해 PCIe 장치들을 안전하게 넘길 수 있다.</p>
+<ul>
+<li>벤더 ID, DX Feature Level 11_0 이상 &amp; 서명된 WDDM 2.x 조건도 검사</li>
+<li>Hyper-V/VBS OFF 해야지 못알아챔</li>
+<li>VFIO-PCI는 같은 IOMMU 그룹에 묶인 장치는 통째로 넘겨야 함</li>
+<li>다른 게임은 에뮬레이션인 virtio-gpu(VirGL)만으로 충분하기도 함</li>
+</ul>
 <h3 id="qemu-kvm">&gt; qemu-kvm 옵션의 이해</h3>
 <p>빌드 때는 어떤 타깃 아키텍처를 만들지, 어떤 GUI/디스플레이 백엔드/가속 라이브러리를 포함할지 결정</p>
 <p>런타임 때는 VM 하드웨어 토폴로지, 가속(KVM), CPU 패스스루, 메모리, 펌웨어(OVMF), 디스크/네트워크/USB/그래픽 장치, VFIO 패스스루(vGPU 포함), 디버깅/관리(QMP,monitor) 등을 설정.</p>
@@ -1232,24 +1135,8 @@ GPU 사용 없이 오직 그 위에서 장치를 구현해서 진짜 가상으�
 <p>gtk? 가장 일반적인 선택. 창 크기 조절, 메뉴 제어, 마우스 포인터 통합 등등.<br />
 sdl? 경량 옵션. 창 크기 고정, 메뉴 없음, 마우스 포인터 중첩 불가. 키오스크 같은 고정 미니멀 환경</p>
 <p>gl=on(opengl)? virtio-gpu를 사용할때 호스트로 전달받은 게스트 렌더링을 처리하기 위한 api.</p>
-<p>런타입 골격<br />
-일반 KVM 가속 + UEFI(OVMF) + Virtio 디스크 + GTK 창 을 제일 많이 사용한다.<br />
-qemu-system-x86_64 \<br />
-  -enable-kvm \<br />
-  -machine q35,accel=kvm \<br />
-  -cpu host \<br />
-  -smp 4 \<br />
-  -m 4G \<br />
-  -drive if=pflash,format=raw,readonly=on,file=/usr/share/OVMF/OVMF_CODE.fd \<br />
-  -drive if=pflash,format=raw,file=$HOME/OVMF_VARS.fd \<br />
-  -drive file=vm.qcow2,if=virtio,format=qcow2,cache=none \<br />
-  -netdev user,id=n0,hostfwd=tcp::2222-:22 \<br />
-  -device virtio-net-pci,netdev=n0 \<br />
-  -display gtk,gl=on \<br />
-  -monitor stdio \<br />
-  -qmp unix:/tmp/vm-qmp.sock,server,nowait</p>
 <h3 id="dma">&gt; DMA 장치 이해</h3>
-<p>패스스루를 하기 위해 DMA 장치들을 이해해보자.</p>
+<p>컴퓨터에는 gpu가 있고, 윈도우에 내장된 드라이버와 api 도구로 그래픽 관련 처리를 한다. cpu가 아닌 gpu로 그래픽을 처리하는 걸 가속이라고 부른다. 또한 cpu와의 전용 고속 버스를 PCIe라고 부르는데, 이를 가지는 장치는 gpu, 사운드카드 등이 있다.</p>
 <p>DMA? Direct Memory Access<br />
 CPU를 거치지 않고 디바이스(SSD, GPU, NIC)가 주 메모리로 직접 읽고 쓰기. 장치가 고속 버스(PCIe)를 통해 DMA 트랜잭션을 발행하면 메모리 컨트롤러가 전송 처리.</p>
 <p>IOMMU? I/O MMU<br />
@@ -1310,7 +1197,7 @@ ACPI 속 Intel VT-d(IOMMU)를 초기화하기 위한 전용 테이블 이름. DM
 즉, IOMMU(VT-d) 자체는 활성. irq remap, qi 지원까지 갖춰져 있어 USB,NVMe 카드 등은 바로 VFIO 패스스루 가능. 하지만 IGD(내장 GPU)는 IOMMU에서 제외.<br />
 따라서 내장그래픽 장치를 쪼개서 쓰는 GVT-g(vGPU) 밖에 불가능. 풀 VFIO 패스스루(GVT-d)를 시도한다면 막힘.</p>
 <p>NVMe? SSD 전용 고속 통신 규격 프로토콜. PCIe 고속버스와 함께 SSD를 보조.</p>
-<h3 id="-gvt-gvcpu">&gt; 분할 패스스루 실행 - GVT-g(vCPU)</h3>
+<h3 id="-gvt-gvgpu">&gt; 분할 패스스루 실행 - GVT-g(vGPU)</h3>
 <p>step 1. 전제 확인<br />
 <div class="highlight"><pre><span></span><code>$ grep GVT /boot/config-$(uname -r)     # 커널에 i915 GVT 코드 존재 확인
 CONFIG_DRM_I915_GVT_KVMGT=m
@@ -1387,7 +1274,7 @@ $ ninja install
   -display gtk,gl=on
 </code></pre></div></p>
 <h3 id="_4">&gt; 번외</h3>
-<p>qemu에서 펌웨어 OVMF(UEFI) 부팅법<br />
+<p>펌웨어 OVMF(UEFI) 부팅법<br />
 <div class="highlight"><pre><span></span><code>$ sudo apt install ovmf
 $ cp /usr/share/OVMF/OVMF_VARS.fd  ~/OVMF_VARS_WIN10.fd   # 얜 홈에 꺼내놔야 함
 $ sudo qemu-system-x86_64 \
@@ -1403,7 +1290,7 @@ $ sudo qemu-system-x86_64 \
   -display gtk,gl=on
 </code></pre></div><br />
 실패함</p>
-<p>qemu에서 풀 패스스루 실행법 - GVT-d<br />
+<p>풀 패스스루 실행법 - GVT-d<br />
 <div class="highlight"><pre><span></span><code>qemu 기본 부팅에 라인 하나 추가
 -device vfio-pci,host=01:00.0,x-vga=on,kvm=on
 </code></pre></div><br />
@@ -1413,20 +1300,6 @@ $ sudo qemu-system-x86_64 \
 $ sudo apt remove qemu-system-arm
 $ snap list               # snap을 통해 깐 앱 보여줌
 $ sudo snap remove rpi-imager
-</code></pre></div></p>
-<h3 id="_5">&gt; 게스트 측 보안 제거</h3>
-<p>안티치트가 Hyper-V 커널 레이러를 감지하면 바로 블루스크린.</p>
-<p>step 1. 설정 › 앱 › 선택적 기능<br />
-<div class="highlight"><pre><span></span><code>    Hyper-V
-    Windows Hypervisor Platform
-    Virtual Machine Platform
-    Windows Sandbox
-    Windows Subsystem for Linux
-    → 전부 체크 해제(제거) ▸ 재부팅
-</code></pre></div></p>
-<p>step 2. 설정<br />
-<div class="highlight"><pre><span></span><code>    core isolation → Memory Integrity OFF
-    Optional: bcdedit /set hypervisorlaunchtype off
 </code></pre></div></p>
 
 
@@ -1479,7 +1352,7 @@ $ sudo snap remove rpi-imager
       <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "content.code.copy", "header.autohide"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      <script src="../assets/javascripts/bundle.50899def.min.js"></script>
       
     
   </body>
