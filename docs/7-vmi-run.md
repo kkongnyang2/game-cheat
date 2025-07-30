@@ -181,26 +181,6 @@ vm 실행
 cdrom 삭제
 ```
 
-원격 ssh 활성화
-```
-$ sudo apt install openssh-server
-$ sudo systemctl start ssh
-$ sudo ufw allow 22
-```
-
-타 노트북에서 vm 작동시키기
-```
-$ ssh -V        # openSSH 클라이언트 설치 여부 확인
-OpenSSH_for_Windows_9.5p1, LibreSSL 3.8.2
-$ ssh kkongnyang2@172.30.1.69
-비밀번호 4108 입력
-$ virsh list --all
-$ virsh start win10
-$ virsh shutdown win10
-$ virsh destroy win10     # 강제 파워내리기
-$ exit                    # ssh 연결 종료
-```
-
 ### > Part 2. VM 튜닝
 
 GPU 패스스루
@@ -244,7 +224,7 @@ lrwxrwxrwx 1 root root 0  7월 26 10:11 0000:01:00.1 -> ../../../../devices/pci0
 ```
 따라서 둘은 14번 그룹이 맞고 이거 두개만 넘기면 됨
 
-VM xml 튜닝
+패스스루할 장치 추가
 ```
 $ virt-manager
 하드웨어 추가 - PCI 호스트 장치 - 0000:01:00.0과 0000:01:00.1 추가
@@ -273,7 +253,6 @@ $ sudo mkdir -p /etc/libvirt/hooks    # 디렉토리 확인
 $ sudo nano /etc/libvirt/hooks/qemu   # qemu 파일 생성
 #!/usr/bin/env bash
 # /etc/libvirt/hooks/qemu
-# Args: $1 = VM name, $2 = hook-name, $3 = sub-operation, $4 = extra
 set -euo pipefail
 
 VM="$1"
@@ -282,23 +261,28 @@ PHASE="$3"
 
 GPU="0000:01:00.0"
 AUD="0000:01:00.1"
-HOSTDRV="nvidia"      # 또는 amd
+HOSTDRV="nvidia"
 
-DM_LIST=("gdm" "gdm3" "sddm" "lightdm")
+DM_LIST=("gdm3" "gdm" "sddm" "lightdm")
+DM_STATE_FILE="/run/libvirt-active-dm"
+
+log(){ echo "[$(date +'%F %T')] $*" >> /var/log/libvirt/qemu-hook.log; }
 
 stop_dm() {
   for dm in "${DM_LIST[@]}"; do
     if systemctl is-active --quiet "$dm"; then
       systemctl stop "$dm"
-      export ACTIVE_DM="$dm"
+      echo "$dm" > "$DM_STATE_FILE"
       break
     fi
   done
 }
 
 start_dm() {
-  if [[ -n "${ACTIVE_DM-}" ]]; then
-    systemctl start "$ACTIVE_DM"
+  if [[ -f "$DM_STATE_FILE" ]]; then
+    dm="$(cat "$DM_STATE_FILE")"
+    systemctl start "$dm" || true
+    rm -f "$DM_STATE_FILE"
   fi
 }
 
@@ -306,8 +290,9 @@ unbind_vtconsoles() {
   for c in /sys/class/vtconsole/*; do
     [[ -e "$c/bind" ]] && echo 0 > "$c/bind" || true
   done
-  echo efi-framebuffer.0   > /sys/bus/platform/drivers/efi-framebuffer/unbind   2>/dev/null || true
-  echo simple-framebuffer.0 > /sys/bus/platform/drivers/simple-framebuffer/unbind 2>/dev/null || true
+  echo efi-framebuffer.0        > /sys/bus/platform/drivers/efi-framebuffer/unbind        2>/dev/null || true
+  echo simple-framebuffer.0    > /sys/bus/platform/drivers/simple-framebuffer/unbind     2>/dev/null || true
+  echo simpledrm.0             > /sys/bus/platform/drivers/simpledrm/unbind              2>/dev/null || true
 }
 
 unload_host_driver() {
@@ -324,7 +309,10 @@ unload_host_driver() {
 reload_host_driver() {
   case "$HOSTDRV" in
     nvidia)
-      modprobe nvidia nvidia_uvm nvidia_modeset nvidia_drm 2>/dev/null || true
+      modprobe nvidia 2>/dev/null || true
+      modprobe nvidia_uvm 2>/dev/null || true
+      modprobe nvidia_modeset 2>/dev/null || true
+      modprobe nvidia_drm 2>/dev/null || true
       ;;
     amdgpu)
       modprobe amdgpu 2>/dev/null || true
@@ -332,52 +320,92 @@ reload_host_driver() {
   esac
 }
 
+load_vfio() {
+  for m in vfio vfio-pci vfio_iommu_type1; do
+    modprobe -n "$m" &>/dev/null && modprobe "$m" || true
+  done
+}
+
 case "${HOOK}/${PHASE}" in
-  # VM이 시작되기 직전
   prepare/begin)
-    # 1) GUI/DM 내려서 GPU 점유 해제
+    log "[$VM] prepare/begin: stop DM, unbind fb, unload $HOSTDRV, load vfio"
     stop_dm
-    # 2) vtconsole/프레임버퍼 분리(있다면)
     unbind_vtconsoles
-    # 3) 호스트 GPU 드라이버 언로드
     unload_host_driver
-    # 4) vfio 관련 모듈 로드 (안 돼 있으면)
-    modprobe vfio vfio-pci vfio_iommu_type1
+    load_vfio
     ;;
 
-  # VM 종료 직후 (장치 reattach 완료 후)
-  release/end)
-    # 1) VFIO에서 빠진 GPU를 원래 드라이버에 재바인딩( managed=yes면 libvirt가 이미 함 )
-    #    → 여기선 보통 필요 없음. 혹시 안 됐다면 수동 bind 코드 추가.
-    # 2) 호스트 드라이버 다시 로드
+  release/end|stopped/end)
+    log "[$VM] release/stopped: reload $HOSTDRV, start DM"
     reload_host_driver
-    # 3) DM 다시 올리기
     start_dm
+    ;;
+
+  *)
+    log "[$VM] other phase: $HOOK / $PHASE $4"
     ;;
 esac
 
 exit 0
+
 $ sudo chmod +x /etc/libvirt/hooks/qemu     # 저장 후 실행권한
 ```
 * hook 스크립트란 vm이 시작/종료되기 직전 직후에 libvirt가 자동으로 실행해주는 스크립트
+* 이 안에서 vfio 모듈로 장치 건네주기/언바인딩/바인딩 코드를 짜주고 호스트의 gui/dm 도 내려준다
 * #!는 이 파일을 어떤 인터프리터로 실행할지임
 
+이렇게 패스스루를 시키면 호스트 화면이 없으므로 ssh 원격컴으로 vm을 키고 끄자
 
 ```
-systemctl stop gdm
-modprobe -r nvidia
-sudo modprobe vfio-pci
-sudo modprobe vfio_iommu_type1
-echo 10de 28e0 | sudo tee /sys/bus/pci/drivers/vfio-pci/new_id
-echo 10de 22be | sudo tee /sys/bus/pci/drivers/vfio-pci/new_id
+# 내컴에서
+$ sudo apt install openssh-server
+$ sudo systemctl start ssh
+$ sudo ufw allow 22
 ```
-* 저 ID 장치를 지원 목록 new_id에 추가하라
-* 지원 목록 추가일뿐, 실제 unbind/bind는 libvirt yml 에서 managed 로 넘겨주면 알아서 해줌
+```
+# 원격컴에서
+$ ssh -V        # openSSH 클라이언트 설치 여부 확인
+OpenSSH_for_Windows_9.5p1, LibreSSL 3.8.2
+$ ssh kkongnyang2@172.30.1.69
+비밀번호 4108 입력
+$ virsh list --all        # vm 리스트보기
+$ virsh start win10       # vm 키기
+$ virsh shutdown win10    # vm 끄기
+$ virsh destroy win10     # 강제 파워내리기
+$ exit                    # ssh 연결 종료
+```
 
-libvirt에서 추가
+호스트 화면은 꺼졌지만 게스트 화면이 안켜짐. 로그 확인
+
 ```
-편집 - 가상 머신 정보 - i아이콘 - 하드웨어 추가 - PCI 호스트 장치 - 01:00.0과 01:00.1 선택
+vfio-pci ... resetting … reset done
+NVRM: GPU 0000:01:00.0 is already bound to vfio-pci.
 ```
+
+잘 작동했지만 gop(윈도우 비상 드라이버)를 못만든걸로 보임. 원격컴으로 vm도 접속해 nvidia 드라이버 설치하자.
+
+```
+# 원격컴에서
+virt-manager.org/download 들어가서 virt-viewer 카테고리에서 win x64 msi 다운받기
+$ ssh -N -L 5900:127.0.0.1:5900 kkongnyang2@172.30.1.69   # 연결컴 내부 서비스 접속 가능한 명령어
+$ virsh start win10
+$ virsh domdisplay win10
+spice://127.0.0.1:5900
+C:\Program Files\VirtViewer v12\bin 들어가서 remote-viewer.exe 클릭
+spice://127.0.0.1:5900 연결
+```
+* spice? 가상 머신 원격 접속 프로토콜
+
+
+게스트에서 nvidia 드라이버 설치
+```
+geforce - geforce RTX 40 series (notebooks) - geforce RTX 4060 laptop GPU - window 10 64-bit - English(US) - geforce game ready driver
+```
+
+
+
+
+
 
 ```
 사용자 편집란 체크
