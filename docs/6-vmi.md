@@ -1,7 +1,7 @@
-## 구현에 필요한 툴들을 설치해보자
+## VMI를 실행해보자
 
-### 목표: 환경 구현
-작성자: kkongnyang2 작성일: 2025-07-10
+### 목표: VMI 구현
+작성자: kkongnyang2 작성일: 2025-07-24
 
 ---
 
@@ -55,19 +55,6 @@ VMI 프로그램 구성
 | **linux-kvm-kvmi 커널**               | `kvmi-5.15`, `kvmi-6.6` 등    | `make`                    | patched vmlinux, 모듈            | QEMU-KVMI의 이벤트를 실제로 받으려면 필수              |
 
 
-PyVMI로 가상주소 덤프 테스트
-
-import libvmi
-vmi = libvmi.Libvmi("winvm")  # 게스트 도메인
-buf = vmi.read_pa(0x1234000, 0x100)
-
-r2vmi 로 프로세스 내부 디스어셈 확인
-
-r2 vmi://winvm:explorer.exe
-
-Xen 환경이라면 altp2m=1 부트 옵션으로 다중-EPT 활성화 후 LibVMI altp2m_enable() 호출해 페이지 가드 성능 측정.
-
-
 ### > 호스트 측(폴링용)
 
 sudo apt install -y build-essential git cmake autoconf automake \
@@ -99,7 +86,7 @@ mkdir build
 cd build
 cmake .. -DENABLE_KVM=ON -DENABLE_XEN=OFF
 make -j$(nproc)
-sudo make install && sudo ldconfig
+sudo make install && sudo ldconfig    # 설치와 라이브러리 갱신
 
 git clone https://github.com/libvmi/python.git pyvmi
 cd pyvmi
@@ -107,57 +94,126 @@ python3 -m venv .venv && source .venv/bin/activate
 pip install --upgrade pip cffi future
 python setup.py install
 
-### > 윈도우 이미지 설치
-
-윈도우 이미지 설치를 위해선 두 개의 iso 파일과 빈 하드디스크 하나가 필요하다.
-
-win10_22H2_English_x64.iso : 부팅 가능한 DVD 역할. vm이 이걸로 첫 부팅하며 윈도우 setup 실행.
-virtio-win.iso : 드라이버 CD 역할. setup이 이 viostor.inf와 NetKVM.inf 를 읽어 virtio 가상 HDD를 인식하도록 함
-win10.qcow2 : 빈 하드디스크. setup이 여기 파티션을 만들고 윈도우 파일을 복사하여 재부팅이 끝나면 윈도우가 들어 있는 디스크가 됨.
-
-qemu-img create -f qcow2 ~/win10_120g.qcow2 120G    # 어차피 가상 용량 껍데기라 실질 용량까지만 담김
-https://www.microsoft.com/ko-kr/software-download/windows10ISO?utm_source=chatgpt.com 들어가 영어(미국) 64비트 다운로드.
-https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/ 들어가 stable-virtio/virtio-win-0.1.271.iso 다운
-qemu-system-x86_64 \
-  -machine q35,accel=kvm -cpu host -smp 4 -m 4G \
-  -drive file=~/win10_120g.qcow2,if=virtio,format=qcow2,cache=none \
-  -cdrom ~/Downloads/Win10_22H2_English_x64v1.iso \
-  -drive file=~/Downloads/virtio-win-0.1.271.iso,media=cdrom \
-  -monitor stdio \
-  -qmp unix:/tmp/win10-qmp.sock,server,nowait \
-  -display sdl \
-  -boot order=d         # 처음에만 hdd가 아닌 dvd로 부팅하기 위해. 다음에는 이거 없애야 정상적으로 켜짐.
-윈도우 setup 화면에서 custom으로 선택.
-load driver 들가서 우리가 넣어놓은 것중 red hat virtio scsi controller(w10\viostor.inf) 드라이버 선택해 설치.
-설치 완료되면 넣어뒀던 빈 하드디스크 인식하니 클릭.
-qemu 화면 나오는건 ctrl+alt+g 
-
-다음 부팅부턴
-qemu-system-x86_64 \
-  -machine q35,accel=kvm -cpu host -smp 4 -m 4G \
-  -drive file=~/win10_120g.qcow2,if=virtio,format=qcow2,cache=none \
-  -monitor stdio \
-  -qmp unix:/tmp/win10-qmp.sock,server,nowait \
-  -display sdl
-
-### > 중간에 용량 모자라서
-
-윈도우 가서
-window+x 눌러 디스크 관리 들어가 윈도우 파티션 우클 누르고 볼륨 축소
-가능한 만큼 최대한 축소해 unallocated 파티션 만들기
-ubuntu 22.04 desktop.iso 파일 다운
-usb 꽂고 rufus 실행해 해당 파일로 gpt(uefi)로 만들기
-
-부팅 중 f10으로 들어가 usb로 부팅
-라이브 세션에서 터미널 들어가 sudo gparted로 파티션 재배치.
-우분투 파티션 누르고 resize/move를 눌러 빈 공간 없이 채워주기
-apply
-라이브 세션 종료
-
-다시 우분투로 돌아와서 실질 용량 늘어난거 확인
-
 
 ### > 게스트 측
 
 battle.net 다운 후 설치, 오버워치 설치
 cheat engine window 10 7.5 인터넷에서 다운 후 설치
+
+### > VMI를 위해 필요한 게스트 정보
+
+[VMI 필요정보]
+  ├─ 식별: (domain name | domid | qemu pid)
+  ├─ 주소변환: DTB (CR3)
+  ├─ 해석: 프로파일(json) - 심볼 주소와 구조체 필드 오프셋
+  ├─ ostype, KASLR 여부, 권한
+  └─ (libvirt 쓰면 대부분 자동 처리 쉬움)
+
+
+libvirt로 vm을 만들어야 하는 이유?
+가장 쉬운 길이기 때문. libvmi가 libvirt API로 domid, 메모리 맵, DTB를 자동으로 가져옴. 직접 qemu로 실행한 vm는 qemu pid를 써서 /proc/<pid>/mem 등을 직접 매핑해야 함
+
+(1) VM 식별을 위한 domain name
+libvirt 사용 시 domain name만 넣으면 libvmi가 domain ID나 qemu PID 알아서
+
+* domain name : libvirt에서 vm을 구분하는 문자열 이름. 사용자가 직접 정함
+* domain ID : libvirt가 실행 중인 vm에 부여하는 일시적 런타임 ID. virsh domid <name> 로 확인.
+* qemu PID : qemu 프로세스의 pid. ps aux | grep qemu-system-x86_64 같은 걸로 확인
+
+(2) 주소 변환을 위한 DTB (Directory Table Base)
+게스트 가상 주소(VA)를 물리 주소(PA)로 바꿀 때 필요한 페이지 테이블 루트 물리리 주소. x86-64에서 CR3 레지스터가 가리킨다.
+libvmi가 자동으로 찾아주기도 하지만, 실패하면 직접 지정
+리눅스는 task_struct->mm->pgd에서 뽑고, 윈도우면 EPROCESS.DirectoryTableBase에서 뽑는다.
+
+(3) 의미 있는 해석을 위한 프로파일(json 형식)
+심볼 주소와 커널 구조체 필드 오프셋 정보.
+리눅스면 System.map(공개 심볼 주소) + vmlinux를 바탕으로 dwarf2json(vilatility) 툴을 이용해 만든다.
+윈도우면 PDB(program database)를 바탕으로 volatility/rekall/drakpdb 툴을 이용해 만든다.
+
+(4) 그밖에도 KASLR(커널 주소 랜덤화. libvmi가 DTB를 찾기 어렵게 함) 사용 여부(linux_kaslr=true), 권한(root), /etc/libvmi.conf 접근성 들이 필요하다.
+
+
+### > libvmi
+
+libvmi 설치
+```
+git clone https://github.com/libvmi/libvmi.git
+cd libvmi
+./autogen.sh
+./configure --enable-kvm --disable-xen --enable-json
+make -j$(nproc)
+sudo make install
+sudo ldconfig  # 새로 설치된 라이브러리 경로 갱신
+make examples
+# 예: ./examples/vmi-process-list <config_key>
+```
+
+/etc/libvmi.conf 작성
+```
+<keyname> {
+    ostype = "Linux";               # 대상 OS 타입 (Linux 또는 Windows 등)
+    domain = "<libvirt 도메인 이름>"; # virt-manager/virsh에서 쓰는 VM 이름
+    # 또는 domid = <정수>;           # virsh domid로 확인한 숫자 ID
+
+    # 주소 공간 변환 관련
+    sysmap = "/path/to/System.map-6.8.0-31-generic";  # 커널 심볼 파일
+    rekall_profile = "/path/to/linux-6.8.0-31.json";  # (선택) Volatility/rekall JSON 프로파일
+
+    # DTB 지정 가능 (일반적으로 자동 탐지 시 생략)
+    # dtb = 0x00000000f1234000;
+
+    # Linux KASLR 사용시
+    linux_kaslr = true;
+
+    # (윈도우의 경우) win_...
+    # ostype = "Windows";
+    # win_profile = "/path/to/windows_profile.json";
+
+    # 기타 옵션
+    # kvm = 1;   # KVM 백엔드 사용 (신규 libvmi는 domain 지정만으로 자동)
+    # shm_file = "/dev/shm/somefile"; # 공유 메모리 파일 (특수 상황)
+}
+```
+권한 설정
+```
+sudo chown root:root /etc/libvmi.conf
+sudo chmod 644 /etc/libvmi.conf
+```
+테스트
+```
+virsh list    # ub24-test 같은 VM이 running 상태
+```
+
+### > 프로파일 만들기
+
+의미 있는 해석을 위해 게스트 os의 심볼과 구조체 정보를 가져오는 역할. PDB라는 데이터베이스를 받아와 이를 이용해 프로파일을 만든다. 사용하는 툴은 Volatiliy/Rekall/drakpdb 등. 이걸 LibVMI에 넣어줘야 잘 작동한다
+
+         [PDB / DWARF]  <-- 디버그/타입 정보 (메모리 안 X)
+                |
+        (parse & convert)
+                |
+   +------------------------------+
+   |  Volatility / Rekall / drakpdb |
+   +------------------------------+
+                |
+           [JSON Profile]
+                |
+          /etc/libvmi.conf
+                |
+             LibVMI
+         (live memory access)
+
+
+* DRAKVUF sandbox라는 전체 자동화 툴이 있음. 근데 intel cpu + 우분투 22.04 + xen 전용임.
+
+윈도우 커널(ntoskrnl.exe)의 필드 번호와 정확히 맞는 PDB를 microsoft symbol server에서 받아야 구조체 오프셋이 일치한다. winver으로 확인할 것.
+C:\Windows\System32\ntoskrnl.exe 같은 커널 바이너리를 호스트로 가져옴.
+PDB GUID/AGE를 추출하거나 symchk, dbghelp.dll을 이용해서 Microsoft Symbol Server에서 해당 PDB를 다운로드.
+pdbparse, rekall/tools/windows/pefile.py, drakvuf/scripts/pdb2json.py 등으로 변환하여 JSON/rekall 프로파일 생성.
+(버전이 맞으면 DRAKVUF, LibVMI 커뮤니티에서 이미 만들어둔 프로파일을 가져오는 방법도 있음)
+/etc/libvmi.conf에 win_profile = "/path/to/windows-<build>-<arch>.json" 같은 식으로 지정.
+
+참고로 volatility3은 PDB를 바로 쓰기도 해서, 거기서 심볼/오프셋을 확인하고 libvmi config에 필요한 주소만 일부 사용하는 혼합 방식도 가능. rekall은 자체 json 프로파일 형식을 사용.
+
+
+### > pyvmi
