@@ -1,6 +1,5 @@
-## qemu-kvm을 실행해보자
+## VM을 만들어보자
 
-### 목표: VM 생성
 작성자: kkongnyang2 작성일: 2025-07-24
 
 ---
@@ -18,12 +17,10 @@
 |   **VirtualBox**   |  ★☆☆☆☆  | 셋업 쉬움                                       | VMI용 API 사실상 없음, hacky 작업 필요 | 직접 /proc/…/mem 접근 등 “꼼수”    |
 | **Bareflank/ACRN** |  ★★☆☆☆  | 경량/오픈소스, 연구 목적 좋음                           | 문서/커뮤니티 작음, 모든 기능 직접 구현      | 커스텀 하이퍼바이저 개발               |
 
-메모리 이벤트 트랩이면
-Xen + LibVMI (DRAKVUF 구조 참고)
+메모리 이벤트 트랩이면 Xen + LibVMI (DRAKVUF 구조 참고)
 libvirt 없이 Xen 자체 툴(xl) 사용. altp2m로 페이지 권한 바꿔 트랩 잡기 수월.
 
-이미 우분투에 kvm 환경이라면
-KVM/QEMU + LibVMI
+이미 우분투에 kvm 환경이라면 KVM/QEMU + LibVMI
 libvirt로 편하게 관리 하고, 문서 많은 libvmi/pyvmi로.
 
 * kvm(kernel based virtual machine) 리눅스 커널 모듈. VT-x를 사용해서 게스트 cpu 실행을 커널 레벨에서 가속해줌. qemu는 가상머신 하이퍼바이저.
@@ -38,6 +35,7 @@ cpu 가상화 지원 여부
 $ egrep -c '(vmx|svm)' /proc/cpuinfo    # 0이 아니어야 함. UEFI에서 Intel VT-x/AMD-V 활성화 필요
 16            # 논리 cpu 16개 모두가 AMD-V 플래그를 갖고 있다는 뜻
 ```
+
 장치 가상화 지원 여부
 ```
 $ virt-host-validate    # 커널에 관련 지원이 있는지 확인
@@ -71,6 +69,7 @@ $ virt-host-validate    # 커널에 관련 지원이 있는지 확인
    LXC: Checking for cgroup 'blkio' controller support                       : PASS
    LXC: Checking if device /sys/fs/fuse/connections exists                   : PASS
 ```
+
 IOMMU 존재 여부
 ```
 $ sudo dmesg | grep -i -e iommu -e dmar
@@ -90,16 +89,12 @@ $ sudo dmesg | grep -i -e iommu -e dmar
    ├─ virt-manager (GUI)
    ├─ virsh        (CLI)
    └─ virt-install, virt-viewer 등
-
-          ↓ (libvirt API 호출)
-
+          ↓
 [libvirt 데몬/드라이버들]
    ├─ QEMU/KVM 드라이버
    ├─ LXC, Xen, VMware 등 다른 드라이버
    └─ 스토리지/네트워크 관리 모듈
-
           ↓
-
 [실제 하이퍼바이저 & 커널 기능]
    ├─ qemu-system-xxx + KVM
    ├─ tap/bridge/ovn 등 네트워크
@@ -129,7 +124,6 @@ $ sudo usermod -aG libvirt,kvm $USER    # 현재 사용자를 libvirt, kvm 그�
 $ reboot
 ```
 
-
 윈도우 이미지 설치를 위해선 두 개의 iso 파일과 빈 하드디스크 하나가 필요하다.
 
 win10_22H2_English_x64.iso : 부팅 가능한 DVD 역할. vm이 이걸로 첫 부팅하며 윈도우 setup 실행.
@@ -158,11 +152,22 @@ cdrom 삭제
 
 ### > qemu-kvm 옵션의 이해
 
+만약 git으로 qemu 설치하고 싶으면
+```
+git clone https://gitlab.com/qemu-project/qemu.git
+cd qemu
+mkdir build
+cd build
+../configure --target-list=x86_64-softmmu --enable-kvm --disable-werror
+ninja -j$(nproc)
+ninja install
+```
+
 빌드 때는 어떤 타깃 아키텍처를 만들지, 어떤 GUI/디스플레이 백엔드/가속 라이브러리를 포함할지 결정
 
 런타임 때는 VM 하드웨어 토폴로지, 가속(KVM), CPU 패스스루, 메모리, 펌웨어(OVMF), 디스크/네트워크/USB/그래픽 장치, VFIO 패스스루(vGPU 포함), 디버깅/관리(QMP,monitor) 등을 설정.
 
-./configure 옵션
+../configure 옵션
 
 | 카테고리 | 대표 옵션 | 설명 |
 |--------|---------|------|

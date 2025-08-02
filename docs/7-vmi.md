@@ -72,21 +72,6 @@ sudo apt install -y libx11-dev libxext-dev libxrandr-dev \
                     libepoxy-dev libgl1-mesa-dev libgbm-dev \
                     libgtk-3-dev libsdl2-dev libslirp-dev
 
-git clone https://gitlab.com/qemu-project/qemu.git
-cd qemu
-mkdir build
-cd build
-../configure --target-list=x86_64-softmmu --enable-kvm --disable-werror
-ninja -j$(nproc)
-ninja install
-
-git clone https://github.com/libvmi/libvmi.git
-cd libvmi
-mkdir build
-cd build
-cmake .. -DENABLE_KVM=ON -DENABLE_XEN=OFF
-make -j$(nproc)
-sudo make install && sudo ldconfig    # 설치와 라이브러리 갱신
 
 git clone https://github.com/libvmi/python.git pyvmi
 cd pyvmi
@@ -135,18 +120,7 @@ libvmi가 자동으로 찾아주기도 하지만, 실패하면 직접 지정
 
 ### > libvmi
 
-libvmi 설치
-```
-git clone https://github.com/libvmi/libvmi.git
-cd libvmi
-./autogen.sh
-./configure --enable-kvm --disable-xen --enable-json
-make -j$(nproc)
-sudo make install
-sudo ldconfig  # 새로 설치된 라이브러리 경로 갱신
-make examples
-# 예: ./examples/vmi-process-list <config_key>
-```
+
 
 /etc/libvmi.conf 작성
 ```

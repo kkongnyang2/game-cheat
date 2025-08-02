@@ -1,12 +1,11 @@
 ## GPU 풀 패스스루를 실행해보자
 
-### 목표: 디스플레이
 작성자: kkongnyang2 작성일: 2025-07-17
 
 ---
 
 
-### > 기본 그래픽 처리 흐름
+### 기본 그래픽 처리 흐름
 
 ┌────────────────────────────────────────────────────────┐
 │                      애플리케이션들                     │
@@ -65,7 +64,7 @@ GPU 드라이버? 렌더링 API 명령을 GPU 하드웨어 명령으로 번역
                               HDMI/eDP/DP → 모니터
 
 
-### > VM 디스플레이
+### VM 디스플레이
 
 그럼 VM은 어떤 방식으로 진행하냐? 장치를 얼마나 넘겨주냐에 따라 다르다
 
@@ -84,7 +83,7 @@ GPU 사용 없이 오직 그 위에서 장치를 구현해서 진짜 가상으�
 ramfb(RAM Framebuffer)는 게스트 os가 메모리에 픽셀 데이터를 쓰면 호스트가 그 메모리를 읽어와 화면에 그대로 표시하는 매커니즘(렌더링x). UEFI(OVMF) 부팅 중에 사용.
 
 
-### > 오버워치 디스플레이 이해
+### 오버워치 디스플레이 이해
 
 [호스트 Linux] ──(VFIO/PCIe 패스스루)──► [게스트 Windows]
                                                │
@@ -101,7 +100,7 @@ ramfb(RAM Framebuffer)는 게스트 os가 메모리에 픽셀 데이터를 쓰�
 * 다른 게임은 에뮬레이션인 virtio-gpu(VirGL)만으로 충분하기도 함
 
 
-### > DMA 장치 이해
+### DMA 장치 이해
 
 컴퓨터에는 gpu가 있고, 윈도우에 내장된 드라이버와 api 도구로 그래픽 관련 처리를 한다. cpu가 아닌 gpu로 그래픽을 처리하는 걸 가속이라고 부른다. 또한 cpu와의 전용 고속 버스를 PCIe라고 부르는데, 이를 가지는 장치는 gpu, 사운드카드 등이 있다.
 
@@ -125,8 +124,12 @@ ACPI 속 Intel VT-d(IOMMU)를 초기화하기 위한 전용 테이블 이름. DM
 • RMRR(Resserved Memory Region Reporting)은 BIOS, iGPU, USB 레거시 등 특정 장치 부팅 중 DMA 해야 하는 예약 메모리.
 • ATSR(Address-Translation Service Remap)
 
+### 풀 패스스루 개요
 
-### > 커널 설정
+IOMMU 켜고 hostdev 추가 + VFIO 바인딩을 해야 실제 GPU가 넘어간다
+참고로 장치는 에뮬레이션(진짜 하드웨어인척 흉내), 파라버추얼(가짜 장치 인터페이스 virtio 제공), 패스스루(하드웨어 건내주기) 세가지 방식이 있다
+
+### 커널 설정
 
 grub에서 IOMMU 전체 켜기
 ```
@@ -139,6 +142,8 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet splash amd_iommu=on iommu=pt video-efifb:off"
 $ sudo update-grub
 $ reboot
 ```
+
+### 주소 및 그룹 정보 확인
 
 PCI 주소와 ID 확인
 ```
@@ -166,10 +171,7 @@ lrwxrwxrwx 1 root root 0  7월 26 10:11 0000:01:00.1 -> ../../../../devices/pci0
 따라서 둘은 14번 그룹이 맞고 이거 두개만 넘기면 됨
 
 
-### > gpu 풀 패스스루
-
-IOMMU 켜고 VFIO 바인딩 + hostdev 추가를 해야 실제 GPU가 넘어간다
-참고로 장치는 에뮬레이션(진짜 하드웨어인척 흉내), 파라버추얼(가짜 장치 인터페이스 virtio 제공), 패스스루(하드웨어 건내주기) 세가지 방식이 있다
+### > 
 
 패스스루할 장치 추가
 ```

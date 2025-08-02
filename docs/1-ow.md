@@ -1,16 +1,12 @@
 ## 오버워치 구조를 알아보자
 
-### 목표: 게임 구조 탐색
 작성자: kkongnyang2 작성일: 2025-07-06
 
 ---
 
-오버워치는 엔진, 설치, 툴체인으로 이루어져 있다.
+### 설치 파이프라인
 
-
-### > 설치 파이프라인
-
-파이프라인은 소스 asset에서 실행가능 asset으로 변환하거나, 캐싱, 분산 빌드, 패키징 등을 한다.
+소스 asset에서 실행가능 asset으로 변환하거나, 캐싱, 분산 빌드, 패키징 등을 한다.
 
 ```
 [Source Assets] ─▶ pull --sourcepull ─▶ SQLite ‘local asset DB’
@@ -24,14 +20,8 @@ genrator: json 유사 선언(SDLang)으로 타입-안전 C++/C# 클래스, 에�
 
 builer: asset 타입별(메시, 머티리얼, 영웅 스크립트) DLL. 입력 SHA-1 해시와 CompilerID 조합으로 결과를 캐싱해, 이미 컴파일된 동일 입력은 전역 Compiled Asset Repository에서 그냥 당겨온다. 분산 빌드는 내부 빌드팜 30노드 기준 12h -> 4h 이다. 완성 자산을 기능 단위 Package로 묶고, 지역, 플랫폼별 암호화 규칙을 붙여 런처가 온-디맨드 스트리밍을 한다. 산출물 위치는 Compiled/<hash>/<guid>.bin로 추정.
 
-```
-1) Battle.net → /versions  → buildConfig, cdnConfig, keyRing
-2) buildConfig → root, encoding, install, download 해시 목록 확인
-3) cdnConfig  → 사용 가능한 CDN 도메인·아카이브 분할 규칙 확인
-4) 필요한 .idx / .data 조각 GET
-5) 인덱스 갱신 → 게임 실행 → shmem 업데이트
-```
-TACT 프로토콜이 ①~③을 담당하고, 실제 .data 조각 전송은 HTTPS GET으로 이뤄집니다.
+
+### 소스 폴더 구조
 
 ```
 Overwatch/
@@ -60,6 +50,8 @@ Overwatch/
 └─ BuildScripts/           # CMake/SCons + 퍼블리셔 스크립트
 ```
 
+### 내려받는 파일
+
 실제로 우리가 내려받는 파일은 실행 파일과 라이브러리,  CASC 데이터 아카이브, 인덱스, 런처 메타데이터가 다이다.
 
 실행 파일: C/C++로 컴파일된 클라이언트, 런처 코드. Overwatch/Overwatch.exe
@@ -87,7 +79,7 @@ iv. 실행 시 런처가 무결성 검사(해시->블록 확인) 후 실행.
 | **패키징·배포**                 | CASC v2 + TACT, SHA-1 암호화                         | **CASC v3** (AES-CTR 128 bit) · 증분 스트리밍 최적화                                                                     |
 | **클라이언트 규모(PC)**           | 설치 25 \~ 30 GB                                    | 시즌 15 기준 **≈52 GB**, 패치 시 증분 다운로드                                                                                                            |
 
-### > 엔진
+### 엔진
 
 엔진은 게임이 실시간으로 진행되는 코드이다. ECS(Entitiy-Component-System) 기반 시뮬레이션 루프, 렌더러, 물리, 오디오, 플랫폼 래퍼 등으로 구성되어 있다.
 
@@ -109,6 +101,7 @@ System: 매 틱마다 필요 Component 셋을 가진 Entity 스트림을 스캔�
 
 참고/ 결정론을 유지하기 위해 고정 틱 레이트, 부동소수점과 연산 순서 통제, 무작위 요소는 전역 시드 PRNG 사용, 컴포넌트 순서 고정, command에 Tick ID 포함.
 
+### command 패킷
 
 클라이언트->서버 command 패킷 형식
 
@@ -137,6 +130,8 @@ for every tick N:
     delta = makeSnapshotDelta(prev, current)
     sendSnapshotToEachClient(delta, ack=N)   // 완성된 스냅샷을 UDP로 전송
 ```
+
+### 스냅샷 패킷
 
 서버->클라이언트 스냅샷 형식
 
@@ -170,6 +165,15 @@ C층 Component Δ블록(entity별로 1~100B).
 로컬 예측 결과와 비교해 차이가 나면 롤백.
 
 
+스냅샷 패킷 내부를 까볼 수 있나?
+
+    OW1 – 일부 키가 공개돼 있어 CascView + OverTool 로 제한적 디코딩 가능.
+
+    OW2 (CASC v3 + Key-Ring) – AES-CTR 키가 서버에서 동적 교환 → 외부 추출 난도 ↑.
+    따라서 Wireshark로는 헤더 길이·Sequence/ACK 필드만 보이고,
+    엔티티 Table·컴포넌트 Δ-블록은 전부 암호화된 바이트 스트림입니다.
+
+
 ### > API
 
 api? 소프트웨어끼리 약속한 대화 규칙이다. 어떤 프로그램이 다른 기능을 호출하거나 제어할 수 있도록 이름, 입력, 반환, 동작이 문서화된 인터페이스.
@@ -199,14 +203,6 @@ setx SSLKEYLOGFILE "%USERPROFILE%\tls.keys"
     b) UDP 스트림: udp.port>=12000 && udp.port<=64000
       ­→ Statistics ▸ I/O Graph 로 틱 주기·손실률 확인
 ```
-
-스냅샷 패킷 내부를 까볼 수 있나?
-
-    OW1 – 일부 키가 공개돼 있어 CascView + OverTool 로 제한적 디코딩 가능.
-
-    OW2 (CASC v3 + Key-Ring) – AES-CTR 키가 서버에서 동적 교환 → 외부 추출 난도 ↑.
-    따라서 Wireshark로는 헤더 길이·Sequence/ACK 필드만 보이고,
-    엔티티 Table·컴포넌트 Δ-블록은 전부 암호화된 바이트 스트림입니다.
 
 
 ### > 클라우드 스트리밍 서비스

@@ -1,10 +1,17 @@
+## 윈도우 프로파일을 만들자
 
+작성자: kkongnyang2 작성일: 2025-07-17
+
+---
 
 # libvmi 설치
-cd libvmi/build
+git clone https://github.com/libvmi/libvmi.git
+cd libvmi
+mkdir build
+cd build
 cmake .. -DENABLE_KVM=ON -DENABLE_KVM_LEGACY=ON -DENABLE_XEN=OFF -DCMAKE_BUILD_TYPE=Release
 make -j$(nproc)
-sudo make install && sudo ldconfig
+sudo make install && sudo ldconfig    # 설치와 라이브러리 갱신
 
 # conf 파일
 sudo nano /etc/libvmi.conf
@@ -90,3 +97,5 @@ python3 -m volatility3.framework.symbols.windows.pdbconv \
   -o ntkrnlmp-19045.json                            # 결과물
 
 인터넷이 연결돼 있으면 pdbconv가 MS 서버에서 PDB를 내려받아 바로 JSON으로 변환해 준다.
+
+# pyvmi 설치
