@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="7-vmi.html">
+        <link rel="prev" href="2-cheats.html">
       
       
-        <link rel="next" href="8-base-address.html">
+        <link rel="next" href="4-gpu-pass.html">
       
       
       <link rel="icon" href="logo.svg">
@@ -20,7 +20,7 @@
     
     
       
-        <title>8 CE tutorial - Game-Cheat</title>
+        <title>3 vm - Game-Cheat</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cheat-engine" class="md-skip">
+        <a href="#vm" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              8 CE tutorial
+              3 vm
             
           </span>
         </div>
@@ -299,8 +299,10 @@
   
   
   
+    
   
-    <li class="md-tabs__item">
+  
+    <li class="md-tabs__item md-tabs__item--active">
       <a href="3-vm.html" class="md-tabs__link">
         
   
@@ -375,10 +377,8 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
+    <li class="md-tabs__item">
       <a href="8-CE-tutorial.html" class="md-tabs__link">
         
   
@@ -576,10 +576,30 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="3-vm.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    3 vm
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="3-vm.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -590,6 +610,75 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      VM을 만들어보자
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VM을 만들어보자">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      &gt; 하이퍼바이저 선택
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      &gt; 가상화 지원 확인
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#libvirt-vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      &gt; libvirt로 VM 생성
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qemu-kvm" class="md-nav__link">
+    <span class="md-ellipsis">
+      &gt; qemu-kvm 옵션의 이해
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -664,30 +753,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    8 CE tutorial
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="8-CE-tutorial.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="8-CE-tutorial.html" class="md-nav__link">
         
   
   
@@ -698,75 +767,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#cheat-engine" class="md-nav__link">
-    <span class="md-ellipsis">
-      cheat engine 튜토리얼을 연습해보자
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="cheat engine 튜토리얼을 연습해보자">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      목표: 메모리 찾기 사전연습
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ce-tutorial-15" class="md-nav__link">
-    <span class="md-ellipsis">
-      &gt; CE tutorial 1~5
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      &gt; 빌드와 런 이해하기
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ce-tutorial-69" class="md-nav__link">
-    <span class="md-ellipsis">
-      &gt; CE tutorial 6~9
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -840,28 +840,19 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#cheat-engine" class="md-nav__link">
+  <a href="#vm" class="md-nav__link">
     <span class="md-ellipsis">
-      cheat engine 튜토리얼을 연습해보자
+      VM을 만들어보자
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="cheat engine 튜토리얼을 연습해보자">
+    <nav class="md-nav" aria-label="VM을 만들어보자">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      목표: 메모리 찾기 사전연습
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ce-tutorial-15" class="md-nav__link">
-    <span class="md-ellipsis">
-      &gt; CE tutorial 1~5
+      &gt; 하이퍼바이저 선택
     </span>
   </a>
   
@@ -870,16 +861,25 @@
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 빌드와 런 이해하기
+      &gt; 가상화 지원 확인
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#ce-tutorial-69" class="md-nav__link">
+  <a href="#libvirt-vm" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; CE tutorial 6~9
+      &gt; libvirt로 VM 생성
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qemu-kvm" class="md-nav__link">
+    <span class="md-ellipsis">
+      &gt; qemu-kvm 옵션의 이해
     </span>
   </a>
   
@@ -906,131 +906,255 @@
 
 
 
-  <h1>8 CE tutorial</h1>
+  <h1>3 vm</h1>
 
-<h2 id="cheat-engine">cheat engine 튜토리얼을 연습해보자</h2>
-<h3 id="_1">목표: 메모리 찾기 사전연습</h3>
-<p>작성자: kkongnyang2 작성일: 2025-07-14</p>
+<h2 id="vm">VM을 만들어보자</h2>
+<p>작성자: kkongnyang2 작성일: 2025-07-24</p>
 <hr />
-<h3 id="ce-tutorial-15">&gt; CE tutorial 1~5</h3>
-<p>주소 탐색<br />
-<div class="highlight"><pre><span></span><code>newscan 누르기성
-창에 initial 값 입력 후 firstscan 누르기
-값 변화시키기
-창에 second 값 입력 후 nextscan 누르기
-목록 추려지면 클릭해서 아래 작업바에 내리기
-거기서 값 조작
-</code></pre></div><br />
-코드 무효화<br />
-<div class="highlight"><pre><span></span><code>what writes 들어가서 디스어셈블러 보기. 해당 줄 코드를 replace with code that does nothing으로 바꾸면 체력값을 쓰는 코드가 무효화돼서 작동 안한다.
+<p>노트북 교체로 빠르게 처음부터.(24.04)</p>
+<h3 id="_1">&gt; 하이퍼바이저 선택</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">하이퍼바이저</th>
+<th style="text-align: center;">VMI 친화도</th>
+<th style="text-align: left;">장점</th>
+<th style="text-align: left;">단점</th>
+<th style="text-align: left;">대표 툴/프로젝트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Xen</strong></td>
+<td style="text-align: center;">★★★★★</td>
+<td style="text-align: left;">LibVMI 원조급, altp2m 기반 메모리 이벤트, DRAKVUF 등 풍부</td>
+<td style="text-align: left;">설정/운영 복잡, 최신 HW 지원/호환성 이슈</td>
+<td style="text-align: left;"><strong>DRAKVUF</strong>, LibVMI</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>KVM/QEMU</strong></td>
+<td style="text-align: center;">★★★★☆</td>
+<td style="text-align: left;">리눅스 기본, libvirt 연동 쉽고 널리 사용</td>
+<td style="text-align: left;">이벤트 트랩 구현 시 Xen보다 손이 더 감</td>
+<td style="text-align: left;">LibVMI, PyVMI</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>VMware ESXi</strong></td>
+<td style="text-align: center;">★★★★☆</td>
+<td style="text-align: left;">공식 introspection API, 안정적</td>
+<td style="text-align: left;">상용/폐쇄적, 비용, 자유도 제한</td>
+<td style="text-align: left;">VMware VMI SDK (Thin agent)</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Hyper-V</strong></td>
+<td style="text-align: center;">★★☆☆☆</td>
+<td style="text-align: left;">Windows 친화, 커널 레벨 접근 가능</td>
+<td style="text-align: left;">공개 도구 적음, 구현 난이도</td>
+<td style="text-align: left;">자체 개발 필요</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>VirtualBox</strong></td>
+<td style="text-align: center;">★☆☆☆☆</td>
+<td style="text-align: left;">셋업 쉬움</td>
+<td style="text-align: left;">VMI용 API 사실상 없음, hacky 작업 필요</td>
+<td style="text-align: left;">직접 /proc/…/mem 접근 등 “꼼수”</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Bareflank/ACRN</strong></td>
+<td style="text-align: center;">★★☆☆☆</td>
+<td style="text-align: left;">경량/오픈소스, 연구 목적 좋음</td>
+<td style="text-align: left;">문서/커뮤니티 작음, 모든 기능 직접 구현</td>
+<td style="text-align: left;">커스텀 하이퍼바이저 개발</td>
+</tr>
+</tbody>
+</table>
+<p>메모리 이벤트 트랩이면 Xen + LibVMI (DRAKVUF 구조 참고)<br />
+libvirt 없이 Xen 자체 툴(xl) 사용. altp2m로 페이지 권한 바꿔 트랩 잡기 수월.</p>
+<p>이미 우분투에 kvm 환경이라면 KVM/QEMU + LibVMI<br />
+libvirt로 편하게 관리 하고, 문서 많은 libvmi/pyvmi로.</p>
+<ul>
+<li>kvm(kernel based virtual machine) 리눅스 커널 모듈. VT-x를 사용해서 게스트 cpu 실행을 커널 레벨에서 가속해줌. qemu는 가상머신 하이퍼바이저.</li>
+</ul>
+<p>윈도우 환경에서 hyper-v로 작업하면 바로 오버워치2 안티치트에 탐색</p>
+<h3 id="_2">&gt; 가상화 지원 확인</h3>
+<p>cpu 가상화 지원 여부<br />
+<div class="highlight"><pre><span></span><code>$ egrep -c &#39;(vmx|svm)&#39; /proc/cpuinfo    # 0이 아니어야 함. UEFI에서 Intel VT-x/AMD-V 활성화 필요
+16            # 논리 cpu 16개 모두가 AMD-V 플래그를 갖고 있다는 뜻
 </code></pre></div></p>
-<h3 id="_2">&gt; 빌드와 런 이해하기</h3>
-<p>빌드 = 소스 파일을 실행 파일로 컴파일. 단 한번.<br />
-런 = 그 실행 파일이 메모리에 올라와서 프로세스로 돌아감.</p>
-<p>빌드는 소스 파일의 모든 함수를 어셈블리어로 만들고 .text와 .data 등 섹션을 나눠 저장한다. 어차피 전부 가상주소긴 해도 함수 간의 오프셋은 완벽하게 고정된다. 그렇기에 press_button() 함수에서 hp_edit() 함수로, struct player 데이터로, 이 사이에는 정해진 거리가 있어 그렇게 호출이 가능하다. 그걸 오프셋이라 부른다.</p>
-<p><div class="highlight"><pre><span></span><code># foo() 안에서 bar() 호출 (x86-64 PIE)
-call  [rip + 0x34]   ; ← 0x34는 bar 까지의 거리
-
-# 만약 진짜 외부에 있으면?(라이브러리 등)
-# 외부 심볼 bar() 호출
-call  QWORD PTR [rip + .got.plt.bar]  ; GOT 슬롯에 patch된 절대주소를 읽음
-</code></pre></div><br />
-<div class="highlight"><pre><span></span><code>0x000055f4_9c8a0000  ── [텍스트]  ← PIE 베이스 (ASLR로 매 실행마다 변동)
-                     ├─ [rodata]
-                     ├─ [data]     ← g_player
-                     ├─ [bss]
-                     ├─ (heap)     ← malloc() 구조체들 … ↑ 성장
-0x00007f3d_40000000  ── [libc.so]  ← 공유 라이브러리 베이스
-                     ├─ 기타 .so …
-                     ├─ (익명 mmap/JIT 영역)
-0x00007ffe_fffe0000  ── [stack]    ← 스레드마다 새로, 위에서 ↓ 성장
+<p>장치 가상화 지원 여부<br />
+<div class="highlight"><pre><span></span><code>$ virt-host-validate    # 커널에 관련 지원이 있는지 확인
+  QEMU: Checking for hardware virtualization                                 : PASS
+  QEMU: Checking if device /dev/kvm exists                                   : PASS
+  QEMU: Checking if device /dev/kvm is accessible                            : PASS
+  QEMU: Checking if device /dev/vhost-net exists                             : PASS
+  QEMU: Checking if device /dev/net/tun exists                               : PASS
+  QEMU: Checking for cgroup &#39;cpu&#39; controller support                         : PASS
+  QEMU: Checking for cgroup &#39;cpuacct&#39; controller support                     : PASS
+  QEMU: Checking for cgroup &#39;cpuset&#39; controller support                      : PASS
+  QEMU: Checking for cgroup &#39;memory&#39; controller support                      : PASS
+  QEMU: Checking for cgroup &#39;devices&#39; controller support                     : WARN (Enable &#39;devices&#39; in kernel Kconfig file or mount/enable cgroup controller in your system)
+  QEMU: Checking for cgroup &#39;blkio&#39; controller support                       : PASS
+  QEMU: Checking for device assignment IOMMU support                         : PASS
+  QEMU: Checking if IOMMU is enabled by kernel                               : PASS
+  QEMU: Checking for secure guest support                                    : WARN (Unknown if this platform has Secure Guest support)
+   LXC: Checking for Linux &gt;= 2.6.26                                         : PASS
+   LXC: Checking for namespace ipc                                           : PASS
+   LXC: Checking for namespace mnt                                           : PASS
+   LXC: Checking for namespace pid                                           : PASS
+   LXC: Checking for namespace uts                                           : PASS
+   LXC: Checking for namespace net                                           : PASS
+   LXC: Checking for namespace user                                          : PASS
+   LXC: Checking for cgroup &#39;cpu&#39; controller support                         : PASS
+   LXC: Checking for cgroup &#39;cpuacct&#39; controller support                     : PASS
+   LXC: Checking for cgroup &#39;cpuset&#39; controller support                      : PASS
+   LXC: Checking for cgroup &#39;memory&#39; controller support                      : PASS
+   LXC: Checking for cgroup &#39;devices&#39; controller support                     : FAIL (Enable &#39;devices&#39; in kernel Kconfig file or mount/enable cgroup controller in your system)
+   LXC: Checking for cgroup &#39;freezer&#39; controller support                     : FAIL (Enable &#39;freezer&#39; in kernel Kconfig file or mount/enable cgroup controller in your system)
+   LXC: Checking for cgroup &#39;blkio&#39; controller support                       : PASS
+   LXC: Checking if device /sys/fs/fuse/connections exists                   : PASS
 </code></pre></div></p>
-<p>우리가 이걸 런하면 새로 순차적으로 코드들이 생기는 게 아니라 이 빌드 실행 파일 안에서 위치만 옮겨가며 각 줄을 cpu로 작동시키는 것이다. 모든 행동은 이미 완벽하게 규율로 지정되어 있다. 하드웨어 인터럽트가 커널 단에서 작동되면 그게 어느 주소로 향하고 그 다음은 어디로 정해져 있는지의 문제이다. 물론 인터럽트에 의해 새로 할당되는 데이터들도 있긴 하다. 이것들은 힙, 스택들로 쌓인다.</p>
-<p>즉, 빌드는 완벽히 고정된 퍼즐, 런은 베이스 주소를 기반으로 그 퍼즐 전체를 그대로 올리고, 사용자 인터럽트에 의해 추가 데이터가 더 할당되는 것.</p>
-<div class="highlight"><pre><span></span><code>┌─[빌드 단계]─────────────────────────────────────────┐
-│ ① 모든 코드·전역·상수 → 한 퍼즐처럼 “세그먼트 + 오프셋” 고정 │
-│    (.text / .rodata / .data / .bss)                          │
-└──────────────────────────────────────────────────────────────┘
-         ↓ execve()
-┌─[런타임: 프로세스 시작]──────────────────────────────┐
-│ ② 커널·ld.so가 베이스 주소(ASLR)만 정해 mmap       │
-│    ──&gt; “퍼즐” 전체를 한 번에 가상공간에 올림        │
-└────────────────────────────────────────────────────┘
-         ↓ 게임 진행
-┌─[런타임: 동적 동작]────────────────────────────────┐
-│ ③ 사용자 입력·네트워크 이벤트 등 → 힙/스택/mmap에 │
-│    새 객체·버퍼를 **필요할 때마다** 추가           │
-└────────────────────────────────────────────────────┘
-</code></pre></div>
-<p>참고로 모든 프로세스들은 메모리 뒷부분에 커널을 공통으로 가지고 있다.</p>
-<h3 id="ce-tutorial-69">&gt; CE tutorial 6~9</h3>
-<p>게임 진행 도중 새 플레이어의 hp와 ammo를 어떻게 할당할까?</p>
-<p>struct player *p = malloc(sizeof *p);   // (1) rax ← 새 힙 주소<br />
-g_local_player   = p;                   // (2) 코드가 전역 변수에 저장</p>
-<p>이런 구조를 통해 할당한다. 따라서 우리는 플레이어 마다 값이 적힌 주소를 일일히 찾아다닐게 아니라, 저 할당하고 포인터하는 (베이스 주소 기준으로)고정된 진원지 자체를 찾아야 한다.</p>
-<div class="highlight"><pre><span></span><code>[game.bin+0x1BCF30]   → 0x0000006002A000   (전역 포인터, 오프셋 고정)
-                                    │
-                                    ├─ hp  = *(+0x00)
-                                    ├─ ammo= *(+0x04)
-                                    └─ pos  = *(+0x08) …
-</code></pre></div>
-<p>우리는 저 값이 담긴 주소를 누가 access 하는지 진원지를 찾을 것이다. 튜토리얼에서 change value라는 버튼을 눌러서 값을 할당하고 쓰기 명령을 내렸다 했을 때 이를 따라가보자.</p>
-<p>먼저 용어 정리.<br />
-베이스 주소는 런할때 정해지는 영점 조절 같은 것이다. game.bin<br />
-포인터는 값 부분에 수치를 입력하는게 아니라 주소를 입력하는 4바이트(64비트 os면 8바이트)다. 0x0000006002A000라는 주소값을 적어준다.<br />
-오프셋은 고정된 퍼즐에서의 거리를 뜻한다. +뒤에 적힌 걸 의미한다.</p>
-<p>만약 빌드 때 이미 위치가 정해진 정적 데이터면 포인터를 쓸 필요도 없이 거리로 바로 읽으면 된다.</p>
-<p>하향식 (값에서부터 체인 따라가기)<br />
-<div class="highlight"><pre><span></span><code>Find out what writes to this address -&gt; 쓰기 타입 명령만
-Find out what accesses this address -&gt; 모든 타입 명령(참조 등등)
-
-# 값이 담긴 주소 탐색
-# 15C4508. what writes
-# 체력값 16F를 15C44F0 + 18 위치에 적으라는 코드 발견
-&quot;Tutorial-x86_64.exe&quot;+4910A:
-10004910A - 89 46 18  - mov [rsi+18],eax &lt;&lt;
-RAX=000000000000016F
-RSI=00000000015C44F0
-
-# 15C44F0를 포인팅 하는 주소 탐색
-# 1642E30. what access
-# 1642E30 위치에 있던 값 15C44F0을 불러오는 코드 발견
-&quot;Tutorial-x86_64.exe&quot;+490C8:
-1000490C8 - 48 8B 36  - mov rsi,[rsi] &lt;&lt;
-RAX=0000000001642E30
-RSI=00000000015C44F0
-
-# 1642E30을 포인팅 하는 주소 탐색
-# 162A838. what access
-# 162A820 + 18 위치에 있던 값 1642E30을 불러오는 코드 발견
-&quot;Tutorial-x86_64.exe&quot;+4907C:
-10004907C - 48 8B 76 18  - mov rsi,[rsi+18] &lt;&lt;
-RAX=000000000162A820
-RSI=0000000001642E30
-
-# 162A820을 포인팅 하는 주소 탐색
-# 162A5B0. what access
-# 162A5A0 + 10 위치에 있던 값 162A820을 불러오는 코드 발견
-&quot;Tutorial-x86_64.exe&quot;+49034:
-100049034 - 48 8B 76 10  - mov rsi,[rsi+10] &lt;&lt;
-RAX=000000000162A5A0
-RSI=000000000162A820
-
-# 162A5A0을 포인팅 하는 주소 탐색
-# &quot;tutorial-x86_64.exe&quot;+34ECA0.
-
-10034ECA0 -&gt; 162A5A0 + 10 -&gt; 162A820 + 18 -&gt; 1642E30 -&gt; 15C44F0 + 18 -&gt; 16F
-
-# change address 누르고 tutorial-x86_64.exe 부터 체인 연결해주면 됨
-</code></pre></div><br />
-<img alt="image" src="Capture.PNG" /></p>
-<p>코드 인젝션<br />
-<div class="highlight"><pre><span></span><code>디스어셈블리에서 ctrl+A 눌러 어셈블러 창 열기. code injection을 클릭하고 원하는 부분의 내용 수정
+<p>IOMMU 존재 여부<br />
+<div class="highlight"><pre><span></span><code>$ sudo dmesg | grep -i -e iommu -e dmar
+[sudo] kkongnyang2 암호: 
+[    0.416612] iommu: Default domain type: Translated
+[    0.416612] iommu: DMA domain TLB invalidation policy: lazy mode
+[    0.548245] pci 0000:00:00.2: AMD-Vi: IOMMU performance counters supported
+[    0.548333] pci 0000:00:00.0: Adding to iommu group 0
+...
+[    0.549089] pci 0000:06:00.4: Adding to iommu group 26
+[    0.555040] perf/amd_iommu: Detected AMD IOMMU #0 (2 banks, 4 counters/bank).
 </code></pre></div></p>
-<p>상향식 (메모리 전수 스캔)<br />
-<div class="highlight"><pre><span></span><code>pointer scan for this address 자동 스캐너 이용.
-값 주소를 찾은 후 우클 누르고 해당 스캐너 클릭. max level은 보통 5로 , max offset은 0x3FF 정도로 설정. .ptr 파일에 후보 리스트가 저장되면 게임 재실행 후 pointer scan 누르고 rescan memory 하면 정말 static인 후보만 남는다. 그것들을 작업바로 옮긴다.
+<h3 id="libvirt-vm">&gt; libvirt로 VM 생성</h3>
+<p>[사용자]<br />
+   ├─ virt-manager (GUI)<br />
+   ├─ virsh        (CLI)<br />
+   └─ virt-install, virt-viewer 등<br />
+          ↓<br />
+[libvirt 데몬/드라이버들]<br />
+   ├─ QEMU/KVM 드라이버<br />
+   ├─ LXC, Xen, VMware 등 다른 드라이버<br />
+   └─ 스토리지/네트워크 관리 모듈<br />
+          ↓<br />
+[실제 하이퍼바이저 &amp; 커널 기능]<br />
+   ├─ qemu-system-xxx + KVM<br />
+   ├─ tap/bridge/ovn 등 네트워크<br />
+   └─ LVM/iscsi/nbd 등 스토리지</p>
+<p>필수 패키지 설치<br />
+<div class="highlight"><pre><span></span><code>$ sudo apt update
+$ sudo apt install -y qemu-kvm \
+                    libvirt-daemon-system libvirt-clients virt-manager \  # vm 관리 매니저
+                    bridge-utils build-essential pkg-config git \
+                    autoconf automake libtool flex bison check \    # 빌드 툴
+                    libglib2.0-dev libvirt-dev libjson-c-dev \      # libvmi 빌드에 필요한 dev
+                    python3 python3-pip python3-dev
 </code></pre></div></p>
+<p>확인 및 유저 추가<br />
+<div class="highlight"><pre><span></span><code>$ lsmod | grep kvm        # KVM 모듈 올라와있는지 확인
+kvm_amd               245760  0
+kvm                  1425408  1 kvm_amd
+irqbypass              12288  1 kvm
+ccp                   155648  1 kvm_amd
+$ sudo usermod -aG libvirt,kvm $USER    # 현재 사용자를 libvirt, kvm 그룹에 추가해 root 없이 접근
+                                        # 나중에 해제하려면 sudo gpasswd -d &lt;USER&gt; &lt;GROUP&gt;
+$ reboot
+</code></pre></div></p>
+<p>윈도우 이미지 설치를 위해선 두 개의 iso 파일과 빈 하드디스크 하나가 필요하다.</p>
+<p>win10_22H2_English_x64.iso : 부팅 가능한 DVD 역할. vm이 이걸로 첫 부팅하며 윈도우 setup 실행.<br />
+virtio-win.iso : 드라이버 CD 역할. setup이 이 viostor.inf와 NetKVM.inf 를 읽어 virtio 가상 HDD를 인식하도록 함<br />
+win10.qcow2 : 빈 하드디스크. setup이 여기 파티션을 만들고 윈도우 파일을 복사하여 재부팅이 끝나면 윈도우가 들어 있는 디스크가 됨.</p>
+<p>iso 다운로드<br />
+<div class="highlight"><pre><span></span><code>https://www.microsoft.com/software-download/windows10 들어가 영어(미국) 64비트 다운로드. Win10_22H2_English_x64v1.iso
+https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/ 들어가 stable-virtio/virtio-win-0.1.271.iso 다운
+</code></pre></div></p>
+<p>vm 생성<br />
+<div class="highlight"><pre><span></span><code>$ virt-manager
+새 vm 만들기
+로컬 설치 선택 - 로컬 찾기 - 다운로드에 있는 Win10_22H2_English_x64v1.iso 선택. 윈도우 10.
+메모리 12000MB, cpu 8개
+저장소 활성화. 디스크 이미지 120.0GB. 이름 win10 (위치 /var/lib/libvirt/images/win10.qcow2)
+vm 실행
+윈도우 설치
+계정 입력 나오면 shift+f10 누르고 start ms-cxh:localonly. kkongnyang2에 암호 4108
+잘작동하면 vm 종료
+cdrom 삭제
+</code></pre></div></p>
+<h3 id="qemu-kvm">&gt; qemu-kvm 옵션의 이해</h3>
+<p>만약 git으로 qemu 설치하고 싶으면<br />
+<div class="highlight"><pre><span></span><code>git clone https://gitlab.com/qemu-project/qemu.git
+cd qemu
+mkdir build
+cd build
+../configure --target-list=x86_64-softmmu --enable-kvm --disable-werror
+ninja -j$(nproc)
+ninja install
+</code></pre></div></p>
+<p>빌드 때는 어떤 타깃 아키텍처를 만들지, 어떤 GUI/디스플레이 백엔드/가속 라이브러리를 포함할지 결정</p>
+<p>런타임 때는 VM 하드웨어 토폴로지, 가속(KVM), CPU 패스스루, 메모리, 펌웨어(OVMF), 디스크/네트워크/USB/그래픽 장치, VFIO 패스스루(vGPU 포함), 디버깅/관리(QMP,monitor) 등을 설정.</p>
+<p>../configure 옵션</p>
+<table>
+<thead>
+<tr>
+<th>카테고리</th>
+<th>대표 옵션</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>타깃 아키텍처</td>
+<td>--target-list=x86_64-softmmu</td>
+<td>필요한 에뮬레이션 대상만 빌드</td>
+</tr>
+<tr>
+<td>설치 경로</td>
+<td>--prefix=/usr/local</td>
+<td>시스템 기본 패키지와 충돌 피하려면 별도 prefix</td>
+</tr>
+<tr>
+<td>디버그</td>
+<td>--enable-debug</td>
+<td>문제 추적 유용</td>
+</tr>
+<tr>
+<td>KVM 지원</td>
+<td>--enable-kvm</td>
+<td>보통 자동 감지되나 하는게 좋음</td>
+</tr>
+<tr>
+<td>그래픽 백엔드</td>
+<td>--enable-gtk,--enable-sdl,--enable-opengl</td>
+<td>GUI창(gtk),레거시/대안(sdl),GL렌더링(virgl 등과 엮임)</td>
+</tr>
+<tr>
+<td>오디오</td>
+<td>--audio-drv-list=pa</td>
+<td>오디오 백엔드 선택(필요 없으면 제거)</td>
+</tr>
+<tr>
+<td>SPICE/remote</td>
+<td>--enable-spice,--enable-usb-redir</td>
+<td>원격 그래픽 및 USB 리다이렉션</td>
+</tr>
+<tr>
+<td>VFIO 관련</td>
+<td>거의 없음</td>
+<td>시스템 라이브러리에 의존. 커널쪽 VFIO 모듈이 더 중요</td>
+</tr>
+<tr>
+<td>스토리지</td>
+<td>--enable-libiscsi</td>
+<td>네트워크 스토리지 프로토콜 필요 시</td>
+</tr>
+<tr>
+<td>LTO/최적화</td>
+<td>--enable-lto</td>
+<td>최적화 관련</td>
+</tr>
+</tbody>
+</table>
+<p>gtk? 가장 일반적인 선택. 창 크기 조절, 메뉴 제어, 마우스 포인터 통합 등등.<br />
+sdl? 경량 옵션. 창 크기 고정, 메뉴 없음, 마우스 포인터 중첩 불가. 키오스크 같은 고정 미니멀 환경</p>
+<p>gl=on(opengl)? virtio-gpu를 사용할때 호스트로 전달받은 게스트 렌더링을 처리하기 위한 api.</p>
 
 
 

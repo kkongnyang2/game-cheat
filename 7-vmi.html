@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="5-gpu-pass.html">
+        <link rel="prev" href="5-profile.html">
       
       
-        <link rel="next" href="7-profile.html">
+        <link rel="next" href="8-CE-tutorial.html">
       
       
       <link rel="icon" href="logo.svg">
@@ -20,7 +20,7 @@
     
     
       
-        <title>6 vmi - Game-Cheat</title>
+        <title>7 vmi - Game-Cheat</title>
       
     
     
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              6 vmi
+              7 vmi
             
           </span>
         </div>
@@ -282,13 +282,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="2-mem.html" class="md-tabs__link">
+      <a href="2-cheats.html" class="md-tabs__link">
         
   
   
     
   
-  2 mem
+  2 cheats
 
       </a>
     </li>
@@ -301,13 +301,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="3-cheats.html" class="md-tabs__link">
+      <a href="3-vm.html" class="md-tabs__link">
         
   
   
     
   
-  3 cheats
+  3 vm
 
       </a>
     </li>
@@ -320,13 +320,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="4-vm.html" class="md-tabs__link">
+      <a href="4-gpu-pass.html" class="md-tabs__link">
         
   
   
     
   
-  4 vm
+  4 gpu pass
 
       </a>
     </li>
@@ -339,13 +339,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="5-gpu-pass.html" class="md-tabs__link">
+      <a href="5-profile.html" class="md-tabs__link">
         
   
   
     
   
-  5 gpu pass
+  5 profile
 
       </a>
     </li>
@@ -360,32 +360,13 @@
   
   
     <li class="md-tabs__item md-tabs__item--active">
-      <a href="6-vmi.html" class="md-tabs__link">
+      <a href="7-vmi.html" class="md-tabs__link">
         
   
   
     
   
-  6 vmi
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="7-profile.html" class="md-tabs__link">
-        
-  
-  
-    
-  
-  libvmi 설치
+  7 vmi
 
       </a>
     </li>
@@ -576,12 +557,12 @@
   
   
     <li class="md-nav__item">
-      <a href="2-mem.html" class="md-nav__link">
+      <a href="2-cheats.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    2 mem
+    2 cheats
     
   </span>
   
@@ -598,12 +579,12 @@
   
   
     <li class="md-nav__item">
-      <a href="3-cheats.html" class="md-nav__link">
+      <a href="3-vm.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    3 cheats
+    3 vm
     
   </span>
   
@@ -620,12 +601,12 @@
   
   
     <li class="md-nav__item">
-      <a href="4-vm.html" class="md-nav__link">
+      <a href="4-gpu-pass.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    4 vm
+    4 gpu pass
     
   </span>
   
@@ -642,12 +623,12 @@
   
   
     <li class="md-nav__item">
-      <a href="5-gpu-pass.html" class="md-nav__link">
+      <a href="5-profile.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    5 gpu pass
+    5 profile
     
   </span>
   
@@ -676,7 +657,7 @@
   
   
   <span class="md-ellipsis">
-    6 vmi
+    7 vmi
     
   </span>
   
@@ -684,12 +665,12 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="6-vmi.html" class="md-nav__link md-nav__link--active">
+      <a href="7-vmi.html" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
-    6 vmi
+    7 vmi
     
   </span>
   
@@ -800,28 +781,6 @@
   
 </nav>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="7-profile.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    libvmi 설치
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -1019,7 +978,7 @@
 
 
 
-  <h1>6 vmi</h1>
+  <h1>7 vmi</h1>
 
 <h2 id="vmi">VMI를 실행해보자</h2>
 <h3 id="vmi_1">목표: VMI 구현</h3>
@@ -1135,20 +1094,6 @@ sudo apt install -y libx11-dev libxext-dev libxrandr-dev \<br />
                     libxi-dev libxxf86vm-dev libxkbcommon-dev \<br />
                     libepoxy-dev libgl1-mesa-dev libgbm-dev \<br />
                     libgtk-3-dev libsdl2-dev libslirp-dev</p>
-<p>git clone https://gitlab.com/qemu-project/qemu.git<br />
-cd qemu<br />
-mkdir build<br />
-cd build<br />
-../configure --target-list=x86_64-softmmu --enable-kvm --disable-werror<br />
-ninja -j$(nproc)<br />
-ninja install</p>
-<p>git clone https://github.com/libvmi/libvmi.git<br />
-cd libvmi<br />
-mkdir build<br />
-cd build<br />
-cmake .. -DENABLE_KVM=ON -DENABLE_XEN=OFF<br />
-make -j$(nproc)<br />
-sudo make install &amp;&amp; sudo ldconfig    # 설치와 라이브러리 갱신</p>
 <p>git clone https://github.com/libvmi/python.git pyvmi<br />
 cd pyvmi<br />
 python3 -m venv .venv &amp;&amp; source .venv/bin/activate<br />
@@ -1183,17 +1128,6 @@ libvmi가 자동으로 찾아주기도 하지만, 실패하면 직접 지정<br 
 윈도우면 PDB(program database)를 바탕으로 volatility/rekall/drakpdb 툴을 이용해 만든다.</p>
 <p>(4) 그밖에도 KASLR(커널 주소 랜덤화. libvmi가 DTB를 찾기 어렵게 함) 사용 여부(linux_kaslr=true), 권한(root), /etc/libvmi.conf 접근성 들이 필요하다.</p>
 <h3 id="libvmi">&gt; libvmi</h3>
-<p>libvmi 설치<br />
-<div class="highlight"><pre><span></span><code>git clone https://github.com/libvmi/libvmi.git
-cd libvmi
-./autogen.sh
-./configure --enable-kvm --disable-xen --enable-json
-make -j$(nproc)
-sudo make install
-sudo ldconfig  # 새로 설치된 라이브러리 경로 갱신
-make examples
-# 예: ./examples/vmi-process-list &lt;config_key&gt;
-</code></pre></div></p>
 <p>/etc/libvmi.conf 작성<br />
 <div class="highlight"><pre><span></span><code>&lt;keyname&gt; {
     ostype = &quot;Linux&quot;;               # 대상 OS 타입 (Linux 또는 Windows 등)
