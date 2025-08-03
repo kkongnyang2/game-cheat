@@ -1,11 +1,10 @@
 ## cheat engine 튜토리얼을 연습해보자
 
-### 목표: 메모리 찾기 사전연습
 작성자: kkongnyang2 작성일: 2025-07-14
 
 ---
 
-### > CE tutorial 1~5
+### CE tutorial 1~5
 
 주소 탐색
 ```
@@ -21,7 +20,7 @@ newscan 누르기성
 what writes 들어가서 디스어셈블러 보기. 해당 줄 코드를 replace with code that does nothing으로 바꾸면 체력값을 쓰는 코드가 무효화돼서 작동 안한다.
 ```
 
-### > 빌드와 런 이해하기
+### 빌드와 런 이해하기
 
 빌드 = 소스 파일을 실행 파일로 컴파일. 단 한번.
 런 = 그 실행 파일이 메모리에 올라와서 프로세스로 돌아감.
@@ -71,7 +70,7 @@ call  QWORD PTR [rip + .got.plt.bar]  ; GOT 슬롯에 patch된 절대주소를 �
 
 참고로 모든 프로세스들은 메모리 뒷부분에 커널을 공통으로 가지고 있다.
 
-### > CE tutorial 6~9
+### CE tutorial 6~9
 
 게임 진행 도중 새 플레이어의 hp와 ammo를 어떻게 할당할까?
 

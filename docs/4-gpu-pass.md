@@ -1,6 +1,6 @@
 ## GPU 풀 패스스루를 실행해보자
 
-작성자: kkongnyang2 작성일: 2025-07-17
+작성자: kkongnyang2 작성일: 2025-08-02
 
 ---
 
@@ -171,9 +171,9 @@ lrwxrwxrwx 1 root root 0  7월 26 10:11 0000:01:00.1 -> ../../../../devices/pci0
 따라서 둘은 14번 그룹이 맞고 이거 두개만 넘기면 됨
 
 
-### > 
+### gpu 장치 제어
 
-패스스루할 장치 추가
+hostdev 장치 추가
 ```
 $ virt-manager
 하드웨어 추가 - PCI 호스트 장치 - 0000:01:00.0과 0000:01:00.1 추가
@@ -282,16 +282,14 @@ esac
 exit 0
 
 $ sudo chmod +x /etc/libvirt/hooks/qemu     # 저장 후 실행권한
+$ sudo mv /etc/libvirt/hooks/qemu ~/dd      # 잠깐 무효화할때
+$ sudo mv ~/dd /etc/libvirt/hooks/qemu      # 다시 활성화
 ```
 * hook 스크립트란 vm이 시작/종료되기 직전 직후에 libvirt가 자동으로 실행해주는 스크립트
 * 이 안에서 vfio 모듈로 장치 건네주기/언바인딩/바인딩 코드를 짜주고 호스트의 gui/dm 도 내려준다
 * #!는 이 파일을 어떤 인터프리터로 실행할지임
 
-잠깐 무효화
-```
-sudo mv /etc/libvirt/hooks/qemu ~/dd
-sudo mv ~/dd /etc/libvirt/hooks/qemu    # 다시 활성화
-```
+### vm에 정보 전달
 
 rom 파일 추가
 ```
@@ -308,7 +306,7 @@ gpu hostdev 안에 source 블록 다음에 두는 것이 관례
 
 ### > 원격
 
-이렇게 패스스루를 시키면 게스트 화면만 남고 호스트 화면이 없으므로 ssh 원격컴으로 vm을 키고 끄자
+이렇게 패스스루를 시키면 호스트 화면이 없으므로 ssh 원격컴으로 vm을 키고 끄자
 
 ssh 실행
 ```
@@ -329,6 +327,8 @@ $ virsh shutdown win10    # vm 끄기
 $ virsh destroy win10     # 강제 파워내리기
 $ exit                    # ssh 연결 종료
 ```
+
+### 해결
 
 호스트 화면은 잘 꺼지지만 게스트 화면이 켜지질 않음. 로그를 살펴보자
 
