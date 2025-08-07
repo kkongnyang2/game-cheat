@@ -271,38 +271,3 @@ $ sudo ~/scripts/vm_readmem.py
 2. JSON에서  'EPROCESS.DirectoryTableBase' 오프셋 = 0x28C 확인
 3. vmi_read_addr( KernelEPROCESS + 0x28C ) → 0x23e000 (System 프로세스 DTB)
 4. vmi_translate_kv2p(0xfffff600...)  ⟹ 물리 주소 계산 성공
-
-
-### > libvmi
-
-/etc/libvmi.conf 작성
-```
-<keyname> {
-    ostype = "Linux";               # 대상 OS 타입 (Linux 또는 Windows 등)
-    domain = "<libvirt 도메인 이름>"; # virt-manager/virsh에서 쓰는 VM 이름
-    # 또는 domid = <정수>;           # virsh domid로 확인한 숫자 ID
-
-    # 주소 공간 변환 관련
-    sysmap = "/path/to/System.map-6.8.0-31-generic";  # 커널 심볼 파일
-    rekall_profile = "/path/to/linux-6.8.0-31.json";  # (선택) Volatility/rekall JSON 프로파일
-
-    # DTB 지정 가능 (일반적으로 자동 탐지 시 생략)
-    # dtb = 0x00000000f1234000;
-
-    # Linux KASLR 사용시
-    linux_kaslr = true;
-
-    # (윈도우의 경우) win_...
-    # ostype = "Windows";
-    # win_profile = "/path/to/windows_profile.json";
-
-    # 기타 옵션
-    # kvm = 1;   # KVM 백엔드 사용 (신규 libvmi는 domain 지정만으로 자동)
-    # shm_file = "/dev/shm/somefile"; # 공유 메모리 파일 (특수 상황)
-}
-```
-권한 설정
-```
-sudo chown root:root /etc/libvmi.conf
-sudo chmod 644 /etc/libvmi.conf
-```

@@ -38,6 +38,8 @@ $ ls -lh /boot/xen-4.19*.gz         # 하이퍼바이저 이미지 확인
 lrwxrwxrwx 1 root root   13  8월  5 15:00 /boot/xen-4.19.gz -> xen-4.19.2.gz
 ```
 
+### Xen 문제해결
+
 라이브러리 위치 conf
 ```
 $ sudo xl info | head                 # 헤드 info. xen으로 부팅된건지 체크하는거임
@@ -123,6 +125,11 @@ $ echo 'options snd_intel_dspcfg dsp_driver=1' | sudo tee /etc/modprobe.d/force-
 $ sudo update-initramfs -u
 ```
 
+
+### Xen 부팅
+
+잘 들어가지니 들어가 설정을 해주겠다
+
 장치 modprobe
 ```
 $ grep -i "Xen version" /var/log/dmesg
@@ -159,18 +166,93 @@ $ sudo xl list
 Name                                        ID   Mem VCPUs	State	Time(s)
 Domain-0                                     0 16384    10     r-----     298.0
 ```
+wget https://download.qemu.org/qemu-8.2.2.tar.xz
+tar xf qemu-8.2.2.tar.xz
+cd qemu-8.2.2
+./configure --target-list=x86_64-softmmu,i386-softmmu \
+            --enable-xen              \
+            --enable-system           \
+            --disable-docs
+make -j"$(nproc)"
+sudo make install         # /usr/local/bin/qemu-system-x86_64 등
+sudo ldconfig
+sudo ln -sf /usr/local/bin/qemu-system-x86_64 /usr/local/lib/xen/bin/
+sudo ln -sf /usr/local/bin/qemu-system-i386   /usr/local/lib/xen/bin/
 
+### libvmi + DRAKVUF 설치
 
-### DRAKVUF 설치
+libvmi? vmi를 위한 c 라이브러리 엔진
+drakvuf? 추적, 덤프하는 C 프로그램
+drakvuf-sandbox? 총합 자동화 패키지
 
+libvmi 라이브러리 설치
 ```
-# DRAKVUF
-cd /opt
+sudo apt install libjson-c-dev doxygen cmake
+git clone https://github.com/libvmi/libvmi
+cd libvmi
+mkdir build && cd build
+rm -rf *
+cmake .. \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DENABLE_XEN=ON  -DENABLE_KVM=OFF \
+  -DENABLE_JSONC=ON
+make -j$(nproc)
+sudo make install
+sudo ldconfig
+```
+
+DRAKVUF 프로그램 설치
+```
+sudo apt install clang-15 lld-15 llvm-15 llvm-15-dev
+sudo ln -s /usr/bin/lld-15 /usr/bin/ld.lld
+sudo ln -sf /usr/bin/llvm-ar-15 /usr/bin/llvm-ar
 git clone https://github.com/tklengyel/drakvuf
 cd drakvuf
 meson setup build --native-file llvm.ini
 ninja -C build
-cp build/{drakvuf,injector} /usr/local/bin
-echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib' >> ~/.bashrc
-ldconfig
+sudo ninja -C build install
+sudo ldconfig
+which drakvuf
+/usr/local/bin/drakvuf
+drakvuf --version
+```
+
+### drakvuf-sandbox 사용
+
+root로 쉘 접속
+```
+sudo passwd root        # root용 비밀번호 설정
+신규 비밀번호 : 4108
+su                      # root로 접속
+exit                    # 종료 명령어
+```
+
+실행
+```
+apt install iptables tcpdump dnsmasq qemu-utils bridge-utils libmagic1 redis-server python3.10-venv
+python3 -m venv /opt/venv
+source /opt/venv/bin/activate
+pip install --upgrade pip
+pip install drakvuf-sandbox
+```
+
+vm 생성
+```
+윈도우 이미지 설치를 위해선 두 개의 iso 파일과 빈 하드디스크 하나가 필요하다.
+
+win10_22H2_English_x64.iso : 부팅 가능한 DVD 역할. vm이 이걸로 첫 부팅하며 윈도우 setup 실행.
+virtio-win.iso : 드라이버 CD 역할. setup이 이 viostor.inf와 NetKVM.inf 를 읽어 virtio 가상 HDD를 인식하도록 함
+win10.qcow2 : 빈 하드디스크. setup이 여기 파티션을 만들고 윈도우 파일을 복사하여 재부팅이 끝나면 윈도우가 들어 있는 디스크가 됨.
+
+https://www.microsoft.com/software-download/windows10 들어가 영어(미국) 64비트 다운로드. Win10_22H2_English_x64v1.iso
+https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/ 들어가 stable-virtio/virtio-win-0.1.271.iso 다운
+
+sudo apt install qemu-system-x86 ovmf
+drakrun install \
+    "/home/kkongnyang2/다운로드/Win10_22H2_English_x64v1.iso" \
+    --memory 12288 --vcpus 8
+
+
+
+
 ```
