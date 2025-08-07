@@ -722,9 +722,36 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#drakvuf" class="md-nav__link">
+  <a href="#xen_1" class="md-nav__link">
     <span class="md-ellipsis">
-      DRAKVUF 설치
+      Xen 문제해결
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xen_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Xen 부팅
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#libvmi-drakvuf" class="md-nav__link">
+    <span class="md-ellipsis">
+      libvmi + DRAKVUF 설치
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#drakvuf-sandbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      drakvuf-sandbox 사용
     </span>
   </a>
   
@@ -816,9 +843,36 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#drakvuf" class="md-nav__link">
+  <a href="#xen_1" class="md-nav__link">
     <span class="md-ellipsis">
-      DRAKVUF 설치
+      Xen 문제해결
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xen_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Xen 부팅
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#libvmi-drakvuf" class="md-nav__link">
+    <span class="md-ellipsis">
+      libvmi + DRAKVUF 설치
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#drakvuf-sandbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      drakvuf-sandbox 사용
     </span>
   </a>
   
@@ -872,6 +926,7 @@ $ ls -lh /boot/xen-4.19*.gz         # 하이퍼바이저 이미지 확인
 -rw-r--r-- 1 root root 1.2M  8월  5 14:54 /boot/xen-4.19.2.gz
 lrwxrwxrwx 1 root root   13  8월  5 15:00 /boot/xen-4.19.gz -&gt; xen-4.19.2.gz
 </code></pre></div></p>
+<h3 id="xen_1">Xen 문제해결</h3>
 <p>라이브러리 위치 conf<br />
 <div class="highlight"><pre><span></span><code>$ sudo xl info | head                 # 헤드 info. xen으로 부팅된건지 체크하는거임
 아직 일반 우분투이기에 cannot connect 는 맞지만, 라이브러리 오류까지 뜸
@@ -945,6 +1000,8 @@ blacklist snd_sof
 $ echo &#39;options snd_intel_dspcfg dsp_driver=1&#39; | sudo tee /etc/modprobe.d/force-hda.conf
 $ sudo update-initramfs -u
 </code></pre></div></p>
+<h3 id="xen_2">Xen 부팅</h3>
+<p>잘 들어가지니 들어가 설정을 해주겠다</p>
 <p>장치 modprobe<br />
 <div class="highlight"><pre><span></span><code>$ grep -i &quot;Xen version&quot; /var/log/dmesg
 [    0.983837] kernel: Xen version: 4.19.2 (preserve-AD)
@@ -977,18 +1034,80 @@ $ sudo systemctl start xenstored
 $ sudo xl list
 Name                                        ID   Mem VCPUs  State   Time(s)
 Domain-0                                     0 16384    10     r-----     298.0
+</code></pre></div><br />
+wget https://download.qemu.org/qemu-8.2.2.tar.xz<br />
+tar xf qemu-8.2.2.tar.xz<br />
+cd qemu-8.2.2<br />
+./configure --target-list=x86_64-softmmu,i386-softmmu \<br />
+            --enable-xen              \<br />
+            --enable-system           \<br />
+            --disable-docs<br />
+make -j"$(nproc)"<br />
+sudo make install         # /usr/local/bin/qemu-system-x86_64 등<br />
+sudo ldconfig<br />
+sudo ln -sf /usr/local/bin/qemu-system-x86_64 /usr/local/lib/xen/bin/<br />
+sudo ln -sf /usr/local/bin/qemu-system-i386   /usr/local/lib/xen/bin/</p>
+<h3 id="libvmi-drakvuf">libvmi + DRAKVUF 설치</h3>
+<p>libvmi? vmi를 위한 c 라이브러리 엔진<br />
+drakvuf? 추적, 덤프하는 C 프로그램<br />
+drakvuf-sandbox? 총합 자동화 패키지</p>
+<p>libvmi 라이브러리 설치<br />
+<div class="highlight"><pre><span></span><code>sudo apt install libjson-c-dev doxygen cmake
+git clone https://github.com/libvmi/libvmi
+cd libvmi
+mkdir build &amp;&amp; cd build
+rm -rf *
+cmake .. \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DENABLE_XEN=ON  -DENABLE_KVM=OFF \
+  -DENABLE_JSONC=ON
+make -j$(nproc)
+sudo make install
+sudo ldconfig
 </code></pre></div></p>
-<h3 id="drakvuf">DRAKVUF 설치</h3>
-<div class="highlight"><pre><span></span><code># DRAKVUF
-cd /opt
+<p>DRAKVUF 프로그램 설치<br />
+<div class="highlight"><pre><span></span><code>sudo apt install clang-15 lld-15 llvm-15 llvm-15-dev
+sudo ln -s /usr/bin/lld-15 /usr/bin/ld.lld
+sudo ln -sf /usr/bin/llvm-ar-15 /usr/bin/llvm-ar
 git clone https://github.com/tklengyel/drakvuf
 cd drakvuf
 meson setup build --native-file llvm.ini
 ninja -C build
-cp build/{drakvuf,injector} /usr/local/bin
-echo &#39;export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib&#39; &gt;&gt; ~/.bashrc
-ldconfig
-</code></pre></div>
+sudo ninja -C build install
+sudo ldconfig
+which drakvuf
+/usr/local/bin/drakvuf
+drakvuf --version
+</code></pre></div></p>
+<h3 id="drakvuf-sandbox">drakvuf-sandbox 사용</h3>
+<p>root로 쉘 접속<br />
+<div class="highlight"><pre><span></span><code>sudo passwd root        # root용 비밀번호 설정
+신규 비밀번호 : 4108
+su                      # root로 접속
+exit                    # 종료 명령어
+</code></pre></div></p>
+<p>실행<br />
+<div class="highlight"><pre><span></span><code>apt install iptables tcpdump dnsmasq qemu-utils bridge-utils libmagic1 redis-server python3.10-venv
+python3 -m venv /opt/venv
+source /opt/venv/bin/activate
+pip install --upgrade pip
+pip install drakvuf-sandbox
+</code></pre></div></p>
+<p>vm 생성<br />
+<div class="highlight"><pre><span></span><code>윈도우 이미지 설치를 위해선 두 개의 iso 파일과 빈 하드디스크 하나가 필요하다.
+
+win10_22H2_English_x64.iso : 부팅 가능한 DVD 역할. vm이 이걸로 첫 부팅하며 윈도우 setup 실행.
+virtio-win.iso : 드라이버 CD 역할. setup이 이 viostor.inf와 NetKVM.inf 를 읽어 virtio 가상 HDD를 인식하도록 함
+win10.qcow2 : 빈 하드디스크. setup이 여기 파티션을 만들고 윈도우 파일을 복사하여 재부팅이 끝나면 윈도우가 들어 있는 디스크가 됨.
+
+https://www.microsoft.com/software-download/windows10 들어가 영어(미국) 64비트 다운로드. Win10_22H2_English_x64v1.iso
+https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/ 들어가 stable-virtio/virtio-win-0.1.271.iso 다운
+
+sudo apt install qemu-system-x86 ovmf
+drakrun install \
+    &quot;/home/kkongnyang2/다운로드/Win10_22H2_English_x64v1.iso&quot; \
+    --memory 12288 --vcpus 8
+</code></pre></div></p>
 
 
 
