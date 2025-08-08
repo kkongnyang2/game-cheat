@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../2-cheats/">
+        <link rel="prev" href="../3-display/">
       
       
-        <link rel="next" href="../4-gpu-pass/">
+        <link rel="next" href="../5-vmi/">
       
       
       <link rel="icon" href="../logo.svg">
@@ -20,7 +20,7 @@
     
     
       
-        <title>3 vm - Game-Cheat</title>
+        <title>4 vm - Game-Cheat</title>
       
     
     
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              3 vm
+              4 vm
             
           </span>
         </div>
@@ -299,17 +299,15 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../3-display/" class="md-tabs__link">
         
   
   
     
   
-  3 vm
+  3 display
 
       </a>
     </li>
@@ -320,15 +318,17 @@
   
   
   
+    
   
-    <li class="md-tabs__item">
-      <a href="../4-gpu-pass/" class="md-tabs__link">
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
         
   
   
     
   
-  4 gpu pass
+  4 vm
 
       </a>
     </li>
@@ -367,25 +367,6 @@
     
   
   6 CE tutorial
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../6-sandbox/" class="md-tabs__link">
-        
-  
-  
-    
-  
-  6 sandbox
 
       </a>
     </li>
@@ -595,6 +576,28 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-display/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3 display
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -610,7 +613,7 @@
   
   
   <span class="md-ellipsis">
-    3 vm
+    4 vm
     
   </span>
   
@@ -623,7 +626,7 @@
   
   
   <span class="md-ellipsis">
-    3 vm
+    4 vm
     
   </span>
   
@@ -646,11 +649,11 @@
         <li class="md-nav__item">
   <a href="#vm" class="md-nav__link">
     <span class="md-ellipsis">
-      VM을 만들어보자
+      VM을 만들자
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="VM을 만들어보자">
+    <nav class="md-nav" aria-label="VM을 만들자">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -672,18 +675,36 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#libvirt-vm" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; libvirt로 VM 생성
+      &gt; 패키지 설치 및 모듈 확인
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#qemu-kvm" class="md-nav__link">
+  <a href="#dpgu" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; qemu-kvm 옵션의 이해
+      dpgu 주소 및 그룹 정보
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dgpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      dgpu 분리
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vm_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      vm 생성
     </span>
   </a>
   
@@ -698,28 +719,6 @@
   
 </nav>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../4-gpu-pass/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    4 gpu pass
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -759,28 +758,6 @@
   
   <span class="md-ellipsis">
     6 CE tutorial
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../6-sandbox/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    6 sandbox
     
   </span>
   
@@ -883,11 +860,11 @@
         <li class="md-nav__item">
   <a href="#vm" class="md-nav__link">
     <span class="md-ellipsis">
-      VM을 만들어보자
+      VM을 만들자
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="VM을 만들어보자">
+    <nav class="md-nav" aria-label="VM을 만들자">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -909,18 +886,36 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#libvirt-vm" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; libvirt로 VM 생성
+      &gt; 패키지 설치 및 모듈 확인
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#qemu-kvm" class="md-nav__link">
+  <a href="#dpgu" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; qemu-kvm 옵션의 이해
+      dpgu 주소 및 그룹 정보
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dgpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      dgpu 분리
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vm_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      vm 생성
     </span>
   </a>
   
@@ -947,12 +942,11 @@
 
 
 
-  <h1>3 vm</h1>
+  <h1>4 vm</h1>
 
-<h2 id="vm">VM을 만들어보자</h2>
-<p>작성자: kkongnyang2 작성일: 2025-07-24</p>
+<h2 id="vm">VM을 만들자</h2>
+<p>작성자: kkongnyang2 작성일: 2025-08-08</p>
 <hr />
-<p>노트북 교체로 빠르게 처음부터.(24.04)</p>
 <h3 id="_1">&gt; 하이퍼바이저 선택</h3>
 <table>
 <thead>
@@ -1020,10 +1014,73 @@ libvirt로 편하게 관리 하고, 문서 많은 libvmi/pyvmi로.</p>
 <h3 id="_2">&gt; 가상화 지원 확인</h3>
 <p>cpu 가상화 지원 여부<br />
 <div class="highlight"><pre><span></span><code>$ egrep -c &#39;(vmx|svm)&#39; /proc/cpuinfo    # 0이 아니어야 함. UEFI에서 Intel VT-x/AMD-V 활성화 필요
-16            # 논리 cpu 16개 모두가 AMD-V 플래그를 갖고 있다는 뜻
+40            # 논리 cpu 40개 모두가 Intel VT-x 플래그를 갖고 있다는 뜻
 </code></pre></div></p>
-<p>장치 가상화 지원 여부<br />
-<div class="highlight"><pre><span></span><code>$ virt-host-validate    # 커널에 관련 지원이 있는지 확인
+<p>장치 IOMMU 존재 여부<br />
+<div class="highlight"><pre><span></span><code>$ sudo dmesg | grep -i -e iommu -e dmar
+[    0.005034] ACPI: DMAR 0x000000005BA13000 000088 (v01 ACRSYS ACRPRDCT 00000002 1025 00040000)
+[    0.005073] ACPI: Reserving DMAR table memory at [mem 0x5ba13000-0x5ba13087]
+[    0.103447] DMAR: Host address width 39
+[    0.103448] DMAR: DRHD base: 0x000000fed90000 flags: 0x0
+[    0.103453] DMAR: dmar0: reg_base_addr fed90000 ver 4:0 cap 1c0000c40660462 ecap 29a00f0505e
+[    0.103455] DMAR: DRHD base: 0x000000fed91000 flags: 0x1
+[    0.103458] DMAR: dmar1: reg_base_addr fed91000 ver 5:0 cap d2008c40660462 ecap f050da
+[    0.103459] DMAR: RMRR base: 0x00000064000000 end: 0x000000687fffff
+[    0.103461] DMAR-IR: IOAPIC id 2 under DRHD base  0xfed91000 IOMMU 1
+[    0.103461] DMAR-IR: HPET id 0 under DRHD base 0xfed91000
+[    0.103462] DMAR-IR: Queued invalidation will be enabled to support x2apic and Intr-remapping.
+[    0.105022] DMAR-IR: Enabled IRQ remapping in x2apic mode
+[    0.642545] pci 0000:00:02.0: DMAR: Skip IOMMU disabling for graphics
+[    1.096406] iommu: Default domain type: Translated
+[    1.096406] iommu: DMA domain TLB invalidation policy: lazy mode
+[    1.141664] DMAR: No ATSR found
+[    1.141665] DMAR: No SATC found
+[    1.141666] DMAR: IOMMU feature fl1gp_support inconsistent
+[    1.141666] DMAR: IOMMU feature pgsel_inv inconsistent
+[    1.141667] DMAR: IOMMU feature nwfs inconsistent
+[    1.141668] DMAR: IOMMU feature dit inconsistent
+[    1.141669] DMAR: IOMMU feature sc_support inconsistent
+[    1.141669] DMAR: IOMMU feature dev_iotlb_support inconsistent
+[    1.141670] DMAR: dmar0: Using Queued invalidation
+[    1.141673] DMAR: dmar1: Using Queued invalidation
+[    1.141843] pci 0000:00:02.0: Adding to iommu group 0
+[    1.142381] pci 0000:00:00.0: Adding to iommu group 1
+[    1.142394] pci 0000:00:01.0: Adding to iommu group 2
+[    1.142401] pci 0000:00:04.0: Adding to iommu group 3
+[    1.142409] pci 0000:00:08.0: Adding to iommu group 4
+[    1.142416] pci 0000:00:0a.0: Adding to iommu group 5
+[    1.142424] pci 0000:00:0e.0: Adding to iommu group 6
+[    1.142438] pci 0000:00:14.0: Adding to iommu group 7
+[    1.142445] pci 0000:00:14.2: Adding to iommu group 7
+[    1.142452] pci 0000:00:14.3: Adding to iommu group 8
+[    1.142464] pci 0000:00:15.0: Adding to iommu group 9
+[    1.142471] pci 0000:00:15.1: Adding to iommu group 9
+[    1.142483] pci 0000:00:16.0: Adding to iommu group 10
+[    1.142497] pci 0000:00:1b.0: Adding to iommu group 11
+[    1.142506] pci 0000:00:1c.0: Adding to iommu group 12
+[    1.142520] pci 0000:00:1e.0: Adding to iommu group 13
+[    1.142527] pci 0000:00:1e.1: Adding to iommu group 13
+[    1.142546] pci 0000:00:1f.0: Adding to iommu group 14
+[    1.142553] pci 0000:00:1f.3: Adding to iommu group 14
+[    1.142561] pci 0000:00:1f.4: Adding to iommu group 14
+[    1.142569] pci 0000:00:1f.5: Adding to iommu group 14
+[    1.142583] pci 0000:01:00.0: Adding to iommu group 15
+[    1.142592] pci 0000:01:00.1: Adding to iommu group 15
+[    1.142608] pci 0000:02:00.0: Adding to iommu group 16
+[    1.142617] pci 0000:03:00.0: Adding to iommu group 17
+[    1.142627] pci 0000:03:01.0: Adding to iommu group 18
+[    1.142636] pci 0000:03:02.0: Adding to iommu group 19
+[    1.142649] pci 0000:03:03.0: Adding to iommu group 20
+[    1.142661] pci 0000:04:00.0: Adding to iommu group 21
+[    1.142673] pci 0000:23:00.0: Adding to iommu group 22
+[    1.142681] pci 0000:43:00.0: Adding to iommu group 23
+[    1.145510] DMAR: Intel(R) Virtualization Technology for Directed I/O
+[    1.564068] pci 10000:e0:01.0: Adding to iommu group 6
+[    1.564492] pci 10000:e0:01.1: Adding to iommu group 6
+[    1.564860] pci 10000:e1:00.0: Adding to iommu group 6
+</code></pre></div></p>
+<p>qemu 지원 가능 여부<br />
+<div class="highlight"><pre><span></span><code>$ virt-host-validate
   QEMU: Checking for hardware virtualization                                 : PASS
   QEMU: Checking if device /dev/kvm exists                                   : PASS
   QEMU: Checking if device /dev/kvm is accessible                            : PASS
@@ -1054,148 +1111,118 @@ libvirt로 편하게 관리 하고, 문서 많은 libvmi/pyvmi로.</p>
    LXC: Checking for cgroup &#39;blkio&#39; controller support                       : PASS
    LXC: Checking if device /sys/fs/fuse/connections exists                   : PASS
 </code></pre></div></p>
-<p>IOMMU 존재 여부<br />
-<div class="highlight"><pre><span></span><code>$ sudo dmesg | grep -i -e iommu -e dmar
-[sudo] kkongnyang2 암호: 
-[    0.416612] iommu: Default domain type: Translated
-[    0.416612] iommu: DMA domain TLB invalidation policy: lazy mode
-[    0.548245] pci 0000:00:00.2: AMD-Vi: IOMMU performance counters supported
-[    0.548333] pci 0000:00:00.0: Adding to iommu group 0
-...
-[    0.549089] pci 0000:06:00.4: Adding to iommu group 26
-[    0.555040] perf/amd_iommu: Detected AMD IOMMU #0 (2 banks, 4 counters/bank).
-</code></pre></div></p>
-<h3 id="libvirt-vm">&gt; libvirt로 VM 생성</h3>
-<p>[사용자]<br />
-   ├─ virt-manager (GUI)<br />
-   ├─ virsh        (CLI)<br />
-   └─ virt-install, virt-viewer 등<br />
-          ↓<br />
-[libvirt 데몬/드라이버들]<br />
-   ├─ QEMU/KVM 드라이버<br />
-   ├─ LXC, Xen, VMware 등 다른 드라이버<br />
-   └─ 스토리지/네트워크 관리 모듈<br />
-          ↓<br />
-[실제 하이퍼바이저 &amp; 커널 기능]<br />
-   ├─ qemu-system-xxx + KVM<br />
-   ├─ tap/bridge/ovn 등 네트워크<br />
-   └─ LVM/iscsi/nbd 등 스토리지</p>
+<h3 id="_3">&gt; 패키지 설치 및 모듈 확인</h3>
 <p>필수 패키지 설치<br />
 <div class="highlight"><pre><span></span><code>$ sudo apt update
 $ sudo apt install -y qemu-kvm \
                     libvirt-daemon-system libvirt-clients virt-manager \  # vm 관리 매니저
-                    bridge-utils build-essential pkg-config git \
+                    bridge-utils build-essential pkg-config git ovmf \
                     autoconf automake libtool flex bison check \    # 빌드 툴
                     libglib2.0-dev libvirt-dev libjson-c-dev \      # libvmi 빌드에 필요한 dev
                     python3 python3-pip python3-dev
 </code></pre></div></p>
-<p>확인 및 유저 추가<br />
-<div class="highlight"><pre><span></span><code>$ lsmod | grep kvm        # KVM 모듈 올라와있는지 확인
-kvm_amd               245760  0
-kvm                  1425408  1 kvm_amd
+<p>kvm 모듈 사용자 추가<br />
+<div class="highlight"><pre><span></span><code>$ lsmod | grep kvm        # KVM 모듈 확인
+kvm_intel             487424  0
+kvm                  1413120  1 kvm_intel
 irqbypass              12288  1 kvm
-ccp                   155648  1 kvm_amd
 $ sudo usermod -aG libvirt,kvm $USER    # 현재 사용자를 libvirt, kvm 그룹에 추가해 root 없이 접근
                                         # 나중에 해제하려면 sudo gpasswd -d &lt;USER&gt; &lt;GROUP&gt;
-$ reboot
 </code></pre></div></p>
-<p>윈도우 이미지 설치를 위해선 두 개의 iso 파일과 빈 하드디스크 하나가 필요하다.</p>
-<p>win10_22H2_English_x64.iso : 부팅 가능한 DVD 역할. vm이 이걸로 첫 부팅하며 윈도우 setup 실행.<br />
-virtio-win.iso : 드라이버 CD 역할. setup이 이 viostor.inf와 NetKVM.inf 를 읽어 virtio 가상 HDD를 인식하도록 함<br />
-win10.qcow2 : 빈 하드디스크. setup이 여기 파티션을 만들고 윈도우 파일을 복사하여 재부팅이 끝나면 윈도우가 들어 있는 디스크가 됨.</p>
+<p>vfio 모듈 켜보기(존재 확인)<br />
+<div class="highlight"><pre><span></span><code>$ sudo modprobe vfio_pci      # 키기
+$ lsmod | grep vfio
+vfio_pci               16384  0
+vfio_pci_core          90112  1 vfio_pci
+vfio_iommu_type1       49152  0
+vfio                   69632  3 vfio_pci_core,vfio_iommu_type1,vfio_pci
+iommufd                98304  1 vfio
+irqbypass              12288  2 vfio_pci_core,kvm
+</code></pre></div></p>
+<h3 id="dpgu">dpgu 주소 및 그룹 정보</h3>
+<p>PCI 주소와 ID 확인<br />
+<div class="highlight"><pre><span></span><code>$ lspci -nn | grep -i -e vga -e audio   # gpu에 audio 장치가 딸려 있는 경우가 많기 때문에 같이 ID 같이 찾음
+0000:00:02.0 VGA compatible controller [0300]: Intel Corporation Device [8086:a788] (rev 04)
+0000:00:1f.3 Multimedia audio controller [0401]: Intel Corporation Device [8086:7a50] (rev 11)
+0000:01:00.0 VGA compatible controller [0300]: NVIDIA Corporation Device [10de:28e0] (rev a1)
+0000:01:00.1 Audio device [0403]: NVIDIA Corporation Device [10de:22be] (rev a1)
+</code></pre></div><br />
+* PCI 주소? 버스 슬롯 어디에 꽂혀 있나<br />
+* 벤더:디바이스 ID? 제조사+모델 코드로 무슨 장치인가<br />
+VGA : PCI 주소 01:00.0에 ID 10de:28e0<br />
+Audio : PCI 주소 01:00.1에 ID 10de:22be<br />
+이게 그룹이 맞는지 iommu_groups을 확인해보자</p>
+<p>Iommu_groups 확인<br />
+<div class="highlight"><pre><span></span><code>$ for g in /sys/kernel/iommu_groups/*; do
+  echo &quot;Group $(basename $g):&quot;; ls -l $g/devices; echo; done
+Group 15:
+total 0
+lrwxrwxrwx 1 root root 0  8월  8 16:22 0000:01:00.0 -&gt; ../../../../devices/pci0000:00/0000:00:01.0/0000:01:00.0
+lrwxrwxrwx 1 root root 0  8월  8 16:22 0000:01:00.1 -&gt; ../../../../devices/pci0000:00/0000:00:01.0/0000:01:00.1
+</code></pre></div><br />
+따라서 둘은 15번 그룹이 맞고 이거 두개만 넘기면 됨</p>
+<h3 id="dgpu">dgpu 분리</h3>
+<p>커널 파라미터로 vfio가 dpgu 선점<br />
+<div class="highlight"><pre><span></span><code>$ sudo nano /etc/default/grub
+원본
+GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash&quot;
+수정
+# iommu=pt 패스스루 장치만 통과 vfio-pci.ids 선점할 PCI ID 지정 
+GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash intel_iommu=on iommu=pt kvm.ignore__msrs=1 vfio-pci.ids=10de:28e0,10de:22be&quot;
+$ sudo update-grub
+</code></pre></div></p>
+<p>부팅시 vfio 모듈 자동 로드<br />
+<div class="highlight"><pre><span></span><code>$ sudo nano /etc/modules
+vfio
+vfio_pci
+vfio_iommu_type1
+</code></pre></div></p>
+<p>VGA BAR 차단 및 해당 드라이버 블랙리스트<br />
+<div class="highlight"><pre><span></span><code>$ sudo nano /etc/modprobe.d/vfio.conf
+options vfio-pci ids=10de:28e0,10de:22be disable_vga=1
+blacklist nvidia nvidia_drm nouveau
+$ sudo update-initramfs -u
+</code></pre></div></p>
+<p>재부팅 후 확인<br />
+<div class="highlight"><pre><span></span><code>$ sudo reboot
+$ lspci -nnk -d 10de:28e0
+0000:01:00.0 VGA compatible controller [0300]: NVIDIA Corporation Device [10de:28e0] (rev a1)
+    Subsystem: Acer Incorporated [ALI] Device [1025:1731]
+    Kernel driver in use: vfio-pci
+    Kernel modules: nvidiafb, nouveau
+</code></pre></div></p>
+<h3 id="vm_1">vm 생성</h3>
 <p>iso 다운로드<br />
-<div class="highlight"><pre><span></span><code>https://www.microsoft.com/software-download/windows10 들어가 영어(미국) 64비트 다운로드. Win10_22H2_English_x64v1.iso
-https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/ 들어가 stable-virtio/virtio-win-0.1.271.iso 다운
+<div class="highlight"><pre><span></span><code>https://www.microsoft.com/software-download/windows10 들어가 영어(미국) 64비트 다운로드. Win10_22H2_English_x64v1.iso. 윈도우 설치를 위한 DVD 역할.
+$ sudo mv ~/Downloads/Win10_22H2_English_x64v1.iso /var/lib/libvirt/images/
+권한 libvirt-qemu:kkongnyang2
 </code></pre></div></p>
 <p>vm 생성<br />
 <div class="highlight"><pre><span></span><code>$ virt-manager
 새 vm 만들기
-로컬 설치 선택 - 로컬 찾기 - 다운로드에 있는 Win10_22H2_English_x64v1.iso 선택. 윈도우 10.
-메모리 12000MB, cpu 8개
-저장소 활성화. 디스크 이미지 120.0GB. 이름 win10 (위치 /var/lib/libvirt/images/win10.qcow2)
-vm 실행
-윈도우 설치
-계정 입력 나오면 shift+f10 누르고 start ms-cxh:localonly. kkongnyang2에 암호 4108
-잘작동하면 vm 종료
-cdrom 삭제
+local install media - browse - images에 있는 Win10_22H2_English_x64v1.iso 선택. 윈도우 10.
+메모리 16000MB, cpu 10개
+저장소 활성화. 디스크 이미지 160.0GB. 이름 win10 (위치 /var/lib/libvirt/images/win10.qcow2)     # win10.qcow2 : 빈 하드디스크.
+custom 선택
+Overview에서 Q35, UEFI x86_64 : OVMF_CODE_4M.fd 선택
+CPUs에서 host-passthruogh 체크 확인
+Add hardware - PCI Host Device - 0000:01:00:0과 0000:01:00:1 선택
+Display Spice - Spice server, none(내 컴퓨터 안에서만 원격 접속)
+완료 후 설치
 </code></pre></div></p>
-<h3 id="qemu-kvm">&gt; qemu-kvm 옵션의 이해</h3>
-<p>만약 git으로 qemu 설치하고 싶으면<br />
-<div class="highlight"><pre><span></span><code>git clone https://gitlab.com/qemu-project/qemu.git
-cd qemu
-mkdir build
-cd build
-../configure --target-list=x86_64-softmmu --enable-kvm --disable-werror
-ninja -j$(nproc)
-ninja install
+<p>혹시 virtio 드라이버 필요하면<br />
+<div class="highlight"><pre><span></span><code>https://fedorapeople.org/groups/virt/virtio-win/direct-downloads 들어가 stable - virtio-win-0.1.271.iso 다운로드. virtio 드라이버들 모음.
+$ sudo mv ~/Downloads/virtio-win-0.1.271.iso /var/lib/libvirt/images/
+권한 libvirt-qemu:kkongnyang2
+$ virt-manager
+add hardware - storage - images에 있는 virtio-win.iso, cdrom, sata
 </code></pre></div></p>
-<p>빌드 때는 어떤 타깃 아키텍처를 만들지, 어떤 GUI/디스플레이 백엔드/가속 라이브러리를 포함할지 결정</p>
-<p>런타임 때는 VM 하드웨어 토폴로지, 가속(KVM), CPU 패스스루, 메모리, 펌웨어(OVMF), 디스크/네트워크/USB/그래픽 장치, VFIO 패스스루(vGPU 포함), 디버깅/관리(QMP,monitor) 등을 설정.</p>
-<p>../configure 옵션</p>
-<table>
-<thead>
-<tr>
-<th>카테고리</th>
-<th>대표 옵션</th>
-<th>설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>타깃 아키텍처</td>
-<td>--target-list=x86_64-softmmu</td>
-<td>필요한 에뮬레이션 대상만 빌드</td>
-</tr>
-<tr>
-<td>설치 경로</td>
-<td>--prefix=/usr/local</td>
-<td>시스템 기본 패키지와 충돌 피하려면 별도 prefix</td>
-</tr>
-<tr>
-<td>디버그</td>
-<td>--enable-debug</td>
-<td>문제 추적 유용</td>
-</tr>
-<tr>
-<td>KVM 지원</td>
-<td>--enable-kvm</td>
-<td>보통 자동 감지되나 하는게 좋음</td>
-</tr>
-<tr>
-<td>그래픽 백엔드</td>
-<td>--enable-gtk,--enable-sdl,--enable-opengl</td>
-<td>GUI창(gtk),레거시/대안(sdl),GL렌더링(virgl 등과 엮임)</td>
-</tr>
-<tr>
-<td>오디오</td>
-<td>--audio-drv-list=pa</td>
-<td>오디오 백엔드 선택(필요 없으면 제거)</td>
-</tr>
-<tr>
-<td>SPICE/remote</td>
-<td>--enable-spice,--enable-usb-redir</td>
-<td>원격 그래픽 및 USB 리다이렉션</td>
-</tr>
-<tr>
-<td>VFIO 관련</td>
-<td>거의 없음</td>
-<td>시스템 라이브러리에 의존. 커널쪽 VFIO 모듈이 더 중요</td>
-</tr>
-<tr>
-<td>스토리지</td>
-<td>--enable-libiscsi</td>
-<td>네트워크 스토리지 프로토콜 필요 시</td>
-</tr>
-<tr>
-<td>LTO/최적화</td>
-<td>--enable-lto</td>
-<td>최적화 관련</td>
-</tr>
-</tbody>
-</table>
-<p>gtk? 가장 일반적인 선택. 창 크기 조절, 메뉴 제어, 마우스 포인터 통합 등등.<br />
-sdl? 경량 옵션. 창 크기 고정, 메뉴 없음, 마우스 포인터 중첩 불가. 키오스크 같은 고정 미니멀 환경</p>
-<p>gl=on(opengl)? virtio-gpu를 사용할때 호스트로 전달받은 게스트 렌더링을 처리하기 위한 api.</p>
+<p>hostdev를 해주긴 했지만 아직 해당 nvidia 드라이버와 looking glass 엔진이 게스트에 없어서 가상 vga 에뮬레이션 = qxl 비디오(가상 gpu) + spice 원격 + virt-viewer로 창 출력 구조임.</p>
+<p>윈도우 및 드라이버 설치<br />
+<div class="highlight"><pre><span></span><code>계정 입력 나오면 shift+f10 누르고 start ms-cxh:localonly. kkongnyang2에 암호 4108
+윈도우 업데이트로 드라이버 알아서 설치
+device manager 들어가 느낌표 없는지 확인
+</code></pre></div></p>
 
 
 
