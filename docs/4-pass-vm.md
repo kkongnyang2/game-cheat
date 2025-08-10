@@ -1,4 +1,4 @@
-## VM을 만들자
+## 패스스루 VM을 만들자
 
 작성자: kkongnyang2 작성일: 2025-08-08
 
@@ -18,7 +18,7 @@
 메모리 이벤트 트랩이면 Xen + LibVMI (DRAKVUF 구조 참고)
 libvirt 없이 Xen 자체 툴(xl) 사용. altp2m로 페이지 권한 바꿔 트랩 잡기 수월.
 
-이미 우분투에 kvm 환경이라면 KVM/QEMU + LibVMI
+이미 우분투에 kvm 환경이라면 KVM/QEMU + KVMI(KVM/QEMU) + LibVMI
 libvirt로 편하게 관리 하고, 문서 많은 libvmi/pyvmi로.
 
 * kvm(kernel based virtual machine) 리눅스 커널 모듈. VT-x를 사용해서 게스트 cpu 실행을 커널 레벨에서 가속해줌. qemu는 가상머신 하이퍼바이저.
@@ -28,10 +28,24 @@ libvirt로 편하게 관리 하고, 문서 많은 libvmi/pyvmi로.
 
 ### > 가상화 지원 확인
 
+bios 설정 확인
+```
+VT-x, VT-d 켜기
+Secure boot 끄기(서명 문제 회피에 유리)
+```
+
 cpu 가상화 지원 여부
 ```
 $ egrep -c '(vmx|svm)' /proc/cpuinfo    # 0이 아니어야 함. UEFI에서 Intel VT-x/AMD-V 활성화 필요
 40            # 논리 cpu 40개 모두가 Intel VT-x 플래그를 갖고 있다는 뜻
+```
+
+kvm 모듈 확인
+```
+$ lsmod | grep kvm
+kvm_intel             487424  0
+kvm                  1413120  1 kvm_intel
+irqbypass              12288  1 kvm
 ```
 
 장치 IOMMU 존재 여부
@@ -134,39 +148,43 @@ $ virt-host-validate
 ```
 
 
-### > 패키지 설치 및 모듈 확인
+### > 패키지 설치 및 서비스 활성화
 
 필수 패키지 설치
 ```
 $ sudo apt update
-$ sudo apt install -y qemu-kvm \
-                    libvirt-daemon-system libvirt-clients virt-manager \  # vm 관리 매니저
-                    bridge-utils build-essential pkg-config git ovmf \
-                    autoconf automake libtool flex bison check \    # 빌드 툴
-                    libglib2.0-dev libvirt-dev libjson-c-dev \      # libvmi 빌드에 필요한 dev
-                    python3 python3-pip python3-dev
+$ sudo apt install -y \
+  qemu-system-x86 qemu-utils \
+  libvirt-daemon-system libvirt-clients virt-manager \
+  ovmf swtpm virtiofsd \
+  bridge-utils dnsmasq
 ```
 
-kvm 모듈 사용자 추가
+서비스 기동/권한
 ```
-$ lsmod | grep kvm        # KVM 모듈 확인
-kvm_intel             487424  0
-kvm                  1413120  1 kvm_intel
-irqbypass              12288  1 kvm
-$ sudo usermod -aG libvirt,kvm $USER    # 현재 사용자를 libvirt, kvm 그룹에 추가해 root 없이 접근
-                                        # 나중에 해제하려면 sudo gpasswd -d <USER> <GROUP>
+$ sudo systemctl enable --now libvirtd
+$ sudo usermod -aG libvirt,kvm $USER    # 현재 사용자를 libvirt, kvm 그룹에 추가해 root 없이 접근. 나중에 해제하려면 sudo gpasswd -d <USER> <GROUP>
+$ sudo reboot
 ```
 
-vfio 모듈 켜보기(존재 확인)
+IOMMU 활성화
 ```
-$ sudo modprobe vfio_pci      # 키기
-$ lsmod | grep vfio
-vfio_pci               16384  0
-vfio_pci_core          90112  1 vfio_pci
-vfio_iommu_type1       49152  0
-vfio                   69632  3 vfio_pci_core,vfio_iommu_type1,vfio_pci
-iommufd                98304  1 vfio
-irqbypass              12288  2 vfio_pci_core,kvm
+$ sudo nano /etc/default/grub
+원본
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
+수정
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash intel_iommu=on iommu=pt"
+$ sudo update-grub
+$ sudo reboot
+$ dmesg | grep -e IOMMU -e DMAR     # 확인
+```
+
+vfio 모듈 자동 로드
+```
+$ modinfo vfio_pci | head     # vfio 모듈 있는지 확인
+# 부팅 시 자동 로드
+$ echo -e "vfio\nvfio_pci\nvfio_iommu_type1" | sudo tee /etc/modules-load.d/vfio.conf
+$ sudo update-initramfs -u
 ```
 
 ### dpgu 주소 및 그룹 정보
@@ -196,84 +214,26 @@ lrwxrwxrwx 1 root root 0  8월  8 16:22 0000:01:00.1 -> ../../../../devices/pci0
 ```
 따라서 둘은 15번 그룹이 맞고 이거 두개만 넘기면 됨
 
-
-### dgpu 분리
-
-커널 파라미터로 vfio가 dpgu 선점
-```
-$ sudo nano /etc/default/grub
-원본
-GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
-수정
-# iommu=pt 패스스루 장치만 통과 vfio-pci.ids 선점할 PCI ID 지정 
-GRUB_CMDLINE_LINUX_DEFAULT="quiet splash intel_iommu=on iommu=pt kvm.ignore__msrs=1 vfio-pci.ids=10de:28e0,10de:22be"
-$ sudo update-grub
-```
-
-부팅시 vfio 모듈 자동 로드
-```
-$ sudo nano /etc/modules
-vfio
-vfio_pci
-vfio_iommu_type1
-```
-
-VGA BAR 차단 및 해당 드라이버 블랙리스트
-```
-$ sudo nano /etc/modprobe.d/vfio.conf
-options vfio-pci ids=10de:28e0,10de:22be disable_vga=1
-blacklist nvidia nvidia_drm nouveau
-$ sudo update-initramfs -u
-```
-
-재부팅 후 확인
-```
-$ sudo reboot
-$ lspci -nnk -d 10de:28e0
-0000:01:00.0 VGA compatible controller [0300]: NVIDIA Corporation Device [10de:28e0] (rev a1)
-	Subsystem: Acer Incorporated [ALI] Device [1025:1731]
-	Kernel driver in use: vfio-pci
-	Kernel modules: nvidiafb, nouveau
-```
-
 ### vm 생성
 
 iso 다운로드
 ```
-https://www.microsoft.com/software-download/windows10 들어가 영어(미국) 64비트 다운로드. Win10_22H2_English_x64v1.iso. 윈도우 설치를 위한 DVD 역할.
-$ sudo mv ~/Downloads/Win10_22H2_English_x64v1.iso /var/lib/libvirt/images/
-권한 libvirt-qemu:kkongnyang2
+https://www.microsoft.com/software-download/windows11 들어가 영어(미국) 64비트 다운로드. Win11_24H2_English_x64.iso. 윈도우 설치를 위한 DVD 역할.
 ```
 
 vm 생성
 ```
 $ virt-manager
 새 vm 만들기
-local install media - browse - images에 있는 Win10_22H2_English_x64v1.iso 선택. 윈도우 10.
+local install media - browse - downloads에 있는 Win11_24H2_English_x64.iso 선택. 윈도우 11.
 메모리 16000MB, cpu 10개
-저장소 활성화. 디스크 이미지 160.0GB. 이름 win10 (위치 /var/lib/libvirt/images/win10.qcow2)     # win10.qcow2 : 빈 하드디스크.
+저장소 활성화. 디스크 이미지 160.0GB. 이름 win11-2 (위치 /var/lib/libvirt/images/win11-2.qcow2)     # win11-2.qcow2 : 빈 하드디스크.
 custom 선택
-Overview에서 Q35, UEFI x86_64 : OVMF_CODE_4M.fd 선택
+Overview에서 Q35, UEFI x86_64 : OVMF_CODE_4M.ms.fd 선택
 CPUs에서 host-passthruogh 체크 확인
 Add hardware - PCI Host Device - 0000:01:00:0과 0000:01:00:1 선택
-Display Spice - Spice server, none(내 컴퓨터 안에서만 원격 접속)
-완료 후 설치
-```
-
-혹시 virtio 드라이버 필요하면
-```
-https://fedorapeople.org/groups/virt/virtio-win/direct-downloads 들어가 stable - virtio-win-0.1.271.iso 다운로드. virtio 드라이버들 모음.
-$ sudo mv ~/Downloads/virtio-win-0.1.271.iso /var/lib/libvirt/images/
-권한 libvirt-qemu:kkongnyang2
-$ virt-manager
-add hardware - storage - images에 있는 virtio-win.iso, cdrom, sata
-```
-
-hostdev를 해주긴 했지만 아직 해당 nvidia 드라이버와 looking glass 엔진이 게스트에 없어서 가상 vga 에뮬레이션 = qxl 비디오(가상 gpu) + spice 원격 + virt-viewer로 창 출력 구조임.
-
-윈도우 및 드라이버 설치
-```
+완료 후 hdmi 꽂아놓고 설치
 계정 입력 나오면 shift+f10 누르고 start ms-cxh:localonly. kkongnyang2에 암호 4108
-윈도우 업데이트로 드라이버 알아서 설치
-device manager 들어가 느낌표 없는지 확인
+인터넷이 연결되어 있으면 윈도우 드라이버 업데이트까지 설치 과정 중에 해줌
+device manager 들어가 느낌표 없는지 확인(nvidia가 code43 안뜨는지)
 ```
