@@ -4,28 +4,6 @@
 
 ---
 
-### > 하이퍼바이저 선택
-
-|       하이퍼바이저       | VMI 친화도 | 장점                                          | 단점                           | 대표 툴/프로젝트                   |
-| :----------------: | :-----: | :------------------------------------------ | :--------------------------- | :-------------------------- |
-|       **Xen**      |  ★★★★★  | LibVMI 원조급, altp2m 기반 메모리 이벤트, DRAKVUF 등 풍부 | 설정/운영 복잡, 최신 HW 지원/호환성 이슈    | **DRAKVUF**, LibVMI         |
-|    **KVM/QEMU**    |  ★★★★☆  | 리눅스 기본, libvirt 연동 쉽고 널리 사용                 | 이벤트 트랩 구현 시 Xen보다 손이 더 감     | LibVMI, PyVMI               |
-|   **VMware ESXi**  |  ★★★★☆  | 공식 introspection API, 안정적                   | 상용/폐쇄적, 비용, 자유도 제한           | VMware VMI SDK (Thin agent) |
-|     **Hyper-V**    |  ★★☆☆☆  | Windows 친화, 커널 레벨 접근 가능                     | 공개 도구 적음, 구현 난이도             | 자체 개발 필요                    |
-|   **VirtualBox**   |  ★☆☆☆☆  | 셋업 쉬움                                       | VMI용 API 사실상 없음, hacky 작업 필요 | 직접 /proc/…/mem 접근 등 “꼼수”    |
-| **Bareflank/ACRN** |  ★★☆☆☆  | 경량/오픈소스, 연구 목적 좋음                           | 문서/커뮤니티 작음, 모든 기능 직접 구현      | 커스텀 하이퍼바이저 개발               |
-
-메모리 이벤트 트랩이면 Xen + LibVMI (DRAKVUF 구조 참고)
-libvirt 없이 Xen 자체 툴(xl) 사용. altp2m로 페이지 권한 바꿔 트랩 잡기 수월.
-
-이미 우분투에 kvm 환경이라면 KVM/QEMU + KVMI(KVM/QEMU) + LibVMI
-libvirt로 편하게 관리 하고, 문서 많은 libvmi/pyvmi로.
-
-* kvm(kernel based virtual machine) 리눅스 커널 모듈. VT-x를 사용해서 게스트 cpu 실행을 커널 레벨에서 가속해줌. qemu는 가상머신 하이퍼바이저.
-
-윈도우 환경에서 hyper-v로 작업하면 바로 오버워치2 안티치트에 탐색
-
-
 ### > 사전 준비
 
 bios 설정
@@ -33,7 +11,11 @@ bios 설정
 VT-x, VT-d 켜기
 Secure boot 끄기(서명 문제 회피에 유리. 바로 안꺼지면 바이오스 비번 설정한 후 끈 후 비번 다시 없애면 됨)
 vmd controller 끄기(advanced-main에서 ctrl+s 눌러 히든옵션 띄우면 됨)
+display mode : optimus
 ```
+* optimus = igpu 직결, dgpu 도움
+* dgpu only = dgpu 직결
+* auto select = 위 두개 중에 자동선택
 
 커널과 하드웨어 호환 미리 살피기
 ```
@@ -149,6 +131,21 @@ supports-register-dump: no
 supports-priv-flags: no
 ```
 * kvm-vmi에서 완벽하게 구성해놓은 v7 기준으로는 5.4 커널이 빌드될텐데 내 네트워크 칩셋이 너무 최신이라 드라이버 미존재. dkms 백포트 빌드를 해야 하는데 무선 랜선은 복잡함. 따라서 유선랜선 Realtek Killer E3000 (10ec:3000)을 위한 r8125 드라이버를 미리 준비. 
+
+
+드라이버 두개 다 미체크에 optimus 버전
+```
+$ lspci -nnk | grep -A3 -Ei 'vga|3d|display'
+00:02.0 VGA compatible controller [0300]: Intel Corporation Raptor Lake-S UHD Graphics [8086:a788] (rev 04)
+	Subsystem: Acer Incorporated [ALI] Raptor Lake-S UHD Graphics [1025:1731]
+	Kernel driver in use: i915
+	Kernel modules: i915, xe
+--
+01:00.0 VGA compatible controller [0300]: NVIDIA Corporation AD107M [GeForce RTX 4060 Max-Q / Mobile] [10de:28e0] (rev a1)
+	Subsystem: Acer Incorporated [ALI] AD107M [GeForce RTX 4060 Max-Q / Mobile] [1025:1731]
+	Kernel driver in use: nouveau
+	Kernel modules: nvidiafb, nouveau
+```
 
 iommu 키기
 ```

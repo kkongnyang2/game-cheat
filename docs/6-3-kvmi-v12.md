@@ -134,3 +134,31 @@ VMD controller 끄기
 부팅 중 F2로 바이오스 들어가서 advanced에서 main에서 ctrl+s 누르면 히든메뉴 나옴.
 거기서 VMD controller를 끄면 NVMe가 직접 노출되고, 커널도 NVMe를 바로 보고 부팅된다.
 ```
+
+
+### qemu 설치
+```
+sudo apt-get install -y libpixman-1-dev pkg-config zlib1g-dev \
+  libglib2.0-dev dh-autoreconf libspice-server-dev
+
+cd ~/kvm-vmi/qemu
+git checkout kvmi-v12
+./configure --target-list=x86_64-softmmu --enable-spice --prefix=/usr/local
+make -j"$(nproc)"
+sudo make install    # /usr/local/bin/qemu-system-x86_64
+```
+
+### libkvmi 설치
+```
+cd ~/kvm-vmi/libkvmi
+./bootstrap && ./configure
+make -j"$(nproc)"
+sudo make install
+sudo ldconfig
+```
+
+
+./hookguest-libkvmi /tmp/introspector
+다른 쉘에서 virsh start win11-2
+
+> ⚠️ v12는 아직 실험 단계라고 함. hookguest가 qemu/kvm의 kvmi abi와 서로 다른 버전이라 api 호출에서 뻗게 됨.
