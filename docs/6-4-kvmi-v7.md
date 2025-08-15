@@ -1,6 +1,6 @@
-## 패스스루 VM을 만들자
+## KVMI 방식으로 vmi를 구현해보자
 
-작성자: kkongnyang2 작성일: 2025-08-08
+작성자: kkongnyang2 작성일: 2025-08-12
 
 ---
 
@@ -131,21 +131,6 @@ supports-register-dump: no
 supports-priv-flags: no
 ```
 * kvm-vmi에서 완벽하게 구성해놓은 v7 기준으로는 5.4 커널이 빌드될텐데 내 네트워크 칩셋이 너무 최신이라 드라이버 미존재. dkms 백포트 빌드를 해야 하는데 무선 랜선은 복잡함. 따라서 유선랜선 Realtek Killer E3000 (10ec:3000)을 위한 r8125 드라이버를 미리 준비. 
-
-
-드라이버 두개 다 미체크에 optimus 버전
-```
-$ lspci -nnk | grep -A3 -Ei 'vga|3d|display'
-00:02.0 VGA compatible controller [0300]: Intel Corporation Raptor Lake-S UHD Graphics [8086:a788] (rev 04)
-	Subsystem: Acer Incorporated [ALI] Raptor Lake-S UHD Graphics [1025:1731]
-	Kernel driver in use: i915
-	Kernel modules: i915, xe
---
-01:00.0 VGA compatible controller [0300]: NVIDIA Corporation AD107M [GeForce RTX 4060 Max-Q / Mobile] [10de:28e0] (rev a1)
-	Subsystem: Acer Incorporated [ALI] AD107M [GeForce RTX 4060 Max-Q / Mobile] [1025:1731]
-	Kernel driver in use: nouveau
-	Kernel modules: nvidiafb, nouveau
-```
 
 iommu 키기
 ```
@@ -345,71 +330,4 @@ lspci -nnk -d 10ec:3000                    # Kernel driver in use: r8125
 sudo ethtool -i $(ip -o -4 route show default | awk '{print $5}')
 ```
 
-
-필수 패키지 설치
-```
-$ sudo apt update
-$ sudo apt install -y \
-  qemu-system-x86 qemu-utils \
-  libvirt-daemon-system libvirt-clients virt-manager \
-  ovmf swtpm virtiofsd \
-  bridge-utils dnsmasq
-```
-
-서비스 기동/권한
-```
-$ sudo systemctl enable --now libvirtd
-$ sudo usermod -aG libvirt,kvm $USER    # 현재 사용자를 libvirt, kvm 그룹에 추가해 root 없이 접근. 나중에 해제하려면 sudo gpasswd -d <USER> <GROUP>
-$ sudo reboot
-```
-
-### dpgu 주소 및 그룹 정보
-
-PCI 주소와 ID 확인
-```
-$ lspci -nn | grep -i -e vga -e audio   # gpu에 audio 장치가 딸려 있는 경우가 많기 때문에 같이 ID 같이 찾음
-0000:00:02.0 VGA compatible controller [0300]: Intel Corporation Device [8086:a788] (rev 04)
-0000:00:1f.3 Multimedia audio controller [0401]: Intel Corporation Device [8086:7a50] (rev 11)
-0000:01:00.0 VGA compatible controller [0300]: NVIDIA Corporation Device [10de:28e0] (rev a1)
-0000:01:00.1 Audio device [0403]: NVIDIA Corporation Device [10de:22be] (rev a1)
-```
-* PCI 주소? 버스 슬롯 어디에 꽂혀 있나
-* 벤더:디바이스 ID? 제조사+모델 코드로 무슨 장치인가
-VGA : PCI 주소 01:00.0에 ID 10de:28e0
-Audio : PCI 주소 01:00.1에 ID 10de:22be
-이게 그룹이 맞는지 iommu_groups을 확인해보자
-
-Iommu_groups 확인
-```
-$ for g in /sys/kernel/iommu_groups/*; do
-  echo "Group $(basename $g):"; ls -l $g/devices; echo; done
-Group 15:
-total 0
-lrwxrwxrwx 1 root root 0  8월  8 16:22 0000:01:00.0 -> ../../../../devices/pci0000:00/0000:00:01.0/0000:01:00.0
-lrwxrwxrwx 1 root root 0  8월  8 16:22 0000:01:00.1 -> ../../../../devices/pci0000:00/0000:00:01.0/0000:01:00.1
-```
-따라서 둘은 15번 그룹이 맞고 이거 두개만 넘기면 됨
-
-### vm 생성
-
-iso 다운로드
-```
-https://www.microsoft.com/software-download/windows11 들어가 영어(미국) 64비트 다운로드. Win11_24H2_English_x64.iso. 윈도우 설치를 위한 DVD 역할.
-```
-
-vm 생성
-```
-$ virt-manager
-새 vm 만들기
-local install media - browse - downloads에 있는 Win11_24H2_English_x64.iso 선택. 윈도우 11.
-메모리 16000MB, cpu 10개
-저장소 활성화. 디스크 이미지 160.0GB. 이름 win11-2 (위치 /var/lib/libvirt/images/win11-2.qcow2)     # win11-2.qcow2 : 빈 하드디스크.
-custom 선택
-Overview에서 Q35, UEFI x86_64 : OVMF_CODE_4M.ms.fd 선택
-CPUs에서 host-passthruogh 체크 확인
-Add hardware - PCI Host Device - 0000:01:00:0과 0000:01:00:1 선택
-완료 후 hdmi 꽂아놓고 설치
-계정 입력 나오면 shift+f10 누르고 start ms-cxh:localonly. kkongnyang2에 암호 4108
-인터넷이 연결되어 있으면 윈도우 드라이버 업데이트까지 설치 과정 중에 해줌
-device manager 들어가 느낌표 없는지 확인(nvidia가 code43 안뜨는지)
-```
+> ⚠️ 텍스트 모드가 너무 불편해서 포기

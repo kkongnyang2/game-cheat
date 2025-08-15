@@ -1,4 +1,4 @@
-## KVMI를 설치하자
+## KVMI 방식으로 vmi를 구현해보자
 
 작성자: kkongnyang2 작성일: 2025-08-10
 
@@ -157,8 +157,35 @@ sudo make install
 sudo ldconfig
 ```
 
+### vm 생성
 
+iso 다운로드
+```
+https://www.microsoft.com/software-download/windows11 들어가 영어(미국) 64비트 다운로드. Win11_24H2_English_x64.iso. 윈도우 설치를 위한 DVD 역할.
+```
+
+vm 생성
+```
+$ virt-manager
+새 vm 만들기
+local install media - browse - downloads에 있는 Win11_24H2_English_x64.iso 선택. 윈도우 11.
+메모리 16000MB, cpu 10개
+저장소 활성화. 디스크 이미지 160.0GB. 이름 win11-2 (위치 /var/lib/libvirt/images/win11-2.qcow2)     # win11-2.qcow2 : 빈 하드디스크.
+custom 선택
+Overview에서 Q35, UEFI x86_64 : OVMF_CODE_4M.ms.fd 선택
+CPUs에서 host-passthruogh 체크 확인
+Add hardware - PCI Host Device - 0000:01:00:0과 0000:01:00:1 선택
+완료 후 hdmi 꽂아놓고 설치
+계정 입력 나오면 shift+f10 누르고 start ms-cxh:localonly. kkongnyang2에 암호 4108
+인터넷이 연결되어 있으면 윈도우 드라이버 업데이트까지 설치 과정 중에 해줌
+device manager 들어가 느낌표 없는지 확인(nvidia가 code43 안뜨는지)
+```
+
+
+### 실행
+```
 ./hookguest-libkvmi /tmp/introspector
 다른 쉘에서 virsh start win11-2
+```
 
 > ⚠️ v12는 아직 실험 단계라고 함. hookguest가 qemu/kvm의 kvmi abi와 서로 다른 버전이라 api 호출에서 뻗게 됨.

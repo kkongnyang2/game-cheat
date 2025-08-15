@@ -1,4 +1,4 @@
-## drakvuf sandbox 사용법
+## xen drakvuf sandbox 방식으로 vmi를 구현해보자
 
 작성자: kkongnyang2 작성일: 2025-08-08
 
@@ -259,4 +259,4 @@ drakrun install \
 ```
 
 
-> ⚠️ vm이 안만들어짐
+> ⚠️ vm이 안만들어짐.
