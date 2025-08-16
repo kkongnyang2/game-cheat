@@ -199,9 +199,4 @@ $ chmod +x ~/scripts/vm_readmem.py
 $ sudo ~/scripts/vm_readmem.py
 ```
 
-1. LibVMI가 VM에 attach → VCPU0 CR3 = 0x1aa000 ➜ 커널 DTB 확보
-2. JSON에서  'EPROCESS.DirectoryTableBase' 오프셋 = 0x28C 확인
-3. vmi_read_addr( KernelEPROCESS + 0x28C ) → 0x23e000 (System 프로세스 DTB)
-4. vmi_translate_kv2p(0xfffff600...)  ⟹ 물리 주소 계산 성공
-
 > ⚠️ conf를 못읽음. 이미 구버전이라 지원여부가 불분명하다고 함
