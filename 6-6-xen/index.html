@@ -1304,6 +1304,270 @@ p2p-dev-wlp0s20f3  wifi-p2p  disconnected                           --          
 vif = [ 'bridge=xenbr0,model=e1000,script=vif-bridge,mac=52:54:00:12:34:56' ]</p>
 <p>$ sudo xl create /etc/xen/win10-seabios-poweron.cfg<br />
 $ vncviewer 127.0.0.1:5900</p>
+<p>name = "win10-seabios"<br />
+type = "hvm"<br />
+memory = 4096<br />
+vcpus  = 2</p>
+<p>bios  = "seabios"<br />
+boot  = "c"</p>
+<p>device_model_version  = "qemu-xen"<br />
+device_model_override = "/usr/libexec/xen-qemu-system-i386"</p>
+<p>vga = "stdvga"<br />
+videoram = 32<br />
+graphics = "vnc"<br />
+vnc = 1<br />
+vncunused = 1<br />
+vnclisten = "127.0.0.1"</p>
+<p>vif = [ 'bridge=xenbr0,model=e1000,script=vif-bridge,mac=52:54:00:12:34:56' ]</p>
+<p>disk = [<br />
+  'format=qcow2,vdev=hda,access=rw,target=/var/lib/xen/images/win10.qcow2'<br />
+]</p>
+<p>pci = [<br />
+  '0000:01:00.0,permissive=1'<br />
+]</p>
+<p>복제로 변경</p>
+<p>sudo apt install -y \<br />
+  build-essential cmake pkg-config libtool check<br />
+sudo apt install -y \<br />
+  libglib2.0-dev libjson-c-dev libxen-dev xenstore-utils<br />
+sudo apt install -y \<br />
+  flex bison git python3-venv python3-pip</p>
+<p>git clone https://github.com/libvmi/libvmi.git<br />
+cd libvmi<br />
+mkdir build &amp;&amp; cd build</p>
+<p>cmake .. -DCMAKE_BUILD_TYPE=Release \<br />
+         -DENABLE_XEN=ON -DENABLE_KVM=OFF<br />
+make -j"$(nproc)"<br />
+sudo make install<br />
+sudo ldconfig</p>
+<p>설치가 끝나면 /usr/local/bin/ 아래에 vmi-* 예제가 깔림</p>
+<p>kkongnyang2@acer:~$ sudo tee /etc/libvmi.conf &gt;/dev/null &lt;&lt;'EOF'<br />
+win10-seabios {<br />
+    ostype = "Windows";<br />
+    # 도메인 이름으로 찾게 할지, domid로 박을지 중 택1<br />
+    domain = "win10-seabios";<br />
+    # 또는: domid = <xl list로 본 숫자>;</p>
+<div class="highlight"><pre><span></span><code># 아래 rekall_profile은 5단계에서 만들 JSON 경로로 바꿔 넣습니다.
+rekall_profile = &quot;/root/symbols/ntkrnlmp.json&quot;;
+</code></pre></div>
+<p>}<br />
+EOF<br />
+kkongnyang2@acer:~$ sudo vmi-dump-memory win10-seabios --memory 1 --pid 4 &gt;/dev/null 2&gt;&amp;1 || true<br />
+kkongnyang2@acer:~$ sudo vmi-win-guid name win10-seabios<br />
+Windows Kernel found @ 0x2c00000<br />
+    Version: 64-bit Windows 10<br />
+    PE GUID: f71f414a1046000<br />
+    PDB GUID: 89284d0ca6acc8274b9a44bd5af9290b1<br />
+    Kernel filename: ntkrnlmp.pdb<br />
+    Multi-processor without PAE<br />
+    Signature: 17744.<br />
+    Machine: 34404.<br />
+    # of sections: 33.<br />
+    # of symbols: 0.<br />
+    Timestamp: 4146020682.<br />
+    Characteristics: 34.<br />
+    Optional header size: 240.<br />
+    Optional header type: 0x20b<br />
+    Section 1: .rdata<br />
+    Section 2: .pdata<br />
+    Section 3: .idata<br />
+    Section 4: .edata<br />
+    Section 5: PROTDATA<br />
+    Section 6: GFIDS<br />
+    Section 7: Pad1<br />
+    Section 8: .text<br />
+    Section 9: PAGE<br />
+    Section 10: PAGELK<br />
+    Section 11: POOLCODE<br />
+    Section 12: PAGEKD<br />
+    Section 13: PAGEVRFY<br />
+    Section 14: PAGEHDLS<br />
+    Section 15: PAGEBGFX<br />
+    Section 16: INITKDBG<br />
+    Section 17: TRACESUP<br />
+    Section 18: KVASCODE<br />
+    Section 19: RETPOL<br />
+    Section 20: MINIEX<br />
+    Section 21: INIT<br />
+    Section 22: Pad2<br />
+    Section 23: .data<br />
+    Section 24: ALMOSTRO<br />
+    Section 25: CACHEALI<br />
+    Section 26: PAGEDATA<br />
+    Section 27: PAGEVRFD<br />
+    Section 28: INITDATA<br />
+    Section 29: Pad3<br />
+    Section 30: CFGRO<br />
+    Section 31: Pad4<br />
+    Section 32: .rsrc<br />
+    Section 33: .reloc</p>
+<p>kkongnyang2@acer:~$ python3 -m venv ~/vol3-venv<br />
+kkongnyang2@acer:~$ source ~/vol3-venv/bin/activate<br />
+(vol3-venv) kkongnyang2@acer:~$ pip install --upgrade pip<br />
+(vol3-venv) kkongnyang2@acer:~$ pip install volatility3</p>
+<p>$ python3 -m volatility3.framework.symbols.windows.pdbconv \<br />
+  -p ntkrnlmp.pdb \<br />
+  -g 89284d0ca6acc8274b9a44bd5af9290b1 \<br />
+  -o ntkrnlmp.json<br />
+deactivate</p>
+<p>kkongnyang2@acer:~$ sudo install -d -m 755 /root/symbols<br />
+[sudo] password for kkongnyang2: <br />
+kkongnyang2@acer:~$ sudo cp -i ~/ntkrnlmp.json /root/symobls/ntkrnlmp.json<br />
+cp: cannot create regular file '/root/symobls/ntkrnlmp.json': No such file or directory<br />
+kkongnyang2@acer:~$ sudo cp -i ~/ntkrnlmp.json /root/symbols/ntkrnlmp.json<br />
+kkongnyang2@acer:~$ sudo chown root:root /root/symbols/ntkrnlmp.json<br />
+kkongnyang2@acer:~$ sudo chmod 644 /root/symbols/ntkrnlmp.json</p>
+<p>kkongnyang2@acer:~$ sudo nano /etc/libvmi.conf<br />
+win10-seabios {<br />
+    volatility_ist = "/root/symbols/ntkrnlmp.json";<br />
+}</p>
+<p>kkongnyang2@acer:~$ sudo vmi-process-list win10-seabios<br />
+Process listing for VM win10-seabios (id=31)<br />
+[    4] System (struct addr:ffffd184a6891040)<br />
+[   92] Registry (struct addr:ffffd184a7a05040)<br />
+[  328] smss.exe (struct addr:ffffd184a7674040)<br />
+[  420] csrss.exe (struct addr:ffffd184ab7c5080)<br />
+[  496] wininit.exe (struct addr:ffffd184ab8f2080)<br />
+[  636] services.exe (struct addr:ffffd184ab949080)<br />
+[  652] lsass.exe (struct addr:ffffd184ab8ec080)<br />
+[  756] svchost.exe (struct addr:ffffd184ab9a9240)<br />
+[  764] fontdrvhost.ex (struct addr:ffffd184ab9aa300)<br />
+[  876] svchost.exe (struct addr:ffffd184ac64c2c0)<br />
+[  928] svchost.exe (struct addr:ffffd184ac653240)<br />
+[    8] svchost.exe (struct addr:ffffd184ac6ea2c0)<br />
+[  356] svchost.exe (struct addr:ffffd184ac6ec300)<br />
+[  368] svchost.exe (struct addr:ffffd184ac70e280)<br />
+[  372] svchost.exe (struct addr:ffffd184ac711300)<br />
+[ 1064] svchost.exe (struct addr:ffffd184ac77e300)<br />
+[ 1076] svchost.exe (struct addr:ffffd184ac784300)<br />
+[ 1160] svchost.exe (struct addr:ffffd184ac7c12c0)<br />
+[ 1228] svchost.exe (struct addr:ffffd184ac7c5300)<br />
+[ 1296] svchost.exe (struct addr:ffffd184ac7c4080)<br />
+[ 1328] svchost.exe (struct addr:ffffd184ac8262c0)<br />
+[ 1336] svchost.exe (struct addr:ffffd184ac8240c0)<br />
+[ 1356] svchost.exe (struct addr:ffffd184ac825080)<br />
+[ 1408] svchost.exe (struct addr:ffffd184ac827080)<br />
+[ 1428] svchost.exe (struct addr:ffffd184ac829300)<br />
+[ 1476] MemCompression (struct addr:ffffd184ac878080)<br />
+[ 1540] svchost.exe (struct addr:ffffd184ac8a5240)<br />
+[ 1584] svchost.exe (struct addr:ffffd184ac8eb2c0)<br />
+[ 1620] svchost.exe (struct addr:ffffd184ac94a280)<br />
+[ 1632] svchost.exe (struct addr:ffffd184ac94c2c0)<br />
+[ 1644] svchost.exe (struct addr:ffffd184ac94e2c0)<br />
+[ 1748] svchost.exe (struct addr:ffffd184ac9be2c0)<br />
+[ 1780] svchost.exe (struct addr:ffffd184ac9e1240)<br />
+[ 1900] svchost.exe (struct addr:ffffd184acaaf300)<br />
+[ 1908] svchost.exe (struct addr:ffffd184aca78080)<br />
+[ 1924] svchost.exe (struct addr:ffffd184acab3080)<br />
+[ 1108] svchost.exe (struct addr:ffffd184acaeb240)<br />
+[ 1440] svchost.exe (struct addr:ffffd184acb27240)<br />
+[ 2120] svchost.exe (struct addr:ffffd184acb7b300)<br />
+[ 2128] spoolsv.exe (struct addr:ffffd184acb730c0)<br />
+[ 2200] svchost.exe (struct addr:ffffd184acbe22c0)<br />
+[ 2268] svchost.exe (struct addr:ffffd184acc0a300)<br />
+[ 2500] svchost.exe (struct addr:ffffd184acccf240)<br />
+[ 2508] svchost.exe (struct addr:ffffd184accd2300)<br />
+[ 2516] svchost.exe (struct addr:ffffd184accd72c0)<br />
+[ 2536] svchost.exe (struct addr:ffffd184accd90c0)<br />
+[ 2604] svchost.exe (struct addr:ffffd184accab240)<br />
+[ 2616] svchost.exe (struct addr:ffffd184accae2c0)<br />
+[ 2636] svchost.exe (struct addr:ffffd184accb9280)<br />
+[ 2672] svchost.exe (struct addr:ffffd184acd51240)<br />
+[ 2680] MsMpEng.exe (struct addr:ffffd184acd53280)<br />
+[ 2764] svchost.exe (struct addr:ffffd184acdf5240)<br />
+[ 2828] svchost.exe (struct addr:ffffd184ace0a2c0)<br />
+[ 2928] svchost.exe (struct addr:ffffd184ace4d240)<br />
+[ 3548] NisSrv.exe (struct addr:ffffd184ad2b9300)<br />
+[ 3700] svchost.exe (struct addr:ffffd184ad4262c0)<br />
+[ 3944] MicrosoftEdgeU (struct addr:ffffd184ad49c080)<br />
+[ 3960] svchost.exe (struct addr:ffffd184ad49e080)<br />
+[ 4060] svchost.exe (struct addr:ffffd184ad4f9280)<br />
+[ 3216] svchost.exe (struct addr:ffffd184ad506240)<br />
+[ 3252] svchost.exe (struct addr:ffffd184ad5f32c0)<br />
+[ 4324] svchost.exe (struct addr:ffffd184ad674300)<br />
+[ 5236] svchost.exe (struct addr:ffffd184ad7d9080)<br />
+[ 5244] svchost.exe (struct addr:ffffd184adeed340)<br />
+[ 5304] svchost.exe (struct addr:ffffd184add0f080)<br />
+[ 5520] svchost.exe (struct addr:ffffd184add0d080)<br />
+[ 6264] svchost.exe (struct addr:ffffd184adca3080)<br />
+[ 6328] SearchIndexer. (struct addr:ffffd184ade9c240)<br />
+[ 6816] svchost.exe (struct addr:ffffd184ae2f4340)<br />
+[ 6856] svchost.exe (struct addr:ffffd184ae30b340)<br />
+[ 6972] svchost.exe (struct addr:ffffd184ae26d080)<br />
+[ 7036] svchost.exe (struct addr:ffffd184ae2eb240)<br />
+[ 4868] svchost.exe (struct addr:ffffd184ae5662c0)<br />
+[ 7316] SecurityHealth (struct addr:ffffd184ae673280)<br />
+[ 7720] svchost.exe (struct addr:ffffd184aeea30c0)<br />
+[ 8444] msedge.exe (struct addr:ffffd184ae6240c0)<br />
+[ 8452] msedge.exe (struct addr:ffffd184aed4b080)<br />
+[ 8460] msedge.exe (struct addr:ffffd184aed63080)<br />
+[ 8768] msedge.exe (struct addr:ffffd184aeecc080)<br />
+[ 5836] msedge.exe (struct addr:ffffd184aee76080)<br />
+[ 3316] svchost.exe (struct addr:ffffd184ae2750c0)<br />
+[ 5624] svchost.exe (struct addr:ffffd184ae9f3080)<br />
+[ 8020] SgrmBroker.exe (struct addr:ffffd184af165080)<br />
+[ 5868] svchost.exe (struct addr:ffffd184af169080)<br />
+[ 8704] csrss.exe (struct addr:ffffd184aed8f080)<br />
+[ 3220] winlogon.exe (struct addr:ffffd184af02a080)<br />
+[ 8608] LogonUI.exe (struct addr:ffffd184af079300)<br />
+[ 3616] dwm.exe (struct addr:ffffd184adca9300)<br />
+[ 3264] fontdrvhost.ex (struct addr:ffffd184ae25a300)<br />
+[ 2808] svchost.exe (struct addr:ffffd184ae6d0080)<br />
+[ 6132] sihost.exe (struct addr:ffffd184ad9f1080)<br />
+[ 6304] svchost.exe (struct addr:ffffd184ad1b9340)<br />
+[ 3736] svchost.exe (struct addr:ffffd184ae664080)<br />
+[ 4396] taskhostw.exe (struct addr:ffffd184adef0080)<br />
+[ 4696] userinit.exe (struct addr:ffffd184ae058080)<br />
+[ 2584] explorer.exe (struct addr:ffffd184ae65c080)<br />
+[ 8320] svchost.exe (struct addr:ffffd184ad7a2080)<br />
+[ 6204] StartMenuExper (struct addr:ffffd184ae659080)<br />
+[ 7620] RuntimeBroker. (struct addr:ffffd184ad425080)<br />
+[ 6032] SearchApp.exe (struct addr:ffffd184aece9340)<br />
+[ 6660] RuntimeBroker. (struct addr:ffffd184ab92a080)<br />
+[ 7764] ctfmon.exe (struct addr:ffffd184ae2e2080)<br />
+[ 8012] SkypeApp.exe (struct addr:ffffd184ae5cf080)<br />
+[ 7908] SkypeBackgroun (struct addr:ffffd184ae671080)<br />
+[ 4764] LockApp.exe (struct addr:ffffd184adf3e340)<br />
+[ 5744] RuntimeBroker. (struct addr:ffffd184aefd5340)<br />
+[ 3300] RuntimeBroker. (struct addr:ffffd184ae654080)<br />
+[ 4284] RuntimeBroker. (struct addr:ffffd184ac82f080)<br />
+[ 3884] SecurityHealth (struct addr:ffffd184acf54080)<br />
+[ 9060] OneDrive.exe (struct addr:ffffd184ad634300)<br />
+[ 7884] TextInputHost. (struct addr:ffffd184aef68300)<br />
+[ 6100] dllhost.exe (struct addr:ffffd184ae49e080)<br />
+[ 7968] ApplicationFra (struct addr:ffffd184ae37e080)<br />
+[ 7452] msedge.exe (struct addr:ffffd184aecd2080)<br />
+[ 9140] msedge.exe (struct addr:ffffd184aed83080)<br />
+[ 8828] svchost.exe (struct addr:ffffd184add0e080)<br />
+[ 7380] NVDisplay.Cont (struct addr:ffffd184ad9ef080)<br />
+[ 9056] dbInstaller.ex (struct addr:ffffd184aed9a080)<br />
+[ 2712] NVDisplay.Cont (struct addr:ffffd184ac3cb100)<br />
+[ 7784] dllhost.exe (struct addr:ffffd184aedab080)<br />
+[ 8576] msedge.exe (struct addr:ffffd184aea9a080)<br />
+[ 2740] msedge.exe (struct addr:ffffd184aeaa7080)<br />
+[ 9084] msedge.exe (struct addr:ffffd184b04130c0)<br />
+[ 3088] msedge.exe (struct addr:ffffd184b04350c0)<br />
+[ 6472] notepad.exe (struct addr:ffffd184adb04080)<br />
+[ 3840] svchost.exe (struct addr:ffffd184ad7b3080)<br />
+[  568] svchost.exe (struct addr:ffffd184b04d6340)<br />
+[ 4744] SystemSettings (struct addr:ffffd184ad7a6080)<br />
+[ 7744] MoUsoCoreWorke (struct addr:ffffd184ad9f0080)<br />
+[ 7112] UserOOBEBroker (struct addr:ffffd184ac69f080)<br />
+[ 6216] msedge.exe (struct addr:ffffd184ad54f080)<br />
+[ 3772] msedge.exe (struct addr:ffffd184ae31e300)<br />
+[ 3580] smartscreen.ex (struct addr:ffffd184aecc8280)<br />
+[ 2032] FileCoAuth.exe (struct addr:ffffd184aee84240)<br />
+[ 4584] msedge.exe (struct addr:ffffd184ac39a0c0)<br />
+[ 3784] msedge.exe (struct addr:ffffd184ae4850c0)<br />
+[ 4152] msedge.exe (struct addr:ffffd184ac3d8300)<br />
+[ 2704] msedge.exe (struct addr:ffffd184ae5e80c0)<br />
+[ 3912] msedge.exe (struct addr:ffffd184b004b0c0)<br />
+[ 4204] svchost.exe (struct addr:ffffd184affdb0c0)<br />
+[ 3748] msedge.exe (struct addr:ffffd184b0dda0c0)<br />
+[ 7292] msedge.exe (struct addr:ffffd184b0deb0c0)</p>
+<p>sudo mkdir -p /root/dumps<br />
+sudo vmi-dump-memory win10-seabios /root/dumps/win10-seabios.mem<br />
+$ sudo rm /root/dumps/win10-seabios.mem</p>
 <p>auto select와 optimus 차이<br />
 지금까지는 optimus는 백라이트 밝기 조절이 안되는거밖에 없음. 둘다 잘 부팅됨</p>
 
