@@ -309,7 +309,7 @@ sudo systemctl disable --now gdm3              # 그래픽 로그인 매니저 �
 # 나중에 GUI로 되돌릴 땐
 sudo systemctl set-default graphical.target && sudo systemctl enable --now gdm3
 ```
-* 5.4 커널이 Raptor Lake iGPU(i915)를 다룰 수 없어 gui 모드는 무리이다.
+* 5.4 커널이 Raptor Lake iGPU(i915)를 다룰 수 없어 gui 모드는 무리이다. 백보드로 가져오기엔..
 
 준비해둔 r8125 설치
 ```
