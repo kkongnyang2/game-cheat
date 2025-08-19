@@ -1,0 +1,1909 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../5-conclusion/">
+      
+      
+        <link rel="next" href="../6-1-CE-tutorial/">
+      
+      
+      <link rel="icon" href="../logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.17">
+    
+    
+      
+        <title>5 xen - Game-Cheat</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../soft-era.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="apple" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#xen-vmi" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Game-Cheat" class="md-header__button md-logo" aria-label="Game-Cheat" data-md-component="logo">
+      
+  <img src="../logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Game-Cheat
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              5 xen
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="apple" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Soft Era"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Soft Era" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.71 4.63-1.34-1.34c-.37-.39-1.02-.39-1.41 0L9 12.25 11.75 15l8.96-8.96c.39-.39.39-1.04 0-1.41M7 14a3 3 0 0 0-3 3c0 1.31-1.16 2-2 2 .92 1.22 2.5 2 4 2a4 4 0 0 0 4-4 3 3 0 0 0-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="soft" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Apple Classic"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Apple Classic" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.71 4.63-1.34-1.34c-.37-.39-1.02-.39-1.41 0L9 12.25 11.75 15l8.96-8.96c.39-.39.39-1.04 0-1.41M7 14a3 3 0 0 0-3 3c0 1.31-1.16 2-2 2 .92 1.22 2.5 2 4 2a4 4 0 0 0 4-4 3 3 0 0 0-3-3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../1-ow/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  1 ow
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../2-cheats/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  2 cheats
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../3-display/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  3 display
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../4-vmi/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  4 vmi
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../5-1-igpu/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  5 1 igpu
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../5-2-dgpu/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  5 2 dgpu
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../5-3-two-gpu/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  5 3 two gpu
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../5-4-kvm-legacy/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  5 4 kvm legacy
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../5-5-kvmi-v12/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  5 5 kvmi v12
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../5-6-kvmi-v7/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  5 6 kvmi v7
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../5-7-xen-drakvuf/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  5 7 xen drakvuf
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../5-8-xen-fail/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  5 8 xen fail
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../5-conclusion/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  5 conclusion
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  5 xen
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../6-1-CE-tutorial/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  6 1 CE tutorial
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../6-2-base-address/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  6 2 base address
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../7-main-thread/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  7 main thread
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../9-anti-cheat/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  9 anti cheat
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Game-Cheat" class="md-nav__button md-logo" aria-label="Game-Cheat" data-md-component="logo">
+      
+  <img src="../logo.svg" alt="logo">
+
+    </a>
+    Game-Cheat
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-ow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1 ow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-cheats/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2 cheats
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-display/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3 display
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-vmi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4 vmi
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-1-igpu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    5 1 igpu
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-2-dgpu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    5 2 dgpu
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-3-two-gpu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    5 3 two gpu
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-4-kvm-legacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    5 4 kvm legacy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-5-kvmi-v12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    5 5 kvmi v12
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-6-kvmi-v7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    5 6 kvmi v7
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-7-xen-drakvuf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    5 7 xen drakvuf
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-8-xen-fail/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    5 8 xen fail
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-conclusion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    5 conclusion
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    5 xen
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    5 xen
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#xen-vmi" class="md-nav__link">
+    <span class="md-ellipsis">
+      xen 방식으로 vmi를 구현해보자
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="xen 방식으로 vmi를 구현해보자">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      이번 세팅
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xen-ubuntu" class="md-nav__link">
+    <span class="md-ellipsis">
+      xen ubuntu 만들기
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pciback" class="md-nav__link">
+    <span class="md-ellipsis">
+      pciback 활성화
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      vm 생성
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      네트워크 연결
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dgpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      dgpu 패스스루
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#libvmi" class="md-nav__link">
+    <span class="md-ellipsis">
+      libvmi 설치
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#volatility" class="md-nav__link">
+    <span class="md-ellipsis">
+      volatility 프로파일 연결
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      해석 확인
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      연습
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      가상환경이란
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      실전
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-1-CE-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    6 1 CE tutorial
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-2-base-address/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    6 2 base address
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-main-thread/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    7 main thread
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-anti-cheat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    9 anti cheat
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#xen-vmi" class="md-nav__link">
+    <span class="md-ellipsis">
+      xen 방식으로 vmi를 구현해보자
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="xen 방식으로 vmi를 구현해보자">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      이번 세팅
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xen-ubuntu" class="md-nav__link">
+    <span class="md-ellipsis">
+      xen ubuntu 만들기
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pciback" class="md-nav__link">
+    <span class="md-ellipsis">
+      pciback 활성화
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      vm 생성
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      네트워크 연결
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dgpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      dgpu 패스스루
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#libvmi" class="md-nav__link">
+    <span class="md-ellipsis">
+      libvmi 설치
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#volatility" class="md-nav__link">
+    <span class="md-ellipsis">
+      volatility 프로파일 연결
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      해석 확인
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      연습
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      가상환경이란
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      실전
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>5 xen</h1>
+
+<h2 id="xen-vmi">xen 방식으로 vmi를 구현해보자</h2>
+<p>작성자: kkongnyang2 작성일: 2025-08-17</p>
+<hr />
+<h3 id="_1">이번 세팅</h3>
+<p>bios 설정<br />
+<div class="highlight"><pre><span></span><code>VT-x, VT-d 켜기
+Secure boot 끄기(서명 문제 회피에 유리. 바로 안꺼지면 바이오스 비번 설정한 후 끈 후 비번 다시 없애면 됨)
+vmd controller 끄기(advanced-main에서 ctrl+s 눌러 히든옵션 띄우면 됨)
+display mode : auto select
+</code></pre></div><br />
+* optimus = igpu 직결, dgpu 도움<br />
+* dgpu only = dgpu 직결<br />
+* auto select = nvidia 드라이버가 mux를 조정해 위 두개 중에 자동선택</p>
+<p>설치 시 드라이버 두개 다 미체크<br />
+<div class="highlight"><pre><span></span><code>$ lspci -nnk | grep -A3 -Ei &#39;vga|3d|display|Audio&#39;
+00:02.0 VGA compatible controller [0300]: Intel Corporation Raptor Lake-S UHD Graphics [8086:a788] (rev 04)
+    Subsystem: Acer Incorporated [ALI] Raptor Lake-S UHD Graphics [1025:1731]
+    Kernel driver in use: i915
+    Kernel modules: i915, xe
+--
+00:1f.3 Multimedia audio controller [0401]: Intel Corporation Raptor Lake High Definition Audio Controller [8086:7a50] (rev 11)
+    Subsystem: Acer Incorporated [ALI] Device [1025:1731]
+    Kernel driver in use: sof-audio-pci-intel-tgl
+    Kernel modules: snd_hda_intel, snd_soc_avs, snd_sof_pci_intel_tgl
+00:1f.4 SMBus [0c05]: Intel Corporation Raptor Lake-S PCH SMBus Controller [8086:7a23] (rev 11)
+    Subsystem: Acer Incorporated [ALI] Device [1025:1731]
+--
+01:00.0 VGA compatible controller [0300]: NVIDIA Corporation AD107M [GeForce RTX 4060 Max-Q / Mobile] [10de:28e0] (rev a1)
+    Subsystem: Acer Incorporated [ALI] AD107M [GeForce RTX 4060 Max-Q / Mobile] [1025:1731]
+    Kernel driver in use: nouveau
+    Kernel modules: nvidiafb, nouveau
+01:00.1 Audio device [0403]: NVIDIA Corporation Device [10de:22be] (rev a1)
+    Subsystem: Acer Incorporated [ALI] Device [1025:1731]
+    Kernel driver in use: snd_hda_intel
+    Kernel modules: snd_hda_intel
+</code></pre></div></p>
+<h3 id="xen-ubuntu">xen ubuntu 만들기</h3>
+<p>xen 설치 및 dpgu 하이딩<br />
+<div class="highlight"><pre><span></span><code>sudo apt install -y xen-system-amd64 ovmf qemu-system-x86
+
+echo &#39;GRUB_CMDLINE_XEN=&quot;iommu=1 iommu=verbose dom0_mem=4096M,max:4096M&quot;&#39; | sudo tee /etc/default/grub.d/xen.cfg
+
+echo &#39;GRUB_CMDLINE_LINUX_XEN_REPLACE=&quot;xen-pciback.hide=(01:00.0)(01:00.1) modprobe.blacklist=nvidia,nvidia_drm,nvidia_modeset,nouveau&quot;&#39; \
+| sudo tee -a /etc/default/grub.d/xen.cfg
+
+sudo update-grub
+</code></pre></div></p>
+<p>xen ubuntu로 들어가기<br />
+<div class="highlight"><pre><span></span><code>$ sudo xl info | head
+host                   : acer
+release                : 6.14.0-27-generic
+version                : #27~24.04.1-Ubuntu SMP PREEMPT_DYNAMIC Tue Jul 22 17:38:49 UTC 2
+machine                : x86_64
+nr_cpus                : 20
+max_cpu_id             : 19
+nr_nodes               : 1
+cores_per_socket       : 10
+threads_per_core       : 2
+cpu_mhz                : 2803.195
+
+$ sudo xl list
+Name                                        ID   Mem VCPUs  State   Time(s)
+Domain-0                                     0  4096    20     r-----     415.7
+
+$ cat /sys/hypervisor/type
+xen
+</code></pre></div></p>
+<h3 id="pciback">pciback 활성화</h3>
+<p>pciback 모듈 활성화<br />
+<div class="highlight"><pre><span></span><code>$ lsmod | grep xen_pciback || sudo modprobe xen_pciback
+$ lspci -nnk | grep -A3 -Ei &#39;vga|3d|display|Audio&#39;
+00:02.0 VGA compatible controller [0300]: Intel Corporation Raptor Lake-S UHD Graphics [8086:a788] (rev 04)
+    Subsystem: Acer Incorporated [ALI] Raptor Lake-S UHD Graphics [1025:1731]
+    Kernel driver in use: i915
+    Kernel modules: i915, xe
+--
+00:1f.3 Multimedia audio controller [0401]: Intel Corporation Raptor Lake High Definition Audio Controller [8086:7a50] (rev 11)
+    Subsystem: Acer Incorporated [ALI] Device [1025:1731]
+    Kernel driver in use: sof-audio-pci-intel-tgl
+    Kernel modules: snd_hda_intel, snd_soc_avs, snd_sof_pci_intel_tgl
+00:1f.4 SMBus [0c05]: Intel Corporation Raptor Lake-S PCH SMBus Controller [8086:7a23] (rev 11)
+    Subsystem: Acer Incorporated [ALI] Device [1025:1731]
+--
+01:00.0 VGA compatible controller [0300]: NVIDIA Corporation AD107M [GeForce RTX 4060 Max-Q / Mobile] [10de:28e0] (rev a1)
+    Subsystem: Acer Incorporated [ALI] AD107M [GeForce RTX 4060 Max-Q / Mobile] [1025:1731]
+    Kernel driver in use: pciback
+    Kernel modules: nvidiafb, nouveau
+01:00.1 Audio device [0403]: NVIDIA Corporation Device [10de:22be] (rev a1)
+    Subsystem: Acer Incorporated [ALI] Device [1025:1731]
+    Kernel driver in use: snd_hda_intel
+    Kernel modules: snd_hda_intel
+</code></pre></div><br />
+* 오디오 장치를 아직도 pciback이 아니다. 언바인드 후 바인드를 해주겠다.</p>
+<p>오디오 언바인드 후 바인드<br />
+<div class="highlight"><pre><span></span><code>$ DRVDIR=$(ls -d /sys/bus/pci/drivers/pciback /sys/bus/pci/drivers/xen-pciback 2&gt;/dev/null | head -n1)
+$ echo &quot;$DRVDIR&quot;
+/sys/bus/pci/drivers/pciback
+$ echo 0000:01:00.1 | sudo tee /sys/bus/pci/devices/0000:01:00.1/driver/unbind
+0000:01:00.1
+$ echo &quot;10de 22be&quot; | sudo tee &quot;$DRVDIR/new_id&quot;
+10de 22be
+tee: /sys/bus/pci/drivers/pciback/new_id: File exists
+$ echo 0000:01:00.1 | sudo tee &quot;$DRVDIR/bind&quot;
+0000:01:00.1
+$ lspci -nnk | grep -A3 -Ei &#39;vga|3d|display|Audio&#39;
+00:02.0 VGA compatible controller [0300]: Intel Corporation Raptor Lake-S UHD Graphics [8086:a788] (rev 04)
+    Subsystem: Acer Incorporated [ALI] Raptor Lake-S UHD Graphics [1025:1731]
+    Kernel driver in use: i915
+    Kernel modules: i915, xe
+--
+00:1f.3 Multimedia audio controller [0401]: Intel Corporation Raptor Lake High Definition Audio Controller [8086:7a50] (rev 11)
+    Subsystem: Acer Incorporated [ALI] Device [1025:1731]
+    Kernel driver in use: sof-audio-pci-intel-tgl
+    Kernel modules: snd_hda_intel, snd_soc_avs, snd_sof_pci_intel_tgl
+00:1f.4 SMBus [0c05]: Intel Corporation Raptor Lake-S PCH SMBus Controller [8086:7a23] (rev 11)
+    Subsystem: Acer Incorporated [ALI] Device [1025:1731]
+--
+01:00.0 VGA compatible controller [0300]: NVIDIA Corporation AD107M [GeForce RTX 4060 Max-Q / Mobile] [10de:28e0] (rev a1)
+    Subsystem: Acer Incorporated [ALI] AD107M [GeForce RTX 4060 Max-Q / Mobile] [1025:1731]
+    Kernel driver in use: pciback
+    Kernel modules: nvidiafb, nouveau
+01:00.1 Audio device [0403]: NVIDIA Corporation Device [10de:22be] (rev a1)
+    Subsystem: Acer Incorporated [ALI] Device [1025:1731]
+    Kernel driver in use: pciback
+    Kernel modules: snd_hda_intel
+$ sudo xl pci-assignable-list
+0000:01:00.0 
+0000:01:00.1 
+</code></pre></div></p>
+<h3 id="vm">vm 생성</h3>
+<p>vm 윈도우10 생성<br />
+<div class="highlight"><pre><span></span><code>https://www.microsoft.com/ko-kr/software-download/windows10 들어가 영어(미국) 64비트 다운로드.
+
+$ sudo install -d -o root -g root -m 755 /var/lib/xen/images
+$ sudo install -d -o root -g root -m 755 /var/lib/xen/iso
+
+$ sudo qemu-img create -f qcow2 /var/lib/xen/images/win10.qcow2 60G
+Formatting &#39;/var/lib/xen/images/win10.qcow2&#39;, fmt=qcow2 cluster_size=65536 extended_l2=off compression_type=zlib size=64424509440 lazy_refcounts=off refcount_bits=16
+$ sudo mv ~/Downloads/Win10_22H2_English_x64v1.iso /var/lib/xen/iso/Win10.iso
+
+$ sudo chown root:root /var/lib/xen/iso/Win10.iso /var/lib/xen/images/win10.qcow2
+$ sudo chmod 644 /var/lib/xen/iso/Win10.iso
+$ sudo chmod 644 /var/lib/xen/images/win10.qcow2
+$ sudo chmod 755 /var/lib/xen /var/lib/xen/iso /var/lib/xen/images
+
+$ sudo nano /etc/xen/win10-seabios.cfg
+name = &quot;win10-seabios&quot;
+type = &quot;hvm&quot;
+memory = 4096
+vcpus  = 2
+
+bios  = &quot;seabios&quot;
+boot  = &quot;dc&quot;
+
+device_model_version  = &quot;qemu-xen&quot;
+device_model_override = &quot;/usr/libexec/xen-qemu-system-i386&quot;
+
+vga = &quot;stdvga&quot;
+videoram = 32
+graphics = &quot;vnc&quot;
+vnc = 1
+vncunused = 1
+vnclisten = &quot;127.0.0.1&quot;
+
+vif = []
+
+disk = [
+  &#39;format=qcow2,vdev=hda,access=rw,target=/var/lib/xen/images/win10.qcow2&#39;,
+  &#39;format=raw,vdev=hdc,devtype=cdrom,access=ro,target=/var/lib/xen/iso/Win10.iso&#39;
+]
+
+$ sudo xl -vvv create /etc/xen/win10-seabios.cfg
+$ sudo xl list
+Name                                        ID   Mem VCPUs  State   Time(s)
+Domain-0                                     0  4096    20     r-----    6300.0
+win10-seabios                               22  4096     1     r-----       4.3
+
+$ sudo apt install -y tigervnc-viewer
+$ vncviewer 127.0.0.1:5900          # 혹은 sudo xl vncviwer win10-seabios
+                                    # 포트 = 5900 + vncdisplay
+화면 보면서 윈도우 설치 완료
+</code></pre></div></p>
+<h3 id="_2">네트워크 연결</h3>
+<p>wifi 브릿지 만들기<br />
+<div class="highlight"><pre><span></span><code>$ ip -br link
+lo               UNKNOWN        00:00:00:00:00:00 &lt;LOOPBACK,UP,LOWER_UP&gt; 
+enp68s0          UP             38:a7:46:0f:3b:be &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; 
+wlp0s20f3        UP             2c:7b:a0:8d:53:ba &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; 
+
+$ sudo nmcli connection add type bridge ifname xenbr0 con-name xenbr0
+Connection &#39;xenbr0&#39; (73ed640e-e780-434e-ac81-454bbb63a13f) successfully added.
+
+$ sudo nmcli con mod xenbr0 ipv4.method auto ipv6.method ignore bridge.stp no bridge.forward-delay 0
+
+$ sudo nmcli connection add type bridge-slave ifname enp68s0 master xenbr0
+Connection &#39;bridge-slave-enp68s0&#39; (3b3f8c28-d977-4851-9e61-f94cdb2d323e) successfully added.
+
+$ sudo nmcli connection down &quot;$(nmcli -t -f NAME,TYPE c show --active | awk -F: &#39;$2==&quot;ethernet&quot;{print $1; exit}&#39;)&quot; 2&gt;/dev/null || true
+
+$ sudo nmcli device disconnect enp68s0
+Device &#39;enp68s0&#39; successfully disconnected.
+
+$ sudo nmcli con up bridge-slave-enp68s0
+Connection successfully activated (D-Bus active path: /org/freedesktop/NetworkManager/ActiveConnection/18)
+
+$ sudo nmcli con up xenbr0
+Connection successfully activated (master waiting for slaves) (D-Bus active path: /org/freedesktop/NetworkManager/ActiveConnection/19)
+
+$ nmcli device status
+DEVICE             TYPE      STATE                                  CONNECTION           
+xenbr0             bridge    connected                              xenbr0               
+wlp0s20f3          wifi      connected                              KT_GiGA_5G_1D39      
+enp68s0            ethernet  connected                              bridge-slave-enp68s0 
+xenbr-nat          bridge    connecting (getting IP configuration)  xenbr-na             
+lo                 loopback  connected (externally)                 lo                   
+p2p-dev-wlp0s20f3  wifi-p2p  disconnected                           --                   
+</code></pre></div></p>
+<p>wifi 추가<br />
+<div class="highlight"><pre><span></span><code>$ sudo nano /etc/xen/win10-seabios-poweron.cfg      
+name = &quot;win10-seabios&quot;
+type = &quot;hvm&quot;
+memory = 4096
+vcpus  = 2
+
+bios  = &quot;seabios&quot;
+boot  = &quot;c&quot;
+
+device_model_version  = &quot;qemu-xen&quot;
+device_model_override = &quot;/usr/libexec/xen-qemu-system-i386&quot;
+
+vga = &quot;stdvga&quot;
+videoram = 32
+graphics = &quot;vnc&quot;
+vnc = 1
+vncunused = 1
+vnclisten = &quot;127.0.0.1&quot;
+
+vif = [ &#39;bridge=xenbr0,model=e1000,script=vif-bridge,mac=52:54:00:12:34:56&#39; ]
+
+disk = [
+  &#39;format=qcow2,vdev=hda,access=rw,target=/var/lib/xen/images/win10.qcow2&#39;
+]
+
+
+$ sudo xl create /etc/xen/win10-seabios-poweron.cfg
+$ vncviewer 127.0.0.1:5900
+</code></pre></div></p>
+<h3 id="dgpu">dgpu 패스스루</h3>
+<p>dgpu 패스스루 추가<br />
+<div class="highlight"><pre><span></span><code>$ sudo nano /etc/xen/win10-all.cfg 
+name = &quot;win10-seabios&quot;
+type = &quot;hvm&quot;
+memory = 4096
+vcpus  = 2
+
+bios  = &quot;seabios&quot;
+boot  = &quot;c&quot;
+
+device_model_version  = &quot;qemu-xen&quot;
+device_model_override = &quot;/usr/libexec/xen-qemu-system-i386&quot;
+
+vga = &quot;stdvga&quot;
+videoram = 32
+graphics = &quot;vnc&quot;
+vnc = 1
+vncunused = 1
+vnclisten = &quot;127.0.0.1&quot;
+
+vif = [ &#39;bridge=xenbr0,model=e1000,script=vif-bridge,mac=52:54:00:12:34:56&#39; ]
+
+disk = [
+  &#39;format=qcow2,vdev=hda,access=rw,target=/var/lib/xen/images/win10.qcow2&#39;
+]
+
+pci = [
+  &#39;0000:01:00.0,permissive=1&#39;
+]
+
+$ sudo xl create /etc/xen/win10-all.cfg
+$ vncviewer 127.0.0.1:5900
+
+hdmi에 외부 모니터 연결해서 뜨면 디스플레이 복제로 변경
+</code></pre></div></p>
+<h3 id="libvmi">libvmi 설치</h3>
+<p>libvmi 설치<br />
+<div class="highlight"><pre><span></span><code>$ sudo apt install -y \
+  build-essential cmake pkg-config libtool check
+$ sudo apt install -y \
+  libglib2.0-dev libjson-c-dev libxen-dev xenstore-utils
+$ sudo apt install -y \
+  flex bison git python3-venv python3-pip
+
+$ git clone https://github.com/libvmi/libvmi.git
+cd libvmi
+mkdir build &amp;&amp; cd build
+
+$ cmake .. -DCMAKE_BUILD_TYPE=Release \
+         -DENABLE_XEN=ON -DENABLE_KVM=OFF
+$ make -j&quot;$(nproc)&quot;
+$ sudo make install
+$ sudo ldconfig
+</code></pre></div><br />
+* 설치가 끝나면 /usr/local/bin/ 아래에 vmi-* 예제가 깔림</p>
+<p>guid 알아내기<br />
+<div class="highlight"><pre><span></span><code>$ sudo vmi-win-guid name win10-seabios
+Windows Kernel found @ 0x2c00000
+    Version: 64-bit Windows 10
+    PE GUID: f71f414a1046000
+    PDB GUID: 89284d0ca6acc8274b9a44bd5af9290b1
+    Kernel filename: ntkrnlmp.pdb
+    Multi-processor without PAE
+    Signature: 17744.
+    Machine: 34404.
+    # of sections: 33.
+    # of symbols: 0.
+    Timestamp: 4146020682.
+    Characteristics: 34.
+    Optional header size: 240.
+    Optional header type: 0x20b
+    Section 1: .rdata
+    Section 2: .pdata
+    Section 3: .idata
+    Section 4: .edata
+    Section 5: PROTDATA
+    Section 6: GFIDS
+    Section 7: Pad1
+    Section 8: .text
+    Section 9: PAGE
+    Section 10: PAGELK
+    Section 11: POOLCODE
+    Section 12: PAGEKD
+    Section 13: PAGEVRFY
+    Section 14: PAGEHDLS
+    Section 15: PAGEBGFX
+    Section 16: INITKDBG
+    Section 17: TRACESUP
+    Section 18: KVASCODE
+    Section 19: RETPOL
+    Section 20: MINIEX
+    Section 21: INIT
+    Section 22: Pad2
+    Section 23: .data
+    Section 24: ALMOSTRO
+    Section 25: CACHEALI
+    Section 26: PAGEDATA
+    Section 27: PAGEVRFD
+    Section 28: INITDATA
+    Section 29: Pad3
+    Section 30: CFGRO
+    Section 31: Pad4
+    Section 32: .rsrc
+    Section 33: .reloc
+</code></pre></div></p>
+<h3 id="volatility">volatility 프로파일 연결</h3>
+<p>volatility 설치해 프로파일 만들기<br />
+<div class="highlight"><pre><span></span><code>$ python3 -m venv ~/vol3-venv
+$ source ~/vol3-venv/bin/activate
+(vol3-venv) $ pip install --upgrade pip
+(vol3-venv) $ pip install volatility3
+
+(vol3-venv) $ python3 -m volatility3.framework.symbols.windows.pdbconv \
+  -p ntkrnlmp.pdb \
+  -g 89284d0ca6acc8274b9a44bd5af9290b1 \
+  -o ntkrnlmp.json
+deactivate
+
+$ sudo install -d -m 755 /root/symbols
+$ sudo cp -i ~/ntkrnlmp.json /root/symbols/ntkrnlmp.json
+$ sudo chown root:root /root/symbols/ntkrnlmp.json
+$ sudo chmod 644 /root/symbols/ntkrnlmp.json
+
+$ sudo nano /etc/libvmi.conf
+win10-seabios {
+    volatility_ist = &quot;/root/symbols/ntkrnlmp.json&quot;;
+}
+</code></pre></div></p>
+<h3 id="_3">해석 확인</h3>
+<p>해석되는지 프로세스 뽑아보기<br />
+<div class="highlight"><pre><span></span><code>$ sudo vmi-process-list win10-seabios
+Process listing for VM win10-seabios (id=31)
+[    4] System (struct addr:ffffd184a6891040)
+[   92] Registry (struct addr:ffffd184a7a05040)
+[  328] smss.exe (struct addr:ffffd184a7674040)
+[  420] csrss.exe (struct addr:ffffd184ab7c5080)
+[  496] wininit.exe (struct addr:ffffd184ab8f2080)
+[  636] services.exe (struct addr:ffffd184ab949080)
+[  652] lsass.exe (struct addr:ffffd184ab8ec080)
+[  756] svchost.exe (struct addr:ffffd184ab9a9240)
+[  764] fontdrvhost.ex (struct addr:ffffd184ab9aa300)
+[  876] svchost.exe (struct addr:ffffd184ac64c2c0)
+[  928] svchost.exe (struct addr:ffffd184ac653240)
+[    8] svchost.exe (struct addr:ffffd184ac6ea2c0)
+[  356] svchost.exe (struct addr:ffffd184ac6ec300)
+[  368] svchost.exe (struct addr:ffffd184ac70e280)
+...
+[ 9084] msedge.exe (struct addr:ffffd184b04130c0)
+[ 3088] msedge.exe (struct addr:ffffd184b04350c0)
+[ 6472] notepad.exe (struct addr:ffffd184adb04080)
+[ 3840] svchost.exe (struct addr:ffffd184ad7b3080)
+[  568] svchost.exe (struct addr:ffffd184b04d6340)
+[ 4744] SystemSettings (struct addr:ffffd184ad7a6080)
+[ 7744] MoUsoCoreWorke (struct addr:ffffd184ad9f0080)
+[ 7112] UserOOBEBroker (struct addr:ffffd184ac69f080)
+[ 6216] msedge.exe (struct addr:ffffd184ad54f080)
+[ 3772] msedge.exe (struct addr:ffffd184ae31e300)
+[ 3580] smartscreen.ex (struct addr:ffffd184aecc8280)
+[ 2032] FileCoAuth.exe (struct addr:ffffd184aee84240)
+[ 4584] msedge.exe (struct addr:ffffd184ac39a0c0)
+[ 3784] msedge.exe (struct addr:ffffd184ae4850c0)
+[ 4152] msedge.exe (struct addr:ffffd184ac3d8300)
+[ 2704] msedge.exe (struct addr:ffffd184ae5e80c0)
+[ 3912] msedge.exe (struct addr:ffffd184b004b0c0)
+[ 4204] svchost.exe (struct addr:ffffd184affdb0c0)
+[ 3748] msedge.exe (struct addr:ffffd184b0dda0c0)
+[ 7292] msedge.exe (struct addr:ffffd184b0deb0c0)
+</code></pre></div></p>
+<h3 id="_4">연습</h3>
+<p>덤프 시도<br />
+<div class="highlight"><pre><span></span><code>$ sudo mkdir -p /root/dumps
+$ sudo install -d -m 755 /root/dumps
+$ sudo vmi-dump-memory win10-seabios /root/dumps/mem.bin
+$ sudo strings -el /root/dumps/mem.bin | grep -F &quot;##4729193##&quot;
+##4729193##5
+</code></pre></div></p>
+<p>파이썬 바인딩 설치<br />
+<div class="highlight"><pre><span></span><code># (섀도잉 방지) 홈의 C 소스 폴더 이름 변경
+[ -d ~/libvmi ] &amp;&amp; mv ~/libvmi ~/libvmi-src
+
+# 파이썬 바인딩 설치 (libvmi/python 공식)
+sudo apt -y install python3-pip python3-cffi python3-pkgconfig
+$ python3 -m venv ~/vmi-venv
+$ ~/vmi-venv/bin/pip install --upgrade pip
+$ ~/vmi-venv/bin/pip install &#39;libvmi@git+https://github.com/libvmi/python@v3.7.1&#39;
+
+$ ~/vmi-venv/bin/python3 - &lt;&lt;&#39;PY&#39;
+from libvmi import Libvmi
+import libvmi, inspect
+print(&quot;OK:&quot;, Libvmi)
+print(&quot;Loaded from:&quot;, getattr(libvmi, &quot;__file__&quot;, None))
+PY
+OK: &lt;class &#39;libvmi.libvmi.Libvmi&#39;&gt;
+Loaded from: /home/kkongnyang2/vmi-venv/lib/python3.12/site-packages/libvmi/__init__.py
+</code></pre></div></p>
+<p>주소찾기 시도<br />
+<div class="highlight"><pre><span></span><code>$ sudo nano ~/scan_utf16_in_proc.py
+$ sudo vmi-process-list win10-seabios | grep -i notepad
+[ 2380] notepad.exe (struct addr:ffffd184ad9f1080)
+$ PID=2380
+$ sudo chmod +x ~/scan_utf16_in_proc.py
+$ sudo /home/kkongnyang2/vmi-venv/bin/python3 ~/scan_utf16_in_proc.py win10-seabios $PID &quot;##4729193##5&quot; &gt; ~/hits1.txt
+</code></pre></div></p>
+<h3 id="_5">가상환경이란</h3>
+<p>왜 Volatility3는 venv(가상환경)로 설치했을까?</p>
+<p>Volatility3는 의존성이 많고 자주 바뀌는 툴이야. 이걸 시스템 파이썬(우분투가 내부에서 쓰는 파이썬)에 섞어 설치하면 apt로 관리되는 패키지와 버전 충돌이 나거나, /usr/lib/python3/dist-packages 같은 시스템 디렉터리를 오염시켜서 다른 시스템 도구(apt, Ansible, cloud-init 등)가 망가질 수 있어.<br />
+그래서 독립된 venv에 넣어두면 그 venv 안에서만 pip 패키지가 깔림 → 충돌/오염 방지, 원하는 버전으로 자유롭게 설치/업데이트 가능, 실험 끝나면 폴더만 지우면 깨끗하게 삭제</p>
+<p>즉 시스템 안정성 + 의존성 고립 때문에 Volatility3는 venv에 두는 게 안전한 “관례”야.</p>
+<p>파이썬 “환경/설치”가 어떻게 나뉘는지?</p>
+<p>우분투(24.04 기준)에는 보통 시스템 파이썬이 있어 (예: /usr/bin/python3).</p>
+<p>여기에 파이썬 패키지가 깔리는 경로는 크게 네 종류야:</p>
+<p>시스템(apt) 영역<br />
+/usr/lib/python3/dist-packages<br />
+apt로 설치되는 패키지가 들어감 (섞으면 위험)</p>
+<p>시스템-전역 pip 영역<br />
+/usr/local/lib/python3.X/dist-packages<br />
+root로 pip install 하면 여기에 들어갈 수 있음 (권장 X)</p>
+<p>사용자 pip 영역<br />
+~/.local/lib/python3.X/site-packages<br />
+pip install --user 로 깔리는 곳 (시스템과 분리되지만, 여전히 전역 PATH에 섞일 수 있음)</p>
+<p>가상환경(venv)<br />
+~/vol3-venv/lib/python3.X/site-packages<br />
+해당 venv 안에서만 보이는 “독립 공간” → 가장 안전</p>
+<h3 id="_6">실전</h3>
+<p>용량 및 메모리, cpu 확충<br />
+<div class="highlight"><pre><span></span><code>$ sudo qemu-img resize -f qcow2 /var/lib/xen/images/win10.qcow2 200G
+$ sudo nano /etc/xen/win10-all.cfg 
+name = &quot;win10-seabios&quot;
+type = &quot;hvm&quot;
+memory = 8192
+vcpus  = 8
+
+bios  = &quot;seabios&quot;
+boot  = &quot;c&quot;
+
+device_model_version  = &quot;qemu-xen&quot;
+device_model_override = &quot;/usr/libexec/xen-qemu-system-i386&quot;
+
+vga = &quot;stdvga&quot;
+videoram = 32
+graphics = &quot;vnc&quot;
+vnc = 1
+vncunused = 1
+vnclisten = &quot;127.0.0.1&quot;
+
+vif = [ &#39;bridge=xenbr0,model=e1000,script=vif-bridge,mac=52:54:00:12:34:56&#39; ]
+
+disk = [
+  &#39;format=qcow2,vdev=hda,access=rw,target=/var/lib/xen/images/win10.qcow2&#39;
+]
+
+pci = [
+  &#39;0000:01:00.0,permissive=1&#39;
+]
+
+$ sudo xl create /etc/xen/win10-all.cfg
+$ vncviewer 127.0.0.1:5900
+
+들어가서 그냥 추가된 140GB를 드라이버 D로 만들어줌
+</code></pre></div></p>
+<p>프로그램<br />
+<div class="highlight"><pre><span></span><code>배틀넷 설치하고 드라이버 D에 오버워치2 설치
+Cheat engine 프로그램 다운
+</code></pre></div></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "content.code.copy", "header.autohide"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  </body>
+</html>
