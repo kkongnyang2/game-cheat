@@ -188,4 +188,4 @@ device manager 들어가 느낌표 없는지 확인(nvidia가 code43 안뜨는�
 다른 쉘에서 virsh start win11-2
 ```
 
-> ⚠️ v12는 아직 실험 단계라고 함. hookguest가 qemu/kvm의 kvmi abi와 서로 다른 버전이라 api 호출에서 뻗게 됨.
+> ⚠️ 실패. v12는 아직 실험 단계라고 함. hookguest가 qemu/kvm의 kvmi abi와 서로 다른 버전이라 api 호출에서 뻗게 됨.

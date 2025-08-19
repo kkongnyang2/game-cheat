@@ -1,3 +1,9 @@
+## xen 방식으로 vmi를 구현해보자
+
+작성자: kkongnyang2 작성일: 2025-08-15
+
+---
+
 bios 설정
 ```
 VT-x, VT-d 켜기
@@ -132,3 +138,5 @@ acpi_backlight=native video.use_native_backlight=1 i915.enable_dpcd_backlight=1 
 
 
 뭐가 문제냐? xen 하이퍼바이저에서는 보안/격리를 위해 메모리를 보수적으로 잡음. 베어메탈에서는 a788이 요청하는 dma api가 iommu에서 바로 수용되는데 xen 하이퍼바이저에서는 swiotlb를 통해 바운스하기에 a788가 요청하는 크기/연속성/정렬/일관성을 만족하지 못함.
+
+> ⚠️ 실패. 화면이 안뜸. grub 설정 잘 하면 화면 해결될듯?

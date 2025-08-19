@@ -249,4 +249,4 @@ geforce - geforce RTX 40 series (notebooks) - geforce RTX 4060 laptop GPU - wind
 ```
 
 
-> ⚠️ 호스트를 못봄 + 백라이트 문제를 해결하지 못해 내 노트북에서 화면이 안보임. 노트북 교체
+> ⚠️ 실패. 호스트를 못봄 + 백라이트 문제로 게스트 화면도 안보임. 노트북 교체

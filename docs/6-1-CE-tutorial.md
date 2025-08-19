@@ -8,7 +8,7 @@
 
 주소 탐색
 ```
-newscan 누르기성
+newscan 누르기
 창에 initial 값 입력 후 firstscan 누르기
 값 변화시키기
 창에 second 값 입력 후 nextscan 누르기

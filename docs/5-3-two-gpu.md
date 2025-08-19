@@ -256,4 +256,4 @@ hostdev를 해주긴 했지만 아직 해당 nvidia 드라이버와 looking glas
 device manager 들어가 느낌표 없는지 확인
 ```
 
-> ⚠️ 성공은 함
+> ⚠️ 성공. 근데 불안정해서 차단 명령어를 다시 확인해봐야 할듯.

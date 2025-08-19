@@ -199,4 +199,4 @@ $ chmod +x ~/scripts/vm_readmem.py
 $ sudo ~/scripts/vm_readmem.py
 ```
 
-> ⚠️ conf를 못읽음. 이미 구버전이라 지원여부가 불분명하다고 함
+> ⚠️ 실패. conf를 못읽는 이슈. conf 형식 알아냈으니 해결 될듯?

@@ -330,4 +330,4 @@ lspci -nnk -d 10ec:3000                    # Kernel driver in use: r8125
 sudo ethtool -i $(ip -o -4 route show default | awk '{print $5}')
 ```
 
-> ⚠️ 텍스트 모드가 너무 불편해서 포기
+> ⚠️ 실패. 화면이 안뜸 이슈. xen처럼 grub 설정 잘 하면 화면 해결될듯?

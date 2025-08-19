@@ -259,4 +259,4 @@ drakrun install \
 ```
 
 
-> ⚠️ vm이 안만들어짐.
+> ⚠️ 실패. vm이 안만들어짐. ovmf 호환 문제였음. 다음엔 seabios로 하면 해결될듯?
