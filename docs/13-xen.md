@@ -338,17 +338,17 @@ $ sudo ldconfig
 guid 알아내기
 ```
 $ sudo vmi-win-guid name win10-seabios
-Windows Kernel found @ 0x2c00000
+Windows Kernel found @ 0x2800000
 	Version: 64-bit Windows 10
-	PE GUID: f71f414a1046000
-	PDB GUID: 89284d0ca6acc8274b9a44bd5af9290b1
+	PE GUID: bca5a8dd1046000
+	PDB GUID: b6121da15ddcf625c8c7273c0d85eb101
 	Kernel filename: ntkrnlmp.pdb
 	Multi-processor without PAE
 	Signature: 17744.
 	Machine: 34404.
 	# of sections: 33.
 	# of symbols: 0.
-	Timestamp: 4146020682.
+	Timestamp: 3164973277.
 	Characteristics: 34.
 	Optional header size: 240.
 	Optional header type: 0x20b
@@ -398,7 +398,7 @@ $ source ~/vol3-venv/bin/activate
 
 (vol3-venv) $ python3 -m volatility3.framework.symbols.windows.pdbconv \
   -p ntkrnlmp.pdb \
-  -g 89284d0ca6acc8274b9a44bd5af9290b1 \
+  -g b6121da15ddcf625c8c7273c0d85eb101 \
   -o ntkrnlmp.json
 deactivate
 
@@ -413,9 +413,11 @@ win10-seabios {
 }
 ```
 
-### 해석 확인
+이제 이게 있으면 프로세스 구조체와 심볼 오프셋이 있어 vmi-process-list를 실행할 수 있음
 
-해석되는지 프로세스 뽑아보기
+### libvmi 예제
+
+vmi-process-list
 ```
 $ sudo vmi-process-list win10-seabios
 Process listing for VM win10-seabios (id=31)
@@ -456,10 +458,7 @@ Process listing for VM win10-seabios (id=31)
 [ 7292] msedge.exe (struct addr:ffffd184b0deb0c0)
 ```
 
-
-### 연습
-
-덤프 시도
+vmi-dump-memory
 ```
 $ sudo mkdir -p /root/dumps
 $ sudo install -d -m 755 /root/dumps
@@ -467,6 +466,8 @@ $ sudo vmi-dump-memory win10-seabios /root/dumps/mem.bin
 $ sudo strings -el /root/dumps/mem.bin | grep -F "##4729193##"
 ##4729193##5
 ```
+
+### 파이썬 바인딩
 
 파이썬 바인딩 설치
 ```
@@ -478,7 +479,10 @@ sudo apt -y install python3-pip python3-cffi python3-pkgconfig
 $ python3 -m venv ~/vmi-venv
 $ ~/vmi-venv/bin/pip install --upgrade pip
 $ ~/vmi-venv/bin/pip install 'libvmi@git+https://github.com/libvmi/python@v3.7.1'
+```
 
+확인
+```
 $ ~/vmi-venv/bin/python3 - <<'PY'
 from libvmi import Libvmi
 import libvmi, inspect
@@ -489,15 +493,7 @@ OK: <class 'libvmi.libvmi.Libvmi'>
 Loaded from: /home/kkongnyang2/vmi-venv/lib/python3.12/site-packages/libvmi/__init__.py
 ```
 
-주소찾기 시도
-```
-$ sudo nano ~/scan_utf16_in_proc.py
-$ sudo vmi-process-list win10-seabios | grep -i notepad
-[ 2380] notepad.exe (struct addr:ffffd184ad9f1080)
-$ PID=2380
-$ sudo chmod +x ~/scan_utf16_in_proc.py
-$ sudo /home/kkongnyang2/vmi-venv/bin/python3 ~/scan_utf16_in_proc.py win10-seabios $PID "##4729193##5" > ~/hits1.txt
-```
+이제 이게 있으면 C API 말고 파이썬 함수로 바인딩해 사용할 수 있음
 
 ### 가상환경이란
 
@@ -534,7 +530,7 @@ pip install --user 로 깔리는 곳 (시스템과 분리되지만, 여전히 �
 
 ### 실전
 
-용량 및 메모리, cpu 확충
+용량 및 메모리 및 cpu 확충, usb 마우스 등록 
 ```
 $ sudo qemu-img resize -f qcow2 /var/lib/xen/images/win10.qcow2 200G
 $ sudo nano /etc/xen/win10-all.cfg 
@@ -566,6 +562,9 @@ pci = [
   '0000:01:00.0,permissive=1'
 ]
 
+usb = 1
+usbdevice = [ 'tablet' ]
+
 $ sudo xl create /etc/xen/win10-all.cfg
 $ vncviewer 127.0.0.1:5900
 
@@ -575,5 +574,5 @@ $ vncviewer 127.0.0.1:5900
 프로그램
 ```
 배틀넷 설치하고 드라이버 D에 오버워치2 설치
-Cheat engine 프로그램 다운
+Cheat engine 7.5 window 프로그램 다운
 ```

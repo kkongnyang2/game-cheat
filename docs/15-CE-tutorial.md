@@ -4,20 +4,15 @@
 
 ---
 
-### CE tutorial 1~5
+### CE tutorial 1~4
 
 주소 탐색
 ```
 newscan 누르기
-창에 initial 값 입력 후 firstscan 누르기
+창에 initial 값 입력 후 firstscan
 값 변화시키기
-창에 second 값 입력 후 nextscan 누르기
-목록 추려지면 클릭해서 아래 작업바에 내리기
-거기서 값 조작
-```
-코드 무효화
-```
-what writes 들어가서 디스어셈블러 보기. 해당 줄 코드를 replace with code that does nothing으로 바꾸면 체력값을 쓰는 코드가 무효화돼서 작동 안한다.
+창에 second 값 입력 후 nextscan
+목록 추려지면 클릭해서 아래 작업바에 내리고 값 조작
 ```
 
 ### 빌드와 런 이해하기
@@ -70,7 +65,24 @@ call  QWORD PTR [rip + .got.plt.bar]  ; GOT 슬롯에 patch된 절대주소를 �
 
 참고로 모든 프로세스들은 메모리 뒷부분에 커널을 공통으로 가지고 있다.
 
-### CE tutorial 6~9
+### CE tutorial 5,7
+
+코드 무효화
+```
+값 주소 탐색 후 what writes this address 들어가서 디스어셈블러 보기. 해당 줄 코드를 replace with code that does nothing 또는 add 2로 바꾸면 체력값을 쓰는 코드가 무효화되거나 오히려 플러스로 바뀐다.
+```
+
+코드 인젝션
+```
+디스어셈블리에서 ctrl+A 눌러 어셈블러 창 열기. code injection을 클릭하고 원하는 부분의 내용 수정
+```
+
+프리징
+```
+active X를 체크해주면 이제 그 일반 주소 또는 체인 주소는 활동을 못하게됨. 프로그램 베이스가 바뀌고 뭘 쓰려해도 계속 체인 쫓아가서 끝에 내가 써준 값으로 덮어쓰기함.
+```
+
+### CE tutorial 6,8
 
 게임 진행 도중 새 플레이어의 hp와 ammo를 어떻게 할당할까?
 
@@ -97,7 +109,7 @@ g_local_player   = p;                   // (2) 코드가 전역 변수에 저장
 만약 빌드 때 이미 위치가 정해진 정적 데이터면 포인터를 쓸 필요도 없이 거리로 바로 읽으면 된다.
 
 
-하향식 (값에서부터 체인 따라가기)
+값에서부터 체인 따라가기
 ```
 Find out what writes to this address -> 쓰기 타입 명령만
 Find out what accesses this address -> 모든 타입 명령(참조 등등)
@@ -139,18 +151,39 @@ RSI=000000000162A820
 
 10034ECA0 -> 162A5A0 + 10 -> 162A820 + 18 -> 1642E30 -> 15C44F0 + 18 -> 16F
 
-# change address 누르고 tutorial-x86_64.exe 부터 체인 연결해주면 됨
+# add address manually 누르고 tutorial-x86_64.exe 부터 체인 연결해주면 됨
 ```
 ![image](Capture.PNG)
 
-코드 인젝션
+
+### 메모리 전수 자동 스캐너
+
+
+체인의 구조를 이해했으면 앞으로 편하게 뽑으면 된다
+
+
+메모리 전수 스캔
 ```
-디스어셈블리에서 ctrl+A 눌러 어셈블러 창 열기. code injection을 클릭하고 원하는 부분의 내용 수정
+값 탐색해서 주소 찾기
+pointer scan for this address(자동 스캐너 이용)
+scan for address으로 노드당 offset 가지, offset 최대 value, level을 적어주고 ptr 파일 저장
+치팅 중인 프로그램 종료 후 재실행, CE도 재접속
+다시 값 탐색해서 주소 찾기
+pointer scan for this address 누르고 페이지 들어와지면 file에서 이전 ptr 파일 불러오기
+새 주소로 rescan하면 후보가 줄어들음
+반복
+하나만 남으면 클릭하면 작업바에 추가됨
 ```
 
-상향식 (메모리 전수 스캔)
+혹은 대형 프로그램 메모리 전수 스캔
 ```
-pointer scan for this address 자동 스캐너 이용.
-값 주소를 찾은 후 우클 누르고 해당 스캐너 클릭. max level은 보통 5로 , max offset은 0x3FF 정도로 설정. .ptr 파일에 후보 리스트가 저장되면 게임 재실행 후 pointer scan 누르고 rescan memory 하면 정말 static인 후보만 남는다. 그것들을 작업바로 옮긴다.
+값 탐색해서 주소 찾기
+pointer scan for this address(자동 스캐너 이용)
+generate pointermap으로 첫번째 ptr 파일 저장
+치팅 중인 프로그램 종료 후 재실행, CE도 재접속
+다시 값 탐색해서 주소 찾기
+pointer scan for this address 누르고 generate pointermap으로 두번째 ptr 파일 저장
+이제 scan for address로 전환하고 use saved pointermap 체크해 첫번째 ptr 파일 선택
+Compare results with other saved pointermap 체크해 두번째 ptr 파일 선택
+여러번 해서 하나만 남으면 클릭하면 작업바에 추가됨
 ```
-

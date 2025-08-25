@@ -92,7 +92,7 @@ libvmi가 자동으로 찾아주기도 하지만, 실패하면 직접 지정
 
 ### vmi 시나리오
 
-1) KVM(리눅스)에서 Legacy 방식 (LibVMI + QEMU GDB/패치)
+(1) KVM(리눅스)에서 Legacy 방식 (LibVMI + QEMU GDB/패치)
 
 흐름/구조
 
@@ -106,7 +106,7 @@ libvmi가 자동으로 찾아주기도 하지만, 실패하면 직접 지정
 
 KVM이 돌아가기만 하면(대부분의 최신 Intel/AMD) 작동 가능. 다만 GDB stub/패치 경로는 느리고 취약하며, 최신 QEMU/커널과의 궁합 이슈가 잦음(프로젝트에서도 “과거 방식”으로 분류). 초보자 권장 X. 
 
-2) KVMI 커널 경로 (KVM-VMI: 커널·QEMU 패치 + libkvmi)
+(2) KVMI 커널 경로 (KVM-VMI: 커널·QEMU 패치 + libkvmi)
 
 흐름/구조
 
@@ -120,7 +120,7 @@ VM 일시정지·재개, vCPU GPR/MSR 조회, EPT(같은 HW 백킹) 기반 페�
 
 메인라인이 아니라 별도 브랜치(커널/ QEMU) 를 빌드해야 해서 유지보수 부담 큼. 예제·릴리스는 존재하지만(최신 릴리스 2023) 최신 배포판 커널과의 버전 핀ning이 필수. EPT 전제를 명시(문서가 “예: Intel의 EPT”라 서술)하므로 AMD NPT는 지원/기능 제약을 확인 필요. 초보자 난이도 높음. 
 
-3) Xen + LibVMI (가장 표준적인 VMI 경로)
+(3) Xen + LibVMI (가장 표준적인 VMI 경로)
 
 흐름/구조
 
@@ -134,7 +134,7 @@ Xen 하이퍼바이저 위에 Windows/Linux 게스트 실행 → Dom0(또는 별
 
 최신 Intel VT-x/EPT 환경에서 매우 성숙. Xen은 ARM 2-stage paging도 지원(기능 차이 존재), 일반적으론 Intel/EPT에서 가장 안정적. AMD NPT에서도 기본 메모리 접근은 가능하나, 고급 이벤트/altp2m 기반 기능은 Intel EPT 중심 생태계. 실무/연구 커뮤니티와 자료가 가장 풍부. 
 
-4) Xen + DRAKVUF 엔진 + DRAKVUF Sandbox
+(4) Xen + DRAKVUF 엔진 + DRAKVUF Sandbox
 
 흐름/구조
 
