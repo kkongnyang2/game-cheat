@@ -358,13 +358,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="../16-basic-py/" class="md-tabs__link">
+      <a href="../16-basic-rw/" class="md-tabs__link">
         
   
   
     
   
-  16 basic py
+  16 basic rw
 
       </a>
     </li>
@@ -384,6 +384,44 @@
     
   
   17 ow memory
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../18-decrypt/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  18 decrypt
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../19-main/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  19 main
 
       </a>
     </li>
@@ -778,12 +816,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../16-basic-py/" class="md-nav__link">
+      <a href="../16-basic-rw/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    16 basic py
+    16 basic rw
     
   </span>
   
@@ -806,6 +844,50 @@
   
   <span class="md-ellipsis">
     17 ow memory
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-decrypt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    18 decrypt
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    19 main
     
   </span>
   
@@ -909,9 +991,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#vm" class="md-nav__link">
+  <a href="#gpu" class="md-nav__link">
     <span class="md-ellipsis">
-      VM 디스플레이
+      gpu 사용
     </span>
   </a>
   
@@ -1146,9 +1228,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#vm" class="md-nav__link">
+  <a href="#gpu" class="md-nav__link">
     <span class="md-ellipsis">
-      VM 디스플레이
+      gpu 사용
     </span>
   </a>
   
@@ -1212,9 +1294,9 @@
 <li>VFIO-PCI는 같은 IOMMU 그룹에 묶인 장치는 통째로 넘겨야 함</li>
 <li>다른 게임은 에뮬레이션인 virtio-gpu(VirGL)만으로 충분하기도 함</li>
 </ul>
-<h3 id="vm">VM 디스플레이</h3>
-<p>그럼 VM은 디스플레이를 어떻게 하냐? 장치를 얼마나 넘겨주냐에 따라 다르다.<br />
-장치는 에뮬레이션(진짜 하드웨어인척 흉내), 파라버추얼(가짜 장치 인터페이스 virtio 제공), 패스스루(하드웨어 건내주기) 세가지 방식이 있다</p>
+<h3 id="gpu">gpu 사용</h3>
+<p>그럼 VM은 장치를 얼마나 넘겨주냐에 따라 다르게 구성한다.<br />
+에뮬레이션(진짜 하드웨어인척 흉내), 파라버추얼(가짜 장치 인터페이스 virtio 제공), 패스스루(하드웨어 건내주기) 세가지 방식이 있다</p>
 <p>전체 패스스루 방식이면 (VFIO-PCI)<br />
 CPU도 그대로 사용(일부 trap만 따로 처리), RAM도 할당된 영역만큼 그대로 사용, GPU도 드라이버까지 설치해서 직접 사용. IOMMU 켜고 hostdev 추가 + VFIO 바인딩을 해야 실제 GPU가 넘어간다</p>
 <p>분할 패스스루 방식이면 (GVT-g)<br />

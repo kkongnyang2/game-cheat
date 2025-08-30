@@ -360,13 +360,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="../16-basic-py/" class="md-tabs__link">
+      <a href="../16-basic-rw/" class="md-tabs__link">
         
   
   
     
   
-  16 basic py
+  16 basic rw
 
       </a>
     </li>
@@ -386,6 +386,44 @@
     
   
   17 ow memory
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../18-decrypt/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  18 decrypt
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../19-main/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  19 main
 
       </a>
     </li>
@@ -869,7 +907,25 @@
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      실전
+      사양 확충
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      모니터 단독버전
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      게스트 윈도우
     </span>
   </a>
   
@@ -939,12 +995,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../16-basic-py/" class="md-nav__link">
+      <a href="../16-basic-rw/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    16 basic py
+    16 basic rw
     
   </span>
   
@@ -967,6 +1023,50 @@
   
   <span class="md-ellipsis">
     17 ow memory
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-decrypt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    18 decrypt
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    19 main
     
   </span>
   
@@ -1310,7 +1410,25 @@
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      실전
+      사양 확충
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      모니터 단독버전
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      게스트 윈도우
     </span>
   </a>
   
@@ -1557,7 +1675,7 @@ lo                 loopback  connected (externally)                 lo
 p2p-dev-wlp0s20f3  wifi-p2p  disconnected                           --                   
 </code></pre></div></p>
 <p>wifi 추가<br />
-<div class="highlight"><pre><span></span><code>$ sudo nano /etc/xen/win10-seabios-poweron.cfg      
+<div class="highlight"><pre><span></span><code>$ sudo nano /etc/xen/win10-on.cfg      
 name = &quot;win10-seabios&quot;
 type = &quot;hvm&quot;
 memory = 4096
@@ -1583,7 +1701,7 @@ disk = [
 ]
 
 
-$ sudo xl create /etc/xen/win10-seabios-poweron.cfg
+$ sudo xl create /etc/xen/win10-on.cfg
 $ vncviewer 127.0.0.1:5900
 </code></pre></div></p>
 <h3 id="dgpu">dgpu 패스스루</h3>
@@ -1805,8 +1923,7 @@ pip install --user 로 깔리는 곳 (시스템과 분리되지만, 여전히 �
 <p>가상환경(venv)<br />
 ~/vol3-venv/lib/python3.X/site-packages<br />
 해당 venv 안에서만 보이는 “독립 공간” → 가장 안전</p>
-<h3 id="_5">실전</h3>
-<p>용량 및 메모리 및 cpu 확충, usb 마우스 등록 <br />
+<h3 id="_5">사양 확충</h3>
 <div class="highlight"><pre><span></span><code>$ sudo qemu-img resize -f qcow2 /var/lib/xen/images/win10.qcow2 200G
 $ sudo nano /etc/xen/win10-all.cfg 
 name = &quot;win10-seabios&quot;
@@ -1839,12 +1956,48 @@ pci = [
 
 usb = 1
 usbdevice = [ &#39;tablet&#39; ]
-
 $ sudo xl create /etc/xen/win10-all.cfg
 $ vncviewer 127.0.0.1:5900
-
 들어가서 그냥 추가된 140GB를 드라이버 D로 만들어줌
+</code></pre></div>
+<h3 id="_6">모니터 단독버전</h3>
+<p>마우스 pci-list 등록<br />
+<div class="highlight"><pre><span></span><code>$ lspci -nn | grep -i usb
+00:14.0 USB controller [0c03]: Intel Corporation Raptor Lake USB 3.2 Gen 2x2 (20 Gb/s) XHCI Host Controller [8086:7a60] (rev 11)
+05:00.0 USB controller [0c03]: Intel Corporation Thunderbolt 4 NHI [Maple Ridge 4C 2020] [8086:1137]
+24:00.0 USB controller [0c03]: Intel Corporation Thunderbolt 4 USB Controller [Maple Ridge 4C 2020] [8086:1138]
+$ sudo xl pci-assignable-add 0000:00:14.0
+$ sudo xl pci-assignable-list
+0000:01:00.0 
+0000:01:00.1 
+0000:00:14.0 
 </code></pre></div></p>
+<p>새 cfg 만들어주기<br />
+<div class="highlight"><pre><span></span><code>$ sudo nano /etc/xen/win10-monitor.cfg 
+name = &quot;win10-seabios&quot;
+type = &quot;hvm&quot;
+memory = 8192
+vcpus  = 8
+
+bios  = &quot;seabios&quot;
+boot  = &quot;c&quot;
+
+device_model_version  = &quot;qemu-xen&quot;
+device_model_override = &quot;/usr/libexec/xen-qemu-system-i386&quot;
+
+vif = [ &#39;bridge=xenbr0,model=e1000,script=vif-bridge,mac=52:54:00:12:34:56&#39; ]
+
+disk = [
+  &#39;format=qcow2,vdev=hda,access=rw,target=/var/lib/xen/images/win10.qcow2&#39;
+]
+
+pci = [
+  &#39;0000:01:00.0,permissive=1&#39;,
+  &#39;0000:00:14.0&#39;
+]
+$ sudo xl create /etc/xen/win10-monitor.cfg
+</code></pre></div></p>
+<h3 id="_7">게스트 윈도우</h3>
 <p>프로그램<br />
 <div class="highlight"><pre><span></span><code>배틀넷 설치하고 드라이버 D에 오버워치2 설치
 Cheat engine 7.5 window 프로그램 다운

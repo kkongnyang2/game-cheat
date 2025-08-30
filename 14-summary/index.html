@@ -360,13 +360,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="../16-basic-py/" class="md-tabs__link">
+      <a href="../16-basic-rw/" class="md-tabs__link">
         
   
   
     
   
-  16 basic py
+  16 basic rw
 
       </a>
     </li>
@@ -386,6 +386,44 @@
     
   
   17 ow memory
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../18-decrypt/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  18 decrypt
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../19-main/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  19 main
 
       </a>
     </li>
@@ -834,12 +872,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../16-basic-py/" class="md-nav__link">
+      <a href="../16-basic-rw/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    16 basic py
+    16 basic rw
     
   </span>
   
@@ -862,6 +900,50 @@
   
   <span class="md-ellipsis">
     17 ow memory
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-decrypt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    18 decrypt
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    19 main
     
   </span>
   
@@ -1139,17 +1221,19 @@
 <p>(4) 24.04 버전 사용<br />
 구버전은 최신 하드웨어들을 잘 못받는 커널임</p>
 <p>(5) 화면 이슈. grub 커맨드<br />
-echo 'GRUB_CMDLINE_XEN="iommu=1 iommu=verbose dom0_mem=4096M,max:4096M"' | sudo tee /etc/default/grub.d/xen.cfg<br />
-echo 'GRUB_CMDLINE_LINUX_XEN_REPLACE="xen-pciback.hide=(01:00.0)(01:00.1) modprobe.blacklist=nvidia,nvidia_drm,nvidia_modeset,nouveau"' \<br />
-| sudo tee -a /etc/default/grub.d/xen.cfg<br />
+<div class="highlight"><pre><span></span><code>echo &#39;GRUB_CMDLINE_XEN=&quot;iommu=1 iommu=verbose dom0_mem=4096M,max:4096M&quot;&#39; | sudo tee /etc/default/grub.d/xen.cfg
+echo &#39;GRUB_CMDLINE_LINUX_XEN_REPLACE=&quot;xen-pciback.hide=(01:00.0)(01:00.1) modprobe.blacklist=nvidia,nvidia_drm,nvidia_modeset,nouveau&quot;&#39; \
+| sudo tee -a /etc/default/grub.d/xen.cfg
+</code></pre></div><br />
 kvm을 하든 xen을 하든 grub에서 nvidia gpu를 잘 숨기는 게 관건인듯.</p>
 <p>(6) ovmf대신 seabios로 vm 생성<br />
 seabios win10 하니까 vm 만들어짐</p>
 <p>(7) libvmi conf 파일 형식<br />
-$ sudo nano /etc/libvmi.conf<br />
-win10-seabios {<br />
-    volatility_ist = "/root/symbols/ntkrnlmp.json";<br />
-}<br />
+<div class="highlight"><pre><span></span><code>$ sudo nano /etc/libvmi.conf
+win10-seabios {
+    volatility_ist = &quot;/root/symbols/ntkrnlmp.json&quot;;
+}
+</code></pre></div><br />
 하니까 연결됨</p>
 <p>이거 이용하면 다른 방식도 성공할 수 있을걸로 생각.</p>
 <h3 id="_1">관리</h3>
@@ -1163,6 +1247,17 @@ sudo xl pci-assignable-list
 sudo xl create /etc/xen/win10-all.cfg
 hdmi 연결
 vncviewer 127.0.0.1:5900
+</code></pre></div></p>
+<p>모니터만 쓰고 싶다면<br />
+<div class="highlight"><pre><span></span><code>lsmod | grep xen_pciback || sudo modprobe xen_pciback 
+DRVDIR=$(ls -d /sys/bus/pci/drivers/pciback /sys/bus/pci/drivers/xen-pciback 2&gt;/dev/null | head -n1)
+echo 0000:01:00.1 | sudo tee /sys/bus/pci/devices/0000:01:00.1/driver/unbind
+echo 0000:01:00.1 | sudo tee &quot;$DRVDIR/bind&quot;
+sudo xl pci-assignable-add 0000:00:14.0
+sudo xl pci-assignable-list
+랜선 연결
+sudo xl create /etc/xen/win10-monitor.cfg
+hdmi 연결
 </code></pre></div></p>
 <p>업데이트 하고나면<br />
 <div class="highlight"><pre><span></span><code>sudo vmi-win-guid name win10-seabios
