@@ -242,7 +242,7 @@ p2p-dev-wlp0s20f3  wifi-p2p  disconnected                           --
 
 wifi 추가
 ```
-$ sudo nano /etc/xen/win10-seabios-poweron.cfg      
+$ sudo nano /etc/xen/win10-on.cfg      
 name = "win10-seabios"
 type = "hvm"
 memory = 4096
@@ -268,7 +268,7 @@ disk = [
 ]
 
 
-$ sudo xl create /etc/xen/win10-seabios-poweron.cfg
+$ sudo xl create /etc/xen/win10-on.cfg
 $ vncviewer 127.0.0.1:5900
 ```
 
@@ -528,9 +528,8 @@ pip install --user 로 깔리는 곳 (시스템과 분리되지만, 여전히 �
 해당 venv 안에서만 보이는 “독립 공간” → 가장 안전
 
 
-### 실전
+### 사양 확충
 
-용량 및 메모리 및 cpu 확충, usb 마우스 등록 
 ```
 $ sudo qemu-img resize -f qcow2 /var/lib/xen/images/win10.qcow2 200G
 $ sudo nano /etc/xen/win10-all.cfg 
@@ -564,12 +563,54 @@ pci = [
 
 usb = 1
 usbdevice = [ 'tablet' ]
-
 $ sudo xl create /etc/xen/win10-all.cfg
 $ vncviewer 127.0.0.1:5900
-
 들어가서 그냥 추가된 140GB를 드라이버 D로 만들어줌
 ```
+
+### 모니터 단독버전
+
+마우스 pci-list 등록
+```
+$ lspci -nn | grep -i usb
+00:14.0 USB controller [0c03]: Intel Corporation Raptor Lake USB 3.2 Gen 2x2 (20 Gb/s) XHCI Host Controller [8086:7a60] (rev 11)
+05:00.0 USB controller [0c03]: Intel Corporation Thunderbolt 4 NHI [Maple Ridge 4C 2020] [8086:1137]
+24:00.0 USB controller [0c03]: Intel Corporation Thunderbolt 4 USB Controller [Maple Ridge 4C 2020] [8086:1138]
+$ sudo xl pci-assignable-add 0000:00:14.0
+$ sudo xl pci-assignable-list
+0000:01:00.0 
+0000:01:00.1 
+0000:00:14.0 
+```
+
+새 cfg 만들어주기
+```
+$ sudo nano /etc/xen/win10-monitor.cfg 
+name = "win10-seabios"
+type = "hvm"
+memory = 8192
+vcpus  = 8
+
+bios  = "seabios"
+boot  = "c"
+
+device_model_version  = "qemu-xen"
+device_model_override = "/usr/libexec/xen-qemu-system-i386"
+
+vif = [ 'bridge=xenbr0,model=e1000,script=vif-bridge,mac=52:54:00:12:34:56' ]
+
+disk = [
+  'format=qcow2,vdev=hda,access=rw,target=/var/lib/xen/images/win10.qcow2'
+]
+
+pci = [
+  '0000:01:00.0,permissive=1',
+  '0000:00:14.0'
+]
+$ sudo xl create /etc/xen/win10-monitor.cfg
+```
+
+### 게스트 윈도우
 
 프로그램
 ```

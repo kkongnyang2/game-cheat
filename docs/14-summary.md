@@ -13,19 +13,23 @@
 구버전은 최신 하드웨어들을 잘 못받는 커널임
 
 (5) 화면 이슈. grub 커맨드
+```
 echo 'GRUB_CMDLINE_XEN="iommu=1 iommu=verbose dom0_mem=4096M,max:4096M"' | sudo tee /etc/default/grub.d/xen.cfg
 echo 'GRUB_CMDLINE_LINUX_XEN_REPLACE="xen-pciback.hide=(01:00.0)(01:00.1) modprobe.blacklist=nvidia,nvidia_drm,nvidia_modeset,nouveau"' \
 | sudo tee -a /etc/default/grub.d/xen.cfg
+```
 kvm을 하든 xen을 하든 grub에서 nvidia gpu를 잘 숨기는 게 관건인듯.
 
 (6) ovmf대신 seabios로 vm 생성
 seabios win10 하니까 vm 만들어짐
 
 (7) libvmi conf 파일 형식
+```
 $ sudo nano /etc/libvmi.conf
 win10-seabios {
     volatility_ist = "/root/symbols/ntkrnlmp.json";
 }
+```
 하니까 연결됨
 
 이거 이용하면 다른 방식도 성공할 수 있을걸로 생각.
@@ -45,6 +49,19 @@ sudo xl pci-assignable-list
 sudo xl create /etc/xen/win10-all.cfg
 hdmi 연결
 vncviewer 127.0.0.1:5900
+```
+
+모니터만 쓰고 싶다면
+```
+lsmod | grep xen_pciback || sudo modprobe xen_pciback 
+DRVDIR=$(ls -d /sys/bus/pci/drivers/pciback /sys/bus/pci/drivers/xen-pciback 2>/dev/null | head -n1)
+echo 0000:01:00.1 | sudo tee /sys/bus/pci/devices/0000:01:00.1/driver/unbind
+echo 0000:01:00.1 | sudo tee "$DRVDIR/bind"
+sudo xl pci-assignable-add 0000:00:14.0
+sudo xl pci-assignable-list
+랜선 연결
+sudo xl create /etc/xen/win10-monitor.cfg
+hdmi 연결
 ```
 
 업데이트 하고나면

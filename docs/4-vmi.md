@@ -79,11 +79,13 @@ domain ID : libvirt가 실행 중인 vm에 부여하는 일시적 런타임 ID. 
 qemu PID : qemu 프로세스의 pid. ps aux | grep qemu-system-x86_64 같은 걸로 확인
 
 (2) 주소 변환을 위한 DTB (Directory Table Base)
+
 게스트 가상 주소(VA)를 물리 주소(PA)로 바꿀 때 필요한 페이지 테이블 루트 물리 주소. x86-64에서 CR3 레지스터가 가리킨다.
 libvmi가 자동으로 찾아주기도 하지만, 실패하면 직접 지정
 리눅스는 task_struct->mm->pgd에서 뽑고, 윈도우면 EPROCESS.DirectoryTableBase에서 뽑는다.
 
 (3) 의미 있는 해석을 위한 프로파일(json 형식)
+
 심볼 주소와 커널 구조체 필드 오프셋 정보.
 리눅스면 System.map(공개 심볼 주소) + vmlinux를 바탕으로 dwarf2json(vilatility) 툴을 이용해 만든다.
 윈도우면 PDB(program database)를 바탕으로 volatility/rekall/drakpdb 툴을 이용해 만든다.

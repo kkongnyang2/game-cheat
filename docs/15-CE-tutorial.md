@@ -187,3 +187,26 @@ pointer scan for this address 누르고 generate pointermap으로 두번째 ptr 
 Compare results with other saved pointermap 체크해 두번째 ptr 파일 선택
 여러번 해서 하나만 남으면 클릭하면 작업바에 추가됨
 ```
+
+
+### Structures
+
+"이 베이스 주소를 시작으로 0x0, 0x4, 0x8… 오프셋마다 필드를 해석해 구조체처럼 보자"
+① Add address: 베이스(예: [[playerBasePtr]+0x30])를 열 기준으로 추가
+② Define new structure: 크기 입력(보통 0x400~0x1000) → 초기 템플릿 생성
+③ Auto-fill/Guess field type: 패턴을 보고 4 Byte 정수·Float·Pointer 등을 자동 추정
+④ Column compare: 동일 구조체를 두 인스턴스(플레이어 1 vs 2)로 나란히 배치, 차이가 나는 오프셋 강조
+⑤ 필드명·타입 더블클릭 → Rename & Re-type 지원
+
+### AoB 스캔
+
+일련의 명령어 바이트 시퀀스(예: 48 8B 05 ?? ?? ?? ?? 89 83)를 야생의 고유지문처럼 저장해 두었다가, 다음 실행에서 다시 검색하여 같은 코드 위치를 찾는 방식. 업데이트로 모듈 크기와 베이스가 바뀌어도 패턴으로 찾는 거기에 성공률이 높음.
+
+### Dissect code
+
+"이 모듈(예: game.exe)의 코드 구성을 통째로 해부해서 함수·분기·호출 관계를 탐색하자."
+① 모듈/영역 선택 → .text(실행 코드) 섹션 전체를 빠르게 스캔
+② Function list 생성: CE가 ret·call 패턴을 기반으로 함수 경계 자동 추정
+③ X-ref(교차 참조): 해당 주소를 호출·점프하는 모든 지점 나열
+④ 라벨·주석 달기, 기계어 ↔ Mnemonics(어셈블리) 보기 전환
+⑤ Graph view(선택): 기본 블록 흐름도를 시각화

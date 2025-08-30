@@ -1,4 +1,4 @@
-## 베이직 py 코드를 작성해보자
+## 베이직 r/w py 코드를 작성해보자
 
 작성자: kkongnyang2 작성일: 2025-08-19
 
@@ -168,7 +168,10 @@ $ nano ~/game-cheat/code/chain/find_module_base.py
 $ nano ~/game-cheat/code/chain/walk_chain.py
 $ nano ~/game-cheat/code/chain/rw_value.py
 ```
-* 참고로 ist_helpers.py 에서 [-] 'types' 오류가 떠서
+
+에러 해결
+```
+ist_helpers.py 에서 [-] 'types' 오류가 떠서
 $ sudo python3 - <<'PY'
 import json, gzip, lzma
 p="/root/symbols/ntkrnlmp.json"
@@ -184,8 +187,9 @@ print("has types:", 'types' in d, "has symbols:", 'symbols' in d)
 PY
 top-level keys: ['base_types', 'enums', 'metadata', 'symbols', 'user_types']
 상태를 점검했더니 요즘 volatility3 isf json은 types 대신 user_types를 쓰는 걸 확인. 그래서 널널하게 고쳐줌.
-그밖에 인자 개수나 python-libvmi (v3.7.1)엔 어떤 배포본에서는 Libvmi.get_process_by_pid(...) 같은 편의 래퍼가 포함되지 않는 문제 등을 하드코딩 해줌.
 
+그밖에 다른 py에서도 인자 개수나 python-libvmi (v3.7.1)엔 어떤 배포본에서는 Libvmi.get_process_by_pid(...) 같은 편의 래퍼가 포함되지 않는 문제 등을 하드코딩 해줌.
+```
 
 실행 커맨드
 ```
