@@ -12,7 +12,7 @@
         <link rel="prev" href="../15-CE-tutorial/">
       
       
-        <link rel="next" href="../17-ow-memory/">
+        <link rel="next" href="../17-memory/">
       
       
       <link rel="icon" href="../logo.svg">
@@ -20,7 +20,7 @@
     
     
       
-        <title>16 basic rw - Game-Cheat</title>
+        <title>16 vmi rw - Game-Cheat</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#rw-py" class="md-skip">
+        <a href="#vmi" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              16 basic rw
+              16 vmi rw
             
           </span>
         </div>
@@ -366,7 +366,7 @@
   
     
   
-  16 basic rw
+  16 vmi rw
 
       </a>
     </li>
@@ -379,13 +379,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="../17-ow-memory/" class="md-tabs__link">
+      <a href="../17-memory/" class="md-tabs__link">
         
   
   
     
   
-  17 ow memory
+  17 memory
 
       </a>
     </li>
@@ -828,7 +828,7 @@
   
   
   <span class="md-ellipsis">
-    16 basic rw
+    16 vmi rw
     
   </span>
   
@@ -841,7 +841,7 @@
   
   
   <span class="md-ellipsis">
-    16 basic rw
+    16 vmi rw
     
   </span>
   
@@ -862,13 +862,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#rw-py" class="md-nav__link">
+  <a href="#vmi" class="md-nav__link">
     <span class="md-ellipsis">
-      베이직 r/w py 코드를 작성해보자
+      vmi 베이직 코드를 작성해보자
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="베이직 r/w py 코드를 작성해보자">
+    <nav class="md-nav" aria-label="vmi 베이직 코드를 작성해보자">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -927,12 +927,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../17-ow-memory/" class="md-nav__link">
+      <a href="../17-memory/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    17 ow memory
+    17 memory
     
   </span>
   
@@ -1209,13 +1209,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#rw-py" class="md-nav__link">
+  <a href="#vmi" class="md-nav__link">
     <span class="md-ellipsis">
-      베이직 r/w py 코드를 작성해보자
+      vmi 베이직 코드를 작성해보자
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="베이직 r/w py 코드를 작성해보자">
+    <nav class="md-nav" aria-label="vmi 베이직 코드를 작성해보자">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1275,11 +1275,12 @@
 
 
 
-  <h1>16 basic rw</h1>
+  <h1>16 vmi rw</h1>
 
-<h2 id="rw-py">베이직 r/w py 코드를 작성해보자</h2>
+<h2 id="vmi">vmi 베이직 코드를 작성해보자</h2>
 <p>작성자: kkongnyang2 작성일: 2025-08-19</p>
 <hr />
+<p>CE에서 이미 가능하긴 하지만 탐색되지 않게 vmi 환경으로 r/w를 하자.</p>
 <h3 id="_1">고정주소 폴링</h3>
 <p>고정주소는 단순하게 고정 가상주소와 그게 어느 프로세스의 가상주소인지만 알려주면 된다.</p>
 <p>주소 알아내기<br />
@@ -1435,18 +1436,18 @@ top-level keys: [&#39;base_types&#39;, &#39;enums&#39;, &#39;metadata&#39;, &#39
 그밖에 다른 py에서도 인자 개수나 python-libvmi (v3.7.1)엔 어떤 배포본에서는 Libvmi.get_process_by_pid(...) 같은 편의 래퍼가 포함되지 않는 문제 등을 하드코딩 해줌.
 </code></pre></div></p>
 <p>실행 커맨드<br />
-<div class="highlight"><pre><span></span><code>$ sudo vmi-process-list win10-seabios | grep -i notepad
-[ 4692] notepad.exe (struct addr:ffff9d0697c21080)
-$ sudo /home/kkongnyang2/vmi-venv/bin/python3 ~/game-cheat/code/chain/find_module_base.py \
-  win10-seabios 4692 Notepad.exe /root/symbols/ntkrnlmp.json
-VMI_WARNING: Invalid offset name in windows_get_offset (win_peb).
-0x00007ff7dc6e0000
-
-$ sudo vmi-process-list win10-seabios | grep -i tutorial
+<div class="highlight"><pre><span></span><code>$ sudo vmi-process-list win10-seabios | grep -i tutorial
 [10220] Tutorial-x86_6 (struct addr:ffff9d068d194300)
 $ sudo /home/kkongnyang2/vmi-venv/bin/python3 ~/game-cheat/code/chain/find_module_base.py   win10-seabios 10220 Tutorial-x86_64.exe /root/symbols/ntkrnlmp.json
 VMI_WARNING: Invalid offset name in windows_get_offset (win_peb).
 0x0000000100000000
+
+$ sudo vmi-process-list win10-seabios | grep -i overwatch
+[12164] Overwatch.exe (struct addr:ffffb50fd508a280)
+$ sudo /home/kkongnyang2/vmi-venv/bin/python3 ~/game-cheat/code/chain/find_module_base.py \
+  win10-seabios 12164 Overwatch.exe /root/symbols/ntkrnlmp.json
+VMI_WARNING: Invalid offset name in windows_get_offset (win_peb).
+0x00007ff6134e0000
 </code></pre></div><br />
 * 참고로 vmi-process-list는 15바이트까지만 돼서 모듈명 뒤 이름은 짤림. 알아서 적어주기.</p>
 <p>실행 커맨드2<br />
@@ -1457,6 +1458,14 @@ VMI_WARNING: Invalid offset name in windows_get_offset (win_peb).
 00000010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   ................
 00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   ................
 00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   ................
+
+$ sudo /home/kkongnyang2/vmi-venv/bin/python3 ~/game-cheat/code/chain/walk_chain.py   win10-seabios 12164 Overwatch.exe /root/symbols/ntkrnlmp.json &quot;+0x0&quot; 64
+[+] base=Overwatch.exe@0x00007ff6134e0000
+[+] final address = 0x00007ff6134e0000
+00000000  4d 5a 90 00 03 00 00 00 04 00 00 00 ff ff 00 00   MZ..............
+00000010  b8 00 00 00 00 00 00 00 40 00 00 00 00 00 00 00   ........@.......
+00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   ................
+00000030  00 00 00 00 00 00 00 00 00 00 00 00 b8 01 00 00   ................
 </code></pre></div><br />
 * 64는 그 주소에서 몇 바이트를 덤프해서 보여줄지를 뜻하는 len임.</p>
 <p>실행 커맨드3<br />
