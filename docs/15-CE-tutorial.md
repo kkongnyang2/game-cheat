@@ -156,6 +156,14 @@ RSI=000000000162A820
 ![image](Capture.PNG)
 
 
+### 모듈 베이스 확인법
+
+```
+memory viewer 열기
+상단 메뉴 view -> "Enumerate DLLs and Symbols" 클릭
+```
+
+
 ### 메모리 전수 자동 스캐너
 
 
@@ -188,8 +196,9 @@ Compare results with other saved pointermap 체크해 두번째 ptr 파일 선�
 여러번 해서 하나만 남으면 클릭하면 작업바에 추가됨
 ```
 
+### 그 밖의 기술들
 
-### Structures
+Structures
 
 "이 베이스 주소를 시작으로 0x0, 0x4, 0x8… 오프셋마다 필드를 해석해 구조체처럼 보자"
 ① Add address: 베이스(예: [[playerBasePtr]+0x30])를 열 기준으로 추가
@@ -198,11 +207,13 @@ Compare results with other saved pointermap 체크해 두번째 ptr 파일 선�
 ④ Column compare: 동일 구조체를 두 인스턴스(플레이어 1 vs 2)로 나란히 배치, 차이가 나는 오프셋 강조
 ⑤ 필드명·타입 더블클릭 → Rename & Re-type 지원
 
-### AoB 스캔
+
+AoB 스캔
 
 일련의 명령어 바이트 시퀀스(예: 48 8B 05 ?? ?? ?? ?? 89 83)를 야생의 고유지문처럼 저장해 두었다가, 다음 실행에서 다시 검색하여 같은 코드 위치를 찾는 방식. 업데이트로 모듈 크기와 베이스가 바뀌어도 패턴으로 찾는 거기에 성공률이 높음.
 
-### Dissect code
+
+Dissect code
 
 "이 모듈(예: game.exe)의 코드 구성을 통째로 해부해서 함수·분기·호출 관계를 탐색하자."
 ① 모듈/영역 선택 → .text(실행 코드) 섹션 전체를 빠르게 스캔

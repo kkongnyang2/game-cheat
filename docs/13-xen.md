@@ -242,7 +242,7 @@ p2p-dev-wlp0s20f3  wifi-p2p  disconnected                           --
 
 wifi 추가
 ```
-$ sudo nano /etc/xen/win10-on.cfg      
+$ sudo nano /etc/xen/win10-wifi.cfg      
 name = "win10-seabios"
 type = "hvm"
 memory = 4096
@@ -268,7 +268,7 @@ disk = [
 ]
 
 
-$ sudo xl create /etc/xen/win10-on.cfg
+$ sudo xl create /etc/xen/win10-wifi.cfg
 $ vncviewer 127.0.0.1:5900
 ```
 
@@ -276,7 +276,7 @@ $ vncviewer 127.0.0.1:5900
 
 dgpu 패스스루 추가
 ```
-$ sudo nano /etc/xen/win10-all.cfg 
+$ sudo nano /etc/xen/win10-gpu.cfg 
 name = "win10-seabios"
 type = "hvm"
 memory = 4096
@@ -305,7 +305,7 @@ pci = [
   '0000:01:00.0,permissive=1'
 ]
 
-$ sudo xl create /etc/xen/win10-all.cfg
+$ sudo xl create /etc/xen/win10-gpu.cfg
 $ vncviewer 127.0.0.1:5900
 
 hdmi에 외부 모니터 연결해서 뜨면 디스플레이 복제로 변경
@@ -458,15 +458,6 @@ Process listing for VM win10-seabios (id=31)
 [ 7292] msedge.exe (struct addr:ffffd184b0deb0c0)
 ```
 
-vmi-dump-memory
-```
-$ sudo mkdir -p /root/dumps
-$ sudo install -d -m 755 /root/dumps
-$ sudo vmi-dump-memory win10-seabios /root/dumps/mem.bin
-$ sudo strings -el /root/dumps/mem.bin | grep -F "##4729193##"
-##4729193##5
-```
-
 ### 파이썬 바인딩
 
 파이썬 바인딩 설치
@@ -588,8 +579,8 @@ $ sudo xl pci-assignable-list
 $ sudo nano /etc/xen/win10-monitor.cfg 
 name = "win10-seabios"
 type = "hvm"
-memory = 8192
-vcpus  = 8
+memory = 16384
+vcpus  = 12
 
 bios  = "seabios"
 boot  = "c"

@@ -1,8 +1,10 @@
-## 베이직 r/w py 코드를 작성해보자
+## vmi 베이직 코드를 작성해보자
 
 작성자: kkongnyang2 작성일: 2025-08-19
 
 ---
+
+CE에서 이미 가능하긴 하지만 탐색되지 않게 vmi 환경으로 r/w를 하자.
 
 ### 고정주소 폴링
 
@@ -193,18 +195,18 @@ top-level keys: ['base_types', 'enums', 'metadata', 'symbols', 'user_types']
 
 실행 커맨드
 ```
-$ sudo vmi-process-list win10-seabios | grep -i notepad
-[ 4692] notepad.exe (struct addr:ffff9d0697c21080)
-$ sudo /home/kkongnyang2/vmi-venv/bin/python3 ~/game-cheat/code/chain/find_module_base.py \
-  win10-seabios 4692 Notepad.exe /root/symbols/ntkrnlmp.json
-VMI_WARNING: Invalid offset name in windows_get_offset (win_peb).
-0x00007ff7dc6e0000
-
 $ sudo vmi-process-list win10-seabios | grep -i tutorial
 [10220] Tutorial-x86_6 (struct addr:ffff9d068d194300)
 $ sudo /home/kkongnyang2/vmi-venv/bin/python3 ~/game-cheat/code/chain/find_module_base.py   win10-seabios 10220 Tutorial-x86_64.exe /root/symbols/ntkrnlmp.json
 VMI_WARNING: Invalid offset name in windows_get_offset (win_peb).
 0x0000000100000000
+
+$ sudo vmi-process-list win10-seabios | grep -i overwatch
+[12164] Overwatch.exe (struct addr:ffffb50fd508a280)
+$ sudo /home/kkongnyang2/vmi-venv/bin/python3 ~/game-cheat/code/chain/find_module_base.py \
+  win10-seabios 12164 Overwatch.exe /root/symbols/ntkrnlmp.json
+VMI_WARNING: Invalid offset name in windows_get_offset (win_peb).
+0x00007ff6134e0000
 ```
 * 참고로 vmi-process-list는 15바이트까지만 돼서 모듈명 뒤 이름은 짤림. 알아서 적어주기.
 
@@ -217,6 +219,14 @@ $ sudo /home/kkongnyang2/vmi-venv/bin/python3 ~/game-cheat/code/chain/walk_chain
 00000010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   ................
 00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   ................
 00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   ................
+
+$ sudo /home/kkongnyang2/vmi-venv/bin/python3 ~/game-cheat/code/chain/walk_chain.py   win10-seabios 12164 Overwatch.exe /root/symbols/ntkrnlmp.json "+0x0" 64
+[+] base=Overwatch.exe@0x00007ff6134e0000
+[+] final address = 0x00007ff6134e0000
+00000000  4d 5a 90 00 03 00 00 00 04 00 00 00 ff ff 00 00   MZ..............
+00000010  b8 00 00 00 00 00 00 00 40 00 00 00 00 00 00 00   ........@.......
+00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   ................
+00000030  00 00 00 00 00 00 00 00 00 00 00 00 b8 01 00 00   ................
 ```
 * 64는 그 주소에서 몇 바이트를 덤프해서 보여줄지를 뜻하는 len임.
 

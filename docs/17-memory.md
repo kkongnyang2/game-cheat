@@ -1,8 +1,31 @@
-## 오버워치 메모리를 탐색하자
+## 오버워치 메모리를 뜯어보자
 
 작성자: kkongnyang2 작성일: 2025-08-30
 
 ---
+### CE poiner scan 실패
+
+PID: 12164
+모듈 이미지 베이스: 0x00007ff6134e0000
+오버워치에 CE를 붙이고 체력값 225 -> 피 닳면 decrased value로 체력 component 후보군 다섯개 주소를 찾음.
+2448997EDE8, 2449682E418 등등 모듈 이미지 베이스보다 앞인 힙 할당 영역임을 알 수 있음
+그렇지만 pointer scan for this address로 체인을 찾으려 해도 아무것도 안뜸
+왜? 코드에 포인터 부분이 난독화 및 xor로 가러져있기 때문. 상용 게임은 포인터가 평문 값으로 저장되어 있지 않고 매번 엔티티+타입+키로 계산해서 얻는다.
+해결: AoB로 루틴 위치 찾기 + 복호화로 실주소 산출
+
+
+우리의 최종 목표는 component base를 찾는 것. 그러나 단순 CE로 서칭하기엔 매 매칭마다, 런타임마다 달라져. 베이스부터 체인을 연결해보려 해도 암호화 및 xor 가리기로 불가능하고. 따라서 이를 찾으려면 직접 gamemanager - entity_rawlist - parentpool - componentparent - componentbase 순으로 찾아가야해. 중간중간에 암호화되어 있는 부분은 풀고. 이 암호화를 풀기 위해서는 내가 만든 암호화 과정을 역으로 복호화해야해. 이때 나는 암호화를 어떻게 했을까? 우선 키 두개를 준비했어. 어디에? 모르겠어. 실행 exe에 있을지 아니면 뭐 ncrypt.dll 같은 곳에 넣어놨을지 예상이 안가. 이 키를 찾았다고 했을 때 그냥 임의로 서로 간에 빼고 더하고 나누고 해서 xor키를 만들도록 했어. 그리고 이를 이용해 table에서 주소를 뽑도록 했지. 그 주소가 gamemanager 베이스야. 그럼 이때 키는 어디서 난거고 table은 어디 있는거지?
+
+오버워치 프로세스 메모리 전부를 덤프시키고 디스어셈블리로 풀어보자.
+
+vmi-dump-memory
+```
+$ sudo mkdir -p /root/dumps
+$ sudo install -d -m 755 /root/dumps
+$ sudo vmi-dump-memory win10-seabios /root/dumps/mem.bin
+$ sudo strings -el /root/dumps/mem.bin | grep -F "##4729193##"
+##4729193##5
+```
 
 ### 게임에 자주 쓰이는 모델
 
@@ -44,7 +67,7 @@ Entity e2b = createEntity();    // {index=42, gen=6}  (같은 index라도 gen이
 addComponent<Transform>(e2b, spawnPoint);
 
 
-### 오버워치2 메모리 구조(언노운)
+### 오버워치2 메모리 구조( 예측 언노운)
 
 ┌──────────────────────────────────────────────────────────────────────┐
 │ Windows Process (게임 클라이언트)                                       │
@@ -92,7 +115,7 @@ entity_rawlist 로부터 연결 리스트를 순회하며 ParentPool 배열을 �
 * parentpool은 entity를 찾는 역할
 
 ┌───────────────────────────────────────────────────────────────┐
-│ ComponentParent (= Entity 내부 공통 componentbase찾는 테이블)     │
+│ ComponentParent (= Entity 내부에 componentbase찾는 테이블)     │
 │  [decrypt::Parent(parent, Type)]로 컴포넌트 Base 계산            │
 │   - 내부 비트필드/테이블(예: +0x60, +0xF0 등)을 혼합 사용             │
 │   - CompKey1/2 를 이용한 XOR/롤 연산 (decrypt.cpp)                │
