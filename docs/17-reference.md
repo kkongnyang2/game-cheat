@@ -1,32 +1,3 @@
-## 오버워치 메모리를 뜯어보자
-
-작성자: kkongnyang2 작성일: 2025-08-30
-
----
-### CE poiner scan 실패
-
-PID: 12164
-모듈 이미지 베이스: 0x00007ff6134e0000
-오버워치에 CE를 붙이고 체력값 225 -> 피 닳면 decrased value로 체력 component 후보군 다섯개 주소를 찾음.
-2448997EDE8, 2449682E418 등등 모듈 이미지 베이스보다 앞인 힙 할당 영역임을 알 수 있음
-그렇지만 pointer scan for this address로 체인을 찾으려 해도 아무것도 안뜸
-왜? 코드에 포인터 부분이 난독화 및 xor로 가러져있기 때문. 상용 게임은 포인터가 평문 값으로 저장되어 있지 않고 매번 엔티티+타입+키로 계산해서 얻는다.
-해결: AoB로 루틴 위치 찾기 + 복호화로 실주소 산출
-
-
-우리의 최종 목표는 component base를 찾는 것. 그러나 단순 CE로 서칭하기엔 매 매칭마다, 런타임마다 달라져. 베이스부터 체인을 연결해보려 해도 암호화 및 xor 가리기로 불가능하고. 따라서 이를 찾으려면 직접 gamemanager - entity_rawlist - parentpool - componentparent - componentbase 순으로 찾아가야해. 중간중간에 암호화되어 있는 부분은 풀고. 이 암호화를 풀기 위해서는 내가 만든 암호화 과정을 역으로 복호화해야해. 이때 나는 암호화를 어떻게 했을까? 우선 키 두개를 준비했어. 어디에? 모르겠어. 실행 exe에 있을지 아니면 뭐 ncrypt.dll 같은 곳에 넣어놨을지 예상이 안가. 이 키를 찾았다고 했을 때 그냥 임의로 서로 간에 빼고 더하고 나누고 해서 xor키를 만들도록 했어. 그리고 이를 이용해 table에서 주소를 뽑도록 했지. 그 주소가 gamemanager 베이스야. 그럼 이때 키는 어디서 난거고 table은 어디 있는거지?
-
-오버워치 프로세스 메모리 전부를 덤프시키고 디스어셈블리로 풀어보자.
-
-vmi-dump-memory
-```
-$ sudo mkdir -p /root/dumps
-$ sudo install -d -m 755 /root/dumps
-$ sudo vmi-dump-memory win10-seabios /root/dumps/mem.bin
-$ sudo strings -el /root/dumps/mem.bin | grep -F "##4729193##"
-##4729193##5
-```
-
 ### 게임에 자주 쓰이는 모델
 
 아키타입 청크 모델
@@ -67,7 +38,7 @@ Entity e2b = createEntity();    // {index=42, gen=6}  (같은 index라도 gen이
 addComponent<Transform>(e2b, spawnPoint);
 
 
-### 오버워치2 메모리 구조( 예측 언노운)
+### 오버워치2 메모리 구조 레퍼런스
 
 ┌──────────────────────────────────────────────────────────────────────┐
 │ Windows Process (게임 클라이언트)                                       │
@@ -128,6 +99,9 @@ entity_rawlist 로부터 연결 리스트를 순회하며 ParentPool 배열을 �
 │  ...                                                 │
 └──────────────────────────────────────────────────────┘
 
+
+### Component struct
+
 [ MeshComponent ]   (TYPE_VELOCITY)
 ┌───────────────────────────────────────────────┐
 │ ComponentBase                                 │
@@ -186,6 +160,8 @@ entity_rawlist 로부터 연결 리스트를 순회하며 ParentPool 배열을 �
 └───────────────────────────────────────────────┘
 
 
+###
+
 ViewMatrix 계산 (function.cpp):
    ViewMatrix = *[ImageBase + 0x4149F68] + 0x7E0
                  (offset::matrix)          (offset::matrix_sub)
@@ -219,17 +195,6 @@ RayTrace 호출 (game.cpp):
   ok = (ImageBase+0xF01140)( &rayIn, &rayOut, 0 ) == 0
 
 
-1) GameManager 해제 → entity_rawlist/카운트 획득
-2) 각 RawList 배열 순회 → ParentPool 수집 (IsValid() 확인)
-3) current_entity = ParentPool[i]
-   link_component = decrypt::Parent(current_entity->GetEntity(), TYPE_LINK)
-   link_unique_id = *(link_component + 0xD4)         (offset::link_unqiue_id)
-   common_parent = parent_poollist 중 UniqueID==link_unique_id 인 것
-4) Entity(common_parent, current_entity) 구성 → Init()/IsValid()
-5) current_entity->UniqueID == *(GameManager+0x2E8)  (local_unique_id)이면 LocalEntity
-   아니면 game::Entities[]에 축적
-
-
 ### 흐름 요약
 
 [Module(.exe)]
@@ -259,6 +224,16 @@ RayTrace 호출 (game.cpp):
                                          └─ (Health/Mesh/Team/Rotate/Skill/…)
 
 
+1) GameManager 해제 → entity_rawlist/카운트 획득
+2) 각 RawList 배열 순회 → ParentPool 수집 (IsValid() 확인)
+3) current_entity = ParentPool[i]
+   link_component = decrypt::Parent(current_entity->GetEntity(), TYPE_LINK)
+   link_unique_id = *(link_component + 0xD4)         (offset::link_unqiue_id)
+   common_parent = parent_poollist 중 UniqueID==link_unique_id 인 것
+4) Entity(common_parent, current_entity) 구성 → Init()/IsValid()
+5) current_entity->UniqueID == *(GameManager+0x2E8)  (local_unique_id)이면 LocalEntity
+   아니면 game::Entities[]에 축적
+
 
 ### 데이터 받기
 
@@ -279,52 +254,25 @@ hp 및 위치
 클라: Health 반영, 예측 히트마커를 확정/취소, 이펙트/사운드 재생
 
 
-### 모듈 종류
+### 난독화를 풀어야 할 부분
 
-게임 자체
-- Overwatch.exe: 게임 메인 실행 파일(게임 루프 시작, 초기화와 모듈 로딩)
-- Overwatch_loader.dll: 게임 전용 로더/부트스트랩 DLL(자원과 엔진 초기화 분리)
-- bink2w64.dll: Bink 2 동영상 코덱(인트로와 컷신 재생)
-- nvngx_dlss.dll: DLSS(업스케일/프레임 생성)용 NGX 게임 측 스텁
-- vivoxsdk.dll: Vivox 보이스 채팅 SDK(인게임 음성 통신)
+1. GameManager 포인터/키
+목적: GameManager의 베이스를 얻어 entity_rawlist, total_count, local_unique_id에 접근
+관련: decrypt::Table(), decrypt::GameManager*Key, DecryptKey 테이블
+2. ComponentParent
+목적: entity와 type을 조합해 그 엔티티의 해당 타입 컴포넌트 베이스를 얻음
+관련: decrypt::Parent(entity, Type) (CompKey1/2 + 엔티티 내부 시드/비트필드 + 전역 키/테이블)
+3. Ray
+목적: InitRayStruct에 넣을 ray 컴포넌트/함수 포인터를 복호화
+관련: decrypt::Ray (RayKey1/2), ray_force, ray_cast RVA
+4. Outline
+목적: 외곽선 플래그/색상 필드를 XOR 마스크로 풀고 씌움
+관련: decrypt::Outline
 
-nvidia 드라이버
-- _nvngx.dll: nvidia ngx 런타임(드라이버 측 DLSS/Reflex 연동)
-- nvapi64.dll: nvidia 전용 gpu/디스플레이 제어 api
-- nvcuda64.dll: CUDA 드라이버 api
-- nvldumdx.dll: D3D11 UMD 로더(사용자 모드 드라이브 진입점)
-- nvwgf2umx.dll: D3D11 사용자 모드 드라이버 본체
-- nvdxgdmal64.dll: DGX/DMA 경로 관련 nvidia 구성요소
-- nvgpucomp64.dll: nvidia 셰이더/파이프라인 컴파일 구성요소
-- nvmessagebus.dll: nvidia 내부 메시지
 
-directX/그래픽
-- d3d11.dll: Direct3D 11 렌더링 API(OW2 기본 렌더러)
-- dxgi.dll: 스왑체인/어댑터/표면 관리
-- dxcore.dll: DXCore(어댑터 열거 및 선택)
-- d3d12.dll: D3D12 런타임
-- D3DSCache.dll: D3D 셰이더 캐시 매니저
-- directxdatabasehelper.dll: 드라이버/셰이더 데이터베이스 헬퍼
-- dcomp.dll: DirectComposition(합성,UI 효과)
-- dwmapi.dll: DWM(창 합성) 인터페이스
-- Microsoft.Internal.WarPal.dll: WARP(소프트웨어 래스터라이저) 관련 구성요소
+### GameManager 베이스 얻기
 
-입력
-- Xinput1_4.dll: 게임패드(엑스박스 패드) 입력
-- HID.DLL: HID(마우스/키보드/패드) 저수준 입력 API
-- IMM32.DLL/MSCTF.dll: 키보드/IME(텍스트 서비스 프레임워크)
-- inputhost.dll/textinputframwork.dll: 현대 입력 스택(터치/가상키보드)
-
-UI
-- oreMessaging.dll / CoreUIComponents.dll / Windows.UI.dll: 현대 UI/메시지 펌프 구성요소.
-- uxtheme.dll / USER32.dll / GDI32.dll / gdi32full.dll / shcore.dll: 윈도우 UI/그림(스케일링 포함)
-
-보안
-- amsi.dll: AMSI(안티멀웨어 스캔 인터페이스, 스크립트/컨텐츠 스캔 훅)
-- wldp.dll: Windows Lockdown Policy(AppX/서명 정책)
-- WINTRUST.dll/ CRYPT43.dll/ cryptnet.dll: 서명 검증/인증서/CRL
-- bcrypt.dll / bcryptPrimitives.dll: 해시/대칭키 등 CNG 원시 연산.
-- ncrypt.dll / ncryptsslp.dll: 키 스토리지/SSL 제공자 연계.
-- MpOav.dll: Microsoft Defender 실시간 검사(파일/메모리 접근 시 후킹).
-
-오디오, 네트워킹, 보이스, 장치, 윈도우 런타임 모듈은 생략
+decrypt::GameManagerXorKey()로 XOR 키를 얻음
+decrypt::GameManagerIndex()로 인덱스를 뽑고 result를 반환
+decrypt::Table()로 가려진 테이블 덩어리에서 유효 엔트리 하나를 골라 주소 후보를 내놓음
+decrypt::GameManager()로 최종적으로 XOR 마스크를 한 번 더 벗겨 GameManager 베이스를 얻음

@@ -4,8 +4,8 @@
 
 import sys, struct
 from libvmi import Libvmi
-from vmi_helpers import read_u32
-from find_module_base import find_module_base
+from chain.vmi_helpers import read_u32
+from chain.find_module_base import find_module_base
 
 def parse_sections(vmi, pid, base):
     # 반환: [ {name,beg_va,rva,vsize,rawsize,rawptr,chars,perm}, ... ] (RVA 오름차순)

@@ -14,9 +14,9 @@
 """
 import sys
 from libvmi import Libvmi
-from ist_helpers import IST
-from vmi_helpers import read_ptr, read_u32, read_u64, write_u32, write_u64, write_utf16, wait_present
-from walk_chain import read_module_base
+from chain.ist_helpers import IST
+from chain.vmi_helpers import read_ptr, read_u32, read_u64, write_u32, write_u64, write_utf16, wait_present
+from chain.walk_chain import read_module_base
 
 def resolve_addr(vmi, pid:int, module:str, ist:IST, chain:str) -> int:
     addr = read_module_base(vmi, pid, module, ist)

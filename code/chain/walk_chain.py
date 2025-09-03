@@ -10,8 +10,8 @@
 """
 import sys
 from libvmi import Libvmi
-from ist_helpers import IST, read_unicode_string
-from vmi_helpers import read_ptr, wait_present
+from chain.ist_helpers import IST, read_unicode_string
+from chain.vmi_helpers import read_ptr, wait_present
 
 def try_vmi_offset(vmi, key):
     fn = getattr(vmi, "get_offset", None)

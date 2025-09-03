@@ -5,8 +5,8 @@
 
 import sys, json, struct, datetime
 from libvmi import Libvmi, libvmi
-from vmi_helpers import read_u32
-from find_module_base import find_module_base
+from chain.vmi_helpers import read_u32
+from chain.find_module_base import find_module_base
 
 PAGE = 0x1000
 

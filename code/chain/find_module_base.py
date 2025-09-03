@@ -12,8 +12,8 @@
 """
 import sys
 from libvmi import Libvmi
-from ist_helpers import IST, read_unicode_string
-from vmi_helpers import read_ptr
+from chain.ist_helpers import IST, read_unicode_string
+from chain.vmi_helpers import read_ptr
 
 def get_offset(vmi, ist, key, fallback_type=None, fallback_field=None):
     """libvmi의 windows 오프셋(win_tasks/win_pid/win_peb 등) 우선, 없으면 IST 타입/필드로 폴백"""

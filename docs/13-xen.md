@@ -335,7 +335,7 @@ $ sudo ldconfig
 * 설치가 끝나면 /usr/local/bin/ 아래에 vmi-* 예제가 깔림
 
 
-guid 알아내기
+vmi-win-guid
 ```
 $ sudo vmi-win-guid name win10-seabios
 Windows Kernel found @ 0x2800000
@@ -387,6 +387,15 @@ Windows Kernel found @ 0x2800000
 	Section 33: .reloc
 ```
 
+vmi-dump-memory
+```
+$ sudo mkdir -p /root/dumps
+$ sudo install -d -m 755 /root/dumps
+$ sudo vmi-dump-memory win10-seabios /root/dumps/mem.bin
+$ sudo strings -el /root/dumps/mem.bin | grep -F "##4729193##"
+##4729193##5
+```
+
 ### volatility 프로파일 연결
 
 volatility 설치해 프로파일 만들기
@@ -414,8 +423,6 @@ win10-seabios {
 ```
 
 이제 이게 있으면 프로세스 구조체와 심볼 오프셋이 있어 vmi-process-list를 실행할 수 있음
-
-### libvmi 예제
 
 vmi-process-list
 ```
