@@ -379,13 +379,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="../17-memory/" class="md-tabs__link">
+      <a href="../17-reference/" class="md-tabs__link">
         
   
   
     
   
-  17 memory
+  17 reference
 
       </a>
     </li>
@@ -398,13 +398,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="../18-decrypt/" class="md-tabs__link">
+      <a href="../18-memory/" class="md-tabs__link">
         
   
   
     
   
-  18 decrypt
+  18 memory
 
       </a>
     </li>
@@ -878,15 +878,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#libvmi_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      libvmi 예제
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       파이썬 바인딩
@@ -1017,12 +1008,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../17-memory/" class="md-nav__link">
+      <a href="../17-reference/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    17 memory
+    17 reference
     
   </span>
   
@@ -1039,12 +1030,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../18-decrypt/" class="md-nav__link">
+      <a href="../18-memory/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    18 decrypt
+    18 memory
     
   </span>
   
@@ -1375,15 +1366,6 @@
   <a href="#volatility" class="md-nav__link">
     <span class="md-ellipsis">
       volatility 프로파일 연결
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#libvmi_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      libvmi 예제
     </span>
   </a>
   
@@ -1760,7 +1742,7 @@ $ sudo make install
 $ sudo ldconfig
 </code></pre></div><br />
 * 설치가 끝나면 /usr/local/bin/ 아래에 vmi-* 예제가 깔림</p>
-<p>guid 알아내기<br />
+<p>vmi-win-guid<br />
 <div class="highlight"><pre><span></span><code>$ sudo vmi-win-guid name win10-seabios
 Windows Kernel found @ 0x2800000
     Version: 64-bit Windows 10
@@ -1810,6 +1792,13 @@ Windows Kernel found @ 0x2800000
     Section 32: .rsrc
     Section 33: .reloc
 </code></pre></div></p>
+<p>vmi-dump-memory<br />
+<div class="highlight"><pre><span></span><code>$ sudo mkdir -p /root/dumps
+$ sudo install -d -m 755 /root/dumps
+$ sudo vmi-dump-memory win10-seabios /root/dumps/mem.bin
+$ sudo strings -el /root/dumps/mem.bin | grep -F &quot;##4729193##&quot;
+##4729193##5
+</code></pre></div></p>
 <h3 id="volatility">volatility 프로파일 연결</h3>
 <p>volatility 설치해 프로파일 만들기<br />
 <div class="highlight"><pre><span></span><code>$ python3 -m venv ~/vol3-venv
@@ -1834,7 +1823,6 @@ win10-seabios {
 }
 </code></pre></div></p>
 <p>이제 이게 있으면 프로세스 구조체와 심볼 오프셋이 있어 vmi-process-list를 실행할 수 있음</p>
-<h3 id="libvmi_1">libvmi 예제</h3>
 <p>vmi-process-list<br />
 <div class="highlight"><pre><span></span><code>$ sudo vmi-process-list win10-seabios
 Process listing for VM win10-seabios (id=31)
