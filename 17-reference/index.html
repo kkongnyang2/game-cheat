@@ -12,11 +12,11 @@
         <link rel="prev" href="../16-vmi-rw/">
       
       
-        <link rel="next" href="../18-memory/">
+        <link rel="next" href="../18-dump/">
       
       
       <link rel="icon" href="../logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.e53b48f4.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
@@ -263,13 +263,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="../11-xen-drakvuf/" class="md-tabs__link">
+      <a href="../11-xen-22.04/" class="md-tabs__link">
         
   
   
     
   
-  11 xen drakvuf
+  11 xen 22.04
 
       </a>
     </li>
@@ -282,13 +282,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="../12-xen-fail/" class="md-tabs__link">
+      <a href="../12-xen-backlist/" class="md-tabs__link">
         
   
   
     
   
-  12 xen fail
+  12 xen backlist
 
       </a>
     </li>
@@ -301,13 +301,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="../13-xen/" class="md-tabs__link">
+      <a href="../13-xen-pciback/" class="md-tabs__link">
         
   
   
     
   
-  13 xen
+  13 xen pciback
 
       </a>
     </li>
@@ -398,13 +398,32 @@
   
   
     <li class="md-tabs__item">
-      <a href="../18-memory/" class="md-tabs__link">
+      <a href="../18-dump/" class="md-tabs__link">
         
   
   
     
   
-  18 memory
+  18 dump
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../19-find/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  19 find
 
       </a>
     </li>
@@ -474,13 +493,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="../4-vmi/" class="md-tabs__link">
+      <a href="../4-igpu/" class="md-tabs__link">
         
   
   
     
   
-  4 vmi
+  4 igpu
 
       </a>
     </li>
@@ -493,13 +512,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="../5-igpu/" class="md-tabs__link">
+      <a href="../5-dgpu/" class="md-tabs__link">
         
   
   
     
   
-  5 igpu
+  5 dgpu
 
       </a>
     </li>
@@ -512,13 +531,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="../6-dgpu/" class="md-tabs__link">
+      <a href="../6-two-gpu/" class="md-tabs__link">
         
   
   
     
   
-  6 dgpu
+  6 two gpu
 
       </a>
     </li>
@@ -531,13 +550,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="../7-two-gpu/" class="md-tabs__link">
+      <a href="../7-vmi/" class="md-tabs__link">
         
   
   
     
   
-  7 two gpu
+  7 vmi
 
       </a>
     </li>
@@ -706,12 +725,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../11-xen-drakvuf/" class="md-nav__link">
+      <a href="../11-xen-22.04/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    11 xen drakvuf
+    11 xen 22.04
     
   </span>
   
@@ -728,12 +747,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../12-xen-fail/" class="md-nav__link">
+      <a href="../12-xen-backlist/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    12 xen fail
+    12 xen backlist
     
   </span>
   
@@ -750,12 +769,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../13-xen/" class="md-nav__link">
+      <a href="../13-xen-pciback/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    13 xen
+    13 xen pciback
     
   </span>
   
@@ -886,13 +905,23 @@
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
+      오버워치 구조 레퍼런스를 살펴보자
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="오버워치 구조 레퍼런스를 살펴보자">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
       게임에 자주 쓰이는 모델
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       오버워치2 메모리 구조 레퍼런스
@@ -900,8 +929,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#component-struct" class="md-nav__link">
     <span class="md-ellipsis">
       Component struct
@@ -909,49 +938,54 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       흐름 요약
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       데이터 받기
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       난독화를 풀어야 할 부분
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#gamemanager" class="md-nav__link">
     <span class="md-ellipsis">
       GameManager 베이스 얻기
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -970,12 +1004,34 @@
   
   
     <li class="md-nav__item">
-      <a href="../18-memory/" class="md-nav__link">
+      <a href="../18-dump/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    18 memory
+    18 dump
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-find/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    19 find
     
   </span>
   
@@ -1058,12 +1114,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-vmi/" class="md-nav__link">
+      <a href="../4-igpu/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    4 vmi
+    4 igpu
     
   </span>
   
@@ -1080,12 +1136,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../5-igpu/" class="md-nav__link">
+      <a href="../5-dgpu/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    5 igpu
+    5 dgpu
     
   </span>
   
@@ -1102,12 +1158,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../6-dgpu/" class="md-nav__link">
+      <a href="../6-two-gpu/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    6 dgpu
+    6 two gpu
     
   </span>
   
@@ -1124,12 +1180,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../7-two-gpu/" class="md-nav__link">
+      <a href="../7-vmi/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    7 two gpu
+    7 vmi
     
   </span>
   
@@ -1232,13 +1288,23 @@
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
+      오버워치 구조 레퍼런스를 살펴보자
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="오버워치 구조 레퍼런스를 살펴보자">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
       게임에 자주 쓰이는 모델
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       오버워치2 메모리 구조 레퍼런스
@@ -1246,8 +1312,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#component-struct" class="md-nav__link">
     <span class="md-ellipsis">
       Component struct
@@ -1255,49 +1321,54 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       흐름 요약
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       데이터 받기
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       난독화를 풀어야 할 부분
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#gamemanager" class="md-nav__link">
     <span class="md-ellipsis">
       GameManager 베이스 얻기
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1319,7 +1390,10 @@
 
   <h1>17 reference</h1>
 
-<h3 id="_1">게임에 자주 쓰이는 모델</h3>
+<h2 id="_1">오버워치 구조 레퍼런스를 살펴보자</h2>
+<p>작성자: kkongnyang2 작성일: 2025-08-27</p>
+<hr />
+<h3 id="_2">게임에 자주 쓰이는 모델</h3>
 <p>아키타입 청크 모델</p>
 <p>Entity = (index, genenration)로 구성된 식별자<br />
 죽고 리스폰되거나 픽을 변경하면 새 entity가 생기는 것이다.</p>
@@ -1450,7 +1524,7 @@ addComponent<Transform>(e2b, spawnPoint);</p>
 │  (전역) ImageBase+0x22A2F00 = skill_struct    │<br />
 │                          (offset::skill_struct)│<br />
 └───────────────────────────────────────────────┘</p>
-<h3 id="_2"></h3>
+<h3 id="_3"></h3>
 <p>ViewMatrix 계산 (function.cpp):<br />
    ViewMatrix = *[ImageBase + 0x4149F68] + 0x7E0<br />
                  (offset::matrix)          (offset::matrix_sub)</p>
@@ -1477,7 +1551,7 @@ addComponent<Transform>(e2b, spawnPoint);</p>
   (ImageBase+0x643270)( &amp;rayIn.entity_list, &amp;LocalEntity.common_parent_ )<br />
   // 실제 캐스트<br />
   ok = (ImageBase+0xF01140)( &amp;rayIn, &amp;rayOut, 0 ) == 0</p>
-<h3 id="_3">흐름 요약</h3>
+<h3 id="_4">흐름 요약</h3>
 <p>[Module(.exe)]<br />
  ImageBase<br />
    ├─ globals (RVA들)<br />
@@ -1509,7 +1583,7 @@ addComponent<Transform>(e2b, spawnPoint);</p>
 4) Entity(common_parent, current_entity) 구성 → Init()/IsValid()<br />
 5) current_entity-&gt;UniqueID == *(GameManager+0x2E8)  (local_unique_id)이면 LocalEntity<br />
    아니면 game::Entities[]에 축적</p>
-<h3 id="_4">데이터 받기</h3>
+<h3 id="_5">데이터 받기</h3>
 <p>hp 및 위치<br />
 서버 기준으로 내 로컬 플레이어는 어느정도 미리 입력값을 반영해 작동하는 거고, 서버에서 이제 제대로 된 델타값이 오면 이전 스냅샷에서 계산해 옳은 값들을 업데이트하고 반영해주고, 서버에서 한번씩 델타값이 아니라 풀 스냅샷을 보내 혹시라도 틀어졌을걸 방지해준다.<br />
 특정 DLL이 아니라 Overwatch.exe가 들고 있는 ECS 컨테이너(메모리)에 올라가 있다.</p>
@@ -1523,7 +1597,7 @@ addComponent<Transform>(e2b, spawnPoint);</p>
 서버: 과거로 리와인드 → 레이캐스트 → 히트 확정 &amp; 피해 계산 → Health 감소<br />
 서버→클라: 다음 틱에 피격자 Health 델타 + (선택) HitConfirm 이벤트 전송<br />
 클라: Health 반영, 예측 히트마커를 확정/취소, 이펙트/사운드 재생</p>
-<h3 id="_5">난독화를 풀어야 할 부분</h3>
+<h3 id="_6">난독화를 풀어야 할 부분</h3>
 <ol>
 <li>GameManager 포인터/키<br />
 목적: GameManager의 베이스를 얻어 entity_rawlist, total_count, local_unique_id에 접근<br />
@@ -1594,7 +1668,7 @@ decrypt::GameManager()로 최종적으로 XOR 마스크를 한 번 더 벗겨 Ga
       <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "content.code.copy", "header.autohide"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.92b07e13.min.js"></script>
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
       
     
   </body>
