@@ -163,8 +163,8 @@ $ sudo chmod 644 /var/lib/xen/iso/Win10.iso
 $ sudo chmod 644 /var/lib/xen/images/win10.qcow2
 $ sudo chmod 755 /var/lib/xen /var/lib/xen/iso /var/lib/xen/images
 
-$ sudo nano /etc/xen/win10-seabios.cfg
-name = "win10-seabios"
+$ sudo nano /etc/xen/win10.cfg
+name = "win10"
 type = "hvm"
 memory = 4096
 vcpus  = 2
@@ -233,40 +233,31 @@ $ nmcli device status
 DEVICE             TYPE      STATE                                  CONNECTION           
 xenbr0             bridge    connected                              xenbr0               
 wlp0s20f3          wifi      connected                              KT_GiGA_5G_1D39      
-enp68s0            ethernet  connected                              bridge-slave-enp68s0 
-xenbr-nat          bridge    connecting (getting IP configuration)  xenbr-na             
+enp68s0            ethernet  connected                              bridge-slave-enp68s0          
 lo                 loopback  connected (externally)                 lo                   
 p2p-dev-wlp0s20f3  wifi-p2p  disconnected                           --                   
 ```
 
+참고로 삭제하려면
+```
+sudo nmcli con down xenbr0
+sudo nmcli con down bridge-slave-enp68s0
+sudo nmcli con delete xenbr0
+sudo nmcli con delete bridge-slave-enp68s0
+```
 
 wifi 추가
 ```
-$ sudo nano /etc/xen/win10-wifi.cfg      
-name = "win10-seabios"
-type = "hvm"
-memory = 4096
-vcpus  = 2
+$ sudo nano /etc/xen/win10.cfg
 
-bios  = "seabios"
-boot  = "c"
+boot  = "c" 로 변경
 
-device_model_version  = "qemu-xen"
-device_model_override = "/usr/libexec/xen-qemu-system-i386"
-
-vga = "stdvga"
-videoram = 32
-graphics = "vnc"
-vnc = 1
-vncunused = 1
-vnclisten = "127.0.0.1"
-
-vif = [ 'bridge=xenbr0,model=e1000,script=vif-bridge,mac=52:54:00:12:34:56' ]
+vif = [ 'bridge=xenbr0,model=e1000,script=vif-bridge,mac=52:54:00:12:34:56' ] 로 변경
 
 disk = [
   'format=qcow2,vdev=hda,access=rw,target=/var/lib/xen/images/win10.qcow2'
 ]
-
+로 변경
 
 $ sudo xl create /etc/xen/win10-wifi.cfg
 $ vncviewer 127.0.0.1:5900
@@ -276,36 +267,14 @@ $ vncviewer 127.0.0.1:5900
 
 dgpu 패스스루 추가
 ```
-$ sudo nano /etc/xen/win10-gpu.cfg 
-name = "win10-seabios"
-type = "hvm"
-memory = 4096
-vcpus  = 2
-
-bios  = "seabios"
-boot  = "c"
-
-device_model_version  = "qemu-xen"
-device_model_override = "/usr/libexec/xen-qemu-system-i386"
-
-vga = "stdvga"
-videoram = 32
-graphics = "vnc"
-vnc = 1
-vncunused = 1
-vnclisten = "127.0.0.1"
-
-vif = [ 'bridge=xenbr0,model=e1000,script=vif-bridge,mac=52:54:00:12:34:56' ]
-
-disk = [
-  'format=qcow2,vdev=hda,access=rw,target=/var/lib/xen/images/win10.qcow2'
-]
+$ sudo nano /etc/xen/win10.cfg 
 
 pci = [
   '0000:01:00.0,permissive=1'
 ]
+추가
 
-$ sudo xl create /etc/xen/win10-gpu.cfg
+$ sudo xl create /etc/xen/win10.cfg
 $ vncviewer 127.0.0.1:5900
 
 hdmi에 외부 모니터 연결해서 뜨면 디스플레이 복제로 변경
@@ -337,7 +306,7 @@ $ sudo ldconfig
 
 vmi-win-guid
 ```
-$ sudo vmi-win-guid name win10-seabios
+$ sudo vmi-win-guid name win10
 Windows Kernel found @ 0x2800000
 	Version: 64-bit Windows 10
 	PE GUID: bca5a8dd1046000
@@ -391,7 +360,7 @@ vmi-dump-memory
 ```
 $ sudo mkdir -p /root/dumps
 $ sudo install -d -m 755 /root/dumps
-$ sudo vmi-dump-memory win10-seabios /root/dumps/mem.bin
+$ sudo vmi-dump-memory win10 /root/dumps/mem.bin
 $ sudo strings -el /root/dumps/mem.bin | grep -F "##4729193##"
 ##4729193##5
 ```
@@ -417,7 +386,7 @@ $ sudo chown root:root /root/symbols/ntkrnlmp.json
 $ sudo chmod 644 /root/symbols/ntkrnlmp.json
 
 $ sudo nano /etc/libvmi.conf
-win10-seabios {
+win10 {
     volatility_ist = "/root/symbols/ntkrnlmp.json";
 }
 ```
@@ -426,8 +395,8 @@ win10-seabios {
 
 vmi-process-list
 ```
-$ sudo vmi-process-list win10-seabios
-Process listing for VM win10-seabios (id=31)
+$ sudo vmi-process-list win10
+Process listing for VM win10 (id=31)
 [    4] System (struct addr:ffffd184a6891040)
 [   92] Registry (struct addr:ffffd184a7a05040)
 [  328] smss.exe (struct addr:ffffd184a7674040)
@@ -526,15 +495,21 @@ pip install --user 로 깔리는 곳 (시스템과 분리되지만, 여전히 �
 해당 venv 안에서만 보이는 “독립 공간” → 가장 안전
 
 
-### 사양 확충
+### 확충
 
+용량 확충
 ```
 $ sudo qemu-img resize -f qcow2 /var/lib/xen/images/win10.qcow2 200G
+들어가서 그냥 추가된 140GB를 드라이버 D로 만들어줌
+```
+
+성능 확충, 마우스 안정화
+```
 $ sudo nano /etc/xen/win10-all.cfg 
-name = "win10-seabios"
+name = "win10"
 type = "hvm"
-memory = 8192
-vcpus  = 8
+memory = 16384
+vcpus  = 10
 
 bios  = "seabios"
 boot  = "c"
@@ -561,33 +536,26 @@ pci = [
 
 usb = 1
 usbdevice = [ 'tablet' ]
+
 $ sudo xl create /etc/xen/win10-all.cfg
 $ vncviewer 127.0.0.1:5900
-들어가서 그냥 추가된 140GB를 드라이버 D로 만들어줌
 ```
 
-### 모니터 단독버전
-
-마우스 pci-list 등록
+프로그램
 ```
-$ lspci -nn | grep -i usb
-00:14.0 USB controller [0c03]: Intel Corporation Raptor Lake USB 3.2 Gen 2x2 (20 Gb/s) XHCI Host Controller [8086:7a60] (rev 11)
-05:00.0 USB controller [0c03]: Intel Corporation Thunderbolt 4 NHI [Maple Ridge 4C 2020] [8086:1137]
-24:00.0 USB controller [0c03]: Intel Corporation Thunderbolt 4 USB Controller [Maple Ridge 4C 2020] [8086:1138]
-$ sudo xl pci-assignable-add 0000:00:14.0
-$ sudo xl pci-assignable-list
-0000:01:00.0 
-0000:01:00.1 
-0000:00:14.0 
+배틀넷 설치하고 드라이버 D에 오버워치2 설치
+Cheat engine 7.5 window 프로그램 다운
 ```
 
-새 cfg 만들어주기
+### 최종
+
+vnc 제거
 ```
-$ sudo nano /etc/xen/win10-monitor.cfg 
-name = "win10-seabios"
+$ sudo nano /etc/xen/win10-monitor.cfg  
+name = "win10"
 type = "hvm"
 memory = 16384
-vcpus  = 12
+vcpus  = 10
 
 bios  = "seabios"
 boot  = "c"
@@ -602,16 +570,41 @@ disk = [
 ]
 
 pci = [
-  '0000:01:00.0,permissive=1',
-  '0000:00:14.0'
+  '0000:01:00.0,permissive=1'
 ]
+
 $ sudo xl create /etc/xen/win10-monitor.cfg
 ```
 
-### 게스트 윈도우
-
-프로그램
+이벤트 잡아내기 기능 추가
 ```
-배틀넷 설치하고 드라이버 D에 오버워치2 설치
-Cheat engine 7.5 window 프로그램 다운
+$ sudo sed -i -E 's/^(GRUB_CMDLINE_XEN=")([^"]*)"/\1\2 altp2m=1"/' /etc/default/grub.d/xen.cfg
+$ sudo update-grub
+재부팅
+$ sudo nano /etc/xen/win10-monitor.cfg
+altp2m = "external" 추가
+```
+
+usb 개별로 attach
+```
+$ lsusb -t
+기본 루트 허브는 bus 1,2,3,4의 각각 포트1
+실제 사용 장치는 bus 1의 포트3, 포트6, 포트14 사용중 확인
+게스트에 넘길 추가된 포트는 bus 1의 포트4, 포트9
+
+$ lsusb
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 001 Device 002: ID 046d:c54d Logitech, Inc. USB Receiver
+Bus 001 Device 003: ID 04f2:b76f Chicony Electronics Co., Ltd ACER HD User Facing
+Bus 001 Device 004: ID 8087:0033 Intel Corp. AX211 Bluetooth
+Bus 001 Device 005: ID 3554:f58a Compx VXE NordicMouse 1K Dongle
+Bus 001 Device 006: ID 046d:c31c Logitech, Inc. Keyboard K120
+Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 004 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+장치 5,6 확정
+
+$ sudo xl usbctrl-attach win10 type=auto version=3 ports=15
+$ sudo xl usbdev-attach  win10 hostbus=1 hostaddr=5 controller=0 port=1
+$ sudo xl usbdev-attach  win10 hostbus=1 hostaddr=6 controller=0 port=2
 ```

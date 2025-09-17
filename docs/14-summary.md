@@ -39,6 +39,8 @@ win10-seabios {
 ### 관리
 
 앞으로 ubuntu on xen hypervisor 들어가서 
+
+관리모드
 ```
 lsmod | grep xen_pciback || sudo modprobe xen_pciback 
 DRVDIR=$(ls -d /sys/bus/pci/drivers/pciback /sys/bus/pci/drivers/xen-pciback 2>/dev/null | head -n1)
@@ -51,40 +53,32 @@ hdmi 연결
 vncviewer 127.0.0.1:5900
 ```
 
-모니터만 쓰고 싶다면
+실전모드
 ```
 lsmod | grep xen_pciback || sudo modprobe xen_pciback 
 DRVDIR=$(ls -d /sys/bus/pci/drivers/pciback /sys/bus/pci/drivers/xen-pciback 2>/dev/null | head -n1)
 echo 0000:01:00.1 | sudo tee /sys/bus/pci/devices/0000:01:00.1/driver/unbind
 echo 0000:01:00.1 | sudo tee "$DRVDIR/bind"
-sudo xl pci-assignable-add 0000:00:14.0
 sudo xl pci-assignable-list
 랜선 연결
 sudo xl create /etc/xen/win10-monitor.cfg
 hdmi 연결
+lsusb
+sudo xl usbctrl-attach win10 type=auto version=3 ports=15
+sudo xl usbdev-attach  win10 hostbus=1 hostaddr=5 controller=0 port=1
+sudo xl usbdev-attach  win10 hostbus=1 hostaddr=6 controller=0 port=2
 ```
 
 업데이트 하고나면
 ```
-sudo vmi-win-guid name win10-seabios
-PDB GUID: b6121da15ddcf625c8c7273c0d85eb101
+sudo vmi-win-guid name win10
+PDB GUID: f388d1c459c2dc9e81f891d0760a56cd1
 source ~/vol3-venv/bin/activate
 python3 -m volatility3.framework.symbols.windows.pdbconv \
   -p ntkrnlmp.pdb \
-  -g b6121da15ddcf625c8c7273c0d85eb101 \
-  -o ntkrnlmp.json
+  -g f388d1c459c2dc9e81f891d0760a56cd1 \
+  -o ntkrnlmp.json   
 deactivate
 sudo cp -i ~/ntkrnlmp.json /root/symbols/ntkrnlmp.json
 y
-```
-
-연결을 확인하고 싶다면
-```
-sudo vmi-process-list win10-seabios | grep -i notepad
-~/vmi-venv/bin/python3 - <<'PY'
-from libvmi import Libvmi
-import libvmi, inspect
-print("OK:", Libvmi)
-print("Loaded from:", getattr(libvmi, "__file__", None))
-PY
 ```
