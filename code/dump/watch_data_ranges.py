@@ -242,22 +242,99 @@ def run_writewatch_va(drakvuf: str, ist_json: str, domid: str, pid: int, start: 
     print("[writewatch/VA] START", " ".join(cmd), "→", log, f"(max_events={max_events}, max_bytes={max_bytes})")
     return _run_and_log(cmd, env, log, duration, max_events, max_bytes)
 
-def run_writewatch_pfn(drakvuf: str, ist_json: str, domid: str, pfn_list, duration: int, logdir: Path,
-                       max_events: int = 5000, max_bytes: int = 8_000_000):
-    """신규: pfn_writewatch (PFN 감시). pfn_list: int들의 리스트."""
+def run_writewatch_pfn(
+    drakvuf: str,
+    ist_json: str,
+    domid: str,
+    pfn_list,
+    duration: int,
+    logdir: Path,
+    max_events: int = 5000,
+    max_bytes: int = 8_000_000,
+):
+    """
+    pfn_writewatch 플러그인 실행:
+      - PFN 리스트로 EPT-POST write 트랩 arm
+      - 플러그인에 A/ B 모드 옵션 전달:
+         * WRITEWATCH_MODE= both | diff | peek
+         * WRITEWATCH_PEEK= <bytes>
+         * WRITEWATCH_MAX_CHANGES= <N>
+      - 플러그인 storm guard도 작동하도록
+         * WRITEWATCH_MAX_EVENTS, WRITEWATCH_SECONDS 설정
+    """
     env = os.environ.copy()
+
+    # --- 입력 PFN sanity ---
     if not pfn_list:
         raise SystemExit("no PFNs to watch")
     if len(pfn_list) > 8192:
         print(f"[warn] PFN list too long ({len(pfn_list)}); truncating to 8192")
         pfn_list = pfn_list[:8192]
     env["WRITEWATCH_PFNS"] = ",".join(f"0x{p:x}" for p in pfn_list)
+
+    # --- 옵션(A/B) 전달: args → env (fallback: env → default) ---
+    # mode
+    mode = None
+    try:
+        # globals()에 main의 args가 있으면 우선 적용
+        _g = globals()
+        if "args" in _g and hasattr(_g["args"], "ww_mode") and _g["args"].ww_mode:
+            mode = _g["args"].ww_mode
+    except Exception:
+        pass
+    if mode is None:
+        mode = env.get("WRITEWATCH_MODE", "both")
+    env["WRITEWATCH_MODE"] = mode
+
+    # peek bytes
+    peek_bytes = None
+    try:
+        _g = globals()
+        if "args" in _g and hasattr(_g["args"], "peek_bytes") and _g["args"].peek_bytes:
+            peek_bytes = int(_g["args"].peek_bytes)
+    except Exception:
+        pass
+    if peek_bytes is None:
+        peek_bytes = int(env.get("WRITEWATCH_PEEK", "16"))
+    env["WRITEWATCH_PEEK"] = str(peek_bytes)
+
+    # max changes per event
+    max_changes = None
+    try:
+        _g = globals()
+        if "args" in _g and hasattr(_g["args"], "max_changes") and _g["args"].max_changes:
+            max_changes = int(_g["args"].max_changes)
+    except Exception:
+        pass
+    if max_changes is None:
+        max_changes = int(env.get("WRITEWATCH_MAX_CHANGES", "16"))
+    env["WRITEWATCH_MAX_CHANGES"] = str(max_changes)
+
+    # --- 플러그인 측 guard(선택)도 켜줌: duration/최대 이벤트 ---
+    #  * 우리 파이썬 쪽 _run_and_log 도 동시에 가드하지만,
+    #    플러그인이 자체 종료하도록 환경변수도 같이 준다.
+    env["WRITEWATCH_SECONDS"] = str(int(duration))
+    env["WRITEWATCH_MAX_EVENTS"] = str(int(max_events))
+
+    # --- 실행/로그 경로 ---
     ts = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     logdir.mkdir(parents=True, exist_ok=True)
     log = logdir / f"pfnwatch_{len(pfn_list)}pfns_{ts}.jsonl"
+
+    # --- drakvuf 호출 ---
     cmd = [drakvuf, "-r", ist_json, "-d", domid, "-a", "pfn_writewatch", "-o", "json"]
-    print("[writewatch/PFN] START", " ".join(cmd), "→", log, f"(PFNs={len(pfn_list)}, max_events={max_events}, max_bytes={max_bytes})")
+
+    print(
+        "[writewatch/PFN] START",
+        " ".join(cmd),
+        "→",
+        str(log),
+        f"(pfns={len(pfn_list)}, mode={mode}, peek={peek_bytes}, maxchg={max_changes}, "
+        f"max_events={max_events}, max_bytes={max_bytes}, duration={duration}s)",
+    )
+
     return _run_and_log(cmd, env, log, duration, max_events, max_bytes)
+
 
 def _run_and_log(cmd, env, log, duration, max_events, max_bytes):
     with open(log, "w") as f:
@@ -329,6 +406,9 @@ def main():
     ap.add_argument("--outdir", default="./out", help="Output directory for dumps/logs")
     ap.add_argument("--cap", default=None, help="Forwarded --cap for the dumper (hex string)")
     ap.add_argument("--max-pfns", type=int, default=4096, help="PFN mode: per range, cap number of PFNs to arm")
+    ap.add_argument("--ww-mode", choices=["both","diff","peek"], default="both", help="pfn_writewatch mode: both(default), diff, peek")
+    ap.add_argument("--peek-bytes", type=int, default=16, help="peek bytes around change (for peek/both), default=16")
+    ap.add_argument("--max-changes", type=int, default=16, help="max change entries per event (storm throttle inside plugin)")
     args = ap.parse_args()
 
     outdir = Path(args.outdir)
