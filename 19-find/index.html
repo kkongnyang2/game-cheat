@@ -474,6 +474,25 @@
   
   
     <li class="md-tabs__item">
+      <a href="../20-memory/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  20 memory
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
       <a href="../3-display/" class="md-tabs__link">
         
   
@@ -1065,6 +1084,28 @@
   
   
     <li class="md-nav__item">
+      <a href="../20-memory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    20 memory
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../3-display/" class="md-nav__link">
         
   
@@ -1450,7 +1491,19 @@ $ sudo /home/kkongnyang2/vmi-venv/bin/python3 -m dump.watch_data_ranges \
   --duration 10 --interval 5 \
   --outdir /home/kkongnyang2/watch_dump \
   --max-pfns 2048
-</code></pre></div></p>
+</code></pre></div><br />
+sudo /home/kkongnyang2/vmi-venv/bin/python3 -m dump.watch_data_ranges \<br />
+  --domain win10 --pid 2900 --module Overwatch.exe \<br />
+  --ist-json /root/symbols/ntkrnlmp.json \<br />
+  --python /home/kkongnyang2/vmi-venv/bin/python3 \<br />
+  --dumper-module dump.vmi_dump_section \<br />
+  --project-root ~/game-cheat/code \<br />
+  --drakvuf /usr/local/bin/drakvuf \<br />
+  --watch pfn \<br />
+  --mode cluster --topk 5 --gran-log2 22 --gap-pages 64 --pad 0x10000 \<br />
+  --duration 10 --interval 5 \<br />
+  --ww-mode both --peek-bytes 16 --max-changes 12 \<br />
+  --outdir /home/kkongnyang2/watch_dump --max-pfns 2048</p>
 <p>=== CYCLE 1 ===<br />
 [dump] running: /home/kkongnyang2/vmi-venv/bin/python3 -m dump.vmi_dump_section win10 10068 Overwatch.exe /root/symbols/ntkrnlmp.json .data<br />
 [dumped] Overwatch.exe_.data_0x7ff7af882000_0x2ef800.bin  (size=3078144/3078144)<br />
@@ -1597,6 +1650,65 @@ Invalid offset name in windows_get_offset (win_peb).</p>
 [saved] /home/kkongnyang2/watch_dump/logs/pfnwatch_33pfns_20250916T035627Z.jsonl (events≈0)<br />
 [info] VA→PFN: 33 PFNs from window 0x20f2132f000-0x20f21350000<br />
 [writewatch/PFN] START /usr/local/bin/drakvuf -r /root/symbols/ntkrnlmp.json -d 4 -a pfn_writewatch -o json → /home/kkongnyang2/watch_dump/logs/pfnwatch_33pfns_20250916T035628Z.jsonl (PFNs=33, max_events=5000, max_bytes=8000000)</p>
+<p>=== CYCLE 1 ===<br />
+[dump] running: /home/kkongnyang2/vmi-venv/bin/python3 -m dump.vmi_dump_section win10 2900 Overwatch.exe /root/symbols/ntkrnlmp.json .data<br />
+[dumped] Overwatch.exe_.data_0x7ff6203e5000_0x2f3e00.bin  (size=3096064/3096064)<br />
+Invalid offset name in windows_get_offset (win_peb).</p>
+<p>[info] data dump: /home/kkongnyang2/watch_dump/dumps/Overwatch.exe_.data_0x7ff6203e5000_0x2f3e00.bin<br />
+[info] heap-like candidates: 1112<br />
+[range 1/11] VA 0x1ffffff0000-0x20000091000 (size=644 KB)<br />
+[range 2/11] VA 0x23accc20000-0x23accc44000 (size=144 KB)<br />
+[range 3/11] VA 0x23accd00000-0x23accdca000 (size=808 KB)<br />
+[range 4/11] VA 0x23ad5116000-0x23ad5195000 (size=508 KB)<br />
+[range 5/11] VA 0x23ad51f8000-0x23ad521c000 (size=144 KB)<br />
+[range 6/11] VA 0x23ad5262000-0x23ad5285000 (size=140 KB)<br />
+[range 7/11] VA 0x23ad52b8000-0x23ad5323000 (size=428 KB)<br />
+[range 8/11] VA 0x23aef0a9000-0x23aef0ce000 (size=148 KB)<br />
+[range 9/11] VA 0x23aef110000-0x23aef150000 (size=256 KB)<br />
+[range 10/11] VA 0x23bb832f000-0x23bb8350000 (size=132 KB)<br />
+[range 11/11] VA 0x23bb83c9000-0x23bb8400000 (size=220 KB)<br />
+[warn] VA window 0x1ffffff0000-0x20000091000 produced no PFNs; skipping<br />
+[info] VA→PFN: 21 PFNs from window 0x23accc20000-0x23accc44000<br />
+[writewatch/PFN] START /usr/local/bin/drakvuf -r /root/symbols/ntkrnlmp.json -d 5 -a pfn_writewatch -o json → /home/kkongnyang2/watch_dump/logs/pfnwatch_21pfns_20250917T033622Z.jsonl (pfns=21, mode=both, peek=16, maxchg=16, max_events=5000, max_bytes=8000000, duration=10s)<br />
+^C[writewatch] END events≈1768, bytes=678502, file=/home/kkongnyang2/watch_dump/logs/pfnwatch_21pfns_20250917T033622Z.jsonl<br />
+[saved] /home/kkongnyang2/watch_dump/logs/pfnwatch_21pfns_20250917T033622Z.jsonl (events≈1768)<br />
+[info] VA→PFN: 186 PFNs from window 0x23accd00000-0x23accdca000<br />
+[writewatch/PFN] START /usr/local/bin/drakvuf -r /root/symbols/ntkrnlmp.json -d 5 -a pfn_writewatch -o json → /home/kkongnyang2/watch_dump/logs/pfnwatch_186pfns_20250917T033631Z.jsonl (pfns=186, mode=both, peek=16, maxchg=16, max_events=5000, max_bytes=8000000, duration=10s)<br />
+[writewatch] storm guard hit (events=5000, bytes=1024487); terminating<br />
+[writewatch] END events≈5000, bytes=1024487, file=/home/kkongnyang2/watch_dump/logs/pfnwatch_186pfns_20250917T033631Z.jsonl<br />
+[saved] /home/kkongnyang2/watch_dump/logs/pfnwatch_186pfns_20250917T033631Z.jsonl (events≈5000)<br />
+[info] VA→PFN: 117 PFNs from window 0x23ad5116000-0x23ad5195000<br />
+[writewatch/PFN] START /usr/local/bin/drakvuf -r /root/symbols/ntkrnlmp.json -d 5 -a pfn_writewatch -o json → /home/kkongnyang2/watch_dump/logs/pfnwatch_117pfns_20250917T033634Z.jsonl (pfns=117, mode=both, peek=16, maxchg=16, max_events=5000, max_bytes=8000000, duration=10s)<br />
+[writewatch] END events≈0, bytes=301, file=/home/kkongnyang2/watch_dump/logs/pfnwatch_117pfns_20250917T033634Z.jsonl<br />
+[saved] /home/kkongnyang2/watch_dump/logs/pfnwatch_117pfns_20250917T033634Z.jsonl (events≈0)<br />
+[info] VA→PFN: 35 PFNs from window 0x23ad51f8000-0x23ad521c000<br />
+[writewatch/PFN] START /usr/local/bin/drakvuf -r /root/symbols/ntkrnlmp.json -d 5 -a pfn_writewatch -o json → /home/kkongnyang2/watch_dump/logs/pfnwatch_35pfns_20250917T033634Z.jsonl (pfns=35, mode=both, peek=16, maxchg=16, max_events=5000, max_bytes=8000000, duration=10s)<br />
+[writewatch] END events≈0, bytes=301, file=/home/kkongnyang2/watch_dump/logs/pfnwatch_35pfns_20250917T033634Z.jsonl<br />
+[saved] /home/kkongnyang2/watch_dump/logs/pfnwatch_35pfns_20250917T033634Z.jsonl (events≈0)<br />
+[info] VA→PFN: 35 PFNs from window 0x23ad5262000-0x23ad5285000<br />
+[writewatch/PFN] START /usr/local/bin/drakvuf -r /root/symbols/ntkrnlmp.json -d 5 -a pfn_writewatch -o json → /home/kkongnyang2/watch_dump/logs/pfnwatch_35pfns_20250917T033634Z.jsonl (pfns=35, mode=both, peek=16, maxchg=16, max_events=5000, max_bytes=8000000, duration=10s)<br />
+[writewatch] END events≈0, bytes=301, file=/home/kkongnyang2/watch_dump/logs/pfnwatch_35pfns_20250917T033634Z.jsonl<br />
+[saved] /home/kkongnyang2/watch_dump/logs/pfnwatch_35pfns_20250917T033634Z.jsonl (events≈0)<br />
+[info] VA→PFN: 103 PFNs from window 0x23ad52b8000-0x23ad5323000<br />
+[writewatch/PFN] START /usr/local/bin/drakvuf -r /root/symbols/ntkrnlmp.json -d 5 -a pfn_writewatch -o json → /home/kkongnyang2/watch_dump/logs/pfnwatch_103pfns_20250917T033634Z.jsonl (pfns=103, mode=both, peek=16, maxchg=16, max_events=5000, max_bytes=8000000, duration=10s)<br />
+[writewatch] END events≈0, bytes=301, file=/home/kkongnyang2/watch_dump/logs/pfnwatch_103pfns_20250917T033634Z.jsonl<br />
+[saved] /home/kkongnyang2/watch_dump/logs/pfnwatch_103pfns_20250917T033634Z.jsonl (events≈0)<br />
+[info] VA→PFN: 30 PFNs from window 0x23aef0a9000-0x23aef0ce000<br />
+[writewatch/PFN] START /usr/local/bin/drakvuf -r /root/symbols/ntkrnlmp.json -d 5 -a pfn_writewatch -o json → /home/kkongnyang2/watch_dump/logs/pfnwatch_30pfns_20250917T033634Z.jsonl (pfns=30, mode=both, peek=16, maxchg=16, max_events=5000, max_bytes=8000000, duration=10s)<br />
+[writewatch] END events≈0, bytes=301, file=/home/kkongnyang2/watch_dump/logs/pfnwatch_30pfns_20250917T033634Z.jsonl<br />
+[saved] /home/kkongnyang2/watch_dump/logs/pfnwatch_30pfns_20250917T033634Z.jsonl (events≈0)<br />
+[info] VA→PFN: 11 PFNs from window 0x23aef110000-0x23aef150000<br />
+[writewatch/PFN] START /usr/local/bin/drakvuf -r /root/symbols/ntkrnlmp.json -d 5 -a pfn_writewatch -o json → /home/kkongnyang2/watch_dump/logs/pfnwatch_11pfns_20250917T033634Z.jsonl (pfns=11, mode=both, peek=16, maxchg=16, max_events=5000, max_bytes=8000000, duration=10s)<br />
+[writewatch] END events≈0, bytes=301, file=/home/kkongnyang2/watch_dump/logs/pfnwatch_11pfns_20250917T033634Z.jsonl<br />
+[saved] /home/kkongnyang2/watch_dump/logs/pfnwatch_11pfns_20250917T033634Z.jsonl (events≈0)<br />
+[info] VA→PFN: 33 PFNs from window 0x23bb832f000-0x23bb8350000<br />
+[writewatch/PFN] START /usr/local/bin/drakvuf -r /root/symbols/ntkrnlmp.json -d 5 -a pfn_writewatch -o json → /home/kkongnyang2/watch_dump/logs/pfnwatch_33pfns_20250917T033634Z.jsonl (pfns=33, mode=both, peek=16, maxchg=16, max_events=5000, max_bytes=8000000, duration=10s)<br />
+[writewatch] END events≈0, bytes=301, file=/home/kkongnyang2/watch_dump/logs/pfnwatch_33pfns_20250917T033634Z.jsonl<br />
+[saved] /home/kkongnyang2/watch_dump/logs/pfnwatch_33pfns_20250917T033634Z.jsonl (events≈0)<br />
+[info] VA→PFN: 55 PFNs from window 0x23bb83c9000-0x23bb8400000<br />
+[writewatch/PFN] START /usr/local/bin/drakvuf -r /root/symbols/ntkrnlmp.json -d 5 -a pfn_writewatch -o json → /home/kkongnyang2/watch_dump/logs/pfnwatch_55pfns_20250917T033634Z.jsonl (pfns=55, mode=both, peek=16, maxchg=16, max_events=5000, max_bytes=8000000, duration=10s)<br />
+[writewatch] END events≈0, bytes=301, file=/home/kkongnyang2/watch_dump/logs/pfnwatch_55pfns_20250917T033634Z.jsonl<br />
+[saved] /home/kkongnyang2/watch_dump/logs/pfnwatch_55pfns_20250917T033634Z.jsonl (events≈0)</p>
 
 
 
