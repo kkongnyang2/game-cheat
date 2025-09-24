@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../16-vmi-rw/">
+        <link rel="prev" href="../18-write_watch/">
       
       
-        <link rel="next" href="../18-dump/">
+        <link rel="next" href="../2-cheats/">
       
       
       <link rel="icon" href="../logo.svg">
@@ -20,7 +20,7 @@
     
     
       
-        <title>17 reference - Game-Cheat</title>
+        <title>19 memory - Game-Cheat</title>
       
     
     
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              17 reference
+              19 memory
             
           </span>
         </div>
@@ -375,6 +375,44 @@
   
   
   
+  
+    <li class="md-tabs__item">
+      <a href="../17-dump/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  17 dump
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../18-write_watch/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  18 write watch
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
     
   
   
@@ -385,64 +423,7 @@
   
     
   
-  17 reference
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../18-dump/" class="md-tabs__link">
-        
-  
-  
-    
-  
-  18 dump
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../19-find/" class="md-tabs__link">
-        
-  
-  
-    
-  
-  19 find
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../19-main/" class="md-tabs__link">
-        
-  
-  
-    
-  
-  19 main
+  19 memory
 
       </a>
     </li>
@@ -474,13 +455,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="../20-memory/" class="md-tabs__link">
+      <a href="../20-main/" class="md-tabs__link">
         
   
   
     
   
-  20 memory
+  20 main
 
       </a>
     </li>
@@ -873,6 +854,50 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-dump/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    17 dump
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-write_watch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    18 write watch
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -888,7 +913,7 @@
   
   
   <span class="md-ellipsis">
-    17 reference
+    19 memory
     
   </span>
   
@@ -901,7 +926,7 @@
   
   
   <span class="md-ellipsis">
-    17 reference
+    19 memory
     
   </span>
   
@@ -932,9 +957,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#ecs" class="md-nav__link">
     <span class="md-ellipsis">
-      게임에 자주 쓰이는 모델
+      일반적인 ECS 엔진
     </span>
   </a>
   
@@ -950,9 +975,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#component-struct" class="md-nav__link">
+  <a href="#poollist" class="md-nav__link">
     <span class="md-ellipsis">
-      Component struct
+      그럼 PoolList는 어떻게 찾는데?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      그럼 복호화 코드는 어떻게 찾는데?
     </span>
   </a>
   
@@ -961,7 +995,7 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      시나리오
     </span>
   </a>
   
@@ -970,34 +1004,7 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      흐름 요약
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
       데이터 받기
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      난독화를 풀어야 할 부분
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#gamemanager" class="md-nav__link">
-    <span class="md-ellipsis">
-      GameManager 베이스 얻기
     </span>
   </a>
   
@@ -1012,72 +1019,6 @@
   
 </nav>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../18-dump/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    18 dump
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../19-find/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    19 find
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../19-main/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    19 main
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -1111,12 +1052,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../20-memory/" class="md-nav__link">
+      <a href="../20-main/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    20 memory
+    20 main
     
   </span>
   
@@ -1337,9 +1278,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#ecs" class="md-nav__link">
     <span class="md-ellipsis">
-      게임에 자주 쓰이는 모델
+      일반적인 ECS 엔진
     </span>
   </a>
   
@@ -1355,9 +1296,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#component-struct" class="md-nav__link">
+  <a href="#poollist" class="md-nav__link">
     <span class="md-ellipsis">
-      Component struct
+      그럼 PoolList는 어떻게 찾는데?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      그럼 복호화 코드는 어떻게 찾는데?
     </span>
   </a>
   
@@ -1366,7 +1316,7 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      시나리오
     </span>
   </a>
   
@@ -1375,34 +1325,7 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      흐름 요약
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
       데이터 받기
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      난독화를 풀어야 할 부분
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#gamemanager" class="md-nav__link">
-    <span class="md-ellipsis">
-      GameManager 베이스 얻기
     </span>
   </a>
   
@@ -1429,202 +1352,442 @@
 
 
 
-  <h1>17 reference</h1>
+  <h1>19 memory</h1>
 
 <h2 id="_1">오버워치 구조 레퍼런스를 살펴보자</h2>
 <p>작성자: kkongnyang2 작성일: 2025-08-27</p>
 <hr />
-<h3 id="_2">게임에 자주 쓰이는 모델</h3>
-<p>아키타입 청크 모델</p>
-<p>Entity = (index, genenration)로 구성된 식별자<br />
-죽고 리스폰되거나 픽을 변경하면 새 entity가 생기는 것이다.</p>
-<p>slot[index] 테이블 = { 아키타입, 청크, row, 맞는 generation }</p>
-<p>Component = 청크 블록에 특정 아키타입의 컴포넌트들을 모아놓는다.<br />
-PosX: [  5,  7, 12, -3, ...]<br />
-PosY: [  1,  0,  5,  2, ...]</p>
-<p>매치 준비<br />
-풀/아키타입 청크 준비. 내부 배열 보존으로 재할당 방지.<br />
-서버 엔티티 ID와 클라이언트 Entity 핸들 매핑 테이블 보관</p>
-<p>유저2 입장<br />
-Entity e2 = createEntity();         // {index=42, gen=5}<br />
-addComponent<name>(e2, "kkongnyang2");<br />
-addComponent<Transform>(e2, {x:0,y:0,z:0, ...});<br />
-// slots[e2.index].denseIndex = k; posX[k], posY[k], posZ[k], hp[k] 등 동일 k 위치에 각 컴포넌트가 정렬.</p>
-<p>틱 업데이트<br />
-InputSystem: velX[k], velY[k] 수정<br />
-MovementSystem: posX[k] += velX[k]*dt<br />
-Combat/HealthSystem: 히트 확인 시 hp[k] -= dmg<br />
-RenderPrepSystem: 현재 pos를 상수 버퍼용 구조로 패킹하여 GPU 업로드(프레임 링비퍼라 주소 고정 기대x)</p>
-<p>유저2가 사망<br />
-destroyEntity(e2);<br />
-// slots[e2.index].gen++  (예: 5 → 6)<br />
-// 따라서 {index, gen=5}는 매치가 안되니 즉시 무효</p>
-<p>유저2 리스폰<br />
-Entity e2b = createEntity();    // {index=42, gen=6}  (같은 index라도 gen이 다름)<br />
-addComponent<Transform>(e2b, spawnPoint);</p>
+<h3 id="ecs">일반적인 ECS 엔진</h3>
+<p>Entity = 플레이어 10명에게 부여하는 식별 ID<br />
+Component = 상태 데이터<br />
+System = 모든 로직 함수. 상태와 조건을 따져 상태를 변경시키는 시스템.</p>
+<p>엔티티는 아키타입, 즉 같은 컴포넌트 스트림들을 가지는 애들로 분류된다.<br />
+아키타입 A = hp, position x<br />
+아키타입 B = barrier, position y</p>
+<p>(.data) g_world ──► (heap) World<br />
+                      ├─ registry ─► (heap) EntityLoc[Max]   // entityId → (chunk, idx)<br />
+                      └─ pools     ─► Map<ArchetypeID, ArchetypePool*></p>
+<p>(heap) ArchetypePool<br />
+    ├─ layout ─► (rdata/heap) ArchetypeLayout { CompLayout[] (offset,stride) }<br />
+    └─ chunks : vector<Chunk*> ─► (heap) Chunk { count, entity_dense[], data_base … }</p>
+<p>주소 = chunk.data_base + layout.comp[id].offset + local_index * layout.comp[id].stride</p>
+<ul>
+<li>최초의 루트 포인터 : g_world 포인터</li>
+<li>world : 런타임의 루트 컨텍스트. 게임 한 판을 대표하는 최상위 그릇.</li>
+<li>registry : 엔티티/컴포넌트/아키타입/청크를 인덱싱하는 O(1) 중앙 테이블<br />
+            EntityLoc[], FreeList, IDAllocator, ArchetypeTbale, LayoutTable</li>
+<li>EntityLoc : 레지스트리의 테이블 중 가장 핫함<br />
+            entityId → (archetype, chunk*, local_index)</li>
+<li>ArchetypePool: 실제 데이터 컨테이너 집합</li>
+<li>ArchetypeLayout: 이미 개발자들이 만들어놓은 레이아웃<br />
+                  id, comp_count, compLayout[], chunk_data_size</li>
+<li>CompLayout : id, offset, stride</li>
+</ul>
+<p>찾아가는 방법은 따라서 두개.</p>
+<p>g_world.registry.EntityLoc.chunk 도착해서 layout로 offset,stride 얻어서 주소 계산<br />
+g_world.pools.ArchetypePool.chunks 도착해서 entity_dense 보고 원하는 엔티티/컴포넌트 찾기. layout로 offset,stride 얻어서 주소 계산</p>
+<p>게임 진행</p>
+<ol>
+<li>match_start()시 청크들 할당</li>
+<li>10개의 엔티티 생성 - entityID 발급 및 아키타입 결정</li>
+<li>입력값들이 들어오고 진행이 되면 로컬에서 매 프레임 렌더링시스템, UI시스템, 스킬시스템 등을 돌림</li>
+<li>엔티티별로 chunk_base + comp_offset + local_index*stride로 찾아가 write</li>
+<li>매 프레임 진짜 스냅샷이 들어오면 보간해서 다시 write</li>
+<li>특정 엔티티가 아키타입을 변경하면 스왑 삭제, 청크 헤더 및 EntityLoc에 반영</li>
+</ol>
 <h3 id="2">오버워치2 메모리 구조 레퍼런스</h3>
-<p>┌──────────────────────────────────────────────────────────────────────┐<br />
-│ Windows Process (게임 클라이언트)                                       │<br />
-│  PEB → ImageBase = [GS:0x60]+0x10  (memory.h)                        │<br />
-│                                                                      │<br />
-│  Globals (ImageBase+RVA)                                             │<br />
-│  ├─ ViewMatrixPtr_RVA          = 0x4149F68  (offset::matrix)         │<br />
-│  │    └─ ViewMatrix = *[ImageBase+0x4149F68] + 0x7E0                 │<br />
-│  │                        (offset::matrix_sub)                       │<br />
-│  ├─ RayTrace.force_fn_RVA      = 0x643270   (offset::ray_force)      │<br />
-│  ├─ RayTrace.cast_fn_RVA       = 0xF01140   (offset::ray_cast)       │<br />
-│  └─ DecryptKey_RVA             = 0x00B3D20  (offset::decrypt_key)    │<br />
-└──────────────────────────────────────────────────────────────────────┘</p>
-<p>┌──────────────────────────────────────────────────────────────┐<br />
-│ GameManager (동적 주소, decrypt::GameManager()로 해제)          │<br />
-│  +0x020 entity_rawlist         (offset::entity_rawlist)      │<br />
-│  +0x02C entity_rawlist_count   (offset::entity_rawlist_count)│<br />
-│  +0x2E8 local_unique_id        (offset::local_unique_id)     │<br />
-└──────────────────────────────────────────────────────────────┘<br />
-* 모든 정보 집합 gamemanager</p>
-<p>entity_rawlist 로부터 연결 리스트를 순회하며 ParentPool 배열을 모음:<br />
-   do {<br />
-       rawListArr = *(entity_rawlist + 0x08);         // 배열 시작 (function.cpp)<br />
-       for x in [0..entity_rawlist_count-1]:<br />
-           ParentPool[x] 유효 시 수집<br />
-   } while ( entity_rawlist = *(entity_rawlist + 0x18) )  // 다음 노드(next_rawlist)</p>
-<p>┌───────────────────────────────────────────────┐<br />
-│ RawList Node                                  │<br />
-│  +0x08  ParentPool* array head                │<br />
-│  +0x18  next_rawlist (offset::next_rawlist)   │<br />
-│  ...                                          │<br />
-└───────────────────────────────────────────────┘<br />
-* 한 노드마다 parentpool 포인터들이 적당히 담겨 있음</p>
-<p>┌───────────────────────────────────────────────┐<br />
-│ ParentPool                                    │<br />
-│  GetEntity()  = &amp;this-&gt;Entity                 │<br />
-│  GetUniqueID()= *(GetEntity()+0x118)          │<br />
-│                    (offset::unique_id)        │<br />
-└───────────────────────────────────────────────┘<br />
-* parentpool은 entity를 찾는 역할</p>
-<p>┌───────────────────────────────────────────────────────────────┐<br />
-│ ComponentParent (= Entity 내부에 componentbase찾는 테이블)     │<br />
-│  [decrypt::Parent(parent, Type)]로 컴포넌트 Base 계산            │<br />
-│   - 내부 비트필드/테이블(예: +0x60, +0xF0 등)을 혼합 사용             │<br />
-│   - CompKey1/2 를 이용한 XOR/롤 연산 (decrypt.cpp)                │<br />
-└───────────────────────────────────────────────────────────────┘<br />
-* 엔티티의 원하는 타입 컴포넌트 베이스를 찾을 수 있음</p>
-<p>┌──────────────────────────────────────────────────────┐<br />
-│ ComponentBase (타입 공통 헤더)                        │<br />
-│  +0x10  type_tag == Type (IsValid() 체크에 사용)      │<br />
-│  ...                                                 │<br />
-└──────────────────────────────────────────────────────┘</p>
-<h3 id="component-struct">Component struct</h3>
-<p>[ MeshComponent ]   (TYPE_VELOCITY)<br />
-┌───────────────────────────────────────────────┐<br />
-│ ComponentBase                                 │<br />
-│  +0x050 velocity            (offset::velocity)│<br />
-│  +0x380 root_pos            (offset::root_pos)│<br />
-│  +0x810 bone_list           (offset::bone_list) → <br />
-│        <em>(bone_list+0x20) = bone_base          │<br />
-│        bone[i] = *(bone_base + 0x30</em>i + 0x20) │<br />
-│  +0x7C0 rotate_struct       (offset::rotate_struct)<br />
-│  +0x8FC rotate_yaw(float)   (offset::rotate_yaw)   │<br />
-└───────────────────────────────────────────────┘<br />
-* 배열로 엔티티별 데이터가 쭉 적혀있음</p>
-<p>[ TeamComponent ]   (TYPE_TEAMBIT)<br />
-┌───────────────────────────────────────────────┐<br />
-│ ComponentBase                                 │<br />
-│  +0x058 team bitfield     (offset::team)      │<br />
-│    - bit 0x17 → RED, 0x18 → BLUE, 0x1B → DM   │<br />
-└───────────────────────────────────────────────┘</p>
-<p>[ ObjectComponent ] (TYPE_OBJECT)<br />
-┌───────────────────────────────────────────────┐<br />
-│ ComponentBase                                 │<br />
-│  +0x018 unique_id        (offset::ObUniqueID) │<br />
-│  +0x0E0 pos(Vector3)     (offset::ObPos)      │<br />
-└───────────────────────────────────────────────┘</p>
-<p>[ HealthComponent ] (TYPE_HEALTH)<br />
-┌───────────────────────────────────────────────┐<br />
-│ ComponentBase                                 │<br />
-│  +0x0DC health (Vector2) (offset::health)     │<br />
-│  +0x21C armor  (Vector2) (offset::armor)      │<br />
-│  +0x35C barrier(Vector2) (offset::barrier)    │<br />
-│  +0x4A4 bubble flag (bit 0)                   │<br />
-└───────────────────────────────────────────────┘</p>
-<p>[ HeroComponent ]   (TYPE_HERO)<br />
-┌───────────────────────────────────────────────┐<br />
-│ ComponentBase                                 │<br />
-│  +0x0F0 hero_id (offset::hero_id)             │<br />
-└───────────────────────────────────────────────┘</p>
-<p><a href="TYPE_CMD"> CommandComponent </a><br />
-┌───────────────────────────────────────────────┐<br />
-│ ComponentBase                                 │<br />
-│  +0x1244 input bitfield  (offset::input)      │<br />
-│  +0x12A0 angle (Vector?) (offset::angle)      │<br />
-└───────────────────────────────────────────────┘</p>
-<p>[ SkillComponent ]  (TYPE_SKILL 계열)<br />
-┌───────────────────────────────────────────────┐<br />
-│ ComponentBase                                 │<br />
-│  +0x1868 skill_rawlist (offset::skill_rawlist)│<br />
-│  (전역) ImageBase+0x22A2F00 = skill_struct    │<br />
-│                          (offset::skill_struct)│<br />
-└───────────────────────────────────────────────┘</p>
-<h3 id="_3"></h3>
-<p>ViewMatrix 계산 (function.cpp):<br />
-   ViewMatrix = *[ImageBase + 0x4149F68] + 0x7E0<br />
-                 (offset::matrix)          (offset::matrix_sub)</p>
-<p>struct Matrix (struct.h):<br />
-   m11..m44 (4x4), WorldToScreen(), GetCameraVec() 등 유틸 포함</p>
-<p>Globals<br />
-  game::RayComponent = decrypt::Ray(GameManager) 결과</p>
-<p>InitRayStruct (game.cpp):<br />
-  ray_component = **(RayComponent - 0x48)<br />
-  ZeroMemory(rtIn, 0x1A0)<br />
-  ...(필수 필드 구성)...</p>
-<p>RayCastIn (struct.h):<br />
-┌───────────────────────────────────────────────┐<br />
-│ +0x00 from (Vector3)                          │<br />
-│ +0x10 to   (Vector3)                          │<br />
-│ +0x58 ignore_level (uintptr_t)                │<br />
-│ +0x60 entity_list  (uintptr_t)                │<br />
-│ +0x68 entity_count (uintptr_t)                │<br />
-│ +0x70 padding[0x208]                          │<br />
-└───────────────────────────────────────────────┘</p>
-<p>RayTrace 호출 (game.cpp):<br />
-  rayIn.ignore_level = 0x690000000000017<br />
-  // 엔티티 목록 준비<br />
-  (ImageBase+0x643270)( &amp;rayIn.entity_list, &amp;LocalEntity.common_parent_ )<br />
-  // 실제 캐스트<br />
-  ok = (ImageBase+0xF01140)( &amp;rayIn, &amp;rayOut, 0 ) == 0</p>
-<h3 id="_4">흐름 요약</h3>
-<p>[Module(.exe)]<br />
- ImageBase<br />
-   ├─ globals (RVA들)<br />
-   │    ├─ ViewMatrixPtr_RVA<br />
-   │    ├─ RayTrace.force_fn_RVA<br />
-   │    ├─ RayTrace.cast_fn_RVA<br />
-   │    └─ DecryptKey_RVA<br />
-   └─ ...</p>
-<p>[GameManager]  (decrypt로 베이스 해제)<br />
- +0x020 head_rawlist ─────────► [RawListNode #0] ─────────► [RawListNode #1] ──► ...<br />
- +0x02C total_count</p>
-<p>[RawListNode]<br />
- +0x08 ParentPool* items[]  (배열)<br />
- +0x18 next_rawlist</p>
-<p>[ParentPool]  (컨테이너 레벨 핸들)<br />
- ├─ meta: UniqueID 등<br />
- └─ GetEntity() ─────────────► [Entity]<br />
-                               ├─ UniqueID (+0x118 등)<br />
-                               ├─ (내부 공통 Parent / component map seed)<br />
-                               └─ decrypt::Parent(Entity, Type)<br />
-                                     └─ [ComponentBase(Type)]<br />
-                                         └─ (Health/Mesh/Team/Rotate/Skill/…)</p>
-<p>1) GameManager 해제 → entity_rawlist/카운트 획득<br />
-2) 각 RawList 배열 순회 → ParentPool 수집 (IsValid() 확인)<br />
-3) current_entity = ParentPool[i]<br />
-   link_component = decrypt::Parent(current_entity-&gt;GetEntity(), TYPE_LINK)<br />
-   link_unique_id = *(link_component + 0xD4)         (offset::link_unqiue_id)<br />
-   common_parent = parent_poollist 중 UniqueID==link_unique_id 인 것<br />
-4) Entity(common_parent, current_entity) 구성 → Init()/IsValid()<br />
-5) current_entity-&gt;UniqueID == *(GameManager+0x2E8)  (local_unique_id)이면 LocalEntity<br />
-   아니면 game::Entities[]에 축적</p>
-<h3 id="_5">데이터 받기</h3>
+<div class="highlight"><pre><span></span><code>namespace offset
+{
+    // PoolList
+    constexpr auto entity = 0x8;
+    constexpr auto unique_id = 0x118;
+    constexpr auto local_unique_id = 0x2E8;
+    constexpr auto link_unqiue_id = 0xD4;
+
+    constexpr auto entity_rawlist = 0x20;
+    constexpr auto entity_rawlist_count = 0x2C;
+    constexpr auto next_rawlist = 0x18;
+}
+</code></pre></div>
+<p>PoolHeader<br />
+ ├─ 0x18: next (다음 페이지)<br />
+ ├─ 0x20: rawlist (엔트리 배열 시작 주소)  ← 여기를 따라가면<br />
+ └─ 0x2C: count</p>
+<p>rawlist:  [ Entry0 ][ Entry1 ][ Entry2 ] ... (count개)<br />
+              └─ +0x08 에 Parent(엔티티) 포인터 (구조체형일 때)</p>
+<p>그렇게 찾은 Parent(즉 엔티티) 주소를 decrypt::Parent(parent, N)에 입력하면 ComponentBase 리턴</p>
+<p>uint64_t decrypt::Parent(uint64_t Parent, uint8_t Type) //OK<br />
+{<br />
+<strong>try<br />
+    {<br />
+        if (IsValidPtr(Parent))<br />
+        {<br />
+            uint64_t v1 = Parent;<br />
+            uint64_t v2 = (uint64_t)1 &lt;&lt; (uint64_t)(Type &amp; 0x3F);<br />
+            uint64_t v3 = v2 - 1;<br />
+            uint64_t v4 = Type &amp; 0x3F;<br />
+            uint64_t v5 = Type / 0x3F;<br />
+            uint64_t b1 = <em>(_QWORD</em>)(v1 + 0x60);<br />
+            uint64_t b2 = <em>(_QWORD</em>)(v1 + 8i64 * v5 + 0xF0);<br />
+            uint64_t b3 = (v2 &amp; <em>(_QWORD</em>)(v1 + 8i64 * v5 + 0xF0)) &gt;&gt; v4;<br />
+            uint64_t b4 = (v3 &amp; b2) - (((v3 &amp; b2) &gt;&gt; 1) &amp; 0x5555555555555555i64);<br />
+            uint64_t b5 = <em>(unsigned __int8</em>)(v5 + v1 + 272)<br />
+                + ((72340172838076673i64<br />
+                    * (((b4 &amp; 0x3333333333333333i64)<br />
+                        + ((b4 &gt;&gt; 2) &amp; 0x3333333333333333i64)<br />
+                        + (((b4 &amp; 0x3333333333333333i64) + ((b4 &gt;&gt; 2) &amp; 0x3333333333333333i64)) &gt;&gt; 4)) &amp; 0xF0F0F0F0F0F0F0Fi64)) &gt;&gt; 56);<br />
+            uint64_t Key1 = CompKey1;<br />
+            uint64_t Key2 = CompKey2;<br />
+            uint64_t b6 = <em>(_QWORD</em>)(b1 + 8 * b5);<br />
+            uint64_t b7 = Key2 ^ ((unsigned int)b6 | ((unsigned int)b6 | b6 &amp; 0xFFFFFFFF00000000ui64 ^ ((unsigned __int64)((unsigned int)b6 ^ ~(unsigned int)<em>(_QWORD</em>)(ImageBase + 0x3ACDCA0 + (Key1 &amp; 0xFFF))) &lt;&lt; 32)) &amp; 0xFFFFFFFF00000000ui64 ^ ((unsigned __int64)((unsigned int)b6 ^ 0xBC6F2947) &lt;&lt; 32));<br />
+            uint64_t b8 = (unsigned int)b7 | b7 &amp; 0xFFFFFFFF00000000ui64 ^ ((unsigned __int64)(unsigned int)(b7<br />
+                + __ROL4</strong>(<br />
+<em>(_QWORD</em>)(ImageBase + 0x3ACDCA0 + (Key1 &gt;&gt; 52)),<br />
+                    1)) &lt;&lt; 32);<br />
+            return -(int)b3 &amp; ((unsigned int)b8 | b8 &amp; 0xFFFFFFFF00000000ui64 ^ ((unsigned __int64)((unsigned int)b8 ^ (unsigned int)~(<em>(_QWORD</em>)(ImageBase + 0x3ACDCA0 + (Key1 &amp; 0xFFF)) &gt;&gt; 32)) &lt;&lt; 32));<br />
+        }<br />
+    }<br />
+    __except (1) {}<br />
+    return 0;<br />
+}</p>
+<p>비트마스크/벡터 명령어(SSE)로 키를 섞어 결과 포인터를 복호화</p>
+<p>참고로 N은 eComponentType</p>
+<p>enum eComponentType<br />
+{<br />
+    TYPE_ANIMATE = 0x1,<br />
+    TYPE_RAY = 0x02,<br />
+    TYPE_VELOCITY = 0x04,<br />
+    TYPE_TEAMBIT = 0x1F,<br />
+    TYPE_ROTATE = 0x2D,<br />
+    TYPE_PLAYER = 0x31,<br />
+    TYPE_LINK = 0x32,<br />
+    TYPE_VISCHECK = 0x33,<br />
+    TYPE_SKILL = 0x35,<br />
+    TYPE_ROTATE2 = 0x37,<br />
+    TYPE_OBJECT = 0x38,<br />
+    TYPE_HEALTH = 0x39,<br />
+    TYPE_CMD = 0x41,<br />
+    TYPE_HEROID = 0x52,<br />
+    TYPE_OUTLINE = 0x5A,<br />
+};</p>
+<p>찾은 ComponentBase에서 아래와 같은 오프셋을 추가하면 해당 데이터 항목</p>
+<p>namespace offset<br />
+{<br />
+    // MeshComponent<br />
+    constexpr auto velocity = 0x50;<br />
+    constexpr auto root_pos = 0x380;<br />
+    constexpr auto bone_list = 0x810;</p>
+<div class="highlight"><pre><span></span><code>// TeamComponent
+constexpr auto team = 0x58;
+
+// RotateComponent
+constexpr auto rotate_struct = 0x7C0;
+constexpr auto rotate_yaw = 0x8FC;
+
+// SkillComponent
+constexpr auto skill_rawlist = 0x1868;
+constexpr auto skill_struct = 0x22A2F00;
+
+// ObjectComponent
+constexpr auto ObUniqueID = 0x18;
+constexpr auto ObPos = 0xE0;
+
+// HealthComponent
+constexpr auto health = 0xDC;
+constexpr auto armor = 0x21C;
+constexpr auto barrier = 0x35C;
+
+// HeroComponent
+constexpr auto hero_id = 0xF0;
+
+// CommandComponent
+constexpr auto input = 0x1244;
+constexpr auto angle = 0x12A0;
+</code></pre></div>
+<p>}</p>
+<h3 id="poollist">그럼 PoolList는 어떻게 찾는데?</h3>
+<p>XorKey, Index, Table, GM 순으로 복호화해서.</p>
+<p>uint64_t decrypt::GameManagerXorKey(uint64_t a1) //OK<br />
+{<br />
+    __try<br />
+    {<br />
+        __int64 v1; // rbx<br />
+        unsigned __int64 v2; // rdi<br />
+        unsigned __int64 v3; // r8<br />
+        unsigned __int64 v4; // rax<br />
+        unsigned __int64 v5; // rbx<br />
+        unsigned __int64 v6; // rcx<br />
+        unsigned __int64 v7; // rcx<br />
+        __m128i v8; // xmm1<br />
+        __m128i v9; // xmm2<br />
+        __m128i v10; // xmm0<br />
+        __m128i v11; // xmm1</p>
+<div class="highlight"><pre><span></span><code>    v1 = a1;
+    v2 = ImageBase + 0x5D14D2;
+    v3 = v2 + 0x8;
+    v4 = 0i64;
+    v5 = *(__int64*)(ImageBase + 0x3ACECC0
+        + 8 * (((unsigned __int8)v1 + 0x66) &amp; 0x7F)
+        + (((unsigned __int64)(v1 + 0xF74216354A20866i64) &gt;&gt; 7) &amp; 7)) ^ v2 ^ (v1 + 0xF74216354A20866i64);
+    v6 = (v3 - v2 + 7) &gt;&gt; 3;
+    if (v2 &gt; v3)
+        v6 = 0i64;
+    if (v6 &amp;&amp; v6 &gt;= 4)
+    {
+        v7 = v6 &amp; 0xFFFFFFFFFFFFFFFCui64;
+        ZeroMemory(&amp;v8, sizeof(v8));
+        ZeroMemory(&amp;v9, sizeof(v9));
+
+        do
+        {
+            v4 += 4i64;
+            v8 = _mm_xor_si128(v8, _mm_loadu_si128((const __m128i*)v2));
+            v10 = _mm_loadu_si128((const __m128i*)(v2 + 16));
+            v2 += 32i64;
+            v9 = _mm_xor_si128(v9, v10);
+        } while (v4 &lt; v7);
+        v11 = _mm_xor_si128(v8, v9);
+        v5 ^= _mm_xor_si128(v11, _mm_srli_si128(v11, 8)).m128i_u64[0];
+    }
+    for (; v2 &lt; v3; v2 += 8i64)
+        v5 ^= *(_QWORD*)v2;
+
+    return v5 ^ ~v3 ^ 0xF74216354A20866i64;
+}
+__except (1) {}
+return 0;
+</code></pre></div>
+<p>}</p>
+<p>int decrypt::GameManagerIndex(uint64_t a1) //OK<br />
+{<br />
+    __try<br />
+    {<br />
+        __int64 v1; // rdi<br />
+        __int64 v2; // rbx<br />
+        unsigned __int64 v3; // rsi<br />
+        __int64 v4; // r10<br />
+        __int64 v5; // r11<br />
+        __int64 v6; // rax<br />
+        _QWORD* v7; // r9<br />
+        __int64 v8; // r10<br />
+        __int64 v9; // rax</p>
+<div class="highlight"><pre><span></span><code>    v1 = a1;
+    v2 = ImageBase + 0x5D70D0;
+    v3 = v2 + 0xB;
+    v4 = 0xCC0BFEAA1FF95DA9i64;
+    v5 = v1 + 24;
+    v6 = 4i64;
+
+    do
+    {
+        v7 = (_QWORD*)(v5 - 16);
+        v8 = *(_QWORD*)(v5 + 8) ^ (v5 - 8) ^ (v5 - 16) ^ (v5 - 24) ^ *(_QWORD*)v5 ^ *(_QWORD*)(v5 - 24) ^ *(_QWORD*)(v5 - 8) ^ v5 ^ ~(v5 + 8) ^ v4;
+        v5 += 0x28i64;
+        v4 = *v7 ^ v8;
+        --v6;
+    } while (v6);
+
+    for (; v2 + 64 &lt; v3; LOBYTE(v4) = v9 ^ v4)
+    {
+        v9 = *(_QWORD*)v2 ^ ~v2;
+        v2 += 8i64;
+    }
+    return ((unsigned __int8)v4 ^ 6) &amp; 0xF;
+}
+__except (1) {}
+return 0;
+</code></pre></div>
+<p>}</p>
+<p>uint64_t decrypt::Table() //OK<br />
+{<br />
+    __try<br />
+    {<br />
+        uint64_t Key1 = GMKey1;<br />
+        uint64_t Key2 = GMKey2;</p>
+<div class="highlight"><pre><span></span><code>    uint64_t qword_3AE3978 = *(uint64_t*)(ImageBase + 0x3AE3978);
+
+    uint64_t v2 = (unsigned int)Key2 ^ (unsigned int)qword_3AE3978 | (Key2 ^ ((unsigned int)qword_3AE3978 | ((unsigned int)qword_3AE3978 | qword_3AE3978 &amp; 0xFFFFFFFF00000000ui64 ^ ((unsigned __int64)(unsigned int)(557102392 - qword_3AE3978) &lt;&lt; 32)) &amp; 0xFFFFFFFF00000000ui64 ^ ((unsigned __int64)(unsigned int)(qword_3AE3978 - (*(_QWORD*)(((unsigned __int64)Key1 &gt;&gt; 52) + ImageBase + 61660320) &gt;&gt; 32)) &lt;&lt; 32))) &amp; 0xFFFFFFFF00000000ui64 ^ ((unsigned __int64)(((unsigned int)Key2 ^ (unsigned int)qword_3AE3978) + __ROL4__(*(_QWORD*)((Key1 &amp; 0xFFF) + ImageBase + 61660320), 1)) &lt;&lt; 32);
+    uint64_t v3 = (unsigned int)v2 | v2 &amp; 0xFFFFFFFF00000000ui64 ^ ((unsigned __int64)(unsigned int)(-229200722 - v2) &lt;&lt; 32);
+    uint64_t GMXorKey = decrypt::GameManagerXorKey(*(uint64_t*)(0xA0 + v3));
+
+    uint64_t XorBuf[20];
+    uint64_t v6;
+
+    for (uint64_t i = 0i64; i &lt; 20; ++i)
+    {
+        XorBuf[i] = *(_QWORD*)(v3 + 8 * i) ^ GMXorKey;
+        switch ((unsigned __int64)(GMXorKey &amp; 7))
+        {
+        case 0ui64:
+            v6 = 0xA22115FFD20A1F26i64;
+            break;
+        case 1ui64:
+            v6 = 0xC93978D9115078F0i64;
+            break;
+        case 2ui64:
+            v6 = 0xDE83BAC0690CC8A2i64;
+            break;
+        case 3ui64:
+            v6 = 0x57C00EA24B120A82i64;
+            break;
+        case 4ui64:
+            v6 = 0xB2730B23F294D216i64;
+            break;
+        case 5ui64:
+            v6 = 0x53F351AE73BE44D4i64;
+            break;
+        case 6ui64:
+            v6 = 0x3B207AD9732C7F3Ei64;
+            break;
+        default:
+            v6 = 0x1C84FF058EB23CBCi64;
+            break;
+        }
+        GMXorKey += v6;
+    }
+
+    int Idx = GameManagerIndex((uint64_t)XorBuf);
+    uint64_t result = XorBuf[Idx + 4];
+    return result;
+}
+__except (1) {}
+return 0;
+</code></pre></div>
+<p>}</p>
+<p>uint64_t decrypt::GameManager() //OK<br />
+{<br />
+    __try<br />
+    {<br />
+        uint64_t engm = <em>(uint64_t</em>)(Table() + 0x30);<br />
+        uint64_t v1 = <em>(uint64_t</em>)(ImageBase + 0x3ACE14A) - 0x14737E1555DD8CD7i64;</p>
+<div class="highlight"><pre><span></span><code>    if (engm != v1)
+        return engm ^ v1;
+}
+__except (1) {}
+return 0;
+</code></pre></div>
+<p>}</p>
+<p>uint64_t decrypt::Ray(uint64_t GameManager)<br />
+{<br />
+    __try<br />
+    {<br />
+        uint64_t Key1 = RayKey1;<br />
+        uint64_t Key2 = RayKey2;</p>
+<div class="highlight"><pre><span></span><code>    uint64_t  v3 = *(_QWORD*)(GameManager + 0x220);
+    uint64_t  v4 = (unsigned int)v3 | v3 &amp; 0xFFFFFFFF00000000ui64 ^ ((unsigned __int64)(unsigned int)(v3 + 0x184E9681) &lt;&lt; 32);
+    uint64_t  v5 = Key2 ^ ((unsigned int)v3 | v4 &amp; 0xFFFFFFFF00000000ui64 ^ ((unsigned __int64)(unsigned int)(v4
+        + __ROL4__(
+            *(_QWORD*)(ImageBase + 0x3ACDCA0 + ((unsigned __int64)Key1 &gt;&gt; 52)) &gt;&gt; 32,
+            1)) &lt;&lt; 32));
+    return (unsigned int)v5 | ((unsigned int)v5 | v5 &amp; 0xFFFFFFFF00000000ui64 ^ ((unsigned __int64)((unsigned int)v5 - (unsigned int)*(_QWORD*)(ImageBase + 0x3ACDCA0 + (Key1 &amp; 0xFFF))) &lt;&lt; 32)) &amp; 0xFFFFFFFF00000000ui64 ^ ((unsigned __int64)(unsigned int)(2 * v5 + 994381642) &lt;&lt; 32);
+}
+__except (1) {}
+return 0;
+</code></pre></div>
+<p>}</p>
+<p>uint64_t decrypt::Outline(uint64_t Xor)<br />
+{<br />
+    __int64 v1; // rbx<br />
+    unsigned __int64 v2; // rdi<br />
+    unsigned __int64 v3; // r8<br />
+    unsigned __int64 v4; // rax<br />
+    __int64 v5; // rbx<br />
+    unsigned __int64 v6; // rcx<br />
+    unsigned __int64 v7; // rcx<br />
+    __m128i v8; // xmm1<br />
+    __m128i v9; // xmm2<br />
+    __m128i v10; // xmm0<br />
+    __m128i v11; // xmm1<br />
+    unsigned __int64 retaddr; // [rsp+28h] [rbp+0h]<br />
+    char v14; // [rsp+68h] [rbp+40h]</p>
+<div class="highlight"><pre><span></span><code>v1 = Xor;
+v2 = ImageBase + 0x7AEC32;
+v3 = v2 + 0x8;
+v4 = 0i64;
+v5 = *(uint64_t*)(ImageBase + 0x3AA7180
+    + 8 * (((unsigned __int8)v1 - 78) &amp; 0x7F)
+    + (((unsigned __int64)(v1 + 817210438226979250i64) &gt;&gt; 7) &amp; 7)) ^ v2 ^ (v1 + 817210438226979250i64);
+v6 = (v3 - v2 + 7) &gt;&gt; 3;
+if (v2 &gt; v3)
+    v6 = 0i64;
+if (v6 &amp;&amp; v6 &gt;= 4)
+{
+    v7 = v6 &amp; 0xFFFFFFFFFFFFFFFCui64;
+    ZeroMemory(&amp;v8, sizeof(v8));
+    ZeroMemory(&amp;v9, sizeof(v9));
+
+    do
+    {
+        v4 += 4i64;
+        v8 = _mm_xor_si128(v8, _mm_loadu_si128((const __m128i*)v2));
+        v10 = _mm_loadu_si128((const __m128i*)(v2 + 16));
+        v2 += 32i64;
+        v9 = _mm_xor_si128(v9, v10);
+    } while (v4 &lt; v7);
+    v11 = _mm_xor_si128(v8, v9);
+    auto a1 = _mm_xor_si128(v11, _mm_srli_si128(v11, 8));
+    v5 ^= *(uint64_t*)&amp;a1;
+}
+for (; v2 &lt; v3; v2 += 8i64)
+    v5 ^= *(uint64_t*)v2;
+
+return v5 ^ ~v3 ^ 0xB5750905542A9B2i64;
+</code></pre></div>
+<p>}</p>
+<h3 id="_2">그럼 복호화 코드는 어떻게 찾는데?</h3>
+<p>실행 중에 계속 사용되는 복호화 코드는 보통 게임 EXE 혹은 보안 DLL의 .text에 있다.<br />
+그리고 키/상수/테이블 같이 자수 바뀌지 않는 상수와 셔플마스크, RVA 포인터들은 .rdata에 놓이는 경우가 많다.<br />
+세션이나 프레임별로 바뀌는 키는 힙이나 TLS 같은 런타임 저장소에 있다. </p>
+<div class="highlight"><pre><span></span><code>// Decryption
+constexpr auto decrypt_key = 0xB3D20;
+</code></pre></div>
+<h3 id="_3">시나리오</h3>
+<p>방법1. CE로 값 주소 찾거나 pfn_writewatch 힙 할당 잡기로 그쪽 관심영역 전부 덤프</p>
+<p>데이터 힙 부분 열심히 덤프해봤자 산발적이고 의미도 없음.</p>
+<p>방법2. CE로 what access 찾아보기</p>
+<p>디버거 붙이는 순간 옵치 무결성 안티치트 발동해 꺼짐</p>
+<p>방법3. 사용할 방법</p>
+<p>CE로 값을 변화시켜가며 확실한 시드 10개 확보</p>
+<p>혹은 힙에서 (pfn,off) 히트율과 주기성, 값 형태로 확률을 높인 시드 확보해도 됨</p>
+<p>해당 페이지에 pfn writewatch를 건 상태에서 값을 변화시켜 이벤트가 찍히는지 확인</p>
+<p>store 직전 5만개 명령어 정도를 마이크로 트레이스, 게임 exe가 명령내린 거만 필터링</p>
+<p>mov [RAX+disp], reg/imm 이게 store 명령어인데 RAX(베이스) 계산하는 블록의 시작 주소가 복호화 루틴 후보</p>
+<p>.rdata의 16바이트 셔플 마스크/곱셈 상수 XREF로 교차확인, 참조 함수 목록이랑 대조해 복호화→주소계산→store 패턴찾기</p>
+<p>복호화 함수 진입/리턴을 잡는 커스텀 플러그인 추가</p>
+<p>자동화 파이프라인으로 승격</p>
+<p>즉 store 부터 다음 store까지의 명령어를 다 잡는다는거네. 그리고 적당히 뒷부분을 살펴서 원하는 복호화→주소계산→store 패턴을 찾는건가. 그럼 플러그인에 해당 기능을 넣어줘. 그리고 va를 시드로 줬을때 pfn으로 번역해서 사용하는 기능도, 그리고 화이트리스트 안의 rip만 수집하는 기능도 추가해줘.</p>
+<p>$ sudo vmi-process-list win10 | grep -i overwatch<br />
+$ cd ~/game-cheat/code<br />
+sudo /home/kkongnyang2/vmi-venv/bin/python3 -m dump.watch_data_ranges \<br />
+  --domain win10 \<br />
+  --pid 11448 \<br />
+  --module Overwatch.exe \<br />
+  --ist-json /root/symbols/ntkrnlmp.json \<br />
+  --drakvuf /usr/local/bin/drakvuf \<br />
+  --mode seed \<br />
+  --watch pfn \<br />
+  --seed-addr 0x19D741D57FC@1 \<br />
+  --seed-default-pad-pages 1 \<br />
+  --duration 15 \<br />
+  --interval 5  \<br />
+  --ww-mode both \<br />
+  --peek-bytes 32 \<br />
+  --max-changes 16 \<br />
+  --max-events 5000 \<br />
+  --max-bytes 8000000 \<br />
+  --outdir /home/kkongnyang2/watch_dump</p>
+<p>sudo /home/kkongnyang2/vmi-venv/bin/python3 -m dump.watch_data_ranges \<br />
+  --domain win10 \<br />
+  --pid 11448 \<br />
+  --module Overwatch.exe \<br />
+  --ist-json /root/symbols/ntkrnlmp.json \<br />
+  --drakvuf /usr/local/bin/drakvuf \<br />
+  --mode seed \<br />
+  --watch va \<br />
+  --seed-addr 0x19D741D57FC@1 \<br />
+  --duration 15 \<br />
+  --outdir /home/kkongnyang2/watch_dump</p>
+<h3 id="_4">데이터 받기</h3>
 <p>hp 및 위치<br />
 서버 기준으로 내 로컬 플레이어는 어느정도 미리 입력값을 반영해 작동하는 거고, 서버에서 이제 제대로 된 델타값이 오면 이전 스냅샷에서 계산해 옳은 값들을 업데이트하고 반영해주고, 서버에서 한번씩 델타값이 아니라 풀 스냅샷을 보내 혹시라도 틀어졌을걸 방지해준다.<br />
 특정 DLL이 아니라 Overwatch.exe가 들고 있는 ECS 컨테이너(메모리)에 올라가 있다.</p>
@@ -1638,26 +1801,6 @@ addComponent<Transform>(e2b, spawnPoint);</p>
 서버: 과거로 리와인드 → 레이캐스트 → 히트 확정 &amp; 피해 계산 → Health 감소<br />
 서버→클라: 다음 틱에 피격자 Health 델타 + (선택) HitConfirm 이벤트 전송<br />
 클라: Health 반영, 예측 히트마커를 확정/취소, 이펙트/사운드 재생</p>
-<h3 id="_6">난독화를 풀어야 할 부분</h3>
-<ol>
-<li>GameManager 포인터/키<br />
-목적: GameManager의 베이스를 얻어 entity_rawlist, total_count, local_unique_id에 접근<br />
-관련: decrypt::Table(), decrypt::GameManager*Key, DecryptKey 테이블</li>
-<li>ComponentParent<br />
-목적: entity와 type을 조합해 그 엔티티의 해당 타입 컴포넌트 베이스를 얻음<br />
-관련: decrypt::Parent(entity, Type) (CompKey1/2 + 엔티티 내부 시드/비트필드 + 전역 키/테이블)</li>
-<li>Ray<br />
-목적: InitRayStruct에 넣을 ray 컴포넌트/함수 포인터를 복호화<br />
-관련: decrypt::Ray (RayKey1/2), ray_force, ray_cast RVA</li>
-<li>Outline<br />
-목적: 외곽선 플래그/색상 필드를 XOR 마스크로 풀고 씌움<br />
-관련: decrypt::Outline</li>
-</ol>
-<h3 id="gamemanager">GameManager 베이스 얻기</h3>
-<p>decrypt::GameManagerXorKey()로 XOR 키를 얻음<br />
-decrypt::GameManagerIndex()로 인덱스를 뽑고 result를 반환<br />
-decrypt::Table()로 가려진 테이블 덩어리에서 유효 엔트리 하나를 골라 주소 후보를 내놓음<br />
-decrypt::GameManager()로 최종적으로 XOR 마스크를 한 번 더 벗겨 GameManager 베이스를 얻음</p>
 
 
 

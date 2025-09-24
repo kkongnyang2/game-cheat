@@ -12,7 +12,7 @@
         <link rel="prev" href="../15-CE-tutorial/">
       
       
-        <link rel="next" href="../17-reference/">
+        <link rel="next" href="../17-dump/">
       
       
       <link rel="icon" href="../logo.svg">
@@ -379,13 +379,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="../17-reference/" class="md-tabs__link">
+      <a href="../17-dump/" class="md-tabs__link">
         
   
   
     
   
-  17 reference
+  17 dump
 
       </a>
     </li>
@@ -398,13 +398,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="../18-dump/" class="md-tabs__link">
+      <a href="../18-write_watch/" class="md-tabs__link">
         
   
   
     
   
-  18 dump
+  18 write watch
 
       </a>
     </li>
@@ -417,32 +417,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="../19-find/" class="md-tabs__link">
+      <a href="../19-memory/" class="md-tabs__link">
         
   
   
     
   
-  19 find
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../19-main/" class="md-tabs__link">
-        
-  
-  
-    
-  
-  19 main
+  19 memory
 
       </a>
     </li>
@@ -474,13 +455,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="../20-memory/" class="md-tabs__link">
+      <a href="../20-main/" class="md-tabs__link">
         
   
   
     
   
-  20 memory
+  20 main
 
       </a>
     </li>
@@ -902,11 +883,11 @@
         <li class="md-nav__item">
   <a href="#vmi-rw" class="md-nav__link">
     <span class="md-ellipsis">
-      vmi rw 코드를 작성해보자
+      vmi rw 기본코드를 작성해놓자
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="vmi rw 코드를 작성해보자">
+    <nav class="md-nav" aria-label="vmi rw 기본코드를 작성해놓자">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -974,12 +955,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../17-reference/" class="md-nav__link">
+      <a href="../17-dump/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    17 reference
+    17 dump
     
   </span>
   
@@ -996,12 +977,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../18-dump/" class="md-nav__link">
+      <a href="../18-write_watch/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    18 dump
+    18 write watch
     
   </span>
   
@@ -1018,34 +999,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../19-find/" class="md-nav__link">
+      <a href="../19-memory/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    19 find
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../19-main/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    19 main
+    19 memory
     
   </span>
   
@@ -1084,12 +1043,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../20-memory/" class="md-nav__link">
+      <a href="../20-main/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    20 memory
+    20 main
     
   </span>
   
@@ -1302,11 +1261,11 @@
         <li class="md-nav__item">
   <a href="#vmi-rw" class="md-nav__link">
     <span class="md-ellipsis">
-      vmi rw 코드를 작성해보자
+      vmi rw 기본코드를 작성해놓자
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="vmi rw 코드를 작성해보자">
+    <nav class="md-nav" aria-label="vmi rw 기본코드를 작성해놓자">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1377,10 +1336,9 @@
 
   <h1>16 vmi rw</h1>
 
-<h2 id="vmi-rw">vmi rw 코드를 작성해보자</h2>
+<h2 id="vmi-rw">vmi rw 기본코드를 작성해놓자</h2>
 <p>작성자: kkongnyang2 작성일: 2025-08-19</p>
 <hr />
-<p>CE에서 이미 가능하긴 하지만 탐색되지 않게 vmi 환경으로 r/w를 하자.</p>
 <h3 id="_1">고정주소 폴링</h3>
 <p>고정주소는 단순하게 고정 가상주소와 그게 어느 프로세스의 가상주소인지만 알려주면 된다.</p>
 <p>주소 알아내기<br />
@@ -1390,8 +1348,6 @@
 <p>PID 알아내기<br />
 <div class="highlight"><pre><span></span><code>$ sudo vmi-process-list win10-seabios | grep -i notepad
 [ 11784] notepad.exe (struct addr:ffffd184ad9f1080)
-혹은 CE에서 notepad.exe 옆에 뜨는 16진 PID를 echo $((0x2E08)) 해도 됨.
-PID=11784
 </code></pre></div></p>
 <p>코드 작성<br />
 <div class="highlight"><pre><span></span><code>$ nano ~/watch_va_poll_wait.py
