@@ -1,11 +1,8 @@
-## vmi rw 코드를 작성해보자
+## vmi rw 기본코드를 작성해놓자
 
 작성자: kkongnyang2 작성일: 2025-08-19
 
 ---
-
-CE에서 이미 가능하긴 하지만 탐색되지 않게 vmi 환경으로 r/w를 하자.
-
 ### 고정주소 폴링
 
 고정주소는 단순하게 고정 가상주소와 그게 어느 프로세스의 가상주소인지만 알려주면 된다.
@@ -20,8 +17,6 @@ PID 알아내기
 ```
 $ sudo vmi-process-list win10-seabios | grep -i notepad
 [ 11784] notepad.exe (struct addr:ffffd184ad9f1080)
-혹은 CE에서 notepad.exe 옆에 뜨는 16진 PID를 echo $((0x2E08)) 해도 됨.
-PID=11784
 ```
 
 코드 작성
