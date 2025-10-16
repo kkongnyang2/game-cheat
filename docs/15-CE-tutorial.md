@@ -221,13 +221,16 @@ Dissect code
 ⑤ Graph view(선택): 기본 블록 흐름도를 시각화
 
 
-### CE poiner scan 실패
+### CE pointer scan
 
 우리의 목표는 논리적인 체인 구조를 찾는 것.
-PID: 12164
-모듈 이미지 베이스: 0x00007ff6134e0000
 오버워치에 CE를 붙이고 체력값 225부터 피 닳면 decrased value로 체력 component 후보군 다섯개 주소를 찾음.
 2448997EDE8, 2449682E418 등등 모듈 이미지 베이스보다 앞인 힙 할당 영역임을 알 수 있음
+
 그렇지만 pointer scan for this address로 체인을 찾으려 해도 아무것도 안뜸
 왜? 코드에 포인터 부분이 난독화 및 xor로 가러져있기 때문. 상용 게임은 포인터가 평문 값으로 저장되어 있지 않고 매번 복호화 계산해서 얻는다.
+
+
+### CE debugger
+
 what access this address 또한 무결성 검사 안티치트에 의해 막힌다.

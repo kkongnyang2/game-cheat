@@ -420,78 +420,14 @@ uint64_t decrypt::Outline(uint64_t Xor)
 ### 그럼 복호화 코드는 어떻게 찾는데?
 
 실행 중에 계속 사용되는 복호화 코드는 보통 게임 EXE 혹은 보안 DLL의 .text에 있다.
-그리고 키/상수/테이블 같이 자수 바뀌지 않는 상수와 셔플마스크, RVA 포인터들은 .rdata에 놓이는 경우가 많다.
+키/상수/테이블 같이 자주 바뀌지 않는 상수와 셔플마스크, RVA 포인터들은 .rdata에 놓이는 경우가 많다.
 세션이나 프레임별로 바뀌는 키는 힙이나 TLS 같은 런타임 저장소에 있다. 
 
 
 	// Decryption
 	constexpr auto decrypt_key = 0xB3D20;
 
-
-
-### 시나리오
-
-방법1. CE로 값 주소 찾거나 pfn_writewatch 힙 할당 잡기로 그쪽 관심영역 전부 덤프
-
-데이터 힙 부분 열심히 덤프해봤자 산발적이고 의미도 없음.
-
-방법2. CE로 what access 찾아보기
-
-디버거 붙이는 순간 옵치 무결성 안티치트 발동해 꺼짐
-
-방법3. 사용할 방법
-
-CE로 값을 변화시켜가며 확실한 시드 10개 확보
-
-혹은 힙에서 (pfn,off) 히트율과 주기성, 값 형태로 확률을 높인 시드 확보해도 됨
-
-해당 페이지에 pfn writewatch를 건 상태에서 값을 변화시켜 이벤트가 찍히는지 확인
-
-store 직전 5만개 명령어 정도를 마이크로 트레이스, 게임 exe가 명령내린 거만 필터링
-
-mov [RAX+disp], reg/imm 이게 store 명령어인데 RAX(베이스) 계산하는 블록의 시작 주소가 복호화 루틴 후보
-
-.rdata의 16바이트 셔플 마스크/곱셈 상수 XREF로 교차확인, 참조 함수 목록이랑 대조해 복호화→주소계산→store 패턴찾기
-
-복호화 함수 진입/리턴을 잡는 커스텀 플러그인 추가
-
-자동화 파이프라인으로 승격
-
-
-즉 store 부터 다음 store까지의 명령어를 다 잡는다는거네. 그리고 적당히 뒷부분을 살펴서 원하는 복호화→주소계산→store 패턴을 찾는건가. 그럼 플러그인에 해당 기능을 넣어줘. 그리고 va를 시드로 줬을때 pfn으로 번역해서 사용하는 기능도, 그리고 화이트리스트 안의 rip만 수집하는 기능도 추가해줘.
-
-$ sudo vmi-process-list win10 | grep -i overwatch
-$ cd ~/game-cheat/code
-sudo /home/kkongnyang2/vmi-venv/bin/python3 -m dump.watch_data_ranges \
-  --domain win10 \
-  --pid 11448 \
-  --module Overwatch.exe \
-  --ist-json /root/symbols/ntkrnlmp.json \
-  --drakvuf /usr/local/bin/drakvuf \
-  --mode seed \
-  --watch pfn \
-  --seed-addr 0x19D741D57FC@1 \
-  --seed-default-pad-pages 1 \
-  --duration 15 \
-  --interval 5  \
-  --ww-mode both \
-  --peek-bytes 32 \
-  --max-changes 16 \
-  --max-events 5000 \
-  --max-bytes 8000000 \
-  --outdir /home/kkongnyang2/watch_dump
-
-sudo /home/kkongnyang2/vmi-venv/bin/python3 -m dump.watch_data_ranges \
-  --domain win10 \
-  --pid 11448 \
-  --module Overwatch.exe \
-  --ist-json /root/symbols/ntkrnlmp.json \
-  --drakvuf /usr/local/bin/drakvuf \
-  --mode seed \
-  --watch va \
-  --seed-addr 0x19D741D57FC@1 \
-  --duration 15 \
-  --outdir /home/kkongnyang2/watch_dump
+비트마스크/SSE같은 계산을 찾거나, store 이전에 마이크로 트레이스를 덤프시켜야 한다.
 
 
 ### 데이터 받기
