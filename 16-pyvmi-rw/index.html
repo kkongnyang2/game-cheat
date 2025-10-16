@@ -9,22 +9,22 @@
       
       
       
-        <link rel="prev" href="../2-cheats/">
+        <link rel="prev" href="../15-CE-tutorial/">
       
       
-        <link rel="next" href="../3-display/">
+        <link rel="next" href="../17-pyvmi-dump/">
       
       
       <link rel="icon" href="../logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
     
     
       
-        <title>20 main - Game-Cheat</title>
+        <title>16 pyvmi rw - Game-Cheat</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.e53b48f4.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#esp" class="md-skip">
+        <a href="#vmi-rw" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              20 main
+              16 pyvmi rw
             
           </span>
         </div>
@@ -356,15 +356,17 @@
   
   
   
+    
   
-    <li class="md-tabs__item">
-      <a href="../16-vmi-rw/" class="md-tabs__link">
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
         
   
   
     
   
-  16 vmi rw
+  16 pyvmi rw
 
       </a>
     </li>
@@ -377,13 +379,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="../17-dump/" class="md-tabs__link">
+      <a href="../17-pyvmi-dump/" class="md-tabs__link">
         
   
   
     
   
-  17 dump
+  17 pyvmi dump
 
       </a>
     </li>
@@ -396,13 +398,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="../18-write_watch/" class="md-tabs__link">
+      <a href="../18-drakvuf-heap/" class="md-tabs__link">
         
   
   
     
   
-  18 write watch
+  18 drakvuf heap
 
       </a>
     </li>
@@ -415,13 +417,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="../19-memory/" class="md-tabs__link">
+      <a href="../19-ow-memory/" class="md-tabs__link">
         
   
   
     
   
-  19 memory
+  19 ow memory
 
       </a>
     </li>
@@ -451,17 +453,53 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../20-drakvuf-microtrace/" class="md-tabs__link">
         
   
   
     
   
-  20 main
+  20 drakvuf microtrace
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../21-libvmi-microtrace/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  21 libvmi microtrace
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../22-main/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  22 main
 
       </a>
     </li>
@@ -595,6 +633,25 @@
     
   
   9 kvmi v12
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../log/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Log
 
       </a>
     </li>
@@ -832,15 +889,135 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../16-vmi-rw/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    16 pyvmi rw
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
-    16 vmi rw
+    16 pyvmi rw
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vmi-rw" class="md-nav__link">
+    <span class="md-ellipsis">
+      vmi rw 기본코드를 작성해놓자
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="vmi rw 기본코드를 작성해놓자">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      고정주소 폴링
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      주소 변환 3단계
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      구성요소 기능
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rw" class="md-nav__link">
+    <span class="md-ellipsis">
+      체인주소 r/w
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      모듈로 소환
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-pyvmi-dump/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    17 pyvmi dump
     
   </span>
   
@@ -857,12 +1034,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../17-dump/" class="md-nav__link">
+      <a href="../18-drakvuf-heap/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    17 dump
+    18 drakvuf heap
     
   </span>
   
@@ -879,34 +1056,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../18-write_watch/" class="md-nav__link">
+      <a href="../19-ow-memory/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    18 write watch
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../19-memory/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    19 memory
+    19 ow memory
     
   </span>
   
@@ -942,94 +1097,64 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    20 main
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../20-drakvuf-microtrace/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    20 main
+    20 drakvuf microtrace
     
   </span>
   
 
       </a>
-      
-        
+    </li>
+  
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+    
       
-        <li class="md-nav__item">
-  <a href="#esp" class="md-nav__link">
-    <span class="md-ellipsis">
-      esp
-    </span>
-  </a>
+      
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      트리거봇
-    </span>
-  </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      내가 찾아야 할 정보
-    </span>
-  </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-    </span>
-  </a>
   
-</li>
-      
-    </ul>
+    <li class="md-nav__item">
+      <a href="../21-libvmi-microtrace/" class="md-nav__link">
+        
   
-</nav>
+  
+  <span class="md-ellipsis">
+    21 libvmi microtrace
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
       
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    22 main
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1195,6 +1320,28 @@
   
   
     <li class="md-nav__item">
+      <a href="../log/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Log
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../memo/" class="md-nav__link">
         
   
@@ -1235,38 +1382,62 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#esp" class="md-nav__link">
+  <a href="#vmi-rw" class="md-nav__link">
     <span class="md-ellipsis">
-      esp
+      vmi rw 기본코드를 작성해놓자
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="vmi rw 기본코드를 작성해놓자">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      트리거봇
+      고정주소 폴링
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      주소 변환 3단계
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      내가 찾아야 할 정보
+      구성요소 기능
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#rw" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      체인주소 r/w
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      모듈로 소환
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1286,57 +1457,125 @@
 
 
 
-  <h1>20 main</h1>
+  <h1>16 pyvmi rw</h1>
 
-<h3 id="esp">esp</h3>
-<p>네트워크 복제: 서버가 AOI(관심영역) 안의 엔티티 상태(위치, 체력 등)를 내려줌 → 클라 ECS에 반영.</p>
-<p>가시성 선별(클라):<br />
-뷰 프러스텀 컬링: 카메라 시야 밖이면 제외<br />
-포털/PVS/룸 시스템: 같은 공간만 남김(있는 게임)<br />
-오클루전 컬링(Hi-Z/쿼리): 벽 등으로 가려진 건 제외<br />
-LOD/거리/팀 규칙으로 추가 제외</p>
-<p>드로우 리스트 생성: 위 필터를 통과한 것만 드로우콜 생성 → GPU 렌더링<br />
-→ 보통 <strong>가려진 적은 ‘논리 데이터는 업데이트되지만, 메인 패스엔 드로우콜 자체가 없음’</strong>이 정석.</p>
-<p>따라서 component에 있는 모든 적의 위치 정보를 바탕으로 내가 직접 렌더링을 해줘야함.</p>
-<h3 id="_1">트리거봇</h3>
-<p>아이디어: 로컬 클라이언트가 가진 적 좌표/본을 읽고, 내 시야 벡터·FOV와의 각도/거리가 임계치 이하면 발사.</p>
-<h3 id="_2">내가 찾아야 할 정보</h3>
-<p>일단 전체 런타임 메모리 구조를 어느정도 파악.<br />
-헤드인지, 몸샷인지, 미스인지를 판별하는 변수를 찾아서 화면에 perfect/good/miss 띄어주기.</p>
-<table>
-<thead>
-<tr>
-<th>패턴</th>
-<th>구조 예시</th>
-<th>특징 &amp; 힌트</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>① Boolean 플래그</strong></td>
-<td><code>c++ uint8_t bCrosshairOnEnemy; // 0/1</code></td>
-<td>* 가장 단순·보편<br>* 값이 0↔1만 변하므로 CE에서는 <strong>1 Byte, Exact value</strong>(0/1) 필터가 유효</td>
-</tr>
-<tr>
-<td><strong>② Enum/Bit-field</strong></td>
-<td><code>c++ uint8_t CrosshairState; // 0 none, 1 enemy, 2 ally, 3 object</code></td>
-<td>* 팀識別·NPC 구분이 필요한 게임<br>* 스캔 시 0·1·2처럼 <strong>소수의 정수</strong>가 반복</td>
-</tr>
-<tr>
-<td><strong>③ Target 포인터 + 거리</strong></td>
-<td><code>c++ struct HitInfo { void* pTarget; float fDist; }</code></td>
-<td>* TPS/FPS에서 ‘상대 객체’ 정보 재사용<br>* <code>pTarget!=NULL</code> 여부만 봐도 조준 여부 판단 가능</td>
-</tr>
-</tbody>
-</table>
-<h3 id="_3"></h3>
-<p>애쉬 250<br />
-바스 350(주황)<br />
-캐서디 275<br />
-에코 225(파랑)<br />
-프레야 225<br />
-겐지 250<br />
-한조 250</p>
+<h2 id="vmi-rw">vmi rw 기본코드를 작성해놓자</h2>
+<p>작성자: kkongnyang2 작성일: 2025-08-19</p>
+<hr />
+<h3 id="_1">고정주소 폴링</h3>
+<p>고정주소는 단순하게 고정 가상주소와 그게 어느 프로세스의 가상주소인지만 알려주면 된다.</p>
+<p>주소 알아내기<br />
+<div class="highlight"><pre><span></span><code>notepad.exe 실행 후 아무 텍스트 적기
+텍스트를 변경해가면서 CE에서 주소 확정: 0x21777087720
+</code></pre></div></p>
+<p>PID 알아내기<br />
+<div class="highlight"><pre><span></span><code>$ sudo vmi-process-list win10-seabios | grep -i notepad
+[ 11784] notepad.exe (struct addr:ffffd184ad9f1080)
+</code></pre></div></p>
+<p>코드 작성<br />
+<div class="highlight"><pre><span></span><code>$ nano ~/watch_va_poll_wait.py
+</code></pre></div><br />
+* 대기하다가 해당 페이지가 메모리에 올라온 순간부터 감시하여 변경을 폴링하는 스크립트</p>
+<p>실행 커맨드<br />
+<div class="highlight"><pre><span></span><code>$ sudo /home/kkongnyang2/vmi-venv/bin/python3 ~/watch_va_poll_wait.py \
+  win10-seabios 11784 0x21777087720 64
+
+[.] Waiting for page to become resident... (pid=11784, va=0x21777087720) [18:52:09.471] INIT len=64 decode(utf-16le): &#39;1334#123#1\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x08獯ȗ\x00&#39; 00000000 31 00 33 00 33 00 34 00 23 00 31 00 32 00 33 00 1.3.3.4.#.1.2.3. 00000010 23 00 31 00 00 00 00 00 00 00 00 00 00 00 00 00 #.1............. 00000020 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ................ 00000030 00 00 00 00 00 00 00 00 08 00 6f 73 17 02 00 00 ..........os.... [18:52:20.162] CHANGE len=64 decode(utf-16le): &#39;1334#123#2\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x08獯ȗ\x00&#39; 00000000 31 00 33 00 33 00 34 00 23 00 31 00 32 00 33 00 1.3.3.4.#.1.2.3. 00000010 23 00 32 00 00 00 00 00 00 00 00 00 00 00 00 00 #.2............. 00000020 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ................ 00000030 00 00 00 00 00 00 00 00 08 00 6f 73 17 02 00 00 ..........os....
+</code></pre></div></p>
+<h3 id="3">주소 변환 3단계</h3>
+<p>게스트 가상주소 (GVA, VA)<br />
+   └─(게스트 프로세스의 페이지테이블: CR3/DTB)→ 게스트 물리주소 (GPA/PA)<br />
+        └─(하이퍼바이저의 2차 변환: EPT/NPT)→ 호스트 물리주소 (HPA, 실제 RAM)</p>
+<p>EPROCESS: 커널의 프로세스 객체 구조체<br />
+내용물은 PID, ActiveProcessLinks(프로세스 더블링크드 리스트), DTB, Peb(PEB 가상주소)</p>
+<p>PEB: 유저 모드에 있는 프로세스 환경 블록<br />
+내용물은 ImageBaseAddress(메인 exe의 베이스), Ldr(모듈 리스트로 가는 포인터)</p>
+<p>모듈: 프로세스 주소공간에 로드된 메인 EXE + 여러 DLL<br />
+PEB-&gt;Ldr-&gt;InMemoryOrderModuleList의 각 노드는 LDR_DATA_TABLE_ENTRY임.</p>
+<p>내가 찾는 overwatch2.exe의 베이스라는 건 일반적으로 메인EXE의 베이스.</p>
+<p>따라서 베이스 구하는 절차<br />
+커널 리스트에서 EPROCESS를 찾고, PEB.Ldr.InMemoryOrderModuleList를 순회하여 각 LDR_DATA_TABLE_ENTRY.DllBase를 수집. 이걸로 각 모듈의 베이스를 알 수 있고 PEB.ImageBaseAddress가 메인 EXE 베이스</p>
+<h3 id="_2">구성요소 기능</h3>
+<p>libvmi 코어는 C API로 도메인에 attach 하고, PA/VA 읽기쓰기, PID/DTB 기반 번역, 이벤트 등의 기능이 있다. 따라서 원시 메모리를 접근하거나 VA를 PA로 번역하거나 페이지 트랩 등의 저수준 작업이 가능하다.</p>
+<p>libvmi 예제는 그 위에 만든 데모로 프로세스 나열, 메모리 덤프, GUID 확인 등의 대표 작업이 가능하다.</p>
+<p>python 바인딩은 read_va, write_va를 호출할 수 있다.</p>
+<p>프로파일은 구조체나 심볼 오프셋 정보가 들어있어서(EPROCESS/PEB/LDR/UNICODE_STRING/모듈 리스트 등) 이게 있으면 vmi-process-list, PID-&gt;EPROCESS, PEB-&gt;Ldr-&gt;모듈베이스, 문자열 읽기 등 의미를 해석하는 코드를 작동할 수 있다.</p>
+<h3 id="rw">체인주소 r/w</h3>
+<p>~/game-cheat/code/chain/<br />
+ ├─ ist_helpers.py         # IST(JSON)에서 필드 오프셋 얻기 + UNICODE_STRING 읽기<br />
+ ├─ vmi_helpers.py         # LibVMI 공통 헬퍼(포인터/정수 읽기·쓰기, wait-present 등)<br />
+ ├─ find_module_base.py    # 프로세스에서 모듈 베이스(=ImageBase/DllBase) 찾기<br />
+ ├─ walk_chain.py          # 모듈 베이스 + 체인(+오프셋/*역참조) 따라 최종 주소 계산<br />
+ └─ rw_value.py            # 최종 주소에서 값 읽기/쓰기 (u32/u64/utf16)</p>
+<p>코드 작성<br />
+<div class="highlight"><pre><span></span><code>$ nano ~/game-cheat/code/chain/ist_helpers.py
+$ nano ~/game-cheat/code/chain/vmi_helpers.py
+$ nano ~/game-cheat/code/chain/find_module_base.py
+$ nano ~/game-cheat/code/chain/walk_chain.py
+$ nano ~/game-cheat/code/chain/rw_value.py
+</code></pre></div></p>
+<p>에러 해결<br />
+<div class="highlight"><pre><span></span><code>ist_helpers.py 에서 [-] &#39;types&#39; 오류가 떠서
+$ sudo python3 - &lt;&lt;&#39;PY&#39;
+import json, gzip, lzma
+p=&quot;/root/symbols/ntkrnlmp.json&quot;
+with open(p,&#39;rb&#39;) as f:
+    sig=f.read(6)
+op=open
+if sig.startswith(b&#39;\xFD7zXZ\x00&#39;): op=lzma.open
+elif sig.startswith(b&#39;\x1F\x8B&#39;): op=gzip.open
+with op(p,&#39;rt&#39;,encoding=&#39;utf-8&#39;) as fp:
+    d=json.load(fp)
+print(&quot;top-level keys:&quot;, list(d.keys())[:6])
+print(&quot;has types:&quot;, &#39;types&#39; in d, &quot;has symbols:&quot;, &#39;symbols&#39; in d)
+PY
+top-level keys: [&#39;base_types&#39;, &#39;enums&#39;, &#39;metadata&#39;, &#39;symbols&#39;, &#39;user_types&#39;]
+상태를 점검했더니 요즘 volatility3 isf json은 types 대신 user_types를 쓰는 걸 확인. 그래서 널널하게 고쳐줌.
+
+그밖에 다른 py에서도 인자 개수나 python-libvmi (v3.7.1)엔 어떤 배포본에서는 Libvmi.get_process_by_pid(...) 같은 편의 래퍼가 포함되지 않는 문제 등을 하드코딩 해줌.
+</code></pre></div></p>
+<p>실행 커맨드<br />
+<div class="highlight"><pre><span></span><code>$ sudo vmi-process-list win10-seabios | grep -i overwatch
+[12164] Overwatch.exe (struct addr:ffffb50fd508a280)
+$ sudo /home/kkongnyang2/vmi-venv/bin/python3 ~/game-cheat/code/chain/find_module_base.py \
+  win10-seabios 12164 Overwatch.exe /root/symbols/ntkrnlmp.json
+VMI_WARNING: Invalid offset name in windows_get_offset (win_peb).
+0x00007ff6134e0000
+</code></pre></div><br />
+* 참고로 vmi-process-list는 15바이트까지만 돼서 모듈명 뒤 이름은 짤림. 알아서 적어주기.</p>
+<p>실행 커맨드2<br />
+<div class="highlight"><pre><span></span><code>$ sudo /home/kkongnyang2/vmi-venv/bin/python3 ~/game-cheat/code/chain/walk_chain.py   win10-seabios 10220 Tutorial-x86_64.exe /root/symbols/ntkrnlmp.json &quot;+0x34ECA0 * +0x10 * +0x18 * +0x0 * +0x18&quot; 64
+[+] base=Tutorial-x86_64.exe@0x0000000100000000
+[+] final address = 0x0000000001587108
+00000000  e6 0b 00 00 00 00 00 00 00 00 00 00 00 00 00 00   ................
+00000010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   ................
+00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   ................
+00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   ................
+</code></pre></div><br />
+* 64는 그 주소에서 몇 바이트를 덤프해서 보여줄지를 뜻하는 len임.</p>
+<p>실행 커맨드3<br />
+<div class="highlight"><pre><span></span><code># 읽기 (u32)
+$ sudo /home/kkongnyang2/vmi-venv/bin/python3 ~/game-cheat/code/chain/rw_value.py \
+  win10-seabios 10220 Tutorial-x86_64.exe /root/symbols/ntkrnlmp.json &quot;+0x34ECA0 * +0x10 * +0x18 * +0x0 * +0x18&quot; --read --type u32
+[+] final address: 0x0000000001587108
+u32 = 3046 (0x00000be6)
+
+# 쓰기 (u32)
+$ sudo /home/kkongnyang2/vmi-venv/bin/python3 ~/game-cheat/code/chain/rw_value.py \
+  win10-seabios 10220 Tutorial-x86_64.exe /root/symbols/ntkrnlmp.json &quot;+0x34ECA0 * +0x10 * +0x18 * +0x0 * +0x18&quot; --write --type u32 --value 1337
+[+] final address: 0x0000000001587108
+[OK] wrote u32 1337 at 0x0000000001587108
+</code></pre></div><br />
+* u32는 4bytes로 값 읽기<br />
+* 문자열(UTF-16LE)로 쓰기를 하고 싶다면 --write --type utf16 --text "KKN!" 해주면 됨</p>
+<h3 id="_3">모듈로 소환</h3>
+<p>이제 모든 from에 레포 이름을 포함시켜라(ex chain.ist_helpers) 같은 경로에 있다고 해도 마찬가지이다<br />
+그리고 모든 레포 앞에 <strong>init</strong>.py라는 빈 파일을 넣어주면 절대경로를 서로 잘 인식한다.</p>
+<p>커맨드<br />
+<div class="highlight"><pre><span></span><code>$ cd ~/game-cheat
+$ sudo /home/kkongnyang2/vmi-venv/bin/python3 -m dump.vmi_list_sections \
+  win10 4888 Overwatch.exe root/symbols/ntkrnlmp.json
+</code></pre></div></p>
 
 
 

@@ -1,0 +1,1696 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../9-kvmi-v12/">
+      
+      
+        <link rel="next" href="../memo/">
+      
+      
+      <link rel="icon" href="../logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>Log - Game-Cheat</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../soft-era.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="apple" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Game-Cheat" class="md-header__button md-logo" aria-label="Game-Cheat" data-md-component="logo">
+      
+  <img src="../logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Game-Cheat
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Log
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="apple" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Soft Era"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Soft Era" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.71 4.63-1.34-1.34c-.37-.39-1.02-.39-1.41 0L9 12.25 11.75 15l8.96-8.96c.39-.39.39-1.04 0-1.41M7 14a3 3 0 0 0-3 3c0 1.31-1.16 2-2 2 .92 1.22 2.5 2 4 2a4 4 0 0 0 4-4 3 3 0 0 0-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="soft" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Apple Classic"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Apple Classic" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.71 4.63-1.34-1.34c-.37-.39-1.02-.39-1.41 0L9 12.25 11.75 15l8.96-8.96c.39-.39.39-1.04 0-1.41M7 14a3 3 0 0 0-3 3c0 1.31-1.16 2-2 2 .92 1.22 2.5 2 4 2a4 4 0 0 0 4-4 3 3 0 0 0-3-3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../1-ow/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  1 ow
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../10-kvmi-v7/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  10 kvmi v7
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../11-xen-22.04/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  11 xen 22.04
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../12-xen-backlist/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  12 xen backlist
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../13-xen-pciback/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  13 xen pciback
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../14-summary/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  14 summary
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../15-CE-tutorial/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  15 CE tutorial
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../16-pyvmi-rw/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  16 pyvmi rw
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../17-pyvmi-dump/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  17 pyvmi dump
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../18-drakvuf-heap/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  18 drakvuf heap
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../19-ow-memory/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  19 ow memory
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../2-cheats/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  2 cheats
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../20-drakvuf-microtrace/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  20 drakvuf microtrace
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../21-libvmi-microtrace/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  21 libvmi microtrace
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../22-main/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  22 main
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../3-display/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  3 display
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../4-igpu/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  4 igpu
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../5-dgpu/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  5 dgpu
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../6-two-gpu/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  6 two gpu
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../7-vmi/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  7 vmi
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../8-kvm-legacy/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  8 kvm legacy
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../9-kvmi-v12/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  9 kvmi v12
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Log
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../memo/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Memo
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Game-Cheat" class="md-nav__button md-logo" aria-label="Game-Cheat" data-md-component="logo">
+      
+  <img src="../logo.svg" alt="logo">
+
+    </a>
+    Game-Cheat
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-ow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1 ow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-kvmi-v7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10 kvmi v7
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-xen-22.04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11 xen 22.04
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-xen-backlist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12 xen backlist
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-xen-pciback/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13 xen pciback
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-summary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    14 summary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-CE-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    15 CE tutorial
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-pyvmi-rw/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    16 pyvmi rw
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-pyvmi-dump/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    17 pyvmi dump
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-drakvuf-heap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    18 drakvuf heap
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-ow-memory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    19 ow memory
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-cheats/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2 cheats
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-drakvuf-microtrace/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    20 drakvuf microtrace
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-libvmi-microtrace/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    21 libvmi microtrace
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    22 main
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-display/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3 display
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-igpu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4 igpu
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-dgpu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    5 dgpu
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-two-gpu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    6 two gpu
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-vmi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    7 vmi
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-kvm-legacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    8 kvm legacy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-kvmi-v12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    9 kvmi v12
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Log
+    
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Memo
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Log</h1>
+
+<p>kkongnyang2@acer:~/project4$ sudo ./seed_once_watch_v4 win10 6256 0x2492C808000-0x2492C808FFF 5000<br />
+=== seed_once_watch_v4_3 ===<br />
+[<em>] domain=win10 pid=6256 range=[0x2492c808000..0x2492c808fff) timeout=5000 ms<br />
+[</em>] libvmi initialized<br />
+[+] DTB resolved via vmi_pid_to_dtb: 0x341a78000<br />
+[<em>] Armed W-trap: pages=1 registered=1 range=[0x000002492c808000 .. 0x000002492c809000)<br />
+[W] WRITE trap @0x2492c808bc8 (vcpu=4, gfn=0x12f433)<br />
+{"evt":"seed_write_pre","ts_us":1760211868474564,"vcpu":4,"pid":6256,"gla":"0x2492c808bc8","gfn":"0x12f433","dtb":"0x341a78000","cr3":"0x341a78000","rip":"0x7ff755b007ff","rsp":"0x783d94e590","rbp":"0x783d94e600","rflags":"0x10206","module":{"base":"0x7ff753ab0000","rip_off":"0x20507ff"},"gpr":{"rax":"0xe4","rbx":"0x98001000000008","rcx":"0x2494266a8b8","rdx":"0x0","rsi":"0x2492c808b30","rdi":"0x2471ff20dc8","r8":"0x98","r9":"0x783d94e680","r10":"0x7ff755b007d6","r11":"0x783d94e668","r12":"0x0","r13":"0x247ea51ab40","r14":"0x0","r15":"0x247f82310a8"},"disasm":{"rip":"0x7ff755b007ff","mn":"mov","op":"dword ptr [r8 + rsi], eax","mem_write":true,"wkind":"store","ea_calc":"0x2492c808bc8","ea_match":true},"rip_bytes_len":16,"rip_bytes":"41890430e934010000498b38488d4d20","pre_len":16,"pre_bytes":"000000000000000000c722f847020000","post_len":16,"post_bytes":"fa0000000c000000801d552e49020000","stack_len":64,"stack_bytes":"066c000007003000000000000000000041db8c052009000000000000000000000000000000000000000000000000000000000000000000000000000000000000","origin":{"rcx":{"addr":"0x7ff755b00508","mn":"lea","op":"rcx, [rbp + 0x10]","kind":"lea"},"rdx":{"addr":"0x7ff755b00513","mn":"mov","op":"rdx, qword ptr [r11]","kind":"mov"}},"backtrace":{"start":"0x7ff755b004ff","ctx":[{"a":"0x7ff755b004ff","mn":"add","op":"esp, 0x30"},{"a":"0x7ff755b00502","mn":"pop","op":"rbp"},{"a":"0x7ff755b00503","mn":"ret","op":""},{"a":"0x7ff755b00504","mn":"mov","op":"rax, qword ptr [rbp + 0x38]"},{"a":"0x7ff755b00508","mn":"lea","op":"rcx, [rbp + 0x10]"},{"a":"0x7ff755b0050c","mn":"mov","op":"r9, qword ptr [rbp + 0x30]"},{"a":"0x7ff755b00510","mn":"mov","op":"r8, qword ptr [r10]"},{"a":"0x7ff755b00513","mn":"mov","op":"rdx, qword ptr [r11]"},{"a":"0x7ff755b00516","mn":"mov","op":"qword ptr [rsp + 0x20], rax"},{"a":"0x7ff755b0051b","mn":"mov","op":"r9, qword ptr [r9]"},{"a":"0x7ff755b0051e","mn":"call","op":"0x7ff755b01780"},{"a":"0x7ff755b00523","mn":"mov","op":"al, 1"},{"a":"0x7ff755b00525","mn":"add","op":"rsp, 0x30"},{"a":"0x7ff755b00529","mn":"pop","op":"rbp"},{"a":"0x7ff755b0052a","mn":"ret","op":""},{"a":"0x7ff755b0052b","mn":"xor","op":"al, al"},{"a":"0x7ff755b0052d","mn":"add","op":"rsp, 0x30"},{"a":"0x7ff755b00531","mn":"pop","op":"rbp"},{"a":"0x7ff755b00532","mn":"ret","op":""},{"a":"0x7ff755b00533","mn":"nop","op":""},{"a":"0x7ff755b00534","mn":"sub","op":"al, 3"},{"a":"0x7ff755b00536","mn":"add","op":"eax, 0x5035302"},{"a":"0x7ff755b0053b","mn":"add","op":"bh, byte ptr [rdx + 3]"},{"a":"0x7ff755b0053e","mn":"add","op":"eax, 0x503a102"},{"a":"0x7ff755b00543","mn":"add","op":"cl, al"},{"a":"0x7ff755b00545","mn":"add","op":"eax, dword ptr [rip + 0x503ef02]"},{"a":"0x7ff755b0054b","mn":"add","op":"dl, byte ptr [rsi]"},{"a":"0x7ff755b0054d","mn":"add","op":"al, 5"},{"a":"0x7ff755b0054f","mn":"add","op":"al, byte ptr [rcx + 4]"},{"a":"0x7ff755b00552","mn":"add","op":"eax, 0x5046802"},{"a":"0x7ff755b00557","mn":"add","op":"cl, byte ptr [rdi - 0x49fdfafc]"},{"a":"0x7ff755b0055d","mn":"add","op":"al, 5"},{"a":"0x7ff755b0055f","mn":"add","op":"bl, ch"},{"a":"0x7ff755b00561","mn":"add","op":"al, 5"},{"a":"0x7ff755b00563","mn":"add","op":"al, byte ptr [rax + 0x52b0205]"},{"a":"0x7ff755b0056a","mn":"add","op":"eax, 0x2010002"},{"a":"0x7ff755b0056f","mn":"add","op":"eax, dword ptr [rax + 0x9080706]"},{"a":"0x7ff755b00576","mn":"add","op":"al, byte ptr [rip + 0xb060a0d]"},{"a":"0x7ff755b0057c","mn":"or","op":"al, 0xd"},{"a":"0x7ff755b0057e","mn":"or","op":"eax, 0x6060d0d"}]},"<em>":"</em>"}<br />
+[</em>] Done. (seed write trapped)</p>
+<p>벡터 16바이트를 rax+rsi에 저장.</p>
+<p>"0x7ff7da8307ff"</p>
+<p>7ff7da9307a1<br />
+7ff7da9307ca call 7ff7da82e810</p>
+<p>7ff7da82e810<br />
+7ff7da82e8ef call 7ff7d9f82c60</p>
+<p>call 7ff7d9f82c60</p>
+<p>call 7ff7da15ee30</p>
+<p>call 7ff7d8f38c70</p>
+<p>jmp 7ff7da82dcd0</p>
+<p>kkongnyang2@acer:~/project4$ sudo ./seed_once_watch_v4 win10 7476 0x1EE373AD000-0x1EE373ADFFF 5000<br />
+=== seed_once_watch_v4_3 ===<br />
+[<em>] domain=win10 pid=7476 range=[0x1ee373ad000..0x1ee373adfff) timeout=5000 ms<br />
+[</em>] libvmi initialized<br />
+[+] DTB resolved via vmi_pid_to_dtb: 0x280910000<br />
+[<em>] Armed W-trap: pages=1 registered=1 range=[0x000001ee373ad000 .. 0x000001ee373ae000)<br />
+[W] WRITE trap @0x1ee373ad010 (vcpu=6, gfn=0x6035c)<br />
+{"evt":"seed_write_pre","ts_us":1760354247171106,"vcpu":6,"pid":7476,"gla":"0x1ee373ad010","gfn":"0x6035c","dtb":"0x280910000","cr3":"0x280910000","rip":"0x7ff7da830797","rsp":"0xcc3237ee30","rbp":"0xcc3237eea0","rflags":"0x10206","module":{"base":"0x7ff7d87e0000","rip_off":"0x2050797"},"gpr":{"rax":"0x30","rbx":"0x30000300000006","rcx":"0x1ee43d08e98","rdx":"0x0","rsi":"0x1ee373acfe0","rdi":"0x1ec64200dc8","r8":"0xcc3237ef18","r9":"0xcc3237ef20","r10":"0x7ff7da83076e","r11":"0xcc3237ef08","r12":"0x0","r13":"0x1ec620eab40","r14":"0x0","r15":"0x1ec72d15060"},"disasm":{"rip":"0x7ff7da830797","mn":"movss","op":"dword ptr [rax + rsi], xmm0","mem_write":true,"wkind":"store","ea_calc":"0x1ee373ad010","ea_match":true},"rip_bytes_len":16,"rip_bytes":"f30f110430e99b010000488b45504d8b","pre_len":16,"pre_bytes":"15000000160000000000000000000000","post_len":16,"post_bytes":"000000002c36653ac055cf72ec010000","stack_len":64,"stack_bytes":"024a000014007800000000000000000091b5e7cab107000000000000000000000000000000000000000000000000000000000000000000000000000000000000","origin":{"rcx":{"addr":"0x7ff7da830508","mn":"lea","op":"rcx, [rbp + 0x10]","kind":"lea"},"rdx":{"addr":"0x7ff7da830513","mn":"mov","op":"rdx, qword ptr [r11]","kind":"mov"}},"backtrace":{"start":"0x7ff7da830497","ctx":[{"a":"0x7ff7da8304e1","mn":"lea","op":"rcx, [rbp + 0x10]"},{"a":"0x7ff7da8304e5","mn":"mov","op":"r9, qword ptr [rbp + 0x30]"},{"a":"0x7ff7da8304e9","mn":"mov","op":"r8, qword ptr [r10]"},{"a":"0x7ff7da8304ec","mn":"mov","op":"rdx, qword ptr [r11]"},{"a":"0x7ff7da8304ef","mn":"mov","op":"qword ptr [rsp + 0x20], rax"},{"a":"0x7ff7da8304f4","mn":"mov","op":"r9, qword ptr [r9]"},{"a":"0x7ff7da8304f7","mn":"call","op":"0x7ff7da8314a0"},{"a":"0x7ff7da8304fc","mn":"mov","op":"al, 1"},{"a":"0x7ff7da8304fe","mn":"add","op":"rsp, 0x30"},{"a":"0x7ff7da830502","mn":"pop","op":"rbp"},{"a":"0x7ff7da830503","mn":"ret","op":""},{"a":"0x7ff7da830504","mn":"mov","op":"rax, qword ptr [rbp + 0x38]"},{"a":"0x7ff7da830508","mn":"lea","op":"rcx, [rbp + 0x10]"},{"a":"0x7ff7da83050c","mn":"mov","op":"r9, qword ptr [rbp + 0x30]"},{"a":"0x7ff7da830510","mn":"mov","op":"r8, qword ptr [r10]"},{"a":"0x7ff7da830513","mn":"mov","op":"rdx, qword ptr [r11]"},{"a":"0x7ff7da830516","mn":"mov","op":"qword ptr [rsp + 0x20], rax"},{"a":"0x7ff7da83051b","mn":"mov","op":"r9, qword ptr [r9]"},{"a":"0x7ff7da83051e","mn":"call","op":"0x7ff7da831780"},{"a":"0x7ff7da830523","mn":"mov","op":"al, 1"},{"a":"0x7ff7da830525","mn":"add","op":"rsp, 0x30"},{"a":"0x7ff7da830529","mn":"pop","op":"rbp"},{"a":"0x7ff7da83052a","mn":"ret","op":""},{"a":"0x7ff7da83052b","mn":"xor","op":"al, al"},{"a":"0x7ff7da83052d","mn":"add","op":"rsp, 0x30"},{"a":"0x7ff7da830531","mn":"pop","op":"rbp"},{"a":"0x7ff7da830532","mn":"ret","op":""},{"a":"0x7ff7da830533","mn":"nop","op":""},{"a":"0x7ff7da830534","mn":"sub","op":"al, 3"},{"a":"0x7ff7da830536","mn":"add","op":"eax, 0x5035302"},{"a":"0x7ff7da83053b","mn":"add","op":"bh, byte ptr [rdx + 3]"},{"a":"0x7ff7da83053e","mn":"add","op":"eax, 0x503a102"},{"a":"0x7ff7da830543","mn":"add","op":"cl, al"},{"a":"0x7ff7da830545","mn":"add","op":"eax, dword ptr [rip + 0x503ef02]"},{"a":"0x7ff7da83054b","mn":"add","op":"dl, byte ptr [rsi]"},{"a":"0x7ff7da83054d","mn":"add","op":"al, 5"},{"a":"0x7ff7da83054f","mn":"add","op":"al, byte ptr [rcx + 4]"},{"a":"0x7ff7da830552","mn":"add","op":"eax, 0x5046802"},{"a":"0x7ff7da830557","mn":"add","op":"cl, byte ptr [rdi - 0x49fdfafc]"},{"a":"0x7ff7da83055d","mn":"add","op":"al, 5"},{"a":"0x7ff7da83055f","mn":"add","op":"bl, ch"},{"a":"0x7ff7da830561","mn":"add","op":"al, 5"},{"a":"0x7ff7da830563","mn":"add","op":"al, byte ptr [rax + 0x52b0205]"},{"a":"0x7ff7da83056a","mn":"add","op":"eax, 0x2010002"},{"a":"0x7ff7da83056f","mn":"add","op":"eax, dword ptr [rax + 0x9080706]"},{"a":"0x7ff7da830576","mn":"add","op":"al, byte ptr [rip + 0xb060a0d]"},{"a":"0x7ff7da83057c","mn":"or","op":"al, 0xd"},{"a":"0x7ff7da83057e","mn":"or","op":"eax, 0x6060d0d"}]},"<em>":"</em>"}<br />
+[</em>] Done. (seed write trapped)<br />
+kkongnyang2@acer:~/project4$ sudo ./seed_once_watch_v4 win10 7476 0x1EE373AD000-0x1EE373ADFFF 5000<br />
+=== seed_once_watch_v4_3 ===<br />
+[<em>] domain=win10 pid=7476 range=[0x1ee373ad000..0x1ee373adfff) timeout=5000 ms<br />
+[</em>] libvmi initialized<br />
+[+] DTB resolved via vmi_pid_to_dtb: 0x280910000<br />
+[<em>] Armed W-trap: pages=1 registered=1 range=[0x000001ee373ad000 .. 0x000001ee373ae000)<br />
+[W] WRITE trap @0x1ee373ad010 (vcpu=5, gfn=0x6035c)<br />
+{"evt":"seed_write_pre","ts_us":1760354263644886,"vcpu":5,"pid":7476,"gla":"0x1ee373ad010","gfn":"0x6035c","dtb":"0x280910000","cr3":"0x280910000","rip":"0x7ff7da830797","rsp":"0xcc3237f060","rbp":"0xcc3237f0d0","rflags":"0x10202","module":{"base":"0x7ff7d87e0000","rip_off":"0x2050797"},"gpr":{"rax":"0x30","rbx":"0x30000300000006","rcx":"0x1ee43d08e98","rdx":"0x0","rsi":"0x1ee373acfe0","rdi":"0x1ec64200dc8","r8":"0xcc3237f148","r9":"0xcc3237f150","r10":"0x7ff7da83076e","r11":"0xcc3237f138","r12":"0x0","r13":"0x1ec620eab40","r14":"0x0","r15":"0x1ec72d15060"},"disasm":{"rip":"0x7ff7da830797","mn":"movss","op":"dword ptr [rax + rsi], xmm0","mem_write":true,"wkind":"store","ea_calc":"0x1ee373ad010","ea_match":true},"rip_bytes_len":16,"rip_bytes":"f30f110430e99b010000488b45504d8b","pre_len":16,"pre_bytes":"15000000160000000000000000000000","post_len":16,"post_bytes":"0100d83e2c36653ac055cf72ec010000","stack_len":64,"stack_bytes":"010e0000020014000000000000000000a1b5e7cab107000000000000000000000000000000000000000000000000000000000000000000000000000000000000","origin":{"rcx":{"addr":"0x7ff7da830508","mn":"lea","op":"rcx, [rbp + 0x10]","kind":"lea"},"rdx":{"addr":"0x7ff7da830513","mn":"mov","op":"rdx, qword ptr [r11]","kind":"mov"}},"backtrace":{"start":"0x7ff7da830497","ctx":[{"a":"0x7ff7da8304e1","mn":"lea","op":"rcx, [rbp + 0x10]"},{"a":"0x7ff7da8304e5","mn":"mov","op":"r9, qword ptr [rbp + 0x30]"},{"a":"0x7ff7da8304e9","mn":"mov","op":"r8, qword ptr [r10]"},{"a":"0x7ff7da8304ec","mn":"mov","op":"rdx, qword ptr [r11]"},{"a":"0x7ff7da8304ef","mn":"mov","op":"qword ptr [rsp + 0x20], rax"},{"a":"0x7ff7da8304f4","mn":"mov","op":"r9, qword ptr [r9]"},{"a":"0x7ff7da8304f7","mn":"call","op":"0x7ff7da8314a0"},{"a":"0x7ff7da8304fc","mn":"mov","op":"al, 1"},{"a":"0x7ff7da8304fe","mn":"add","op":"rsp, 0x30"},{"a":"0x7ff7da830502","mn":"pop","op":"rbp"},{"a":"0x7ff7da830503","mn":"ret","op":""},{"a":"0x7ff7da830504","mn":"mov","op":"rax, qword ptr [rbp + 0x38]"},{"a":"0x7ff7da830508","mn":"lea","op":"rcx, [rbp + 0x10]"},{"a":"0x7ff7da83050c","mn":"mov","op":"r9, qword ptr [rbp + 0x30]"},{"a":"0x7ff7da830510","mn":"mov","op":"r8, qword ptr [r10]"},{"a":"0x7ff7da830513","mn":"mov","op":"rdx, qword ptr [r11]"},{"a":"0x7ff7da830516","mn":"mov","op":"qword ptr [rsp + 0x20], rax"},{"a":"0x7ff7da83051b","mn":"mov","op":"r9, qword ptr [r9]"},{"a":"0x7ff7da83051e","mn":"call","op":"0x7ff7da831780"},{"a":"0x7ff7da830523","mn":"mov","op":"al, 1"},{"a":"0x7ff7da830525","mn":"add","op":"rsp, 0x30"},{"a":"0x7ff7da830529","mn":"pop","op":"rbp"},{"a":"0x7ff7da83052a","mn":"ret","op":""},{"a":"0x7ff7da83052b","mn":"xor","op":"al, al"},{"a":"0x7ff7da83052d","mn":"add","op":"rsp, 0x30"},{"a":"0x7ff7da830531","mn":"pop","op":"rbp"},{"a":"0x7ff7da830532","mn":"ret","op":""},{"a":"0x7ff7da830533","mn":"nop","op":""},{"a":"0x7ff7da830534","mn":"sub","op":"al, 3"},{"a":"0x7ff7da830536","mn":"add","op":"eax, 0x5035302"},{"a":"0x7ff7da83053b","mn":"add","op":"bh, byte ptr [rdx + 3]"},{"a":"0x7ff7da83053e","mn":"add","op":"eax, 0x503a102"},{"a":"0x7ff7da830543","mn":"add","op":"cl, al"},{"a":"0x7ff7da830545","mn":"add","op":"eax, dword ptr [rip + 0x503ef02]"},{"a":"0x7ff7da83054b","mn":"add","op":"dl, byte ptr [rsi]"},{"a":"0x7ff7da83054d","mn":"add","op":"al, 5"},{"a":"0x7ff7da83054f","mn":"add","op":"al, byte ptr [rcx + 4]"},{"a":"0x7ff7da830552","mn":"add","op":"eax, 0x5046802"},{"a":"0x7ff7da830557","mn":"add","op":"cl, byte ptr [rdi - 0x49fdfafc]"},{"a":"0x7ff7da83055d","mn":"add","op":"al, 5"},{"a":"0x7ff7da83055f","mn":"add","op":"bl, ch"},{"a":"0x7ff7da830561","mn":"add","op":"al, 5"},{"a":"0x7ff7da830563","mn":"add","op":"al, byte ptr [rax + 0x52b0205]"},{"a":"0x7ff7da83056a","mn":"add","op":"eax, 0x2010002"},{"a":"0x7ff7da83056f","mn":"add","op":"eax, dword ptr [rax + 0x9080706]"},{"a":"0x7ff7da830576","mn":"add","op":"al, byte ptr [rip + 0xb060a0d]"},{"a":"0x7ff7da83057c","mn":"or","op":"al, 0xd"},{"a":"0x7ff7da83057e","mn":"or","op":"eax, 0x6060d0d"}]},"<em>":"</em>"}<br />
+[</em>] Done. (seed write trapped)<br />
+kkongnyang2@acer:~/project4$ sudo ./seed_once_watch_v4 win10 7476 0x1EE373AD000-0x1EE373ADFFF 5000<br />
+=== seed_once_watch_v4_3 ===<br />
+[<em>] domain=win10 pid=7476 range=[0x1ee373ad000..0x1ee373adfff) timeout=5000 ms<br />
+[</em>] libvmi initialized<br />
+[+] DTB resolved via vmi_pid_to_dtb: 0x280910000<br />
+[<em>] Armed W-trap: pages=1 registered=1 range=[0x000001ee373ad000 .. 0x000001ee373ae000)<br />
+[W] WRITE trap @0x1ee373ad078 (vcpu=6, gfn=0x6035c)<br />
+{"evt":"seed_write_pre","ts_us":1760354271043058,"vcpu":6,"pid":7476,"gla":"0x1ee373ad078","gfn":"0x6035c","dtb":"0x280910000","cr3":"0x280910000","rip":"0x7ff7da8307ff","rsp":"0xcc3237edf0","rbp":"0xcc3237ee60","rflags":"0x10206","module":{"base":"0x7ff7d87e0000","rip_off":"0x20507ff"},"gpr":{"rax":"0xfa","rbx":"0x98001000000008","rcx":"0x1ee43d09198","rdx":"0x0","rsi":"0x1ee373acfe0","rdi":"0x1ec64200dc8","r8":"0x98","r9":"0xcc3237eee0","r10":"0x7ff7da8307d6","r11":"0xcc3237eec8","r12":"0x0","r13":"0x1ec620eab40","r14":"0x0","r15":"0x1ec72d15060"},"disasm":{"rip":"0x7ff7da8307ff","mn":"mov","op":"dword ptr [r8 + rsi], eax","mem_write":true,"wkind":"store","ea_calc":"0x1ee373ad078","ea_match":true},"rip_bytes_len":16,"rip_bytes":"41890430e934010000498b38488d4d20","pre_len":16,"pre_bytes":"0000000000000000e06fba08ed010000","post_len":16,"post_bytes":"b2000000230b183bb0af7811ee010000","stack_len":64,"stack_bytes":"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000","origin":{"rcx":{"addr":"0x7ff7da830508","mn":"lea","op":"rcx, [rbp + 0x10]","kind":"lea"},"rdx":{"addr":"0x7ff7da830513","mn":"mov","op":"rdx, qword ptr [r11]","kind":"mov"}},"backtrace":{"start":"0x7ff7da8304ff","ctx":[{"a":"0x7ff7da8304ff","mn":"add","op":"esp, 0x30"},{"a":"0x7ff7da830502","mn":"pop","op":"rbp"},{"a":"0x7ff7da830503","mn":"ret","op":""},{"a":"0x7ff7da830504","mn":"mov","op":"rax, qword ptr [rbp + 0x38]"},{"a":"0x7ff7da830508","mn":"lea","op":"rcx, [rbp + 0x10]"},{"a":"0x7ff7da83050c","mn":"mov","op":"r9, qword ptr [rbp + 0x30]"},{"a":"0x7ff7da830510","mn":"mov","op":"r8, qword ptr [r10]"},{"a":"0x7ff7da830513","mn":"mov","op":"rdx, qword ptr [r11]"},{"a":"0x7ff7da830516","mn":"mov","op":"qword ptr [rsp + 0x20], rax"},{"a":"0x7ff7da83051b","mn":"mov","op":"r9, qword ptr [r9]"},{"a":"0x7ff7da83051e","mn":"call","op":"0x7ff7da831780"},{"a":"0x7ff7da830523","mn":"mov","op":"al, 1"},{"a":"0x7ff7da830525","mn":"add","op":"rsp, 0x30"},{"a":"0x7ff7da830529","mn":"pop","op":"rbp"},{"a":"0x7ff7da83052a","mn":"ret","op":""},{"a":"0x7ff7da83052b","mn":"xor","op":"al, al"},{"a":"0x7ff7da83052d","mn":"add","op":"rsp, 0x30"},{"a":"0x7ff7da830531","mn":"pop","op":"rbp"},{"a":"0x7ff7da830532","mn":"ret","op":""},{"a":"0x7ff7da830533","mn":"nop","op":""},{"a":"0x7ff7da830534","mn":"sub","op":"al, 3"},{"a":"0x7ff7da830536","mn":"add","op":"eax, 0x5035302"},{"a":"0x7ff7da83053b","mn":"add","op":"bh, byte ptr [rdx + 3]"},{"a":"0x7ff7da83053e","mn":"add","op":"eax, 0x503a102"},{"a":"0x7ff7da830543","mn":"add","op":"cl, al"},{"a":"0x7ff7da830545","mn":"add","op":"eax, dword ptr [rip + 0x503ef02]"},{"a":"0x7ff7da83054b","mn":"add","op":"dl, byte ptr [rsi]"},{"a":"0x7ff7da83054d","mn":"add","op":"al, 5"},{"a":"0x7ff7da83054f","mn":"add","op":"al, byte ptr [rcx + 4]"},{"a":"0x7ff7da830552","mn":"add","op":"eax, 0x5046802"},{"a":"0x7ff7da830557","mn":"add","op":"cl, byte ptr [rdi - 0x49fdfafc]"},{"a":"0x7ff7da83055d","mn":"add","op":"al, 5"},{"a":"0x7ff7da83055f","mn":"add","op":"bl, ch"},{"a":"0x7ff7da830561","mn":"add","op":"al, 5"},{"a":"0x7ff7da830563","mn":"add","op":"al, byte ptr [rax + 0x52b0205]"},{"a":"0x7ff7da83056a","mn":"add","op":"eax, 0x2010002"},{"a":"0x7ff7da83056f","mn":"add","op":"eax, dword ptr [rax + 0x9080706]"},{"a":"0x7ff7da830576","mn":"add","op":"al, byte ptr [rip + 0xb060a0d]"},{"a":"0x7ff7da83057c","mn":"or","op":"al, 0xd"},{"a":"0x7ff7da83057e","mn":"or","op":"eax, 0x6060d0d"}]},"<em>":"</em>"}<br />
+[</em>] Done. (seed write trapped)<br />
+kkongnyang2@acer:~/project4$ sudo ./seed_once_watch_v4 win10 7476 0x1EE373AD000-0x1EE373ADFFF 5000<br />
+=== seed_once_watch_v4_3 ===<br />
+[<em>] domain=win10 pid=7476 range=[0x1ee373ad000..0x1ee373adfff) timeout=5000 ms<br />
+[</em>] libvmi initialized<br />
+[+] DTB resolved via vmi_pid_to_dtb: 0x280910000<br />
+[<em>] Armed W-trap: pages=1 registered=1 range=[0x000001ee373ad000 .. 0x000001ee373ae000)<br />
+[W] WRITE trap @0x1ee373ad078 (vcpu=5, gfn=0x6035c)<br />
+{"evt":"seed_write_pre","ts_us":1760354273374600,"vcpu":5,"pid":7476,"gla":"0x1ee373ad078","gfn":"0x6035c","dtb":"0x280910000","cr3":"0x280910000","rip":"0x7ff7da8307ff","rsp":"0xcc3237eb80","rbp":"0xcc3237ebf0","rflags":"0x10206","module":{"base":"0x7ff7d87e0000","rip_off":"0x20507ff"},"gpr":{"rax":"0xde","rbx":"0x98001000000008","rcx":"0x1ee43d09198","rdx":"0x0","rsi":"0x1ee373acfe0","rdi":"0x1ec64200dc8","r8":"0x98","r9":"0xcc3237ec70","r10":"0x7ff7da8307d6","r11":"0xcc3237ec58","r12":"0x0","r13":"0x1ec620eab40","r14":"0x0","r15":"0x1ec72d15060"},"disasm":{"rip":"0x7ff7da8307ff","mn":"mov","op":"dword ptr [r8 + rsi], eax","mem_write":true,"wkind":"store","ea_calc":"0x1ee373ad078","ea_match":true},"rip_bytes_len":16,"rip_bytes":"41890430e934010000498b38488d4d20","pre_len":16,"pre_bytes":"0000000000000000e06fba08ed010000","post_len":16,"post_bytes":"e0000000230b183bb0af7811ee010000","stack_len":64,"stack_bytes":"010e000004001c00000000000000000091b5e7cab107000000000000000000000000000000000000000000000000000000000000000000000000000000000000","origin":{"rcx":{"addr":"0x7ff7da830508","mn":"lea","op":"rcx, [rbp + 0x10]","kind":"lea"},"rdx":{"addr":"0x7ff7da830513","mn":"mov","op":"rdx, qword ptr [r11]","kind":"mov"}},"backtrace":{"start":"0x7ff7da8304ff","ctx":[{"a":"0x7ff7da8304ff","mn":"add","op":"esp, 0x30"},{"a":"0x7ff7da830502","mn":"pop","op":"rbp"},{"a":"0x7ff7da830503","mn":"ret","op":""},{"a":"0x7ff7da830504","mn":"mov","op":"rax, qword ptr [rbp + 0x38]"},{"a":"0x7ff7da830508","mn":"lea","op":"rcx, [rbp + 0x10]"},{"a":"0x7ff7da83050c","mn":"mov","op":"r9, qword ptr [rbp + 0x30]"},{"a":"0x7ff7da830510","mn":"mov","op":"r8, qword ptr [r10]"},{"a":"0x7ff7da830513","mn":"mov","op":"rdx, qword ptr [r11]"},{"a":"0x7ff7da830516","mn":"mov","op":"qword ptr [rsp + 0x20], rax"},{"a":"0x7ff7da83051b","mn":"mov","op":"r9, qword ptr [r9]"},{"a":"0x7ff7da83051e","mn":"call","op":"0x7ff7da831780"},{"a":"0x7ff7da830523","mn":"mov","op":"al, 1"},{"a":"0x7ff7da830525","mn":"add","op":"rsp, 0x30"},{"a":"0x7ff7da830529","mn":"pop","op":"rbp"},{"a":"0x7ff7da83052a","mn":"ret","op":""},{"a":"0x7ff7da83052b","mn":"xor","op":"al, al"},{"a":"0x7ff7da83052d","mn":"add","op":"rsp, 0x30"},{"a":"0x7ff7da830531","mn":"pop","op":"rbp"},{"a":"0x7ff7da830532","mn":"ret","op":""},{"a":"0x7ff7da830533","mn":"nop","op":""},{"a":"0x7ff7da830534","mn":"sub","op":"al, 3"},{"a":"0x7ff7da830536","mn":"add","op":"eax, 0x5035302"},{"a":"0x7ff7da83053b","mn":"add","op":"bh, byte ptr [rdx + 3]"},{"a":"0x7ff7da83053e","mn":"add","op":"eax, 0x503a102"},{"a":"0x7ff7da830543","mn":"add","op":"cl, al"},{"a":"0x7ff7da830545","mn":"add","op":"eax, dword ptr [rip + 0x503ef02]"},{"a":"0x7ff7da83054b","mn":"add","op":"dl, byte ptr [rsi]"},{"a":"0x7ff7da83054d","mn":"add","op":"al, 5"},{"a":"0x7ff7da83054f","mn":"add","op":"al, byte ptr [rcx + 4]"},{"a":"0x7ff7da830552","mn":"add","op":"eax, 0x5046802"},{"a":"0x7ff7da830557","mn":"add","op":"cl, byte ptr [rdi - 0x49fdfafc]"},{"a":"0x7ff7da83055d","mn":"add","op":"al, 5"},{"a":"0x7ff7da83055f","mn":"add","op":"bl, ch"},{"a":"0x7ff7da830561","mn":"add","op":"al, 5"},{"a":"0x7ff7da830563","mn":"add","op":"al, byte ptr [rax + 0x52b0205]"},{"a":"0x7ff7da83056a","mn":"add","op":"eax, 0x2010002"},{"a":"0x7ff7da83056f","mn":"add","op":"eax, dword ptr [rax + 0x9080706]"},{"a":"0x7ff7da830576","mn":"add","op":"al, byte ptr [rip + 0xb060a0d]"},{"a":"0x7ff7da83057c","mn":"or","op":"al, 0xd"},{"a":"0x7ff7da83057e","mn":"or","op":"eax, 0x6060d0d"}]},"<em>":"</em>"}<br />
+[</em>] Done. (seed write trapped)<br />
+kkongnyang2@acer:~/project4$ sudo ./seed_once_watch_v4 win10 7476 0x1EE373AD000-0x1EE373ADFFF 5000<br />
+=== seed_once_watch_v4_3 ===<br />
+[<em>] domain=win10 pid=7476 range=[0x1ee373ad000..0x1ee373adfff) timeout=5000 ms<br />
+[</em>] libvmi initialized<br />
+[+] DTB resolved via vmi_pid_to_dtb: 0x280910000<br />
+[<em>] Armed W-trap: pages=1 registered=1 range=[0x000001ee373ad000 .. 0x000001ee373ae000)<br />
+[W] WRITE trap @0x1ee373ad010 (vcpu=6, gfn=0x6035c)<br />
+{"evt":"seed_write_pre","ts_us":1760354274903921,"vcpu":6,"pid":7476,"gla":"0x1ee373ad010","gfn":"0x6035c","dtb":"0x280910000","cr3":"0x280910000","rip":"0x7ff7da830797","rsp":"0xcc3237eaa0","rbp":"0xcc3237eb10","rflags":"0x10202","module":{"base":"0x7ff7d87e0000","rip_off":"0x2050797"},"gpr":{"rax":"0x30","rbx":"0x30000300000006","rcx":"0x1ee43d08e98","rdx":"0x0","rsi":"0x1ee373acfe0","rdi":"0x1ec64200dc8","r8":"0xcc3237eb88","r9":"0xcc3237eb90","r10":"0x7ff7da83076e","r11":"0xcc3237eb78","r12":"0x0","r13":"0x1ec620eab40","r14":"0x0","r15":"0x1ec72d15060"},"disasm":{"rip":"0x7ff7da830797","mn":"movss","op":"dword ptr [rax + rsi], xmm0","mem_write":true,"wkind":"store","ea_calc":"0x1ee373ad010","ea_match":true},"rip_bytes_len":16,"rip_bytes":"f30f110430e99b010000488b45504d8b","pre_len":16,"pre_bytes":"15000000160000000000000000000000","post_len":16,"post_bytes":"0100803d2c36653ac055cf72ec010000","stack_len":64,"stack_bytes":"010e000002001400000000000000000091b5e7cab107000000000000000000000000000000000000000000000000000000000000000000000000000000000000","origin":{"rcx":{"addr":"0x7ff7da830508","mn":"lea","op":"rcx, [rbp + 0x10]","kind":"lea"},"rdx":{"addr":"0x7ff7da830513","mn":"mov","op":"rdx, qword ptr [r11]","kind":"mov"}},"backtrace":{"start":"0x7ff7da830497","ctx":[{"a":"0x7ff7da8304e1","mn":"lea","op":"rcx, [rbp + 0x10]"},{"a":"0x7ff7da8304e5","mn":"mov","op":"r9, qword ptr [rbp + 0x30]"},{"a":"0x7ff7da8304e9","mn":"mov","op":"r8, qword ptr [r10]"},{"a":"0x7ff7da8304ec","mn":"mov","op":"rdx, qword ptr [r11]"},{"a":"0x7ff7da8304ef","mn":"mov","op":"qword ptr [rsp + 0x20], rax"},{"a":"0x7ff7da8304f4","mn":"mov","op":"r9, qword ptr [r9]"},{"a":"0x7ff7da8304f7","mn":"call","op":"0x7ff7da8314a0"},{"a":"0x7ff7da8304fc","mn":"mov","op":"al, 1"},{"a":"0x7ff7da8304fe","mn":"add","op":"rsp, 0x30"},{"a":"0x7ff7da830502","mn":"pop","op":"rbp"},{"a":"0x7ff7da830503","mn":"ret","op":""},{"a":"0x7ff7da830504","mn":"mov","op":"rax, qword ptr [rbp + 0x38]"},{"a":"0x7ff7da830508","mn":"lea","op":"rcx, [rbp + 0x10]"},{"a":"0x7ff7da83050c","mn":"mov","op":"r9, qword ptr [rbp + 0x30]"},{"a":"0x7ff7da830510","mn":"mov","op":"r8, qword ptr [r10]"},{"a":"0x7ff7da830513","mn":"mov","op":"rdx, qword ptr [r11]"},{"a":"0x7ff7da830516","mn":"mov","op":"qword ptr [rsp + 0x20], rax"},{"a":"0x7ff7da83051b","mn":"mov","op":"r9, qword ptr [r9]"},{"a":"0x7ff7da83051e","mn":"call","op":"0x7ff7da831780"},{"a":"0x7ff7da830523","mn":"mov","op":"al, 1"},{"a":"0x7ff7da830525","mn":"add","op":"rsp, 0x30"},{"a":"0x7ff7da830529","mn":"pop","op":"rbp"},{"a":"0x7ff7da83052a","mn":"ret","op":""},{"a":"0x7ff7da83052b","mn":"xor","op":"al, al"},{"a":"0x7ff7da83052d","mn":"add","op":"rsp, 0x30"},{"a":"0x7ff7da830531","mn":"pop","op":"rbp"},{"a":"0x7ff7da830532","mn":"ret","op":""},{"a":"0x7ff7da830533","mn":"nop","op":""},{"a":"0x7ff7da830534","mn":"sub","op":"al, 3"},{"a":"0x7ff7da830536","mn":"add","op":"eax, 0x5035302"},{"a":"0x7ff7da83053b","mn":"add","op":"bh, byte ptr [rdx + 3]"},{"a":"0x7ff7da83053e","mn":"add","op":"eax, 0x503a102"},{"a":"0x7ff7da830543","mn":"add","op":"cl, al"},{"a":"0x7ff7da830545","mn":"add","op":"eax, dword ptr [rip + 0x503ef02]"},{"a":"0x7ff7da83054b","mn":"add","op":"dl, byte ptr [rsi]"},{"a":"0x7ff7da83054d","mn":"add","op":"al, 5"},{"a":"0x7ff7da83054f","mn":"add","op":"al, byte ptr [rcx + 4]"},{"a":"0x7ff7da830552","mn":"add","op":"eax, 0x5046802"},{"a":"0x7ff7da830557","mn":"add","op":"cl, byte ptr [rdi - 0x49fdfafc]"},{"a":"0x7ff7da83055d","mn":"add","op":"al, 5"},{"a":"0x7ff7da83055f","mn":"add","op":"bl, ch"},{"a":"0x7ff7da830561","mn":"add","op":"al, 5"},{"a":"0x7ff7da830563","mn":"add","op":"al, byte ptr [rax + 0x52b0205]"},{"a":"0x7ff7da83056a","mn":"add","op":"eax, 0x2010002"},{"a":"0x7ff7da83056f","mn":"add","op":"eax, dword ptr [rax + 0x9080706]"},{"a":"0x7ff7da830576","mn":"add","op":"al, byte ptr [rip + 0xb060a0d]"},{"a":"0x7ff7da83057c","mn":"or","op":"al, 0xd"},{"a":"0x7ff7da83057e","mn":"or","op":"eax, 0x6060d0d"}]},"<em>":"</em>"}<br />
+[</em>] Done. (seed write trapped)<br />
+kkongnyang2@acer:~/project4$ sudo ./seed_once_watch_v4 win10 7476 0x1EE373AD000-0x1EE373ADFFF 5000<br />
+=== seed_once_watch_v4_3 ===<br />
+[<em>] domain=win10 pid=7476 range=[0x1ee373ad000..0x1ee373adfff) timeout=5000 ms<br />
+[</em>] libvmi initialized<br />
+[+] DTB resolved via vmi_pid_to_dtb: 0x280910000<br />
+[<em>] Armed W-trap: pages=1 registered=1 range=[0x000001ee373ad000 .. 0x000001ee373ae000)<br />
+[W] WRITE trap @0x1ee373ad010 (vcpu=2, gfn=0x6035c)<br />
+{"evt":"seed_write_pre","ts_us":1760354277115623,"vcpu":2,"pid":7476,"gla":"0x1ee373ad010","gfn":"0x6035c","dtb":"0x280910000","cr3":"0x280910000","rip":"0x7ff7da830797","rsp":"0xcc3237f020","rbp":"0xcc3237f090","rflags":"0x10206","module":{"base":"0x7ff7d87e0000","rip_off":"0x2050797"},"gpr":{"rax":"0x30","rbx":"0x30000300000006","rcx":"0x1ee43d08e98","rdx":"0x0","rsi":"0x1ee373acfe0","rdi":"0x1ec64200dc8","r8":"0xcc3237f108","r9":"0xcc3237f110","r10":"0x7ff7da83076e","r11":"0xcc3237f0f8","r12":"0x0","r13":"0x1ec620eab40","r14":"0x0","r15":"0x1ec72d15060"},"disasm":{"rip":"0x7ff7da830797","mn":"movss","op":"dword ptr [rax + rsi], xmm0","mem_write":true,"wkind":"store","ea_calc":"0x1ee373ad010","ea_match":true},"rip_bytes_len":16,"rip_bytes":"f30f110430e99b010000488b45504d8b","pre_len":16,"pre_bytes":"15000000160000000000000000000000","post_len":16,"post_bytes":"02001c3f2c36653ac055cf72ec010000","stack_len":64,"stack_bytes":"010e000002001400000000000000000091b5e7cab107000000000000000000000000000000000000000000000000000000000000000000000000000000000000","origin":{"rcx":{"addr":"0x7ff7da830508","mn":"lea","op":"rcx, [rbp + 0x10]","kind":"lea"},"rdx":{"addr":"0x7ff7da830513","mn":"mov","op":"rdx, qword ptr [r11]","kind":"mov"}},"backtrace":{"start":"0x7ff7da830497","ctx":[{"a":"0x7ff7da8304e1","mn":"lea","op":"rcx, [rbp + 0x10]"},{"a":"0x7ff7da8304e5","mn":"mov","op":"r9, qword ptr [rbp + 0x30]"},{"a":"0x7ff7da8304e9","mn":"mov","op":"r8, qword ptr [r10]"},{"a":"0x7ff7da8304ec","mn":"mov","op":"rdx, qword ptr [r11]"},{"a":"0x7ff7da8304ef","mn":"mov","op":"qword ptr [rsp + 0x20], rax"},{"a":"0x7ff7da8304f4","mn":"mov","op":"r9, qword ptr [r9]"},{"a":"0x7ff7da8304f7","mn":"call","op":"0x7ff7da8314a0"},{"a":"0x7ff7da8304fc","mn":"mov","op":"al, 1"},{"a":"0x7ff7da8304fe","mn":"add","op":"rsp, 0x30"},{"a":"0x7ff7da830502","mn":"pop","op":"rbp"},{"a":"0x7ff7da830503","mn":"ret","op":""},{"a":"0x7ff7da830504","mn":"mov","op":"rax, qword ptr [rbp + 0x38]"},{"a":"0x7ff7da830508","mn":"lea","op":"rcx, [rbp + 0x10]"},{"a":"0x7ff7da83050c","mn":"mov","op":"r9, qword ptr [rbp + 0x30]"},{"a":"0x7ff7da830510","mn":"mov","op":"r8, qword ptr [r10]"},{"a":"0x7ff7da830513","mn":"mov","op":"rdx, qword ptr [r11]"},{"a":"0x7ff7da830516","mn":"mov","op":"qword ptr [rsp + 0x20], rax"},{"a":"0x7ff7da83051b","mn":"mov","op":"r9, qword ptr [r9]"},{"a":"0x7ff7da83051e","mn":"call","op":"0x7ff7da831780"},{"a":"0x7ff7da830523","mn":"mov","op":"al, 1"},{"a":"0x7ff7da830525","mn":"add","op":"rsp, 0x30"},{"a":"0x7ff7da830529","mn":"pop","op":"rbp"},{"a":"0x7ff7da83052a","mn":"ret","op":""},{"a":"0x7ff7da83052b","mn":"xor","op":"al, al"},{"a":"0x7ff7da83052d","mn":"add","op":"rsp, 0x30"},{"a":"0x7ff7da830531","mn":"pop","op":"rbp"},{"a":"0x7ff7da830532","mn":"ret","op":""},{"a":"0x7ff7da830533","mn":"nop","op":""},{"a":"0x7ff7da830534","mn":"sub","op":"al, 3"},{"a":"0x7ff7da830536","mn":"add","op":"eax, 0x5035302"},{"a":"0x7ff7da83053b","mn":"add","op":"bh, byte ptr [rdx + 3]"},{"a":"0x7ff7da83053e","mn":"add","op":"eax, 0x503a102"},{"a":"0x7ff7da830543","mn":"add","op":"cl, al"},{"a":"0x7ff7da830545","mn":"add","op":"eax, dword ptr [rip + 0x503ef02]"},{"a":"0x7ff7da83054b","mn":"add","op":"dl, byte ptr [rsi]"},{"a":"0x7ff7da83054d","mn":"add","op":"al, 5"},{"a":"0x7ff7da83054f","mn":"add","op":"al, byte ptr [rcx + 4]"},{"a":"0x7ff7da830552","mn":"add","op":"eax, 0x5046802"},{"a":"0x7ff7da830557","mn":"add","op":"cl, byte ptr [rdi - 0x49fdfafc]"},{"a":"0x7ff7da83055d","mn":"add","op":"al, 5"},{"a":"0x7ff7da83055f","mn":"add","op":"bl, ch"},{"a":"0x7ff7da830561","mn":"add","op":"al, 5"},{"a":"0x7ff7da830563","mn":"add","op":"al, byte ptr [rax + 0x52b0205]"},{"a":"0x7ff7da83056a","mn":"add","op":"eax, 0x2010002"},{"a":"0x7ff7da83056f","mn":"add","op":"eax, dword ptr [rax + 0x9080706]"},{"a":"0x7ff7da830576","mn":"add","op":"al, byte ptr [rip + 0xb060a0d]"},{"a":"0x7ff7da83057c","mn":"or","op":"al, 0xd"},{"a":"0x7ff7da83057e","mn":"or","op":"eax, 0x6060d0d"}]},"<em>":"</em>"}<br />
+[</em>] Done. (seed write trapped)<br />
+kkongnyang2@acer:~/project4$ sudo ./seed_once_watch_v4 win10 7476 0x1EE373AD000-0x1EE373ADFFF 5000<br />
+=== seed_once_watch_v4_3 ===<br />
+[<em>] domain=win10 pid=7476 range=[0x1ee373ad000..0x1ee373adfff) timeout=5000 ms<br />
+[</em>] libvmi initialized<br />
+[+] DTB resolved via vmi_pid_to_dtb: 0x280910000<br />
+[<em>] Armed W-trap: pages=1 registered=1 range=[0x000001ee373ad000 .. 0x000001ee373ae000)<br />
+[W] WRITE trap @0x1ee373ad010 (vcpu=7, gfn=0x6035c)<br />
+{"evt":"seed_write_pre","ts_us":1760354280284472,"vcpu":7,"pid":7476,"gla":"0x1ee373ad010","gfn":"0x6035c","dtb":"0x280910000","cr3":"0x280910000","rip":"0x7ff7da830797","rsp":"0xcc3237ed20","rbp":"0xcc3237ed90","rflags":"0x10206","module":{"base":"0x7ff7d87e0000","rip_off":"0x2050797"},"gpr":{"rax":"0x30","rbx":"0x30000300000006","rcx":"0x1ee43d08e98","rdx":"0x0","rsi":"0x1ee373acfe0","rdi":"0x1ec64200dc8","r8":"0xcc3237ee08","r9":"0xcc3237ee10","r10":"0x7ff7da83076e","r11":"0xcc3237edf8","r12":"0x0","r13":"0x1ec620eab40","r14":"0x0","r15":"0x1ec72d15060"},"disasm":{"rip":"0x7ff7da830797","mn":"movss","op":"dword ptr [rax + rsi], xmm0","mem_write":true,"wkind":"store","ea_calc":"0x1ee373ad010","ea_match":true},"rip_bytes_len":16,"rip_bytes":"f30f110430e99b010000488b45504d8b","pre_len":16,"pre_bytes":"15000000160000000000000000000000","post_len":16,"post_bytes":"0100e83e2c36653ac055cf72ec010000","stack_len":64,"stack_bytes":"010e000002001400000000000000000081b5e7cab107000000000000000000000000000000000000000000000000000000000000000000000000000000000000","origin":{"rcx":{"addr":"0x7ff7da830508","mn":"lea","op":"rcx, [rbp + 0x10]","kind":"lea"},"rdx":{"addr":"0x7ff7da830513","mn":"mov","op":"rdx, qword ptr [r11]","kind":"mov"}},"backtrace":{"start":"0x7ff7da830497","ctx":[{"a":"0x7ff7da8304e1","mn":"lea","op":"rcx, [rbp + 0x10]"},{"a":"0x7ff7da8304e5","mn":"mov","op":"r9, qword ptr [rbp + 0x30]"},{"a":"0x7ff7da8304e9","mn":"mov","op":"r8, qword ptr [r10]"},{"a":"0x7ff7da8304ec","mn":"mov","op":"rdx, qword ptr [r11]"},{"a":"0x7ff7da8304ef","mn":"mov","op":"qword ptr [rsp + 0x20], rax"},{"a":"0x7ff7da8304f4","mn":"mov","op":"r9, qword ptr [r9]"},{"a":"0x7ff7da8304f7","mn":"call","op":"0x7ff7da8314a0"},{"a":"0x7ff7da8304fc","mn":"mov","op":"al, 1"},{"a":"0x7ff7da8304fe","mn":"add","op":"rsp, 0x30"},{"a":"0x7ff7da830502","mn":"pop","op":"rbp"},{"a":"0x7ff7da830503","mn":"ret","op":""},{"a":"0x7ff7da830504","mn":"mov","op":"rax, qword ptr [rbp + 0x38]"},{"a":"0x7ff7da830508","mn":"lea","op":"rcx, [rbp + 0x10]"},{"a":"0x7ff7da83050c","mn":"mov","op":"r9, qword ptr [rbp + 0x30]"},{"a":"0x7ff7da830510","mn":"mov","op":"r8, qword ptr [r10]"},{"a":"0x7ff7da830513","mn":"mov","op":"rdx, qword ptr [r11]"},{"a":"0x7ff7da830516","mn":"mov","op":"qword ptr [rsp + 0x20], rax"},{"a":"0x7ff7da83051b","mn":"mov","op":"r9, qword ptr [r9]"},{"a":"0x7ff7da83051e","mn":"call","op":"0x7ff7da831780"},{"a":"0x7ff7da830523","mn":"mov","op":"al, 1"},{"a":"0x7ff7da830525","mn":"add","op":"rsp, 0x30"},{"a":"0x7ff7da830529","mn":"pop","op":"rbp"},{"a":"0x7ff7da83052a","mn":"ret","op":""},{"a":"0x7ff7da83052b","mn":"xor","op":"al, al"},{"a":"0x7ff7da83052d","mn":"add","op":"rsp, 0x30"},{"a":"0x7ff7da830531","mn":"pop","op":"rbp"},{"a":"0x7ff7da830532","mn":"ret","op":""},{"a":"0x7ff7da830533","mn":"nop","op":""},{"a":"0x7ff7da830534","mn":"sub","op":"al, 3"},{"a":"0x7ff7da830536","mn":"add","op":"eax, 0x5035302"},{"a":"0x7ff7da83053b","mn":"add","op":"bh, byte ptr [rdx + 3]"},{"a":"0x7ff7da83053e","mn":"add","op":"eax, 0x503a102"},{"a":"0x7ff7da830543","mn":"add","op":"cl, al"},{"a":"0x7ff7da830545","mn":"add","op":"eax, dword ptr [rip + 0x503ef02]"},{"a":"0x7ff7da83054b","mn":"add","op":"dl, byte ptr [rsi]"},{"a":"0x7ff7da83054d","mn":"add","op":"al, 5"},{"a":"0x7ff7da83054f","mn":"add","op":"al, byte ptr [rcx + 4]"},{"a":"0x7ff7da830552","mn":"add","op":"eax, 0x5046802"},{"a":"0x7ff7da830557","mn":"add","op":"cl, byte ptr [rdi - 0x49fdfafc]"},{"a":"0x7ff7da83055d","mn":"add","op":"al, 5"},{"a":"0x7ff7da83055f","mn":"add","op":"bl, ch"},{"a":"0x7ff7da830561","mn":"add","op":"al, 5"},{"a":"0x7ff7da830563","mn":"add","op":"al, byte ptr [rax + 0x52b0205]"},{"a":"0x7ff7da83056a","mn":"add","op":"eax, 0x2010002"},{"a":"0x7ff7da83056f","mn":"add","op":"eax, dword ptr [rax + 0x9080706]"},{"a":"0x7ff7da830576","mn":"add","op":"al, byte ptr [rip + 0xb060a0d]"},{"a":"0x7ff7da83057c","mn":"or","op":"al, 0xd"},{"a":"0x7ff7da83057e","mn":"or","op":"eax, 0x6060d0d"}]},"<em>":"</em>"}<br />
+[</em>] Done. (seed write trapped)<br />
+kkongnyang2@acer:~/project4$ sudo ./seed_once_watch_v4 win10 7476 0x1EE373AD000-0x1EE373ADFFF 5000<br />
+=== seed_once_watch_v4_3 ===<br />
+[<em>] domain=win10 pid=7476 range=[0x1ee373ad000..0x1ee373adfff) timeout=5000 ms<br />
+[</em>] libvmi initialized<br />
+[+] DTB resolved via vmi_pid_to_dtb: 0x280910000<br />
+[<em>] Armed W-trap: pages=1 registered=1 range=[0x000001ee373ad000 .. 0x000001ee373ae000)<br />
+[W] WRITE trap @0x1ee373ad010 (vcpu=6, gfn=0x6035c)<br />
+{"evt":"seed_write_pre","ts_us":1760354281846113,"vcpu":6,"pid":7476,"gla":"0x1ee373ad010","gfn":"0x6035c","dtb":"0x280910000","cr3":"0x280910000","rip":"0x7ff7da830797","rsp":"0xcc3237eeb0","rbp":"0xcc3237ef20","rflags":"0x10202","module":{"base":"0x7ff7d87e0000","rip_off":"0x2050797"},"gpr":{"rax":"0x30","rbx":"0x30000300000006","rcx":"0x1ee43d08e98","rdx":"0x0","rsi":"0x1ee373acfe0","rdi":"0x1ec64200dc8","r8":"0xcc3237ef98","r9":"0xcc3237efa0","r10":"0x7ff7da83076e","r11":"0xcc3237ef88","r12":"0x0","r13":"0x1ec620eab40","r14":"0x0","r15":"0x1ec72d15060"},"disasm":{"rip":"0x7ff7da830797","mn":"movss","op":"dword ptr [rax + rsi], xmm0","mem_write":true,"wkind":"store","ea_calc":"0x1ee373ad010","ea_match":true},"rip_bytes_len":16,"rip_bytes":"f30f110430e99b010000488b45504d8b","pre_len":16,"pre_bytes":"15000000160000000000000000000000","post_len":16,"post_bytes":"0100043f2c36653ac055cf72ec010000","stack_len":64,"stack_bytes":"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000","origin":{"rcx":{"addr":"0x7ff7da830508","mn":"lea","op":"rcx, [rbp + 0x10]","kind":"lea"},"rdx":{"addr":"0x7ff7da830513","mn":"mov","op":"rdx, qword ptr [r11]","kind":"mov"}},"backtrace":{"start":"0x7ff7da830497","ctx":[{"a":"0x7ff7da8304e1","mn":"lea","op":"rcx, [rbp + 0x10]"},{"a":"0x7ff7da8304e5","mn":"mov","op":"r9, qword ptr [rbp + 0x30]"},{"a":"0x7ff7da8304e9","mn":"mov","op":"r8, qword ptr [r10]"},{"a":"0x7ff7da8304ec","mn":"mov","op":"rdx, qword ptr [r11]"},{"a":"0x7ff7da8304ef","mn":"mov","op":"qword ptr [rsp + 0x20], rax"},{"a":"0x7ff7da8304f4","mn":"mov","op":"r9, qword ptr [r9]"},{"a":"0x7ff7da8304f7","mn":"call","op":"0x7ff7da8314a0"},{"a":"0x7ff7da8304fc","mn":"mov","op":"al, 1"},{"a":"0x7ff7da8304fe","mn":"add","op":"rsp, 0x30"},{"a":"0x7ff7da830502","mn":"pop","op":"rbp"},{"a":"0x7ff7da830503","mn":"ret","op":""},{"a":"0x7ff7da830504","mn":"mov","op":"rax, qword ptr [rbp + 0x38]"},{"a":"0x7ff7da830508","mn":"lea","op":"rcx, [rbp + 0x10]"},{"a":"0x7ff7da83050c","mn":"mov","op":"r9, qword ptr [rbp + 0x30]"},{"a":"0x7ff7da830510","mn":"mov","op":"r8, qword ptr [r10]"},{"a":"0x7ff7da830513","mn":"mov","op":"rdx, qword ptr [r11]"},{"a":"0x7ff7da830516","mn":"mov","op":"qword ptr [rsp + 0x20], rax"},{"a":"0x7ff7da83051b","mn":"mov","op":"r9, qword ptr [r9]"},{"a":"0x7ff7da83051e","mn":"call","op":"0x7ff7da831780"},{"a":"0x7ff7da830523","mn":"mov","op":"al, 1"},{"a":"0x7ff7da830525","mn":"add","op":"rsp, 0x30"},{"a":"0x7ff7da830529","mn":"pop","op":"rbp"},{"a":"0x7ff7da83052a","mn":"ret","op":""},{"a":"0x7ff7da83052b","mn":"xor","op":"al, al"},{"a":"0x7ff7da83052d","mn":"add","op":"rsp, 0x30"},{"a":"0x7ff7da830531","mn":"pop","op":"rbp"},{"a":"0x7ff7da830532","mn":"ret","op":""},{"a":"0x7ff7da830533","mn":"nop","op":""},{"a":"0x7ff7da830534","mn":"sub","op":"al, 3"},{"a":"0x7ff7da830536","mn":"add","op":"eax, 0x5035302"},{"a":"0x7ff7da83053b","mn":"add","op":"bh, byte ptr [rdx + 3]"},{"a":"0x7ff7da83053e","mn":"add","op":"eax, 0x503a102"},{"a":"0x7ff7da830543","mn":"add","op":"cl, al"},{"a":"0x7ff7da830545","mn":"add","op":"eax, dword ptr [rip + 0x503ef02]"},{"a":"0x7ff7da83054b","mn":"add","op":"dl, byte ptr [rsi]"},{"a":"0x7ff7da83054d","mn":"add","op":"al, 5"},{"a":"0x7ff7da83054f","mn":"add","op":"al, byte ptr [rcx + 4]"},{"a":"0x7ff7da830552","mn":"add","op":"eax, 0x5046802"},{"a":"0x7ff7da830557","mn":"add","op":"cl, byte ptr [rdi - 0x49fdfafc]"},{"a":"0x7ff7da83055d","mn":"add","op":"al, 5"},{"a":"0x7ff7da83055f","mn":"add","op":"bl, ch"},{"a":"0x7ff7da830561","mn":"add","op":"al, 5"},{"a":"0x7ff7da830563","mn":"add","op":"al, byte ptr [rax + 0x52b0205]"},{"a":"0x7ff7da83056a","mn":"add","op":"eax, 0x2010002"},{"a":"0x7ff7da83056f","mn":"add","op":"eax, dword ptr [rax + 0x9080706]"},{"a":"0x7ff7da830576","mn":"add","op":"al, byte ptr [rip + 0xb060a0d]"},{"a":"0x7ff7da83057c","mn":"or","op":"al, 0xd"},{"a":"0x7ff7da83057e","mn":"or","op":"eax, 0x6060d0d"}]},"<em>":"</em>"}<br />
+[</em>] Done. (seed write trapped)<br />
+kkongnyang2@acer:~/project4$ sudo ./seed_once_watch_v4 win10 7476 0x1EE373AD000-0x1EE373ADFFF 5000<br />
+=== seed_once_watch_v4_3 ===<br />
+[<em>] domain=win10 pid=7476 range=[0x1ee373ad000..0x1ee373adfff) timeout=5000 ms<br />
+[</em>] libvmi initialized<br />
+[+] DTB resolved via vmi_pid_to_dtb: 0x280910000<br />
+[<em>] Armed W-trap: pages=1 registered=1 range=[0x000001ee373ad000 .. 0x000001ee373ae000)<br />
+[W] WRITE trap @0x1ee373ad078 (vcpu=5, gfn=0x6035c)<br />
+{"evt":"seed_write_pre","ts_us":1760354284450410,"vcpu":5,"pid":7476,"gla":"0x1ee373ad078","gfn":"0x6035c","dtb":"0x280910000","cr3":"0x280910000","rip":"0x7ff7da8307ff","rsp":"0xcc3237eab0","rbp":"0xcc3237eb20","rflags":"0x10202","module":{"base":"0x7ff7d87e0000","rip_off":"0x20507ff"},"gpr":{"rax":"0x97","rbx":"0x98001000000008","rcx":"0x1ee43d09198","rdx":"0x0","rsi":"0x1ee373acfe0","rdi":"0x1ec64200dc8","r8":"0x98","r9":"0xcc3237eba0","r10":"0x7ff7da8307d6","r11":"0xcc3237eb88","r12":"0x0","r13":"0x1ec620eab40","r14":"0x0","r15":"0x1ec72d15060"},"disasm":{"rip":"0x7ff7da8307ff","mn":"mov","op":"dword ptr [r8 + rsi], eax","mem_write":true,"wkind":"store","ea_calc":"0x1ee373ad078","ea_match":true},"rip_bytes_len":16,"rip_bytes":"41890430e934010000498b38488d4d20","pre_len":16,"pre_bytes":"0000000000000000e06fba08ed010000","post_len":16,"post_bytes":"98000000230b183bb0af7811ee010000","stack_len":64,"stack_bytes":"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000","origin":{"rcx":{"addr":"0x7ff7da830508","mn":"lea","op":"rcx, [rbp + 0x10]","kind":"lea"},"rdx":{"addr":"0x7ff7da830513","mn":"mov","op":"rdx, qword ptr [r11]","kind":"mov"}},"backtrace":{"start":"0x7ff7da8304ff","ctx":[{"a":"0x7ff7da8304ff","mn":"add","op":"esp, 0x30"},{"a":"0x7ff7da830502","mn":"pop","op":"rbp"},{"a":"0x7ff7da830503","mn":"ret","op":""},{"a":"0x7ff7da830504","mn":"mov","op":"rax, qword ptr [rbp + 0x38]"},{"a":"0x7ff7da830508","mn":"lea","op":"rcx, [rbp + 0x10]"},{"a":"0x7ff7da83050c","mn":"mov","op":"r9, qword ptr [rbp + 0x30]"},{"a":"0x7ff7da830510","mn":"mov","op":"r8, qword ptr [r10]"},{"a":"0x7ff7da830513","mn":"mov","op":"rdx, qword ptr [r11]"},{"a":"0x7ff7da830516","mn":"mov","op":"qword ptr [rsp + 0x20], rax"},{"a":"0x7ff7da83051b","mn":"mov","op":"r9, qword ptr [r9]"},{"a":"0x7ff7da83051e","mn":"call","op":"0x7ff7da831780"},{"a":"0x7ff7da830523","mn":"mov","op":"al, 1"},{"a":"0x7ff7da830525","mn":"add","op":"rsp, 0x30"},{"a":"0x7ff7da830529","mn":"pop","op":"rbp"},{"a":"0x7ff7da83052a","mn":"ret","op":""},{"a":"0x7ff7da83052b","mn":"xor","op":"al, al"},{"a":"0x7ff7da83052d","mn":"add","op":"rsp, 0x30"},{"a":"0x7ff7da830531","mn":"pop","op":"rbp"},{"a":"0x7ff7da830532","mn":"ret","op":""},{"a":"0x7ff7da830533","mn":"nop","op":""},{"a":"0x7ff7da830534","mn":"sub","op":"al, 3"},{"a":"0x7ff7da830536","mn":"add","op":"eax, 0x5035302"},{"a":"0x7ff7da83053b","mn":"add","op":"bh, byte ptr [rdx + 3]"},{"a":"0x7ff7da83053e","mn":"add","op":"eax, 0x503a102"},{"a":"0x7ff7da830543","mn":"add","op":"cl, al"},{"a":"0x7ff7da830545","mn":"add","op":"eax, dword ptr [rip + 0x503ef02]"},{"a":"0x7ff7da83054b","mn":"add","op":"dl, byte ptr [rsi]"},{"a":"0x7ff7da83054d","mn":"add","op":"al, 5"},{"a":"0x7ff7da83054f","mn":"add","op":"al, byte ptr [rcx + 4]"},{"a":"0x7ff7da830552","mn":"add","op":"eax, 0x5046802"},{"a":"0x7ff7da830557","mn":"add","op":"cl, byte ptr [rdi - 0x49fdfafc]"},{"a":"0x7ff7da83055d","mn":"add","op":"al, 5"},{"a":"0x7ff7da83055f","mn":"add","op":"bl, ch"},{"a":"0x7ff7da830561","mn":"add","op":"al, 5"},{"a":"0x7ff7da830563","mn":"add","op":"al, byte ptr [rax + 0x52b0205]"},{"a":"0x7ff7da83056a","mn":"add","op":"eax, 0x2010002"},{"a":"0x7ff7da83056f","mn":"add","op":"eax, dword ptr [rax + 0x9080706]"},{"a":"0x7ff7da830576","mn":"add","op":"al, byte ptr [rip + 0xb060a0d]"},{"a":"0x7ff7da83057c","mn":"or","op":"al, 0xd"},{"a":"0x7ff7da83057e","mn":"or","op":"eax, 0x6060d0d"}]},"<em>":"</em>"}<br />
+[</em>] Done. (seed write trapped)<br />
+kkongnyang2@acer:~/project4$ sudo ./seed_once_watch_v4 win10 7476 0x1EE373AD078-0x1EE373AD079 5000<br />
+=== seed_once_watch_v4_3 ===<br />
+[<em>] domain=win10 pid=7476 range=[0x1ee373ad078..0x1ee373ad079) timeout=5000 ms<br />
+[</em>] libvmi initialized<br />
+[+] DTB resolved via vmi_pid_to_dtb: 0x280910000<br />
+[<em>] Armed W-trap: pages=1 registered=1 range=[0x000001ee373ad000 .. 0x000001ee373ae000)<br />
+[</em>] Watch timeout (5006 ms)<br />
+[<em>] Done. (no write)<br />
+kkongnyang2@acer:~/project4$ sudo ./seed_once_watch_v4 win10 7476 0x1EE373AD078-0x1EE373AD079 5000<br />
+=== seed_once_watch_v4_3 ===<br />
+[</em>] domain=win10 pid=7476 range=[0x1ee373ad078..0x1ee373ad079) timeout=5000 ms<br />
+[<em>] libvmi initialized<br />
+[+] DTB resolved via vmi_pid_to_dtb: 0x280910000<br />
+[</em>] Armed W-trap: pages=1 registered=1 range=[0x000001ee373ad000 .. 0x000001ee373ae000)<br />
+[W] WRITE trap @0x1ee373ad078 (vcpu=7, gfn=0x6035c)<br />
+{"evt":"seed_write_pre","ts_us":1760354392599450,"vcpu":7,"pid":7476,"gla":"0x1ee373ad078","gfn":"0x6035c","dtb":"0x280910000","cr3":"0x280910000","rip":"0x7ff7da8307ff","rsp":"0xcc3237ed90","rbp":"0xcc3237ee00","rflags":"0x10206","module":{"base":"0x7ff7d87e0000","rip_off":"0x20507ff"},"gpr":{"rax":"0xde","rbx":"0x98001000000008","rcx":"0x1ee43d09198","rdx":"0x0","rsi":"0x1ee373acfe0","rdi":"0x1ec64200dc8","r8":"0x98","r9":"0xcc3237ee80","r10":"0x7ff7da8307d6","r11":"0xcc3237ee68","r12":"0x0","r13":"0x1ec620eab40","r14":"0x0","r15":"0x1ec72d15060"},"disasm":{"rip":"0x7ff7da8307ff","mn":"mov","op":"dword ptr [r8 + rsi], eax","mem_write":true,"wkind":"store","ea_calc":"0x1ee373ad078","ea_match":true},"rip_bytes_len":16,"rip_bytes":"41890430e934010000498b38488d4d20","pre_len":16,"pre_bytes":"0000000000000000e06fba08ed010000","post_len":16,"post_bytes":"e9000000230b183bb0af7811ee010000","stack_len":64,"stack_bytes":"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000","origin":{"rcx":{"addr":"0x7ff7da830508","mn":"lea","op":"rcx, [rbp + 0x10]","kind":"lea"},"rdx":{"addr":"0x7ff7da830513","mn":"mov","op":"rdx, qword ptr [r11]","kind":"mov"}},"backtrace":{"start":"0x7ff7da8304ff","ctx":[{"a":"0x7ff7da8304ff","mn":"add","op":"esp, 0x30"},{"a":"0x7ff7da830502","mn":"pop","op":"rbp"},{"a":"0x7ff7da830503","mn":"ret","op":""},{"a":"0x7ff7da830504","mn":"mov","op":"rax, qword ptr [rbp + 0x38]"},{"a":"0x7ff7da830508","mn":"lea","op":"rcx, [rbp + 0x10]"},{"a":"0x7ff7da83050c","mn":"mov","op":"r9, qword ptr [rbp + 0x30]"},{"a":"0x7ff7da830510","mn":"mov","op":"r8, qword ptr [r10]"},{"a":"0x7ff7da830513","mn":"mov","op":"rdx, qword ptr [r11]"},{"a":"0x7ff7da830516","mn":"mov","op":"qword ptr [rsp + 0x20], rax"},{"a":"0x7ff7da83051b","mn":"mov","op":"r9, qword ptr [r9]"},{"a":"0x7ff7da83051e","mn":"call","op":"0x7ff7da831780"},{"a":"0x7ff7da830523","mn":"mov","op":"al, 1"},{"a":"0x7ff7da830525","mn":"add","op":"rsp, 0x30"},{"a":"0x7ff7da830529","mn":"pop","op":"rbp"},{"a":"0x7ff7da83052a","mn":"ret","op":""},{"a":"0x7ff7da83052b","mn":"xor","op":"al, al"},{"a":"0x7ff7da83052d","mn":"add","op":"rsp, 0x30"},{"a":"0x7ff7da830531","mn":"pop","op":"rbp"},{"a":"0x7ff7da830532","mn":"ret","op":""},{"a":"0x7ff7da830533","mn":"nop","op":""},{"a":"0x7ff7da830534","mn":"sub","op":"al, 3"},{"a":"0x7ff7da830536","mn":"add","op":"eax, 0x5035302"},{"a":"0x7ff7da83053b","mn":"add","op":"bh, byte ptr [rdx + 3]"},{"a":"0x7ff7da83053e","mn":"add","op":"eax, 0x503a102"},{"a":"0x7ff7da830543","mn":"add","op":"cl, al"},{"a":"0x7ff7da830545","mn":"add","op":"eax, dword ptr [rip + 0x503ef02]"},{"a":"0x7ff7da83054b","mn":"add","op":"dl, byte ptr [rsi]"},{"a":"0x7ff7da83054d","mn":"add","op":"al, 5"},{"a":"0x7ff7da83054f","mn":"add","op":"al, byte ptr [rcx + 4]"},{"a":"0x7ff7da830552","mn":"add","op":"eax, 0x5046802"},{"a":"0x7ff7da830557","mn":"add","op":"cl, byte ptr [rdi - 0x49fdfafc]"},{"a":"0x7ff7da83055d","mn":"add","op":"al, 5"},{"a":"0x7ff7da83055f","mn":"add","op":"bl, ch"},{"a":"0x7ff7da830561","mn":"add","op":"al, 5"},{"a":"0x7ff7da830563","mn":"add","op":"al, byte ptr [rax + 0x52b0205]"},{"a":"0x7ff7da83056a","mn":"add","op":"eax, 0x2010002"},{"a":"0x7ff7da83056f","mn":"add","op":"eax, dword ptr [rax + 0x9080706]"},{"a":"0x7ff7da830576","mn":"add","op":"al, byte ptr [rip + 0xb060a0d]"},{"a":"0x7ff7da83057c","mn":"or","op":"al, 0xd"},{"a":"0x7ff7da83057e","mn":"or","op":"eax, 0x6060d0d"}]},"<em>":"</em>"}<br />
+[<em>] Done. (seed write trapped)<br />
+kkongnyang2@acer:~/project4$ sudo ./seed_once_watch_v4 win10 7476 0x1EE373AD078-0x1EE373AD079 5000<br />
+=== seed_once_watch_v4_3 ===<br />
+[</em>] domain=win10 pid=7476 range=[0x1ee373ad078..0x1ee373ad079) timeout=5000 ms<br />
+[<em>] libvmi initialized<br />
+[+] DTB resolved via vmi_pid_to_dtb: 0x280910000<br />
+[</em>] Armed W-trap: pages=1 registered=1 range=[0x000001ee373ad000 .. 0x000001ee373ae000)<br />
+[W] WRITE trap @0x1ee373ad078 (vcpu=5, gfn=0x6035c)<br />
+{"evt":"seed_write_pre","ts_us":1760354500797480,"vcpu":5,"pid":7476,"gla":"0x1ee373ad078","gfn":"0x6035c","dtb":"0x280910000","cr3":"0x280910000","rip":"0x7ff7da8307ff","rsp":"0xcc3237ea30","rbp":"0xcc3237eaa0","rflags":"0x10206","module":{"base":"0x7ff7d87e0000","rip_off":"0x20507ff"},"gpr":{"rax":"0xe2","rbx":"0x98001000000008","rcx":"0x1ee43d09198","rdx":"0x0","rsi":"0x1ee373acfe0","rdi":"0x1ec64200dc8","r8":"0x98","r9":"0xcc3237eb20","r10":"0x7ff7da8307d6","r11":"0xcc3237eb08","r12":"0x0","r13":"0x1ec620eab40","r14":"0x0","r15":"0x1ec72d15060"},"disasm":{"rip":"0x7ff7da8307ff","mn":"mov","op":"dword ptr [r8 + rsi], eax","mem_write":true,"wkind":"store","ea_calc":"0x1ee373ad078","ea_match":true},"rip_bytes_len":16,"rip_bytes":"41890430e934010000498b38488d4d20","pre_len":16,"pre_bytes":"0000000000000000e06fba08ed010000","post_len":16,"post_bytes":"e3000000230b183bb0af7811ee010000","stack_len":64,"stack_bytes":"024a0000090058000000000000000000b1b5e7cab107000000000000000000000000000000000000000000000000000000000000000000000000000000000000","origin":{"rcx":{"addr":"0x7ff7da830508","mn":"lea","op":"rcx, [rbp + 0x10]","kind":"lea"},"rdx":{"addr":"0x7ff7da830513","mn":"mov","op":"rdx, qword ptr [r11]","kind":"mov"}},"backtrace":{"start":"0x7ff7da8304ff","ctx":[{"a":"0x7ff7da8304ff","mn":"add","op":"esp, 0x30"},{"a":"0x7ff7da830502","mn":"pop","op":"rbp"},{"a":"0x7ff7da830503","mn":"ret","op":""},{"a":"0x7ff7da830504","mn":"mov","op":"rax, qword ptr [rbp + 0x38]"},{"a":"0x7ff7da830508","mn":"lea","op":"rcx, [rbp + 0x10]"},{"a":"0x7ff7da83050c","mn":"mov","op":"r9, qword ptr [rbp + 0x30]"},{"a":"0x7ff7da830510","mn":"mov","op":"r8, qword ptr [r10]"},{"a":"0x7ff7da830513","mn":"mov","op":"rdx, qword ptr [r11]"},{"a":"0x7ff7da830516","mn":"mov","op":"qword ptr [rsp + 0x20], rax"},{"a":"0x7ff7da83051b","mn":"mov","op":"r9, qword ptr [r9]"},{"a":"0x7ff7da83051e","mn":"call","op":"0x7ff7da831780"},{"a":"0x7ff7da830523","mn":"mov","op":"al, 1"},{"a":"0x7ff7da830525","mn":"add","op":"rsp, 0x30"},{"a":"0x7ff7da830529","mn":"pop","op":"rbp"},{"a":"0x7ff7da83052a","mn":"ret","op":""},{"a":"0x7ff7da83052b","mn":"xor","op":"al, al"},{"a":"0x7ff7da83052d","mn":"add","op":"rsp, 0x30"},{"a":"0x7ff7da830531","mn":"pop","op":"rbp"},{"a":"0x7ff7da830532","mn":"ret","op":""},{"a":"0x7ff7da830533","mn":"nop","op":""},{"a":"0x7ff7da830534","mn":"sub","op":"al, 3"},{"a":"0x7ff7da830536","mn":"add","op":"eax, 0x5035302"},{"a":"0x7ff7da83053b","mn":"add","op":"bh, byte ptr [rdx + 3]"},{"a":"0x7ff7da83053e","mn":"add","op":"eax, 0x503a102"},{"a":"0x7ff7da830543","mn":"add","op":"cl, al"},{"a":"0x7ff7da830545","mn":"add","op":"eax, dword ptr [rip + 0x503ef02]"},{"a":"0x7ff7da83054b","mn":"add","op":"dl, byte ptr [rsi]"},{"a":"0x7ff7da83054d","mn":"add","op":"al, 5"},{"a":"0x7ff7da83054f","mn":"add","op":"al, byte ptr [rcx + 4]"},{"a":"0x7ff7da830552","mn":"add","op":"eax, 0x5046802"},{"a":"0x7ff7da830557","mn":"add","op":"cl, byte ptr [rdi - 0x49fdfafc]"},{"a":"0x7ff7da83055d","mn":"add","op":"al, 5"},{"a":"0x7ff7da83055f","mn":"add","op":"bl, ch"},{"a":"0x7ff7da830561","mn":"add","op":"al, 5"},{"a":"0x7ff7da830563","mn":"add","op":"al, byte ptr [rax + 0x52b0205]"},{"a":"0x7ff7da83056a","mn":"add","op":"eax, 0x2010002"},{"a":"0x7ff7da83056f","mn":"add","op":"eax, dword ptr [rax + 0x9080706]"},{"a":"0x7ff7da830576","mn":"add","op":"al, byte ptr [rip + 0xb060a0d]"},{"a":"0x7ff7da83057c","mn":"or","op":"al, 0xd"},{"a":"0x7ff7da83057e","mn":"or","op":"eax, 0x6060d0d"}]},"<em>":"</em>"}<br />
+[<em>] Done. (seed write trapped)<br />
+kkongnyang2@acer:~/project4$ sudo ./seed_once_watch_v4 win10 7476 0x1EE373AD078-0x1EE373AD079 5000<br />
+=== seed_once_watch_v4_3 ===<br />
+[</em>] domain=win10 pid=7476 range=[0x1ee373ad078..0x1ee373ad079) timeout=5000 ms<br />
+[<em>] libvmi initialized<br />
+[+] DTB resolved via vmi_pid_to_dtb: 0x280910000<br />
+[</em>] Armed W-trap: pages=1 registered=1 range=[0x000001ee373ad000 .. 0x000001ee373ae000)<br />
+[W] WRITE trap @0x1ee373ad078 (vcpu=5, gfn=0x6035c)<br />
+{"evt":"seed_write_pre","ts_us":1760354506902716,"vcpu":5,"pid":7476,"gla":"0x1ee373ad078","gfn":"0x6035c","dtb":"0x280910000","cr3":"0x280910000","rip":"0x7ff7da8307ff","rsp":"0xcc3237efb0","rbp":"0xcc3237f020","rflags":"0x10202","module":{"base":"0x7ff7d87e0000","rip_off":"0x20507ff"},"gpr":{"rax":"0xcc","rbx":"0x98001000000008","rcx":"0x1ee43d09198","rdx":"0x0","rsi":"0x1ee373acfe0","rdi":"0x1ec64200dc8","r8":"0x98","r9":"0xcc3237f0a0","r10":"0x7ff7da8307d6","r11":"0xcc3237f088","r12":"0x0","r13":"0x1ec620eab40","r14":"0x0","r15":"0x1ec72d15060"},"disasm":{"rip":"0x7ff7da8307ff","mn":"mov","op":"dword ptr [r8 + rsi], eax","mem_write":true,"wkind":"store","ea_calc":"0x1ee373ad078","ea_match":true},"rip_bytes_len":16,"rip_bytes":"41890430e934010000498b38488d4d20","pre_len":16,"pre_bytes":"0000000000000000e06fba08ed010000","post_len":16,"post_bytes":"cd000000230b183bb0af7811ee010000","stack_len":64,"stack_bytes":"024a000009005800000000000000000091b5e7cab107000000000000000000000000000000000000000000000000000000000000000000000000000000000000","origin":{"rcx":{"addr":"0x7ff7da830508","mn":"lea","op":"rcx, [rbp + 0x10]","kind":"lea"},"rdx":{"addr":"0x7ff7da830513","mn":"mov","op":"rdx, qword ptr [r11]","kind":"mov"}},"backtrace":{"start":"0x7ff7da8304ff","ctx":[{"a":"0x7ff7da8304ff","mn":"add","op":"esp, 0x30"},{"a":"0x7ff7da830502","mn":"pop","op":"rbp"},{"a":"0x7ff7da830503","mn":"ret","op":""},{"a":"0x7ff7da830504","mn":"mov","op":"rax, qword ptr [rbp + 0x38]"},{"a":"0x7ff7da830508","mn":"lea","op":"rcx, [rbp + 0x10]"},{"a":"0x7ff7da83050c","mn":"mov","op":"r9, qword ptr [rbp + 0x30]"},{"a":"0x7ff7da830510","mn":"mov","op":"r8, qword ptr [r10]"},{"a":"0x7ff7da830513","mn":"mov","op":"rdx, qword ptr [r11]"},{"a":"0x7ff7da830516","mn":"mov","op":"qword ptr [rsp + 0x20], rax"},{"a":"0x7ff7da83051b","mn":"mov","op":"r9, qword ptr [r9]"},{"a":"0x7ff7da83051e","mn":"call","op":"0x7ff7da831780"},{"a":"0x7ff7da830523","mn":"mov","op":"al, 1"},{"a":"0x7ff7da830525","mn":"add","op":"rsp, 0x30"},{"a":"0x7ff7da830529","mn":"pop","op":"rbp"},{"a":"0x7ff7da83052a","mn":"ret","op":""},{"a":"0x7ff7da83052b","mn":"xor","op":"al, al"},{"a":"0x7ff7da83052d","mn":"add","op":"rsp, 0x30"},{"a":"0x7ff7da830531","mn":"pop","op":"rbp"},{"a":"0x7ff7da830532","mn":"ret","op":""},{"a":"0x7ff7da830533","mn":"nop","op":""},{"a":"0x7ff7da830534","mn":"sub","op":"al, 3"},{"a":"0x7ff7da830536","mn":"add","op":"eax, 0x5035302"},{"a":"0x7ff7da83053b","mn":"add","op":"bh, byte ptr [rdx + 3]"},{"a":"0x7ff7da83053e","mn":"add","op":"eax, 0x503a102"},{"a":"0x7ff7da830543","mn":"add","op":"cl, al"},{"a":"0x7ff7da830545","mn":"add","op":"eax, dword ptr [rip + 0x503ef02]"},{"a":"0x7ff7da83054b","mn":"add","op":"dl, byte ptr [rsi]"},{"a":"0x7ff7da83054d","mn":"add","op":"al, 5"},{"a":"0x7ff7da83054f","mn":"add","op":"al, byte ptr [rcx + 4]"},{"a":"0x7ff7da830552","mn":"add","op":"eax, 0x5046802"},{"a":"0x7ff7da830557","mn":"add","op":"cl, byte ptr [rdi - 0x49fdfafc]"},{"a":"0x7ff7da83055d","mn":"add","op":"al, 5"},{"a":"0x7ff7da83055f","mn":"add","op":"bl, ch"},{"a":"0x7ff7da830561","mn":"add","op":"al, 5"},{"a":"0x7ff7da830563","mn":"add","op":"al, byte ptr [rax + 0x52b0205]"},{"a":"0x7ff7da83056a","mn":"add","op":"eax, 0x2010002"},{"a":"0x7ff7da83056f","mn":"add","op":"eax, dword ptr [rax + 0x9080706]"},{"a":"0x7ff7da830576","mn":"add","op":"al, byte ptr [rip + 0xb060a0d]"},{"a":"0x7ff7da83057c","mn":"or","op":"al, 0xd"},{"a":"0x7ff7da83057e","mn":"or","op":"eax, 0x6060d0d"}]},"<em>":"</em>"}<br />
+[<em>] Done. (seed write trapped)<br />
+kkongnyang2@acer:~/project4$ sudo ./seed_once_watch_v4 win10 7476 0x1EE373AD078-0x1EE373AD079 5000<br />
+=== seed_once_watch_v4_3 ===<br />
+[</em>] domain=win10 pid=7476 range=[0x1ee373ad078..0x1ee373ad079) timeout=5000 ms<br />
+[<em>] libvmi initialized<br />
+[+] DTB resolved via vmi_pid_to_dtb: 0x280910000<br />
+[</em>] Armed W-trap: pages=1 registered=1 range=[0x000001ee373ad000 .. 0x000001ee373ae000)<br />
+[W] WRITE trap @0x1ee373ad078 (vcpu=5, gfn=0x6035c)<br />
+{"evt":"seed_write_pre","ts_us":1760354514842908,"vcpu":5,"pid":7476,"gla":"0x1ee373ad078","gfn":"0x6035c","dtb":"0x280910000","cr3":"0x280910000","rip":"0x7ff7da8307ff","rsp":"0xcc3237eba0","rbp":"0xcc3237ec10","rflags":"0x10202","module":{"base":"0x7ff7d87e0000","rip_off":"0x20507ff"},"gpr":{"rax":"0xf8","rbx":"0x98001000000008","rcx":"0x1ee43d09198","rdx":"0x0","rsi":"0x1ee373acfe0","rdi":"0x1ec64200dc8","r8":"0x98","r9":"0xcc3237ec90","r10":"0x7ff7da8307d6","r11":"0xcc3237ec78","r12":"0x0","r13":"0x1ec620eab40","r14":"0x0","r15":"0x1ec72d15060"},"disasm":{"rip":"0x7ff7da8307ff","mn":"mov","op":"dword ptr [r8 + rsi], eax","mem_write":true,"wkind":"store","ea_calc":"0x1ee373ad078","ea_match":true},"rip_bytes_len":16,"rip_bytes":"41890430e934010000498b38488d4d20","pre_len":16,"pre_bytes":"0000000000000000e06fba08ed010000","post_len":16,"post_bytes":"f3000000230b183bb0af7811ee010000","stack_len":64,"stack_bytes":"010e000004001c00000000000000000091b5e7cab107000000000000000000000000000000000000000000000000000000000000000000000000000000000000","origin":{"rcx":{"addr":"0x7ff7da830508","mn":"lea","op":"rcx, [rbp + 0x10]","kind":"lea"},"rdx":{"addr":"0x7ff7da830513","mn":"mov","op":"rdx, qword ptr [r11]","kind":"mov"}},"backtrace":{"start":"0x7ff7da8304ff","ctx":[{"a":"0x7ff7da8304ff","mn":"add","op":"esp, 0x30"},{"a":"0x7ff7da830502","mn":"pop","op":"rbp"},{"a":"0x7ff7da830503","mn":"ret","op":""},{"a":"0x7ff7da830504","mn":"mov","op":"rax, qword ptr [rbp + 0x38]"},{"a":"0x7ff7da830508","mn":"lea","op":"rcx, [rbp + 0x10]"},{"a":"0x7ff7da83050c","mn":"mov","op":"r9, qword ptr [rbp + 0x30]"},{"a":"0x7ff7da830510","mn":"mov","op":"r8, qword ptr [r10]"},{"a":"0x7ff7da830513","mn":"mov","op":"rdx, qword ptr [r11]"},{"a":"0x7ff7da830516","mn":"mov","op":"qword ptr [rsp + 0x20], rax"},{"a":"0x7ff7da83051b","mn":"mov","op":"r9, qword ptr [r9]"},{"a":"0x7ff7da83051e","mn":"call","op":"0x7ff7da831780"},{"a":"0x7ff7da830523","mn":"mov","op":"al, 1"},{"a":"0x7ff7da830525","mn":"add","op":"rsp, 0x30"},{"a":"0x7ff7da830529","mn":"pop","op":"rbp"},{"a":"0x7ff7da83052a","mn":"ret","op":""},{"a":"0x7ff7da83052b","mn":"xor","op":"al, al"},{"a":"0x7ff7da83052d","mn":"add","op":"rsp, 0x30"},{"a":"0x7ff7da830531","mn":"pop","op":"rbp"},{"a":"0x7ff7da830532","mn":"ret","op":""},{"a":"0x7ff7da830533","mn":"nop","op":""},{"a":"0x7ff7da830534","mn":"sub","op":"al, 3"},{"a":"0x7ff7da830536","mn":"add","op":"eax, 0x5035302"},{"a":"0x7ff7da83053b","mn":"add","op":"bh, byte ptr [rdx + 3]"},{"a":"0x7ff7da83053e","mn":"add","op":"eax, 0x503a102"},{"a":"0x7ff7da830543","mn":"add","op":"cl, al"},{"a":"0x7ff7da830545","mn":"add","op":"eax, dword ptr [rip + 0x503ef02]"},{"a":"0x7ff7da83054b","mn":"add","op":"dl, byte ptr [rsi]"},{"a":"0x7ff7da83054d","mn":"add","op":"al, 5"},{"a":"0x7ff7da83054f","mn":"add","op":"al, byte ptr [rcx + 4]"},{"a":"0x7ff7da830552","mn":"add","op":"eax, 0x5046802"},{"a":"0x7ff7da830557","mn":"add","op":"cl, byte ptr [rdi - 0x49fdfafc]"},{"a":"0x7ff7da83055d","mn":"add","op":"al, 5"},{"a":"0x7ff7da83055f","mn":"add","op":"bl, ch"},{"a":"0x7ff7da830561","mn":"add","op":"al, 5"},{"a":"0x7ff7da830563","mn":"add","op":"al, byte ptr [rax + 0x52b0205]"},{"a":"0x7ff7da83056a","mn":"add","op":"eax, 0x2010002"},{"a":"0x7ff7da83056f","mn":"add","op":"eax, dword ptr [rax + 0x9080706]"},{"a":"0x7ff7da830576","mn":"add","op":"al, byte ptr [rip + 0xb060a0d]"},{"a":"0x7ff7da83057c","mn":"or","op":"al, 0xd"},{"a":"0x7ff7da83057e","mn":"or","op":"eax, 0x6060d0d"}]},"<em>":"</em>"}<br />
+[*] Done. (seed write trapped)</p>
+<p>kkongnyang2@acer:~/project4$ sudo ./seed_once_watch_v4 win10 14388 0x2390FD081F8-0x2390FD081F9 5000<br />
+=== seed_once_watch_v4_3 ===<br />
+[<em>] domain=win10 pid=14388 range=[0x2390fd081f8..0x2390fd081f9) timeout=5000 ms<br />
+[</em>] libvmi initialized<br />
+[+] DTB resolved via vmi_pid_to_dtb: 0x30534a000<br />
+[<em>] Armed W-trap: pages=1 registered=1 range=[0x000002390fd08000 .. 0x000002390fd09000)<br />
+[</em>] Watch timeout (5000 ms)<br />
+VMI_ERROR: Caught a memory event that had no handler registered in LibVMI @ GFN 0xaffbf (0xaffbf190), access: 6<br />
+[<em>] Done. (no write)<br />
+kkongnyang2@acer:~/project4$ code .<br />
+kkongnyang2@acer:~/project4$ sudo xl destroy win10<br />
+libxl: warning: libxl_pci.c:2217:pci_remove_timeout: Domain 2:timed out waiting for DM to remove pci-pt-01_00.0<br />
+kkongnyang2@acer:~/project4$ sudo xl create /etc/xen/win10-monitor.cfg<br />
+Parsing config from /etc/xen/win10-monitor.cfg<br />
+kkongnyang2@acer:~/project4$ sudo xl usbctrl-attach win10 type=auto version=3 ports=15<br />
+sudo xl usbdev-attach  win10 hostbus=1 hostaddr=6 controller=0 port=1<br />
+sudo xl usbdev-attach  win10 hostbus=1 hostaddr=7 controller=0 port=2<br />
+kkongnyang2@acer:~/project4$ sudo vmi-process-list win10 | grep -i overwatch<br />
+[13372] Overwatch.exe (struct addr:ffffdf82f8347080)<br />
+kkongnyang2@acer:~/project4$ sudo ./seed_once_watch_v3_1 win10 13372 0x1C979DE8000-0x1C979DE8FFF 5000<br />
+=== seed_once_watch_v3 ===<br />
+[</em>] domain=win10 pid=13372 range=[0x1c979de8000..0x1c979de8fff) timeout=5000 ms<br />
+[<em>] libvmi initialized<br />
+[+] DTB resolved via vmi_pid_to_dtb: 0x283087000<br />
+[</em>] Armed W-trap: pages=1 registered=1 range=[0x000001c979de8000 .. 0x000001c979de9000)<br />
+[W] WRITE trap @0x1c979de8a78 (vcpu=9, gfn=0x1eacb2)<br />
+{"evt":"seed_write_pre","ts_us":1760491178125779,"vcpu":9,"pid":13372,"gla":"0x1c979de8a78","gfn":"0x1eacb2","dtb":"0x283087000","cr3":"0x283087000","rip":"0x7ff618164fef","rsp":"0x64502ff130","rbp":"0x64502ff250","rflags":"0x10206","module":{"base":"0x7ff6160f0000","rip_off":"0x2074fef"},"gpr":{"rax":"0x1c9c982b301","rbx":"0x1c979de8a78","rcx":"0xdb","rdx":"0x1c979de8a78","rsi":"0x1c9c982b308","rdi":"0x8","r8":"0x64502ff1d0","r9":"0x64502ff190","r10":"0x64502ff198","r11":"0x64502ff1b8","r12":"0x1c7948f0dc0","r13":"0x1c7948f4460","r14":"0x1c7948f3e50","r15":"0x0"},"disasm":{"rip":"0x7ff618164fef","mn":"mov","op":"dword ptr [rdx], ecx","mem_write":true,"wkind":"store","ea_calc":"0x1c979de8a78","ea_match":true},"rip_bytes_len":16,"rip_bytes":"890a4989104883c428c3498b08488b44","pre_len":16,"pre_bytes":"e1297ae725070000808ade79c9010000","post_len":16,"post_bytes":"fa0000","stack_len":64,"stack_bytes":"060000000000000010003bc9c7010000808518dcc901000010003bc9c7010000040000000000000074561618f67f000050000000000000007000000000000000"}<br />
+[<em>] Done. (seed write trapped)<br />
+kkongnyang2@acer:~/project4$ sudo ./seed_once_watch_v3_1 win10 13372 0x1C979DE8000-0x1C979DE8FFF 5000<br />
+=== seed_once_watch_v3 ===<br />
+[</em>] domain=win10 pid=13372 range=[0x1c979de8000..0x1c979de8fff) timeout=5000 ms<br />
+[<em>] libvmi initialized<br />
+[+] DTB resolved via vmi_pid_to_dtb: 0x283087000<br />
+[</em>] Armed W-trap: pages=1 registered=1 range=[0x000001c979de8000 .. 0x000001c979de9000)<br />
+[W] WRITE trap @0x1c979de8a78 (vcpu=0, gfn=0x1eacb2)<br />
+{"evt":"seed_write_pre","ts_us":1760491239655183,"vcpu":0,"pid":13372,"gla":"0x1c979de8a78","gfn":"0x1eacb2","dtb":"0x283087000","cr3":"0x283087000","rip":"0x7ff618164fef","rsp":"0x64503ff390","rbp":"0x64503ff4b0","rflags":"0x10206","module":{"base":"0x7ff6160f0000","rip_off":"0x2074fef"},"gpr":{"rax":"0x1c9c982b301","rbx":"0x1c979de8a78","rcx":"0xef","rdx":"0x1c979de8a78","rsi":"0x1c9c982b308","rdi":"0x8","r8":"0x64503ff430","r9":"0x64503ff3f0","r10":"0x64503ff3f8","r11":"0x64503ff418","r12":"0x1c7948f0dc0","r13":"0x1c7948f4460","r14":"0x1c7948f3e50","r15":"0x0"},"disasm":{"rip":"0x7ff618164fef","mn":"mov","op":"dword ptr [rdx], ecx","mem_write":true,"wkind":"store","ea_calc":"0x1c979de8a78","ea_match":true},"rip_bytes_len":16,"rip_bytes":"890a4989104883c428c3498b08488b44","pre_len":16,"pre_bytes":"e1297ae725070000808ade79c9010000","post_len":16,"post_bytes":"fa0000","stack_len":64,"stack_bytes":"f0affe18f67f000057811518f67f0000000000000000000040ba81c0c9010000100000000100000074561618f67f00000d000100270700000501bf0110000000"}<br />
+[<em>] Done. (seed write trapped)<br />
+kkongnyang2@acer:~/project4$ sudo ./seed_once_watch_v3_1 win10 13372 0x1C979DE8000-0x1C979DE8FFF 5000<br />
+=== seed_once_watch_v3 ===<br />
+[</em>] domain=win10 pid=13372 range=[0x1c979de8000..0x1c979de8fff) timeout=5000 ms<br />
+[<em>] libvmi initialized<br />
+[+] DTB resolved via vmi_pid_to_dtb: 0x283087000<br />
+[</em>] Armed W-trap: pages=1 registered=1 range=[0x000001c979de8000 .. 0x000001c979de9000)<br />
+[W] WRITE trap @0x1c979de8c00 (vcpu=0, gfn=0x1eacb2)<br />
+{"evt":"seed_write_pre","ts_us":1760491248144456,"vcpu":0,"pid":13372,"gla":"0x1c979de8c00","gfn":"0x1eacb2","dtb":"0x283087000","cr3":"0x283087000","rip":"0x7ff61811e10e","rsp":"0x64503ff5b0","rbp":"0x64503ff679","rflags":"0x10242","module":{"base":"0x7ff6160f0000","rip_off":"0x202e10e"},"gpr":{"rax":"0x64503ff6d8","rbx":"0x278","rcx":"0x1c979de8c08","rdx":"0x1c979de8bf8","rsi":"0x1c979de8bc0","rdi":"0x1c9d3f955e0","r8":"0x1","r9":"0x64503ff3c0","r10":"0x7ff618162ee0","r11":"0x64503ff6a0","r12":"0x1c7948f0dc0","r13":"0x1c7948f3e50","r14":"0x1c7f648b5ec","r15":"0x64503ff710"},"disasm":{"rip":"0x7ff61811e10e","mn":"movss","op":"dword ptr [rdx + 8], xmm2","mem_write":true,"wkind":"store","ea_calc":"0x1c979de8c00","ea_match":true},"rip_bytes_len":16,"rip_bytes":"f30f11520880791402751ef30f104910","pre_len":16,"pre_bytes":"0000000000000000000000009e1a0f3f","post_len":16,"post_bytes":"9e1a0f","stack_len":64,"stack_bytes":"00003bc9c70100004066e9dcc901000040f83f5064000000f0affe18f67f0000801663ddc90100005bcb1118f67f0000000000000000000040ba81c0c9010000"}<br />
+[<em>] Done. (seed write trapped)<br />
+kkongnyang2@acer:~/project4$ sudo ./seed_once_watch_v3_1 win10 13372 0x1C979DE8000-0x1C979DE8FFF 5000<br />
+=== seed_once_watch_v3 ===<br />
+[</em>] domain=win10 pid=13372 range=[0x1c979de8000..0x1c979de8fff) timeout=5000 ms<br />
+[<em>] libvmi initialized<br />
+[+] DTB resolved via vmi_pid_to_dtb: 0x283087000<br />
+[</em>] Armed W-trap: pages=1 registered=1 range=[0x000001c979de8000 .. 0x000001c979de9000)<br />
+[W] WRITE trap @0x1c979de8a78 (vcpu=9, gfn=0x1eacb2)<br />
+{"evt":"seed_write_pre","ts_us":1760491251289323,"vcpu":9,"pid":13372,"gla":"0x1c979de8a78","gfn":"0x1eacb2","dtb":"0x283087000","cr3":"0x283087000","rip":"0x7ff618164fef","rsp":"0x64502ff1f0","rbp":"0x64502ff310","rflags":"0x10206","module":{"base":"0x7ff6160f0000","rip_off":"0x2074fef"},"gpr":{"rax":"0x1c9c982b301","rbx":"0x1c979de8a78","rcx":"0xe5","rdx":"0x1c979de8a78","rsi":"0x1c9c982b308","rdi":"0x8","r8":"0x64502ff290","r9":"0x64502ff250","r10":"0x64502ff258","r11":"0x64502ff278","r12":"0x1c7948f0dc0","r13":"0x1c7948f4460","r14":"0x1c7948f3e50","r15":"0x0"},"disasm":{"rip":"0x7ff618164fef","mn":"mov","op":"dword ptr [rdx], ecx","mem_write":true,"wkind":"store","ea_calc":"0x1c979de8a78","ea_match":true},"rip_bytes_len":16,"rip_bytes":"890a4989104883c428c3498b08488b44","pre_len":16,"pre_bytes":"e1297ae725070000808ade79c9010000","post_len":16,"post_bytes":"fa0000","stack_len":64,"stack_bytes":"060000000000000010003bc9c7010000604549ddc901000010003bc9c7010000040000000000000074561618f67f000050000000000000007000000000000000"}<br />
+[<em>] Done. (seed write trapped)<br />
+kkongnyang2@acer:~/project4$ sudo ./seed_once_watch_v3_1 win10 13372 0x1C979DE8A78-0x1C979DE8A79 5000<br />
+=== seed_once_watch_v3 ===<br />
+[</em>] domain=win10 pid=13372 range=[0x1c979de8a78..0x1c979de8a79) timeout=5000 ms<br />
+[<em>] libvmi initialized<br />
+[+] DTB resolved via vmi_pid_to_dtb: 0x283087000<br />
+[</em>] Armed W-trap: pages=1 registered=1 range=[0x000001c979de8000 .. 0x000001c979de9000)<br />
+[W] WRITE trap @0x1c979de8a78 (vcpu=9, gfn=0x1eacb2)<br />
+{"evt":"seed_write_pre","ts_us":1760491285293184,"vcpu":9,"pid":13372,"gla":"0x1c979de8a78","gfn":"0x1eacb2","dtb":"0x283087000","cr3":"0x283087000","rip":"0x7ff618164fef","rsp":"0x64502ff3e0","rbp":"0x64502ff500","rflags":"0x10206","module":{"base":"0x7ff6160f0000","rip_off":"0x2074fef"},"gpr":{"rax":"0x1c9c982b301","rbx":"0x1c979de8a78","rcx":"0xe9","rdx":"0x1c979de8a78","rsi":"0x1c9c982b308","rdi":"0x8","r8":"0x64502ff480","r9":"0x64502ff440","r10":"0x64502ff448","r11":"0x64502ff468","r12":"0x1c7948f0dc0","r13":"0x1c7948f4460","r14":"0x1c7948f3e50","r15":"0x0"},"disasm":{"rip":"0x7ff618164fef","mn":"mov","op":"dword ptr [rdx], ecx","mem_write":true,"wkind":"store","ea_calc":"0x1c979de8a78","ea_match":true},"rip_bytes_len":16,"rip_bytes":"890a4989104883c428c3498b08488b44","pre_len":16,"pre_bytes":"e1297ae725070000808ade79c9010000","post_len":16,"post_bytes":"fa0000","stack_len":64,"stack_bytes":"02eb06022707000057811518f67f0000000000000000000040ba81c0c9010000100000000100000074561618f67f000000eb0602270700000501bf0110000000"}<br />
+[<em>] Done. (seed write trapped)<br />
+kkongnyang2@acer:~/project4$ sudo ./seed_once_watch_v3_1 win10 13372 0x1C979DE8A78-0x1C979DE8A79 5000<br />
+=== seed_once_watch_v3 ===<br />
+[</em>] domain=win10 pid=13372 range=[0x1c979de8a78..0x1c979de8a79) timeout=5000 ms<br />
+[<em>] libvmi initialized<br />
+[+] DTB resolved via vmi_pid_to_dtb: 0x283087000<br />
+[</em>] Armed W-trap: pages=1 registered=1 range=[0x000001c979de8000 .. 0x000001c979de9000)<br />
+[<em>] Watch timeout (5000 ms)<br />
+VMI_ERROR: Caught a memory event that had no handler registered in LibVMI @ GFN 0x1eacb2 (0x1eacb2c00), access: 6<br />
+[</em>] Done. (no write)<br />
+kkongnyang2@acer:~/project4$ sudo ./seed_once_watch_v3_1 win10 13372 0x1C979DE8A78-0x1C979DE8A79 5000<br />
+=== seed_once_watch_v3 ===<br />
+[<em>] domain=win10 pid=13372 range=[0x1c979de8a78..0x1c979de8a79) timeout=5000 ms<br />
+[</em>] libvmi initialized<br />
+[+] DTB resolved via vmi_pid_to_dtb: 0x283087000<br />
+[<em>] Armed W-trap: pages=1 registered=1 range=[0x000001c979de8000 .. 0x000001c979de9000)<br />
+[</em>] Watch timeout (5005 ms)<br />
+[<em>] Done. (no write)<br />
+kkongnyang2@acer:~/project4$ sudo ./seed_once_watch_v3_1 win10 13372 0x1C979DE8A78-0x1C979DE8A79 5000<br />
+=== seed_once_watch_v3 ===<br />
+[</em>] domain=win10 pid=13372 range=[0x1c979de8a78..0x1c979de8a79) timeout=5000 ms<br />
+[<em>] libvmi initialized<br />
+[+] DTB resolved via vmi_pid_to_dtb: 0x283087000<br />
+[</em>] Armed W-trap: pages=1 registered=1 range=[0x000001c979de8000 .. 0x000001c979de9000)<br />
+[<em>] Watch timeout (5005 ms)<br />
+[</em>] Done. (no write)<br />
+kkongnyang2@acer:~/project4$ sudo xl destroy win10<br />
+libxl: warning: libxl_pci.c:2217:pci_remove_timeout: Domain 3:timed out waiting for DM to remove pci-pt-01_00.0<br />
+kkongnyang2@acer:~/project4$ sudo xl create /etc/xen/win10-monitor.cfg<br />
+Parsing config from /etc/xen/win10-monitor.cfg<br />
+kkongnyang2@acer:~/project4$ sudo xl usbctrl-attach win10 type=auto version=3 ports=15<br />
+sudo xl usbdev-attach  win10 hostbus=1 hostaddr=6 controller=0 port=1<br />
+sudo xl usbdev-attach  win10 hostbus=1 hostaddr=7 controller=0 port=2<br />
+kkongnyang2@acer:~/project4$ sudo vmi-process-list win10 | grep -i overwatch<br />
+[  864] Overwatch.exe (struct addr:ffffc58f1bf0a080)<br />
+kkongnyang2@acer:~/project4$ sudo ./seed_once_watch_v3_1 win10 864 0x1EC054EA938-0x1EC054EA939 5000<br />
+=== seed_once_watch_v3 ===<br />
+[<em>] domain=win10 pid=864 range=[0x1ec054ea938..0x1ec054ea939) timeout=5000 ms<br />
+[</em>] libvmi initialized<br />
+[+] DTB resolved via vmi_pid_to_dtb: 0x2be189000<br />
+[<em>] Armed W-trap: pages=1 registered=1 range=[0x000001ec054ea000 .. 0x000001ec054eb000)<br />
+[W] WRITE trap @0x1ec054ea938 (vcpu=3, gfn=0x8a5a)<br />
+{"evt":"seed_write_pre","ts_us":1760491860198110,"vcpu":3,"pid":864,"gla":"0x1ec054ea938","gfn":"0x8a5a","dtb":"0x2be189000","cr3":"0x2be189000","rip":"0x7ff6414a99bf","rsp":"0xd9ba4fe820","rbp":"0xd9ba4fe890","rflags":"0x10206","module":{"base":"0x7ff63f450000","rip_off":"0x20599bf"},"gpr":{"rax":"0xe7","rbx":"0x98001000000008","rcx":"0x1ea209eb448","rdx":"0x0","rsi":"0x1ec054ea8a0","rdi":"0x1ea02f00dc8","r8":"0x98","r9":"0xd9ba4fe910","r10":"0x7ff6414a9996","r11":"0xd9ba4fe8f8","r12":"0x0","r13":"0x1eabcd8ab40","r14":"0x0","r15":"0x1eb01e8d240"},"disasm":{"rip":"0x7ff6414a99bf","mn":"mov","op":"dword ptr [r8 + rsi], eax","mem_write":true,"wkind":"store","ea_calc":"0x1ec054ea938","ea_match":true},"rip_bytes_len":16,"rip_bytes":"41890430e934010000498b38488d4d20","pre_len":16,"pre_bytes":"0000000000000000c043e501eb010000","post_len":16,"post_bytes":"fa0000","stack_len":64,"stack_bytes":"04e3000008004000c80df002ea010000a1921008ac0700000000000000000000230000000800400098086e74ec01000000000000000000000000000000000000"}<br />
+[</em>] Done. (seed write trapped)<br />
+kkongnyang2@acer:~/project4$ sudo vmi-process-list win10 | grep -i overwatch<br />
+[sudo] password for kkongnyang2: <br />
+[13000] Overwatch.exe (struct addr:ffffc58f193b80c0)<br />
+kkongnyang2@acer:~/project4$ sudo ./seed_once_watch_v3_1 win10 13000 0x1EC29C98A78-0x1EC29C98A79 5000<br />
+=== seed_once_watch_v3 ===<br />
+[<em>] domain=win10 pid=13000 range=[0x1ec29c98a78..0x1ec29c98a79) timeout=5000 ms<br />
+[</em>] libvmi initialized<br />
+[+] DTB resolved via vmi_pid_to_dtb: 0x3cbf9c000<br />
+[<em>] Armed W-trap: pages=1 registered=1 range=[0x000001ec29c98000 .. 0x000001ec29c99000)<br />
+[W] WRITE trap @0x1ec29c98a78 (vcpu=5, gfn=0xe3227)<br />
+{"evt":"seed_write_pre","ts_us":1760496257725555,"vcpu":5,"pid":13000,"gla":"0x1ec29c98a78","gfn":"0xe3227","dtb":"0x3cbf9c000","cr3":"0x3cbf9c000","rip":"0x7ff6414c4fef","rsp":"0x4a453ff380","rbp":"0x4a453ff4a0","rflags":"0x10206","module":{"base":"0x7ff63f450000","rip_off":"0x2074fef"},"gpr":{"rax":"0x1ec3001d001","rbx":"0x1ec29c98a78","rcx":"0xee","rdx":"0x1ec29c98a78","rsi":"0x1ec3001d078","rdi":"0x8","r8":"0x4a453ff420","r9":"0x4a453ff3e0","r10":"0x4a453ff3e8","r11":"0x4a453ff408","r12":"0x1ea115b0dc0","r13":"0x1ea115b4460","r14":"0x1ea115b3e50","r15":"0x0"},"disasm":{"rip":"0x7ff6414c4fef","mn":"mov","op":"dword ptr [rdx], ecx","mem_write":true,"wkind":"store","ea_calc":"0x1ec29c98a78","ea_match":true},"rip_bytes_len":16,"rip_bytes":"890a4989104883c428c3498b08488b44","pre_len":16,"pre_bytes":"e12926a7b0070000808ac929ec010000","post_len":16,"post_bytes":"fa0000","stack_len":64,"stack_bytes":"0213b0fcaf07000057814b41f67f0000000000000000000040042cffeb010000100000000100000074564c41f67f00000013b0fcaf0700000501550110000000"}<br />
+[</em>] Done. (seed write trapped)<br />
+kkongnyang2@acer:~/project4$ sudo ./seed_once_watch_v3_1 win10 13000 0x1EC29C98A78-0x1EC29C98A79 5000<br />
+=== seed_once_watch_v3 ===<br />
+[<em>] domain=win10 pid=13000 range=[0x1ec29c98a78..0x1ec29c98a79) timeout=5000 ms<br />
+[</em>] libvmi initialized<br />
+[+] DTB resolved via vmi_pid_to_dtb: 0x3cbf9c000<br />
+[<em>] Armed W-trap: pages=1 registered=1 range=[0x000001ec29c98000 .. 0x000001ec29c99000)<br />
+[W] WRITE trap @0x1ec29c98a78 (vcpu=1, gfn=0xe3227)<br />
+{"evt":"seed_write_pre","ts_us":1760496271607627,"vcpu":1,"pid":13000,"gla":"0x1ec29c98a78","gfn":"0xe3227","dtb":"0x3cbf9c000","cr3":"0x3cbf9c000","rip":"0x7ff6414c4fef","rsp":"0x4a451fef70","rbp":"0x4a451ff090","rflags":"0x10206","module":{"base":"0x7ff63f450000","rip_off":"0x2074fef"},"gpr":{"rax":"0x1ec3001d001","rbx":"0x1ec29c98a78","rcx":"0xf8","rdx":"0x1ec29c98a78","rsi":"0x1ec3001d078","rdi":"0x8","r8":"0x4a451ff010","r9":"0x4a451fefd0","r10":"0x4a451fefd8","r11":"0x4a451feff8","r12":"0x1ea115b0dc0","r13":"0x1ea115b4460","r14":"0x1ea115b3e50","r15":"0x0"},"disasm":{"rip":"0x7ff6414c4fef","mn":"mov","op":"dword ptr [rdx], ecx","mem_write":true,"wkind":"store","ea_calc":"0x1ec29c98a78","ea_match":true},"rip_bytes_len":16,"rip_bytes":"890a4989104883c428c3498b08488b44","pre_len":16,"pre_bytes":"e12926a7b0070000808ac929ec010000","post_len":16,"post_bytes":"fa0000","stack_len":64,"stack_bytes":"f0af3442f67f000057814b41f67f0000000000000000000040042cffeb010000100000000100000074564c41f67f00000d000100af0700000501550110000000"}<br />
+[</em>] Done. (seed write trapped)<br />
+kkongnyang2@acer:~/project4$ sudo ./seed_once_watch_v3_1 win10 13000 0x1EC29C98A78-0x1EC29C98A79 5000<br />
+=== seed_once_watch_v3 ===<br />
+[<em>] domain=win10 pid=13000 range=[0x1ec29c98a78..0x1ec29c98a79) timeout=5000 ms<br />
+[</em>] libvmi initialized<br />
+[+] DTB resolved via vmi_pid_to_dtb: 0x3cbf9c000<br />
+[<em>] Armed W-trap: pages=1 registered=1 range=[0x000001ec29c98000 .. 0x000001ec29c99000)<br />
+[W] WRITE trap @0x1ec29c98a78 (vcpu=1, gfn=0xe3227)<br />
+{"evt":"seed_write_pre","ts_us":1760496585792667,"vcpu":1,"pid":13000,"gla":"0x1ec29c98a78","gfn":"0xe3227","dtb":"0x3cbf9c000","cr3":"0x3cbf9c000","rip":"0x7ff6414c4fef","rsp":"0x4a451fed10","rbp":"0x4a451fee30","rflags":"0x10206","module":{"base":"0x7ff63f450000","rip_off":"0x2074fef"},"gpr":{"rax":"0x1ec3001d001","rbx":"0x1ec29c98a78","rcx":"0xef","rdx":"0x1ec29c98a78","rsi":"0x1ec3001d078","rdi":"0x8","r8":"0x4a451fedb0","r9":"0x4a451fed70","r10":"0x4a451fed78","r11":"0x4a451fed98","r12":"0x1ea115b0dc0","r13":"0x1ea115b4460","r14":"0x1ea115b3e50","r15":"0x0"},"disasm":{"rip":"0x7ff6414c4fef","mn":"mov","op":"dword ptr [rdx], ecx","mem_write":true,"wkind":"store","ea_calc":"0x1ec29c98a78","ea_match":true},"rip_bytes_len":16,"rip_bytes":"890a4989104883c428c3498b08488b44","pre_len":16,"pre_bytes":"e12926a7b0070000808ac929ec010000","post_len":16,"post_bytes":"ed0000","stack_len":64,"stack_bytes":"00375b11ea010000f3742a41f67f0000c8105b11ea01000080734e41f67f000070335b11ea01000074564c41f67f0000c00300001c0200000000000000000000"}<br />
+[</em>] Done. (seed write trapped)<br />
+kkongnyang2@acer:~/project4$ sudo ./seed_once_watch_v3_1 win10 13000 0x1EC29C98A78-0x1EC29C98A79 5000<br />
+=== seed_once_watch_v3 ===<br />
+[<em>] domain=win10 pid=13000 range=[0x1ec29c98a78..0x1ec29c98a79) timeout=5000 ms<br />
+[</em>] libvmi initialized<br />
+[+] DTB resolved via vmi_pid_to_dtb: 0x3cbf9c000<br />
+[<em>] Armed W-trap: pages=1 registered=1 range=[0x000001ec29c98000 .. 0x000001ec29c99000)<br />
+[W] WRITE trap @0x1ec29c98a78 (vcpu=4, gfn=0xe3227)<br />
+{"evt":"seed_write_pre","ts_us":1760496596322809,"vcpu":4,"pid":13000,"gla":"0x1ec29c98a78","gfn":"0xe3227","dtb":"0x3cbf9c000","cr3":"0x3cbf9c000","rip":"0x7ff6414c4fef","rsp":"0x4a453ff410","rbp":"0x4a453ff530","rflags":"0x10206","module":{"base":"0x7ff63f450000","rip_off":"0x2074fef"},"gpr":{"rax":"0x1ec3001d001","rbx":"0x1ec29c98a78","rcx":"0xee","rdx":"0x1ec29c98a78","rsi":"0x1ec3001d078","rdi":"0x8","r8":"0x4a453ff4b0","r9":"0x4a453ff470","r10":"0x4a453ff478","r11":"0x4a453ff498","r12":"0x1ea115b0dc0","r13":"0x1ea115b4460","r14":"0x1ea115b3e50","r15":"0x0"},"disasm":{"rip":"0x7ff6414c4fef","mn":"mov","op":"dword ptr [rdx], ecx","mem_write":true,"wkind":"store","ea_calc":"0x1ec29c98a78","ea_match":true},"rip_bytes_len":16,"rip_bytes":"890a4989104883c428c3498b08488b44","pre_len":16,"pre_bytes":"e12926a7b0070000808ac929ec010000","post_len":16,"post_bytes":"e80000","stack_len":64,"stack_bytes":"00375b11ea010000f3742a41f67f0000c8105b11ea01000080734e41f67f000070335b11ea01000074564c41f67f0000c00300001c0200000000000000000000"}<br />
+[</em>] Done. (seed write trapped)<br />
+kkongnyang2@acer:~/project4$ sudo ./seed_once_watch_v3_1 win10 13000 0x1EC29C98A78-0x1EC29C98A79 5000<br />
+=== seed_once_watch_v3 ===<br />
+[<em>] domain=win10 pid=13000 range=[0x1ec29c98a78..0x1ec29c98a79) timeout=5000 ms<br />
+[</em>] libvmi initialized<br />
+[+] DTB resolved via vmi_pid_to_dtb: 0x3cbf9c000<br />
+[<em>] Armed W-trap: pages=1 registered=1 range=[0x000001ec29c98000 .. 0x000001ec29c99000)<br />
+[W] WRITE trap @0x1ec29c98a78 (vcpu=2, gfn=0xe3227)<br />
+{"evt":"seed_write_pre","ts_us":1760496603103749,"vcpu":2,"pid":13000,"gla":"0x1ec29c98a78","gfn":"0xe3227","dtb":"0x3cbf9c000","cr3":"0x3cbf9c000","rip":"0x7ff6414c4fef","rsp":"0x4a452ff260","rbp":"0x4a452ff380","rflags":"0x10206","module":{"base":"0x7ff63f450000","rip_off":"0x2074fef"},"gpr":{"rax":"0x1ec3001d001","rbx":"0x1ec29c98a78","rcx":"0xf5","rdx":"0x1ec29c98a78","rsi":"0x1ec3001d078","rdi":"0x8","r8":"0x4a452ff300","r9":"0x4a452ff2c0","r10":"0x4a452ff2c8","r11":"0x4a452ff2e8","r12":"0x1ea115b0dc0","r13":"0x1ea115b4460","r14":"0x1ea115b3e50","r15":"0x0"},"disasm":{"rip":"0x7ff6414c4fef","mn":"mov","op":"dword ptr [rdx], ecx","mem_write":true,"wkind":"store","ea_calc":"0x1ec29c98a78","ea_match":true},"rip_bytes_len":16,"rip_bytes":"890a4989104883c428c3498b08488b44","pre_len":16,"pre_bytes":"e12926a7b0070000808ac929ec010000","post_len":16,"post_bytes":"f70000","stack_len":64,"stack_bytes":"00375b11ea010000f3742a41f67f0000c8105b11ea01000080734e41f67f000070335b11ea01000074564c41f67f0000c00300001c0200000000000000000000"}<br />
+[</em>] Done. (seed write trapped)<br />
+kkongnyang2@acer:~/project4$ sudo ./seed_once_watch_v3_1 win10 13000 0x1EC29C98A78-0x1EC29C98A79 5000<br />
+=== seed_once_watch_v3 ===<br />
+[<em>] domain=win10 pid=13000 range=[0x1ec29c98a78..0x1ec29c98a79) timeout=5000 ms<br />
+[</em>] libvmi initialized<br />
+[+] DTB resolved via vmi_pid_to_dtb: 0x3cbf9c000<br />
+[<em>] Armed W-trap: pages=1 registered=1 range=[0x000001ec29c98000 .. 0x000001ec29c99000)<br />
+[W] WRITE trap @0x1ec29c98a78 (vcpu=2, gfn=0xe3227)<br />
+{"evt":"seed_write_pre","ts_us":1760496609446132,"vcpu":2,"pid":13000,"gla":"0x1ec29c98a78","gfn":"0xe3227","dtb":"0x3cbf9c000","cr3":"0x3cbf9c000","rip":"0x7ff6414c4fef","rsp":"0x4a452ff400","rbp":"0x4a452ff520","rflags":"0x10206","module":{"base":"0x7ff63f450000","rip_off":"0x2074fef"},"gpr":{"rax":"0x1ec3001d001","rbx":"0x1ec29c98a78","rcx":"0xf7","rdx":"0x1ec29c98a78","rsi":"0x1ec3001d078","rdi":"0x8","r8":"0x4a452ff4a0","r9":"0x4a452ff460","r10":"0x4a452ff468","r11":"0x4a452ff488","r12":"0x1ea115b0dc0","r13":"0x1ea115b4460","r14":"0x1ea115b3e50","r15":"0x0"},"disasm":{"rip":"0x7ff6414c4fef","mn":"mov","op":"dword ptr [rdx], ecx","mem_write":true,"wkind":"store","ea_calc":"0x1ec29c98a78","ea_match":true},"rip_bytes_len":16,"rip_bytes":"890a4989104883c428c3498b08488b44","pre_len":16,"pre_bytes":"e12926a7b0070000808ac929ec010000","post_len":16,"post_bytes":"f20000","stack_len":64,"stack_bytes":"00375b11ea010000f3742a41f67f0000c8105b11ea01000080734e41f67f000070335b11ea01000074564c41f67f0000c00300001c0200000000000000000000"}<br />
+[</em>] Done. (seed write trapped)<br />
+kkongnyang2@acer:~/project4$ sudo ./seed_once_watch_v3_1 win10 13000 0x1EC29C98A78-0x1EC29C98A79 5000<br />
+=== seed_once_watch_v3 ===<br />
+[<em>] domain=win10 pid=13000 range=[0x1ec29c98a78..0x1ec29c98a79) timeout=5000 ms<br />
+[</em>] libvmi initialized<br />
+[+] DTB resolved via vmi_pid_to_dtb: 0x3cbf9c000<br />
+[<em>] Armed W-trap: pages=1 registered=1 range=[0x000001ec29c98000 .. 0x000001ec29c99000)<br />
+[</em>] Watch timeout (5005 ms)<br />
+[<em>] Done. (no write)<br />
+kkongnyang2@acer:~/project4$ sudo ./seed_once_watch_v3_1 win10 13000 0x1EC29C98A78-0x1EC29C98A79 5000<br />
+=== seed_once_watch_v3 ===<br />
+[</em>] domain=win10 pid=13000 range=[0x1ec29c98a78..0x1ec29c98a79) timeout=5000 ms<br />
+[<em>] libvmi initialized<br />
+[+] DTB resolved via vmi_pid_to_dtb: 0x3cbf9c000<br />
+[</em>] Armed W-trap: pages=1 registered=1 range=[0x000001ec29c98000 .. 0x000001ec29c99000)<br />
+[<em>] Watch timeout (5005 ms)<br />
+[</em>] Done. (no write)<br />
+kkongnyang2@acer:~/project4$ sudo ./seed_once_watch_v3_1 win10 13000 0x1EC29C98A78-0x1EC29C98A79 5000<br />
+=== seed_once_watch_v3 ===<br />
+[<em>] domain=win10 pid=13000 range=[0x1ec29c98a78..0x1ec29c98a79) timeout=5000 ms<br />
+[</em>] libvmi initialized<br />
+[+] DTB resolved via vmi_pid_to_dtb: 0x3cbf9c000<br />
+[<em>] Armed W-trap: pages=1 registered=1 range=[0x000001ec29c98000 .. 0x000001ec29c99000)<br />
+[W] WRITE trap @0x1ec29c98a78 (vcpu=2, gfn=0xe3227)<br />
+{"evt":"seed_write_pre","ts_us":1760496630215241,"vcpu":2,"pid":13000,"gla":"0x1ec29c98a78","gfn":"0xe3227","dtb":"0x3cbf9c000","cr3":"0x3cbf9c000","rip":"0x7ff6414c4fef","rsp":"0x4a452ff140","rbp":"0x4a452ff260","rflags":"0x10206","module":{"base":"0x7ff63f450000","rip_off":"0x2074fef"},"gpr":{"rax":"0x1ec3001d001","rbx":"0x1ec29c98a78","rcx":"0xf7","rdx":"0x1ec29c98a78","rsi":"0x1ec3001d078","rdi":"0x8","r8":"0x4a452ff1e0","r9":"0x4a452ff1a0","r10":"0x4a452ff1a8","r11":"0x4a452ff1c8","r12":"0x1ea115b0dc0","r13":"0x1ea115b4460","r14":"0x1ea115b3e50","r15":"0x0"},"disasm":{"rip":"0x7ff6414c4fef","mn":"mov","op":"dword ptr [rdx], ecx","mem_write":true,"wkind":"store","ea_calc":"0x1ec29c98a78","ea_match":true},"rip_bytes_len":16,"rip_bytes":"890a4989104883c428c3498b08488b44","pre_len":16,"pre_bytes":"e12926a7b0070000808ac929ec010000","post_len":16,"post_bytes":"fa0000","stack_len":64,"stack_bytes":"50f42f454a000000f3742a41f67f0000402ef4b7ea0100007125ac7a0000004c00000000ea01000074564c41f67f0000c00300001c0200000000000000000000"}<br />
+[</em>] Done. (seed write trapped)<br />
+kkongnyang2@acer:~/project4$ sudo ./seed_once_watch_v3_1 win10 13000 0x1EC29C98A78-0x1EC29C98A79 5000<br />
+=== seed_once_watch_v3 ===<br />
+[<em>] domain=win10 pid=13000 range=[0x1ec29c98a78..0x1ec29c98a79) timeout=5000 ms<br />
+[</em>] libvmi initialized<br />
+[+] DTB resolved via vmi_pid_to_dtb: 0x3cbf9c000<br />
+[<em>] Armed W-trap: pages=1 registered=1 range=[0x000001ec29c98000 .. 0x000001ec29c99000)<br />
+[W] WRITE trap @0x1ec29c98a78 (vcpu=2, gfn=0xe3227)<br />
+{"evt":"seed_write_pre","ts_us":1760496641883568,"vcpu":2,"pid":13000,"gla":"0x1ec29c98a78","gfn":"0xe3227","dtb":"0x3cbf9c000","cr3":"0x3cbf9c000","rip":"0x7ff6414c4fef","rsp":"0x4a452ff390","rbp":"0x4a452ff4b0","rflags":"0x10206","module":{"base":"0x7ff63f450000","rip_off":"0x2074fef"},"gpr":{"rax":"0x1ec3001d001","rbx":"0x1ec29c98a78","rcx":"0xd2","rdx":"0x1ec29c98a78","rsi":"0x1ec3001d078","rdi":"0x8","r8":"0x4a452ff430","r9":"0x4a452ff3f0","r10":"0x4a452ff3f8","r11":"0x4a452ff418","r12":"0x1ea115b0dc0","r13":"0x1ea115b4460","r14":"0x1ea115b3e50","r15":"0x0"},"disasm":{"rip":"0x7ff6414c4fef","mn":"mov","op":"dword ptr [rdx], ecx","mem_write":true,"wkind":"store","ea_calc":"0x1ec29c98a78","ea_match":true},"rip_bytes_len":16,"rip_bytes":"890a4989104883c428c3498b08488b44","pre_len":16,"pre_bytes":"e12926a7b0070000808ac929ec010000","post_len":16,"post_bytes":"cd0000","stack_len":64,"stack_bytes":"0213b0fcaf070000f5814b41f67f0000000000000000000040042cffeb010000100000000100000074564c41f67f00000013b0fcaf0700000501550110000000"}<br />
+[</em>] Done. (seed write trapped)</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "content.code.copy", "header.autohide"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

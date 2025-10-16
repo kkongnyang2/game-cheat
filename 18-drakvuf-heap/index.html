@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../6-two-gpu/">
+        <link rel="prev" href="../17-pyvmi-dump/">
       
       
-        <link rel="next" href="../8-kvm-legacy/">
+        <link rel="next" href="../19-ow-memory/">
       
       
       <link rel="icon" href="../logo.svg">
@@ -20,7 +20,7 @@
     
     
       
-        <title>7 vmi - Game-Cheat</title>
+        <title>18 drakvuf heap - Game-Cheat</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#vmi" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              7 vmi
+              18 drakvuf heap
             
           </span>
         </div>
@@ -394,9 +394,11 @@
   
   
   
+    
   
-    <li class="md-tabs__item">
-      <a href="../18-drakvuf-heap/" class="md-tabs__link">
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
         
   
   
@@ -584,11 +586,9 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../7-vmi/" class="md-tabs__link">
         
   
   
@@ -933,10 +933,30 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../18-drakvuf-heap/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    18 drakvuf heap
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -947,6 +967,93 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      실시간 할당 후보군을 관찰해보자
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="실시간 할당 후보군을 관찰해보자">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xen" class="md-nav__link">
+    <span class="md-ellipsis">
+      xen 페이지 잡기
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#drakvuf" class="md-nav__link">
+    <span class="md-ellipsis">
+      drakvuf 설치
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#drakvuf_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      drakvuf 커스텀 플러그인 제작
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pid_va_writewatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      pid_va_writewatch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pfn_writewatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      pfn_writewatch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      상위 클러스터 감시
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1153,30 +1260,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    7 vmi
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../7-vmi/" class="md-nav__link">
         
   
   
@@ -1187,75 +1274,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#vmi" class="md-nav__link">
-    <span class="md-ellipsis">
-      VMI의 구조를 이해해보자
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="VMI의 구조를 이해해보자">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      &gt; 하이퍼바이저 선택
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vmi_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      vmi 툴
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      필요한 게스트 정보
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vmi_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      vmi 시나리오
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1373,28 +1391,55 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#vmi" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      VMI의 구조를 이해해보자
+      실시간 할당 후보군을 관찰해보자
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="VMI의 구조를 이해해보자">
+    <nav class="md-nav" aria-label="실시간 할당 후보군을 관찰해보자">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#xen" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 하이퍼바이저 선택
+      xen 페이지 잡기
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#vmi_1" class="md-nav__link">
+  <a href="#drakvuf" class="md-nav__link">
     <span class="md-ellipsis">
-      vmi 툴
+      drakvuf 설치
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#drakvuf_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      drakvuf 커스텀 플러그인 제작
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pid_va_writewatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      pid_va_writewatch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pfn_writewatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      pfn_writewatch
     </span>
   </a>
   
@@ -1403,16 +1448,7 @@
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      필요한 게스트 정보
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vmi_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      vmi 시나리오
+      상위 클러스터 감시
     </span>
   </a>
   
@@ -1439,157 +1475,168 @@
 
 
 
-  <h1>7 vmi</h1>
+  <h1>18 drakvuf heap</h1>
 
-<h2 id="vmi">VMI의 구조를 이해해보자</h2>
-<p>작성자: kkongnyang2 작성일: 2025-08-02</p>
+<h2 id="_1">실시간 할당 후보군을 관찰해보자</h2>
+<p>작성자: kkongnyang2 작성일: 2025-09-16</p>
 <hr />
-<h3 id="_1">&gt; 하이퍼바이저 선택</h3>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;">하이퍼바이저</th>
-<th style="text-align: center;">VMI 친화도</th>
-<th style="text-align: left;">장점</th>
-<th style="text-align: left;">단점</th>
-<th style="text-align: left;">대표 툴/프로젝트</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><strong>Xen</strong></td>
-<td style="text-align: center;">★★★★★</td>
-<td style="text-align: left;">LibVMI 원조급, altp2m 기반 메모리 이벤트, DRAKVUF 등 풍부</td>
-<td style="text-align: left;">설정/운영 복잡, 최신 HW 지원/호환성 이슈</td>
-<td style="text-align: left;"><strong>DRAKVUF</strong>, LibVMI</td>
-</tr>
-<tr>
-<td style="text-align: center;"><strong>KVM/QEMU</strong></td>
-<td style="text-align: center;">★★★★☆</td>
-<td style="text-align: left;">리눅스 기본, libvirt 연동 쉽고 널리 사용</td>
-<td style="text-align: left;">이벤트 트랩 구현 시 Xen보다 손이 더 감</td>
-<td style="text-align: left;">LibVMI, PyVMI</td>
-</tr>
-<tr>
-<td style="text-align: center;"><strong>VMware ESXi</strong></td>
-<td style="text-align: center;">★★★★☆</td>
-<td style="text-align: left;">공식 introspection API, 안정적</td>
-<td style="text-align: left;">상용/폐쇄적, 비용, 자유도 제한</td>
-<td style="text-align: left;">VMware VMI SDK (Thin agent)</td>
-</tr>
-<tr>
-<td style="text-align: center;"><strong>Hyper-V</strong></td>
-<td style="text-align: center;">★★☆☆☆</td>
-<td style="text-align: left;">Windows 친화, 커널 레벨 접근 가능</td>
-<td style="text-align: left;">공개 도구 적음, 구현 난이도</td>
-<td style="text-align: left;">자체 개발 필요</td>
-</tr>
-<tr>
-<td style="text-align: center;"><strong>VirtualBox</strong></td>
-<td style="text-align: center;">★☆☆☆☆</td>
-<td style="text-align: left;">셋업 쉬움</td>
-<td style="text-align: left;">VMI용 API 사실상 없음, hacky 작업 필요</td>
-<td style="text-align: left;">직접 /proc/…/mem 접근 등 “꼼수”</td>
-</tr>
-<tr>
-<td style="text-align: center;"><strong>Bareflank/ACRN</strong></td>
-<td style="text-align: center;">★★☆☆☆</td>
-<td style="text-align: left;">경량/오픈소스, 연구 목적 좋음</td>
-<td style="text-align: left;">문서/커뮤니티 작음, 모든 기능 직접 구현</td>
-<td style="text-align: left;">커스텀 하이퍼바이저 개발</td>
-</tr>
-</tbody>
-</table>
-<p>메모리 이벤트 트랩이면 Xen + LibVMI (DRAKVUF 구조 참고)<br />
-libvirt 없이 Xen 자체 툴(xl) 사용. altp2m로 페이지 권한 바꿔 트랩 잡기 수월.</p>
-<p>이미 우분투에 kvm 환경이라면 KVM/QEMU + LibVMI<br />
-libvirt로 편하게 관리 하고, 문서 많은 libvmi/pyvmi로.</p>
-<ul>
-<li>kvm(kernel based virtual machine) 리눅스 커널 모듈. VT-x를 사용해서 게스트 cpu 실행을 커널 레벨에서 가속해줌. qemu는 가상머신 하이퍼바이저.</li>
-</ul>
-<p>윈도우 환경에서 hyper-v로 작업하면 바로 오버워치2 안티치트에 탐색</p>
-<h3 id="vmi_1">vmi 툴</h3>
-<p>VMI란? 이미 실행 중인 VM 내부 상태(메모리, 레지스터, 파일시스템 등)를 바깥(하이퍼바이저)에서 들여다보거나 조작하는 기술. 게스트 밖에서 이뤄지므로 안티치트 입장에서는 아무것도 알 수 없다.</p>
-<p>┌─────────────────────────┐<br />
-│  호스트 OS / 하이퍼바이저│  ← LibVMI·DRAKVUF 같은 VMI 라이브러리<br />
-│  (VMI 대상 메모리 맵)   │<br />
-├─────────▽──────────────┤<br />
-│      게스트 VM          │  ← Windows 10 + 게임 + 안티치트<br />
-│  ┌───────────────┐      │<br />
-│  │  게임 프로세스 │      │<br />
-│  └───────────────┘      │<br />
-└─────────────────────────┘</p>
-<p>VMI 프로그램 구성</p>
-<p>┌───────────────────────────────┐<br />
-│         Python 레벨           │<br />
-│  ┌────────┐   ┌──────────┐    │<br />
-│  │ PyVMI  │   │  r2vmi   │    │<br />
-│  └──┬─────┘   └─────┬────┘    │<br />
-│     │               │         │<br />
-├─────▼───────────────▼─────────┤<br />
-│          C 라이브러리         │<br />
-│  ┌────────┐   ┌──────────┐    │<br />
-│  │ libvmi │   │ libkvmi  │    │<br />
-│  └──┬─────┘   └─────┬────┘    │<br />
-├─────▼─────────────────────────┤<br />
-│        하이퍼바이저 층        │<br />
-│  ┌────────────┐  (옵션)       │<br />
-│  │ QEMU(KVM)  │───KVMI 패치   │<br />
-│  └────────────┘               │<br />
-├───────────────────────────────┤<br />
-│         Linux 커널(KVM)       │<br />
-│      (옵션: kvmi-intro patch) │<br />
-└───────────────────────────────┘</p>
-<h3 id="_2">필요한 게스트 정보</h3>
-<p>[필요정보]<br />
-  ├─ 식별: (domain name | domid | qemu pid)<br />
-  ├─ 주소변환: DTB (CR3)<br />
-  ├─ 해석: 프로파일(json) - 심볼 주소와 구조체 필드 오프셋<br />
-  └─ ostype, KASLR 여부, 권한</p>
-<p>domid, 메모리 맵, DTB를 libvirt API로 자동으로 가져올 수 있음. 직접 qemu로 실행한 vm는 /proc/<pid>/mem 등을 직접 매핑해야 함</p>
-<p>(1) VM 식별을 위한 domain name</p>
-<p>domain name : libvirt에서 vm을 구분하는 문자열 이름. 사용자가 직접 정함<br />
-domain ID : libvirt가 실행 중인 vm에 부여하는 일시적 런타임 ID. virsh domid <name> 로 확인.<br />
-qemu PID : qemu 프로세스의 pid. ps aux | grep qemu-system-x86_64 같은 걸로 확인</p>
-<p>(2) 주소 변환을 위한 DTB (Directory Table Base)</p>
-<p>게스트 가상 주소(VA)를 물리 주소(PA)로 바꿀 때 필요한 페이지 테이블 루트 물리 주소. x86-64에서 CR3 레지스터가 가리킨다.<br />
-libvmi가 자동으로 찾아주기도 하지만, 실패하면 직접 지정<br />
-리눅스는 task_struct-&gt;mm-&gt;pgd에서 뽑고, 윈도우면 EPROCESS.DirectoryTableBase에서 뽑는다.</p>
-<p>(3) 의미 있는 해석을 위한 프로파일(json 형식)</p>
-<p>심볼 주소와 커널 구조체 필드 오프셋 정보.<br />
-리눅스면 System.map(공개 심볼 주소) + vmlinux를 바탕으로 dwarf2json(vilatility) 툴을 이용해 만든다.<br />
-윈도우면 PDB(program database)를 바탕으로 volatility/rekall/drakpdb 툴을 이용해 만든다.</p>
-<p>(4) 그밖에도 KASLR(커널 주소 랜덤화. libvmi가 DTB를 찾기 어렵게 함) 사용 여부(linux_kaslr=true), 권한(root), /etc/libvmi.conf 접근성 들이 필요하다.</p>
-<h3 id="vmi_2">vmi 시나리오</h3>
-<p>(1) KVM(리눅스)에서 Legacy 방식 (LibVMI + QEMU GDB/패치)</p>
-<p>흐름/구조</p>
-<p>호스트의 LibVMI가 QEMU의 옛 메모리 접근 경로(GDB stub 또는 QEMU fast-memaccess 패치)로 게스트 RAM을 읽고 씀. 하이퍼바이저 레벨 이벤트(실행/쓰기 트랩)는 사실상 없음. LibVMI를 빌드할 때 -DENABLE_KVM_LEGACY 옵션으로 켬. </p>
-<p>가능한 기능</p>
-<p>물리/가상 메모리 읽기·쓰기, 레지스터 접근, 일시정지/재개 등 기본 VMI. 하지만 메모리 이벤트(실행/읽기/쓰기 훅) 는 미지원(또는 매우 제한적) → 실시간 훅 기반 분석/방어엔 부적합. </p>
-<p>호환/현실성(2025)</p>
-<p>KVM이 돌아가기만 하면(대부분의 최신 Intel/AMD) 작동 가능. 다만 GDB stub/패치 경로는 느리고 취약하며, 최신 QEMU/커널과의 궁합 이슈가 잦음(프로젝트에서도 “과거 방식”으로 분류). 초보자 권장 X. </p>
-<p>(2) KVMI 커널 경로 (KVM-VMI: 커널·QEMU 패치 + libkvmi)</p>
-<p>흐름/구조</p>
-<p>KVM에 KVMi(=KVMI) 서브시스템을 추가한 커널(CONFIG_KVM_INTROSPECTION, kvmi-v7 등) + KVMI 대응 QEMU로 게스트를 올림 → 호스트의 libkvmi/LibVMI가 공식적인 VMI API(chardev)를 통해 페이지 접근 제어, 이벤트 통지, vCPU 상태 조회 등을 수행. </p>
-<p>가능한 기능</p>
-<p>VM 일시정지·재개, vCPU GPR/MSR 조회, EPT(같은 HW 백킹) 기반 페이지 접근비트 조작, 접근/실행 fault 이벤트 수신, 하이퍼콜/MSR 변경 감시 등 능동 VMI. </p>
-<p>호환/현실성(2025)</p>
-<p>메인라인이 아니라 별도 브랜치(커널/ QEMU) 를 빌드해야 해서 유지보수 부담 큼. 예제·릴리스는 존재하지만(최신 릴리스 2023) 최신 배포판 커널과의 버전 핀ning이 필수. EPT 전제를 명시(문서가 “예: Intel의 EPT”라 서술)하므로 AMD NPT는 지원/기능 제약을 확인 필요. 초보자 난이도 높음. </p>
-<p>(3) Xen + LibVMI (가장 표준적인 VMI 경로)</p>
-<p>흐름/구조</p>
-<p>Xen 하이퍼바이저 위에 Windows/Linux 게스트 실행 → Dom0(또는 별도 도메인)의 LibVMI가 Xen의 VMI/메모리 이벤트(vm_event, mem_access, altp2m) 를 이용해 게스트 메모리/레지스터 접근 + 하드웨어 수준 트랩을 수행. </p>
-<p>가능한 기능</p>
-<p>메모리 읽기·쓰기, vCPU 레지스터 접근 + 실행/읽기/쓰기 이벤트 훅, 싱글스텝, altp2m(대체 EPT) 스왑 등 풍부한 이벤트 기반 VMI. LibVMI 측 문서도 메모리 이벤트는 현재 Xen에서만 지원이라 명시. </p>
-<p>호환/현실성(2025)</p>
-<p>최신 Intel VT-x/EPT 환경에서 매우 성숙. Xen은 ARM 2-stage paging도 지원(기능 차이 존재), 일반적으론 Intel/EPT에서 가장 안정적. AMD NPT에서도 기본 메모리 접근은 가능하나, 고급 이벤트/altp2m 기반 기능은 Intel EPT 중심 생태계. 실무/연구 커뮤니티와 자료가 가장 풍부. </p>
-<p>(4) Xen + DRAKVUF 엔진 + DRAKVUF Sandbox</p>
-<p>흐름/구조</p>
-<p>③의 Xen/VMI 기반 위에 DRAKVUF 엔진을 올려 에이전트 없는 트레이싱(syscall, 파일/레지스트리, 프로세스, 메모리 덤프 등)을 수행.</p>
-<p>DRAKVUF Sandbox(drakkvuf-sandbox) 는 그 엔진을 자동화/웹UI/큐/스냅샷 템플릿로 감싼 자동 분석 파이프라인. 설치도 “Xen과 DRAKVUF 엔진을 먼저 준비”가 1단계. </p>
-<p>가능한 기능</p>
-<p>대량 자동 샌드박싱(시료 업로드→실행→행위 수집→리포트), 프로세스/시스템콜/파일·네트워크·스냅샷/스크린샷 수집 등. 반면, 임의 주소 즉시 패치 같은 미세 조작은 기본 워크플로가 아님(엔진/LibVMI API로 구현은 가능). </p>
-<p>호환/현실성(2025)</p>
-<p>하드웨어 요구: Intel VT-x + EPT 필수(AMD 미지원) 를 명시. 최신 Intel CPU라면 대체로 OK. 샌드박스 문서도 CPU 확인 방법(vmxept 플래그)과 소스 빌드 권장을 안내. 구축 난이도는 ③보다 한 단계 높음(엔진+웹 스택+스냅샷 템플릿).</p>
+<h3 id="xen">xen 페이지 잡기</h3>
+<p>게스트 코드  ──(HP 갱신)──► [가상주소 GVA] → 페이지 테이블 → [게스트물리 GPA]<br />
+                                           │<br />
+                              하이퍼바이저의 2단 변환(EPT/NPT)<br />
+                                           ↓<br />
+             EPT 권한 비트(R/W/X)로 페이지를 의도적으로 막아둠<br />
+                                           ↓<br />
+                 접근 발생 → EPT violation → VM-exit(호스트로)<br />
+                                           ↓<br />
+   VM-exit 정보: 접근종류(R/W/X), GLA(선택적), GPA, RIP, CR3(DTB) 등<br />
+                                           ↓<br />
+  분석기(예: LibVMI/Drakvuf)가 RIP 주변 명령 디코드 → 쓰기 크기/대상 파악<br />
+                                           ↓<br />
+            (옵션) 일시 허용+단일 스텝 후 재보호(re-arm)로 계속 추적</p>
+<p>실시간 vmi 환경에서 할당되는 페이지를 훅킹해 VM-exit 트랩으로 감시</p>
+<h3 id="drakvuf">drakvuf 설치</h3>
+<p>drakvuf 설치<br />
+<div class="highlight"><pre><span></span><code>ubuntu on xen으로 들어가서
+$ sudo apt install meson ninja-build clang llvm lld libglib2.0-dev libjson-c-dev
+$ git clone --recursive https://github.com/tklengyel/drakvuf
+$ cd drakvuf
+$ meson setup build --native-file llvm.ini
+$ ninja -C build
+$ sudo ninja -C build install
+$ sudo ldconfig
+</code></pre></div></p>
+<p>기능 확인<br />
+<div class="highlight"><pre><span></span><code>$ sudo xl list        # 몇번인지 확인
+$ sudo drakvuf -r /root/symbols/ntkrnlmp.json -d 1 -a procmon
+</code></pre></div></p>
+<h3 id="drakvuf_1">drakvuf 커스텀 플러그인 제작</h3>
+<p>데이터를 서버에서 받아오면 ntdll.dll이 비어있는 주소에 힙 할당을 하고 그 주소를 리턴해준다. 그러면 overwatch.exe는 그걸 테이블에 저장해뒀다가 필요할때마다 찾아가서 read &amp; write를 해준다. </p>
+<p>그럼 이 할당을 어떻게 잡아올 수 있냐?<br />
+윈도우 내부에서는 커널의 할당 함수들을 쫒는다. vmi 환경에서는 특정 구역들에 vm-exit 걸어놓아 거기에 write하려하면 무조건 예외처리로 확인된다. 이 방식이 drakvuf에 구현되어 있다.</p>
+<p>drakvuf의 syscall + memaccess를 이용해 drakvuf 커스텀 플러그인으로 해주자.<br />
+1. syscalls 후킹: NtAllocateVirtualMemory, NtMapViewOfsection<br />
+2. 리턴 성공 시 *BaseAddress, *RegionSize 읽어서 [base,size) 구간 확보<br />
+3. VA 필터 : (base..base+size)가 0x 0000 0200 0000 0000 ~ 0x 0000 02FF FFFF FFFF와 교차하면 대상 처리<br />
+4. 페이지별 W-트랩 등록: 해당 구간을 4KB 페이지로 쪼개 memaccess 등록<br />
+5. memaccess 콜백: (pid, tid, rip, gva, gfn)로깅 -&gt; 싱글스텝 1회 허용 -&gt; 다시 W 금지<br />
+6. free/unmap 시 : 추적 테이블에서 트랩 해제</p>
+<h3 id="pid_va_writewatch">pid_va_writewatch</h3>
+<p>drakvuf/<br />
+└─ src/<br />
+   └─ plugins/<br />
+      ├─ meson.build              ← 여기에 한 줄 추가<br />
+      └─ pid_va_writewatch/<br />
+         ├─ pid_va_writewatch.cpp ← 새로 추가<br />
+         └─ pid_va_writewatch.h   ← 새로 추가</p>
+<p>커스텀 플러그인 제작<br />
+<div class="highlight"><pre><span></span><code>$ cd ~/drakvuf/src/plugins
+$ mkdir pid_va_writewatch
+$ nano pid_va_writewatch/pid_va_writewatch.h
+$ nano pid_va_writewatch/pid_va_writewatch.cpp
+$ nano meson.build
+plugin_sources = [
+  # (기존들)
+  &#39;pid_va_writewatch/pid_va_writewatch.cpp&#39;,
+  &#39;pid_va_writewatch/pid_va_writewatch.h&#39;,
+]
+$ nano plugins.h
+플러그인 리스트 drakvuf_plugin_t 의 마지막 __DRAKVUF_PLUGIN_LIST_MAX 앞줄에
+    PLUGIN_PID_VA_WRITEWATCH,
+이름 리스트 static const char* drakvuf_plugin_names[] 에
+    [PLUGIN_PID_VA_WRITEWATCH] = &quot;pid_va_writewatch&quot;,
+os 지원 리스트 drakvuf_plugin_os_support 에
+    [PLUGIN_PID_VA_WRITEWATCH] = { [VMI_OS_WINDOWS] = 1, [VMI_OS_LINUX] = 1 },
+$ nano plugins.cpp
+#include &quot;pid_va_writewatch/pid_va_writewatch.h&quot;
+drakvuf_plugins::start 안의 큰 switch에 case 추가
+case PLUGIN_PID_VA_WRITEWATCH:
+{
+    this-&gt;plugins[plugin_id] = std::make_unique&lt;pid_va_writewatch&gt;(this-&gt;drakvuf, this-&gt;output);
+    break;
+}
+</code></pre></div></p>
+<p>재빌드<br />
+<div class="highlight"><pre><span></span><code>$ cd ~/drakvuf
+$ meson setup build --reconfigure
+$ ninja -C build
+$ sudo ninja -C build install
+$ sudo ldconfig
+</code></pre></div></p>
+<p>커맨드<br />
+<div class="highlight"><pre><span></span><code>sudo env WRITEWATCH_PID=4972 \
+         WRITEWATCH_RANGE=0x0000020000000000-0x000002FFFFFFFFFF \
+  drakvuf -r /root/symbols/ntkrnlmp.json -d 1 -a pid_va_writewatch
+</code></pre></div></p>
+<h3 id="pfn_writewatch">pfn_writewatch</h3>
+<p>힙 할당된 va에 값이 변화하는게 CE에서 보임에도 여기서는 같은 seed의 va write를 못잡아옴. 일반 read에서는 읽어오는 걸 보면 프로세스가 아닌 다른 곳에서 해당 gpa에 write 하는 걸로 추정. 즉 결과 write는 읽을 수 있지만 실시간 망에는 포착되지 않는다는 뜻. va를 gpa로 번역한 후 write를 잡아오도록 고친다.</p>
+<p>drakvuf/<br />
+└─ src/<br />
+   └─ plugins/<br />
+      ├─ meson.build              ← 여기에 한 줄 추가<br />
+      └─ pfn_writewatch/<br />
+         ├─ pfn_writewatch.cpp ← 새로 추가<br />
+         └─ pfn_writewatch.h   ← 새로 추가</p>
+<p>커스텀 플러그인 제작<br />
+<div class="highlight"><pre><span></span><code>$ cd ~/drakvuf/src/plugins
+$ mkdir pfn_writewatch
+$ nano pfn_writewatch/pfn_writewatch.h
+$ nano pfn_writewatch/pfn_writewatch.cpp
+$ nano meson.build
+plugin_sources = [
+  # (기존들)
+  &#39;pfn_writewatch/pfn_writewatch.cpp&#39;,
+  &#39;pfn_writewatch/pfn_writewatch.h&#39;,
+]
+$ nano plugins.h
+플러그인 리스트 drakvuf_plugin_t 의 마지막 __DRAKVUF_PLUGIN_LIST_MAX 앞줄에
+    PLUGIN_PFN_WRITEWATCH,
+이름 리스트 static const char* drakvuf_plugin_names[] 에
+    [PLUGIN_PFN_WRITEWATCH] = &quot;pfn_writewatch&quot;,
+os 지원 리스트 drakvuf_plugin_os_support 에
+    [PLUGIN_PFN_WRITEWATCH] = { [VMI_OS_WINDOWS] = 1, [VMI_OS_LINUX] = 1 },
+$ nano plugins.cpp
+#include &quot;pfn_writewatch/pfn_writewatch.h&quot;
+drakvuf_plugins::start 안의 큰 switch에 case 추가
+case PLUGIN_PFN_WRITEWATCH:
+{
+    this-&gt;plugins[plugin_id] = std::make_unique&lt;pfn_writewatch&gt;(this-&gt;drakvuf, this-&gt;output);
+    break;
+}
+</code></pre></div></p>
+<p>재빌드<br />
+<div class="highlight"><pre><span></span><code>$ cd ~/drakvuf
+$ meson setup build --reconfigure
+$ ninja -C build
+$ sudo ninja -C build install
+$ sudo ldconfig
+</code></pre></div></p>
+<p>커맨드<br />
+<div class="highlight"><pre><span></span><code>export WRITEWATCH_PFN_RANGE=0x12abc-0x12ac0
+export WRITEWATCH_SECONDS=5
+drakvuf -r /root/symbols/ntkrnlmp.json -d &lt;domid&gt; -a pfn_writewatch -o json
+</code></pre></div></p>
+<h3 id="_2">상위 클러스터 감시</h3>
+<p>watch_data_ranges.py</p>
+<p>실시간으로 .data 섹션을 덤프하여 heap 포인터로 추정되는 candidate를 전부 찾고 상위 클러스터 범위 다섯개를 추려 pfn_writewatch 플러그인으로 감시하는 코드<br />
+.data 덤프 + candidate 찾기 + 상위 클러스터 만들기 + pfn 번역 + writewatch + 내용 및 델타 바이터 확인</p>
+<p>실행 커맨드<br />
+<div class="highlight"><pre><span></span><code>$ sudo vmi-process-list win10 | grep -i overwatch
+$ cd ~/game-cheat/code
+$ sudo /home/kkongnyang2/vmi-venv/bin/python3 -m dump.watch_data_ranges \
+  --domain win10 --pid 2900 --module Overwatch.exe \
+  --ist-json /root/symbols/ntkrnlmp.json \
+  --python /home/kkongnyang2/vmi-venv/bin/python3 \
+  --dumper-module dump.vmi_dump_section \
+  --project-root ~/game-cheat/code \
+  --drakvuf /usr/local/bin/drakvuf \
+  --watch pfn \
+  --mode cluster --topk 5 --gran-log2 22 --gap-pages 64 --pad 0x10000 \
+  --duration 10 --interval 5 \
+  --ww-mode both --peek-bytes 16 --max-changes 12 \
+  --outdir /home/kkongnyang2/watch_dump --max-pfns 2048
+</code></pre></div><br />
+약간 범위가 빗나감. 난독화 때문에 .data에 있는 포인터들이 부정확 하거나, 힙에 포인터가 있는 거 같음.</p>
 
 
 
