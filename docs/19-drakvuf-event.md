@@ -195,4 +195,7 @@ $ sudo /home/kkongnyang2/vmi-venv/bin/python3 -m dump.watch_data_ranges \
   --ww-mode both --peek-bytes 16 --max-changes 12 \
   --outdir /home/kkongnyang2/watch_dump --max-pfns 2048
 ```
-약간 범위가 빗나감. 난독화 때문에 .data에 있는 포인터들이 부정확 하거나, 힙에 포인터가 있는 거 같음.
+
+
+* 약간 범위가 빗나감. 난독화 때문에 .data에 있는 포인터들이 부정확 하거나, 힙에 포인터가 있는 거 같음.
+* 여기서 작성한 코드는 plugins에 저장되어 있음.

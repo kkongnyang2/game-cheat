@@ -1,8 +1,7 @@
 // seed_once_watch_v3.c — once watch + pre-write snapshot + disasm (Capstone)
-// - 네 libvmi 시그니처(vmi_read_va(vaddr, pid, count, buf, &got))에 맞춤
+// + 모듈 라벨링(PE32+ 전용): SizeOfImage 없이 base/offset만 계산
 // - 콜백에서 해당 GFN 즉시 해제: vmi_set_mem_event(..., VMI_MEMACCESS_N, 0)
-// - Capstone으로 RIP 한 개 명령 디스어셈블 + 메모리 write 판별 + EA 재계산 확인
-// - Capstone의 REP 변형(ID 없음) → prefix(0xF3/0xF2)로 판별
+// - Capstone REP 판별은 prefix(0xF3/0xF2)
 
 #define _GNU_SOURCE
 #include <stdio.h>
@@ -42,8 +41,7 @@
 #endif
 // -------------------------------------------------
 
-// Capstone
-#include <capstone/capstone.h>  // 필요 시 <capstone.h> 로 바꿔도 됨
+#include <capstone/capstone.h>
 
 typedef struct {
     char     domain[128];
@@ -74,9 +72,15 @@ static bool va_to_gfn(vmi_instance_t vmi, addr_t dtb, addr_t va, addr_t* out_gfn
 // --- 메모리 읽기: pid 기반 vmi_read_va (네 환경 시그니처)
 static size_t safe_read_va(vmi_instance_t vmi, vmi_pid_t pid, addr_t va, void* buf, size_t len){
     size_t got = 0;
-    if (VMI_SUCCESS == vmi_read_va(vmi, va, pid, len, buf, &got))
-        return got;
+    if (VMI_SUCCESS == vmi_read_va(vmi, va, pid, len, buf, &got)) return got;
     return 0;
+}
+
+static bool read_u16(vmi_instance_t vmi, vmi_pid_t pid, addr_t va, uint16_t* out){
+    uint16_t t=0; return safe_read_va(vmi,pid,va,&t,sizeof(t))==sizeof(t) ? (*out=t, true):false;
+}
+static bool read_u32(vmi_instance_t vmi, vmi_pid_t pid, addr_t va, uint32_t* out){
+    uint32_t t=0; return safe_read_va(vmi,pid,va,&t,sizeof(t))==sizeof(t) ? (*out=t, true):false;
 }
 
 static void hex_dump(const uint8_t* b, size_t n, char* out, size_t outsz){
@@ -88,7 +92,7 @@ static void hex_dump(const uint8_t* b, size_t n, char* out, size_t outsz){
     if(pos<outsz) out[pos]='\0';
 }
 
-// --- Capstone: EA 재계산을 위해 필요한 GPR 묶음
+// --- Capstone: EA 재계산용 레지스터 묶음
 typedef struct {
     uint64_t rax,rbx,rcx,rdx,rsi,rdi;
     uint64_t r8,r9,r10,r11,r12,r13,r14,r15;
@@ -128,10 +132,9 @@ static uint64_t compute_ea_from_cs(const cs_x86_op* op, const Regs* R, uint64_t 
     return (uint64_t)(base + idx * (uint64_t)sc + (uint64_t)disp);
 }
 
-// prefix 에서 REP/REPNE 체크 (capstone detail 필요)
+// prefix에서 REP/REPNE 체크
 static bool has_rep_prefix(const cs_detail* D){
     if(!D) return false;
-    // x86.prefix[0] / [1]에 0xF3(REP/REPE), 0xF2(REPNE)가 들어올 수 있음
     for(int i=0;i<8;i++){
         if(D->x86.prefix[i] == 0xF3 || D->x86.prefix[i] == 0xF2) return true;
     }
@@ -152,7 +155,6 @@ static void disasm_and_classify(uint64_t rip, const uint8_t* bytes, size_t n,
     const cs_insn* I = &insn[0];
     const cs_detail* D = I->detail;
 
-    // 분류 기본값
     const char* wkind = "unknown";
     bool mem_write = false;
     uint64_t ea_calc = 0;
@@ -162,12 +164,10 @@ static void disasm_and_classify(uint64_t rip, const uint8_t* bytes, size_t n,
     switch(I->id){
         case X86_INS_MOVSB: case X86_INS_MOVSW: case X86_INS_MOVSD: case X86_INS_MOVSQ:
             wkind = has_rep_prefix(D) ? "string-move(rep)" : "string-move";
-            mem_write = true;
-            break;
+            mem_write = true; break;
         case X86_INS_STOSB: case X86_INS_STOSW: case X86_INS_STOSD: case X86_INS_STOSQ:
             wkind = has_rep_prefix(D) ? "string-store(rep)" : "string-store";
-            mem_write = true;
-            break;
+            mem_write = true; break;
         default: break;
     }
 
@@ -178,7 +178,6 @@ static void disasm_and_classify(uint64_t rip, const uint8_t* bytes, size_t n,
             if (op->type == X86_OP_MEM && (op->access & CS_AC_WRITE)){
                 mem_write = true;
                 if (strcmp(wkind, "unknown") == 0) wkind = "store";
-
                 ea_calc = compute_ea_from_cs(op, R, R->rip);
                 ea_match = (ea_calc == gla);
                 break;
@@ -186,7 +185,6 @@ static void disasm_and_classify(uint64_t rip, const uint8_t* bytes, size_t n,
         }
     }
 
-    // 출력 (JSON 조각)
     fprintf(stderr, "\"disasm\":{");
     fprintf(stderr, "\"rip\":\"0x%llx\",\"mn\":\"%s\",\"op\":\"%s\",\"mem_write\":%s,\"wkind\":\"%s\"",
             (unsigned long long)I->address, I->mnemonic, I->op_str,
@@ -196,12 +194,54 @@ static void disasm_and_classify(uint64_t rip, const uint8_t* bytes, size_t n,
             (unsigned long long)ea_calc, ea_match ? "true":"false");
     }
     fprintf(stderr, "},");
-
     cs_free(insn, cnt);
     cs_close(&h);
 }
 
-// --- 스냅샷 + 디스어셈블 (핵심)
+/* ========== 모듈 베이스 탐색(PE32+ 전용, SizeOfImage 불요) ========== */
+
+typedef struct {
+    uint64_t base;
+    bool     ok;
+} ModuleInfo;
+
+static bool pe64_is_base(vmi_instance_t vmi, vmi_pid_t pid, addr_t base){
+    // DOS header: 'MZ'
+    uint16_t mz=0; if(!read_u16(vmi,pid,base,&mz) || mz!=0x5A4D) return false;
+    // e_lfanew
+    uint32_t e_lfanew=0; if(!read_u32(vmi,pid,base+0x3C,&e_lfanew)) return false;
+    // NT headers: 'PE\0\0'
+    uint32_t pe=0; if(!read_u32(vmi,pid,base+e_lfanew,&pe) || pe!=0x00004550) return false;
+    // OptionalHeader.Magic == 0x20B (PE32+)
+    uint16_t magic=0; if(!read_u16(vmi,pid,base+e_lfanew+0x18,&magic)) return false;
+    return (magic == 0x20B);
+}
+
+// 더 넓은 PE 스캔: 64KB 스텝 2GB + 4KB 스텝 1GB
+static ModuleInfo find_module_base_by_rip(vmi_instance_t vmi, vmi_pid_t pid, uint64_t rip){
+    ModuleInfo M; memset(&M,0,sizeof(M));
+
+    // 1) 64KB 경계 하향 스캔 — 2GB
+    uint64_t cand = rip & ~0xFFFFULL;
+    for (int i=0; i< (1<<15); i++, cand -= 0x10000ULL){ // 32768 * 64KB = 2GB
+        if (pe64_is_base(vmi,pid,cand)){
+            M.base = cand; M.ok = true; return M;
+        }
+    }
+
+    // 2) 보조: 4KB 페이지 하향 스캔 — 1GB
+    cand = rip & ~0xFFFULL;
+    for (int i=0; i< (1<<18); i++, cand -= 0x1000ULL){ // 262144 * 4KB = 1GB
+        if (pe64_is_base(vmi,pid,cand)){
+            M.base = cand; M.ok = true; return M;
+        }
+    }
+
+    return M; // 실패 시 ok=false
+}
+
+/* =================================================================== */
+
 static void collect_and_print_snapshot(vmi_instance_t vmi, vmi_event_t* event){
     uint64_t ts = now_us();
     const uint32_t vcpu = event->vcpu_id;
@@ -238,6 +278,10 @@ static void collect_and_print_snapshot(vmi_instance_t vmi, vmi_event_t* event){
     size_t rip_n = 0;
     if(R.rip) rip_n = safe_read_va(vmi, (vmi_pid_t)G.pid, (addr_t)R.rip, rip_bytes, sizeof(rip_bytes));
 
+    // 모듈 베이스 (PE32+ 스캔, SizeOfImage 불요)
+    ModuleInfo MI = {0};
+    if(R.rip) MI = find_module_base_by_rip(vmi, (vmi_pid_t)G.pid, R.rip);
+
     // 대상 주소 주변 (pre:16, post:16)
     enum { PREN=16, POSTN=16 };
     uint8_t pre[PREN];  memset(pre,  0, sizeof(pre));
@@ -264,6 +308,18 @@ static void collect_and_print_snapshot(vmi_instance_t vmi, vmi_event_t* event){
     fprintf(stderr, "\"rip\":\"0x%llx\",\"rsp\":\"0x%llx\",\"rbp\":\"0x%llx\",\"rflags\":\"0x%llx\",",
             (unsigned long long)R.rip,(unsigned long long)R.rsp,(unsigned long long)R.rbp,(unsigned long long)rflags);
 
+    // 모듈(base/offset)
+    fprintf(stderr, "\"module\":{");
+    if(MI.ok){
+        uint64_t off = R.rip - MI.base;
+        fprintf(stderr, "\"base\":\"0x%llx\",\"rip_off\":\"0x%llx\"",
+                (unsigned long long)MI.base, (unsigned long long)off);
+    }else{
+        fprintf(stderr, "\"base\":null");
+    }
+    fprintf(stderr, "},");
+
+    // GPR
     fprintf(stderr, "\"gpr\":{");
     fprintf(stderr, "\"rax\":\"0x%llx\",\"rbx\":\"0x%llx\",\"rcx\":\"0x%llx\",\"rdx\":\"0x%llx\",",
             (unsigned long long)R.rax,(unsigned long long)R.rbx,(unsigned long long)R.rcx,(unsigned long long)R.rdx);
@@ -286,7 +342,7 @@ static void collect_and_print_snapshot(vmi_instance_t vmi, vmi_event_t* event){
     { char h[256]; hex_dump(pre, pre_got, h, sizeof(h));
       fprintf(stderr, "\"pre_len\":%zu,\"pre_bytes\":\"%s\",", pre_got, h); }
 
-    { char h[512]; hex_dump(post, post_got, h, sizeof(h));
+    { char h[512]; hex_dump(post, post_got, h, sizeof(post_got ? post : 0));
       fprintf(stderr, "\"post_len\":%zu,\"post_bytes\":\"%s\",", post_got, h); }
 
     { char h[1024]; hex_dump(stk, stk_got, h, sizeof(h));
@@ -302,7 +358,7 @@ static event_response_t on_seed_write(vmi_instance_t vmi, vmi_event_t *event){
     if(!G.triggered){
         G.triggered = 1;
 
-        // ★ 같은 GFN W-트랩 즉시 해제(재시도 통과, 경합/프리즈 방지)
+        // ★ 같은 GFN W-트랩 즉시 해제(프리즈 방지)
         vmi_set_mem_event(vmi, event->mem_event.gfn, VMI_MEMACCESS_N, 0);
 
         fprintf(stderr,
@@ -348,8 +404,7 @@ static int arm_write_watch(vmi_instance_t vmi, vmi_event_t* ev_out){
 
 static void usage(const char* p){
     fprintf(stderr,
-        "Usage: sudo %s <domain> <pid> <va_start-va_end> [watch_timeout_ms]\n",
-        p);
+        "Usage: sudo %s <domain> <pid> <va_start-va_end> [watch_timeout_ms]\n", p);
 }
 
 int main(int argc, char** argv){

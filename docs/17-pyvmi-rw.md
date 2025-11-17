@@ -161,3 +161,6 @@ $ cd ~/game-cheat
 $ sudo /home/kkongnyang2/vmi-venv/bin/python3 -m dump.vmi_list_sections \
   win10 4888 Overwatch.exe root/symbols/ntkrnlmp.json
 ```
+
+* 툴로 사용할 예정
+* 여기서 작성한 코드는 fixed와 chain에 저장되어 있음.

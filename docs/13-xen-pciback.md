@@ -163,7 +163,7 @@ $ sudo chmod 644 /var/lib/xen/iso/Win10.iso
 $ sudo chmod 644 /var/lib/xen/images/win10.qcow2
 $ sudo chmod 755 /var/lib/xen /var/lib/xen/iso /var/lib/xen/images
 
-$ sudo nano /etc/xen/win10.cfg
+$ sudo nano /etc/xen/win10-install.cfg
 name = "win10"
 type = "hvm"
 memory = 4096
@@ -189,7 +189,7 @@ disk = [
   'format=raw,vdev=hdc,devtype=cdrom,access=ro,target=/var/lib/xen/iso/Win10.iso'
 ]
 
-$ sudo xl -vvv create /etc/xen/win10-seabios.cfg
+$ sudo xl -vvv create /etc/xen/win10-install.cfg
 $ sudo xl list
 Name                                        ID   Mem VCPUs	State	Time(s)
 Domain-0                                     0  4096    20     r-----    6300.0
@@ -248,7 +248,8 @@ sudo nmcli con delete bridge-slave-enp68s0
 
 wifi 추가
 ```
-$ sudo nano /etc/xen/win10.cfg
+$ sudo cp /etc/xen/win10-install.cfg /etc/xen/win10-ing.cfg
+$ sudo nano /etc/xen/win10-ing.cfg
 
 boot  = "c" 로 변경
 
@@ -259,7 +260,7 @@ disk = [
 ]
 로 변경
 
-$ sudo xl create /etc/xen/win10-wifi.cfg
+$ sudo xl create /etc/xen/win10-ing.cfg
 $ vncviewer 127.0.0.1:5900
 ```
 
@@ -267,14 +268,14 @@ $ vncviewer 127.0.0.1:5900
 
 dgpu 패스스루 추가
 ```
-$ sudo nano /etc/xen/win10.cfg 
+$ sudo nano /etc/xen/win10-ing.cfg 
 
 pci = [
   '0000:01:00.0,permissive=1'
 ]
 추가
 
-$ sudo xl create /etc/xen/win10.cfg
+$ sudo xl create /etc/xen/win10-ing.cfg
 $ vncviewer 127.0.0.1:5900
 
 hdmi에 외부 모니터 연결해서 뜨면 디스플레이 복제로 변경
@@ -495,21 +496,14 @@ pip install --user 로 깔리는 곳 (시스템과 분리되지만, 여전히 �
 해당 venv 안에서만 보이는 “독립 공간” → 가장 안전
 
 
-### 확충
+### 관리모드(vnc 포함) 버전
 
-용량 확충
 ```
-$ sudo qemu-img resize -f qcow2 /var/lib/xen/images/win10.qcow2 200G
-들어가서 그냥 추가된 140GB를 드라이버 D로 만들어줌
-```
-
-성능 확충, 마우스 안정화
-```
-$ sudo nano /etc/xen/win10-all.cfg 
+$ sudo nano /etc/xen/win10-ing.cfg 
 name = "win10"
 type = "hvm"
-memory = 16384
-vcpus  = 10
+memory = 8192
+vcpus  = 4
 
 bios  = "seabios"
 boot  = "c"
@@ -537,8 +531,16 @@ pci = [
 usb = 1
 usbdevice = [ 'tablet' ]
 
-$ sudo xl create /etc/xen/win10-all.cfg
+$ sudo xl create /etc/xen/win10-ing.cfg
 $ vncviewer 127.0.0.1:5900
+```
+
+### 실사용
+
+용량 확충
+```
+$ sudo qemu-img resize -f qcow2 /var/lib/xen/images/win10.qcow2 200G
+들어가서 그냥 추가된 140GB를 드라이버 D로 만들어줌
 ```
 
 프로그램
@@ -547,15 +549,13 @@ $ vncviewer 127.0.0.1:5900
 Cheat engine 7.5 window 프로그램 다운
 ```
 
-### 최종
-
-vnc 제거
+vnc 제거 버전
 ```
-$ sudo nano /etc/xen/win10-monitor.cfg  
+$ sudo nano /etc/xen/win10.cfg  
 name = "win10"
 type = "hvm"
-memory = 16384
-vcpus  = 10
+memory = 8192
+vcpus  = 4
 
 bios  = "seabios"
 boot  = "c"
@@ -573,25 +573,24 @@ pci = [
   '0000:01:00.0,permissive=1'
 ]
 
-$ sudo xl create /etc/xen/win10-monitor.cfg
+$ sudo xl create /etc/xen/win10.cfg
 ```
 
-이벤트 잡아내기 기능 추가
+이벤트 잡아내기 기능 추가, dom0 메모리 고정
 ```
-$ sudo sed -i -E 's/^(GRUB_CMDLINE_XEN=")([^"]*)"/\1\2 altp2m=1"/' /etc/default/grub.d/xen.cfg
+$ sudoedit /etc/default/grub.d/xen.cfg
+GRUB_CMDLINE_XEN="iommu=1 iommu=verbose dom0_mem=16384M,max:16384M altp2m=1"
+GRUB_CMDLINE_LINUX_XEN_REPLACE="xen-pciback.hide=(01:00.0)(01:00.1) modprobe.blacklist=nvidia,nvidia_drm,nvidia_modeset,nouveau"
 $ sudo update-grub
 재부팅
-$ sudo nano /etc/xen/win10-monitor.cfg
+$ sudo nano /etc/xen/win10.cfg
 altp2m = "external" 추가
 ```
+* free_memory도 기존 게스트 메모리 확장/벌룬, EPT/NPT 테이블·altp2m 뷰 같은 하이퍼바이저 측 추가 할당에 쓰일 수 있는 풀. 어느정도 남겨두는게 좋다.
 
 usb 개별로 attach
 ```
 $ lsusb -t
-기본 루트 허브는 bus 1,2,3,4의 각각 포트1
-실제 사용 장치는 bus 1의 포트3, 포트6, 포트14 사용중 확인
-게스트에 넘길 추가된 포트는 bus 1의 포트4, 포트9
-
 $ lsusb
 Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 Bus 001 Device 002: ID 046d:c54d Logitech, Inc. USB Receiver
@@ -607,4 +606,95 @@ Bus 004 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
 $ sudo xl usbctrl-attach win10 type=auto version=3 ports=15
 $ sudo xl usbdev-attach  win10 hostbus=1 hostaddr=5 controller=0 port=1
 $ sudo xl usbdev-attach  win10 hostbus=1 hostaddr=6 controller=0 port=2
+```
+
+vcpu 핀
+```
+$ lscpu -e
+CPU NODE SOCKET CORE L1d:L1i:L2:L3 ONLINE
+  0    0      0    0 0:0:0:0          yes
+  1    0      0    0 0:0:0:0          yes
+  2    0      0    1 4:4:1:0          yes
+  3    0      0    1 4:4:1:0          yes
+  4    0      0    2 8:8:2:0          yes
+  5    0      0    2 8:8:2:0          yes
+  6    0      0    3 12:12:3:0        yes
+  7    0      0    3 12:12:3:0        yes
+  8    0      0    4 16:16:4:0        yes
+  9    0      0    4 16:16:4:0        yes
+ 10    0      0    5 20:20:5:0        yes
+ 11    0      0    5 20:20:5:0        yes
+ 12    0      0    6 24:24:6:0        yes
+ 13    0      0    7 25:25:6:0        yes
+ 14    0      0    8 26:26:6:0        yes
+ 15    0      0    9 27:27:6:0        yes
+ 16    0      0   10 28:28:7:0        yes
+ 17    0      0   11 29:29:7:0        yes
+ 18    0      0   12 30:30:7:0        yes
+ 19    0      0   13 31:31:7:0        yes
+
+6P + 8E = 14코어 / 20스레드 구조야.
+CORE 0~5 즉 cpu 0~11는 각 2개 CPU가 같은 L1/L2 인덱스를 공유
+CORE 6~13 즉 cpu 12~19는 단독 CPU씩
+전부 NODE 0 / SOCKET 0 / L3 0 → 단일 소켓·단일 NUMA (L3 공유)
+
+$ sudo xl vcpu-set 0 8
+$ sudo xl vcpu-pin 0 all 12-19
+
+$ sudo xl vcpu-pin 2 0 0
+$ sudo xl vcpu-pin 2 1 2
+$ sudo xl vcpu-pin 2 2 4
+$ sudo xl vcpu-pin 2 3 6
+각 vcpu에 pcpu를 배정해줌
+```
+
+확인
+```
+$ sudo xl list
+Name                                        ID   Mem VCPUs	State	Time(s)
+Domain-0                                     0 16384     8     r-----     468.8
+win10                                        2  8192     4     r-----      75.8
+
+$ sudo xl info | egrep -i 'memory|free_memory'
+total_memory           : 32472
+free_memory            : 7529
+sharing_freed_memory   : 0
+sharing_used_memory    : 0
+
+$ sudo xl vcpu-list
+Name                                ID  VCPU   CPU State   Time(s) Affinity (Hard / Soft)
+Domain-0                             0     0   14   r--      37.9  12-19 / all
+Domain-0                             0     1   18   -b-      13.8  12-19 / all
+Domain-0                             0     2   19   r--      33.7  12-19 / all
+Domain-0                             0     3   17   -b-      29.8  12-19 / all
+Domain-0                             0     4   12   -b-      41.6  12-19 / all
+Domain-0                             0     5   16   -b-      24.1  12-19 / all
+Domain-0                             0     6   13   -b-      36.5  12-19 / all
+Domain-0                             0     7   15   -b-      14.6  12-19 / all
+Domain-0                             0     8    -   --p      20.1  12-19 / all
+Domain-0                             0     9    -   --p       4.3  12-19 / all
+Domain-0                             0    10    -   --p      17.7  12-19 / all
+Domain-0                             0    11    -   --p      12.6  12-19 / all
+Domain-0                             0    12    -   --p      25.9  12-19 / all
+Domain-0                             0    13    -   --p      24.5  12-19 / all
+Domain-0                             0    14    -   --p      21.8  12-19 / all
+Domain-0                             0    15    -   --p      25.1  12-19 / all
+Domain-0                             0    16    -   --p      32.5  12-19 / all
+Domain-0                             0    17    -   --p      28.9  12-19 / all
+Domain-0                             0    18    -   --p      26.3  12-19 / all
+Domain-0                             0    19    -   --p      27.1  12-19 / all
+win10                                2     0    0   -b-      25.8  0 / all
+win10                                2     1    2   -b-      24.7  2 / all
+win10                                2     2    4   -b-      25.6  4 / all
+win10                                2     3    6   -b-      25.9  6 / all
+```
+
+수정하려면
+```
+dom0 메모리는 여기서 설정
+sudoedit /etc/default/grub.d/xen.cfg
+sudo update-grub
+
+게스트 메모리 및 vcpu 개수는 여기서 설정
+sudo nano /etc/xen/win10.cfg  
 ```

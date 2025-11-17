@@ -1,0 +1,9 @@
+# 저장 경로: ~/.local/share/applications/win10-monitor.desktop
+[Desktop Entry]
+Type=Application
+Name=Win10 모니터 부팅 & USB 세팅
+Comment=랜선/모니터 안내 후 Xen VM 부팅 및 USB 자동 연결
+Exec=gnome-terminal -- bash -lc '~/bin/win10-monitor-setup.sh'
+Icon=computer
+Terminal=false
+Categories=Utility;

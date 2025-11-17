@@ -52,7 +52,7 @@ typedef struct {
     vmi_instance_t vmi;
     addr_t  dtb;
 
-    int      triggered;
+    int      hit_count;
 } Ctx;
 
 static Ctx G;
@@ -353,22 +353,25 @@ static void collect_and_print_snapshot(vmi_instance_t vmi, vmi_event_t* event){
 
 static event_response_t on_seed_write(vmi_instance_t vmi, vmi_event_t *event){
     const addr_t gla = event->mem_event.gla;
+    // Exact 1-byte window by design: [va, va+1)
     if(!(gla >= G.va_lo && gla < G.va_hi)) return 0;
 
-    if(!G.triggered){
-        G.triggered = 1;
-
-        // ★ 같은 GFN W-트랩 즉시 해제(프리즈 방지)
-        vmi_set_mem_event(vmi, event->mem_event.gfn, VMI_MEMACCESS_N, 0);
+    // Count up to two writes at the target address
+    if(G.hit_count < 2){
+        G.hit_count++;
 
         fprintf(stderr,
-            "[W] WRITE trap @0x%llx (vcpu=%u, gfn=0x%llx)\n",
-            (unsigned long long)gla, event->vcpu_id,
+            "[W] WRITE trap #%d @0x%llx (vcpu=%u, gfn=0x%llx)\n",
+            G.hit_count, (unsigned long long)gla, event->vcpu_id,
             (unsigned long long)event->mem_event.gfn);
 
         collect_and_print_snapshot(vmi, event);
 
-        g_stop = 1;
+        // After the second hit, disarm this page and stop.
+        if(G.hit_count >= 2){
+            vmi_set_mem_event(vmi, event->mem_event.gfn, VMI_MEMACCESS_N, 0);
+            g_stop = 1;
+        }
     }
     return 0;
 }
@@ -404,7 +407,7 @@ static int arm_write_watch(vmi_instance_t vmi, vmi_event_t* ev_out){
 
 static void usage(const char* p){
     fprintf(stderr,
-        "Usage: sudo %s <domain> <pid> <va_start-va_end> [watch_timeout_ms]\n", p);
+        "Usage: sudo %s <domain> <pid> <va> [watch_timeout_ms]\n", p);
 }
 
 int main(int argc, char** argv){
@@ -414,17 +417,16 @@ int main(int argc, char** argv){
     snprintf(G.domain,sizeof(G.domain),"%s",argv[1]);
     G.pid = strtoull(argv[2],NULL,10);
 
-    char* dash = strchr(argv[3],'-'); if(!dash){ fprintf(stderr,"[!] invalid range\n"); return 1; }
-    *dash=0; G.va_lo = strtoull(argv[3],NULL,0); G.va_hi = strtoull(dash+1,NULL,0);
-    if(G.va_lo>=G.va_hi){ fprintf(stderr,"[!] invalid range values\n"); return 1; }
+    G.va_lo = strtoull(argv[3],NULL,0);
+    G.va_hi = G.va_lo + 1;
 
     G.watch_timeout_ms = (argc>=5)? strtoull(argv[4],NULL,0) : 5000;
 
-    fprintf(stderr,"=== seed_once_watch_v3 ===\n");
-    fprintf(stderr,"[*] domain=%s pid=%llu range=[0x%llx..0x%llx) timeout=%llu ms\n",
+    fprintf(stderr,"=== seed_once_watch_v5 (two-hit) ===\n");
+    fprintf(stderr,"[*] domain=%s pid=%llu va=0x%llx timeout=%llu ms\n",
             G.domain,
             (unsigned long long)G.pid,
-            (unsigned long long)G.va_lo, (unsigned long long)G.va_hi,
+            (unsigned long long)G.va_lo,
             (unsigned long long)G.watch_timeout_ms);
 
     signal(SIGINT,on_sigint);
@@ -468,6 +470,6 @@ int main(int argc, char** argv){
 
     vmi_clear_event(G.vmi, &write_ev, NULL);
     vmi_destroy(G.vmi);
-    fprintf(stderr,"[*] Done. %s\n", G.triggered ? "(seed write trapped)" : "(no write)");
+    fprintf(stderr,"[*] Done. %s (hits=%d)\n", G.hit_count>0 ? "seed write trapped" : "no write", G.hit_count);
     return 0;
 }

@@ -6,7 +6,6 @@
 ### 만들 코드
 
 CE로 값을 변화시켜가며 확실한 시드 10개 확보
-va를 pfn으로 번역해서 사용
 해당 페이지에 pfn writewatch를 건 상태에서 값을 변화시켜 이벤트가 찍히는지 확인
 store 부터 다음 store까지의 명령어 정보를 다 마이크로 트레이스
 게임 exe가 명령내린 rip만 필터링
@@ -271,3 +270,6 @@ $ sudo env \
   | tee /home/kkongnyang2/watch_dump/logs/microtrace_wide.jsonl
 ```
 결과가 계속 안나오고 코어 수정하기가 너무 힘들어서 포기
+
+
+* 여기서 작성한 코드는 plugins에 저장되어 있음.
