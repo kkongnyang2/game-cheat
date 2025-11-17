@@ -9,14 +9,17 @@
       
       
       
-        <link rel="prev" href="../19-ow-memory/">
+        <link rel="prev" href="../19-drakvuf-event/">
       
       
-        <link rel="next" href="../20-drakvuf-microtrace/">
+        <link rel="next" href="../20-drakvuf-trace/">
+      
+      
+        
       
       
       <link rel="icon" href="../logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
@@ -24,10 +27,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -52,7 +55,6 @@
     
       
 
-    
     
     
   </head>
@@ -358,13 +360,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="../16-pyvmi-rw/" class="md-tabs__link">
+      <a href="../16-ow-memory/" class="md-tabs__link">
         
   
   
     
   
-  16 pyvmi rw
+  16 ow memory
 
       </a>
     </li>
@@ -377,13 +379,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="../17-pyvmi-dump/" class="md-tabs__link">
+      <a href="../17-pyvmi-rw/" class="md-tabs__link">
         
   
   
     
   
-  17 pyvmi dump
+  17 pyvmi rw
 
       </a>
     </li>
@@ -396,13 +398,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="../18-drakvuf-heap/" class="md-tabs__link">
+      <a href="../18-pyvmi-dump/" class="md-tabs__link">
         
   
   
     
   
-  18 drakvuf heap
+  18 pyvmi dump
 
       </a>
     </li>
@@ -415,13 +417,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="../19-ow-memory/" class="md-tabs__link">
+      <a href="../19-drakvuf-event/" class="md-tabs__link">
         
   
   
     
   
-  19 ow memory
+  19 drakvuf event
 
       </a>
     </li>
@@ -455,13 +457,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="../20-drakvuf-microtrace/" class="md-tabs__link">
+      <a href="../20-drakvuf-trace/" class="md-tabs__link">
         
   
   
     
   
-  20 drakvuf microtrace
+  20 drakvuf trace
 
       </a>
     </li>
@@ -474,13 +476,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="../21-libvmi-microtrace/" class="md-tabs__link">
+      <a href="../21-libvmi-capture/" class="md-tabs__link">
         
   
   
     
   
-  21 libvmi microtrace
+  21 libvmi capture
 
       </a>
     </li>
@@ -493,13 +495,70 @@
   
   
     <li class="md-tabs__item">
-      <a href="../22-main/" class="md-tabs__link">
+      <a href="../22-libvmi-trace/" class="md-tabs__link">
         
   
   
     
   
-  22 main
+  22 libvmi trace
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../23-CE-trace/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  23 CE trace
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../27-report/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Overwatch.exe 어셈블리 트레이스 분석
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../28-main/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  28 main
 
       </a>
     </li>
@@ -639,44 +698,6 @@
   
 
       
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../log/" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Log
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../memo/" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Memo
-
-      </a>
-    </li>
-  
-
-      
     </ul>
   </div>
 </nav>
@@ -721,9 +742,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Home
+  
+
     
   </span>
+  
   
 
       </a>
@@ -743,9 +769,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     1 ow
+  
+
     
   </span>
+  
   
 
       </a>
@@ -765,9 +796,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     10 kvmi v7
+  
+
     
   </span>
+  
   
 
       </a>
@@ -787,9 +823,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     11 xen 22.04
+  
+
     
   </span>
+  
   
 
       </a>
@@ -809,9 +850,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     12 xen backlist
+  
+
     
   </span>
+  
   
 
       </a>
@@ -831,9 +877,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     13 xen pciback
+  
+
     
   </span>
+  
   
 
       </a>
@@ -853,9 +904,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     14 summary
+  
+
     
   </span>
+  
   
 
       </a>
@@ -875,9 +931,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     15 CE tutorial
+  
+
     
   </span>
+  
   
 
       </a>
@@ -892,14 +953,19 @@
   
   
     <li class="md-nav__item">
-      <a href="../16-pyvmi-rw/" class="md-nav__link">
+      <a href="../16-ow-memory/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    16 pyvmi rw
+    
+  
+    16 ow memory
+  
+
     
   </span>
+  
   
 
       </a>
@@ -914,14 +980,19 @@
   
   
     <li class="md-nav__item">
-      <a href="../17-pyvmi-dump/" class="md-nav__link">
+      <a href="../17-pyvmi-rw/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    17 pyvmi dump
+    
+  
+    17 pyvmi rw
+  
+
     
   </span>
+  
   
 
       </a>
@@ -936,14 +1007,19 @@
   
   
     <li class="md-nav__item">
-      <a href="../18-drakvuf-heap/" class="md-nav__link">
+      <a href="../18-pyvmi-dump/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    18 drakvuf heap
+    
+  
+    18 pyvmi dump
+  
+
     
   </span>
+  
   
 
       </a>
@@ -958,14 +1034,19 @@
   
   
     <li class="md-nav__item">
-      <a href="../19-ow-memory/" class="md-nav__link">
+      <a href="../19-drakvuf-event/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    19 ow memory
+    
+  
+    19 drakvuf event
+  
+
     
   </span>
+  
   
 
       </a>
@@ -992,9 +1073,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     2 cheats
+  
+
     
   </span>
+  
   
 
           <span class="md-nav__icon md-icon"></span>
@@ -1005,9 +1091,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     2 cheats
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1028,7 +1119,9 @@
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      핵 종류를 알아보자
+      
+        핵 종류를 알아보자
+      
     </span>
   </a>
   
@@ -1038,7 +1131,9 @@
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 가능한 시나리오
+      
+        &gt; 가능한 시나리오
+      
     </span>
   </a>
   
@@ -1047,7 +1142,9 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 메모리 인젝션
+      
+        &gt; 메모리 인젝션
+      
     </span>
   </a>
   
@@ -1056,7 +1153,9 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 장치 이용 핵 시나리오
+      
+        &gt; 장치 이용 핵 시나리오
+      
     </span>
   </a>
   
@@ -1065,7 +1164,9 @@
           <li class="md-nav__item">
   <a href="#-dma" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 메모리 가져오기 - DMA 카드
+      
+        &gt; 메모리 가져오기 - DMA 카드
+      
     </span>
   </a>
   
@@ -1074,7 +1175,9 @@
           <li class="md-nav__item">
   <a href="#-" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 화면 정보 가져오기 - 캡처 카드
+      
+        &gt; 화면 정보 가져오기 - 캡처 카드
+      
     </span>
   </a>
   
@@ -1083,7 +1186,9 @@
           <li class="md-nav__item">
   <a href="#-yolo-v8-vit" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 화면 정보 파싱하기 - YOLO-v8 / ViT
+      
+        &gt; 화면 정보 파싱하기 - YOLO-v8 / ViT
+      
     </span>
   </a>
   
@@ -1092,7 +1197,9 @@
           <li class="md-nav__item">
   <a href="#-hid-cronus-zen-xim" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 값 주입하기 - HID Cronus Zen / XIM
+      
+        &gt; 값 주입하기 - HID Cronus Zen / XIM
+      
     </span>
   </a>
   
@@ -1101,7 +1208,9 @@
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 가상머신 이용 핵 시나리오
+      
+        &gt; 가상머신 이용 핵 시나리오
+      
     </span>
   </a>
   
@@ -1110,7 +1219,9 @@
           <li class="md-nav__item">
   <a href="#vmi" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; VMI 치트의 안티치트
+      
+        &gt; VMI 치트의 안티치트
+      
     </span>
   </a>
   
@@ -1119,7 +1230,9 @@
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 핵심 참고 자료
+      
+        &gt; 핵심 참고 자료
+      
     </span>
   </a>
   
@@ -1128,7 +1241,9 @@
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 연구용 최소 재현 환경
+      
+        &gt; 연구용 최소 재현 환경
+      
     </span>
   </a>
   
@@ -1137,7 +1252,9 @@
           <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 설치 모듈
+      
+        &gt; 설치 모듈
+      
     </span>
   </a>
   
@@ -1146,7 +1263,9 @@
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 메모리 위치 찾기
+      
+        &gt; 메모리 위치 찾기
+      
     </span>
   </a>
   
@@ -1155,7 +1274,9 @@
           <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 위치 찾으면
+      
+        &gt; 위치 찾으면
+      
     </span>
   </a>
   
@@ -1164,7 +1285,9 @@
           <li class="md-nav__item">
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 치트 스레드 구현
+      
+        &gt; 치트 스레드 구현
+      
     </span>
   </a>
   
@@ -1173,7 +1296,9 @@
           <li class="md-nav__item">
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 월핵
+      
+        &gt; 월핵
+      
     </span>
   </a>
   
@@ -1182,7 +1307,9 @@
           <li class="md-nav__item">
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 트리거봇
+      
+        &gt; 트리거봇
+      
     </span>
   </a>
   
@@ -1208,14 +1335,19 @@
   
   
     <li class="md-nav__item">
-      <a href="../20-drakvuf-microtrace/" class="md-nav__link">
+      <a href="../20-drakvuf-trace/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    20 drakvuf microtrace
+    
+  
+    20 drakvuf trace
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1230,14 +1362,19 @@
   
   
     <li class="md-nav__item">
-      <a href="../21-libvmi-microtrace/" class="md-nav__link">
+      <a href="../21-libvmi-capture/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    21 libvmi microtrace
+    
+  
+    21 libvmi capture
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1252,14 +1389,100 @@
   
   
     <li class="md-nav__item">
-      <a href="../22-main/" class="md-nav__link">
+      <a href="../22-libvmi-trace/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    22 main
+    
+  
+    22 libvmi trace
+  
+
     
   </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-CE-trace/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23 CE trace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overwatch.exe 어셈블리 트레이스 분석
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28 main
+  
+
+    
+  </span>
+  
   
 
       </a>
@@ -1279,9 +1502,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     3 display
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1301,9 +1529,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     4 igpu
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1323,9 +1556,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     5 dgpu
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1345,9 +1583,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     6 two gpu
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1367,9 +1610,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     7 vmi
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1389,9 +1637,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     8 kvm legacy
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1411,53 +1664,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     9 kvmi v12
+  
+
     
   </span>
   
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../log/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Log
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../memo/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Memo
-    
-  </span>
   
 
       </a>
@@ -1492,7 +1706,9 @@
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      핵 종류를 알아보자
+      
+        핵 종류를 알아보자
+      
     </span>
   </a>
   
@@ -1502,7 +1718,9 @@
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 가능한 시나리오
+      
+        &gt; 가능한 시나리오
+      
     </span>
   </a>
   
@@ -1511,7 +1729,9 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 메모리 인젝션
+      
+        &gt; 메모리 인젝션
+      
     </span>
   </a>
   
@@ -1520,7 +1740,9 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 장치 이용 핵 시나리오
+      
+        &gt; 장치 이용 핵 시나리오
+      
     </span>
   </a>
   
@@ -1529,7 +1751,9 @@
           <li class="md-nav__item">
   <a href="#-dma" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 메모리 가져오기 - DMA 카드
+      
+        &gt; 메모리 가져오기 - DMA 카드
+      
     </span>
   </a>
   
@@ -1538,7 +1762,9 @@
           <li class="md-nav__item">
   <a href="#-" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 화면 정보 가져오기 - 캡처 카드
+      
+        &gt; 화면 정보 가져오기 - 캡처 카드
+      
     </span>
   </a>
   
@@ -1547,7 +1773,9 @@
           <li class="md-nav__item">
   <a href="#-yolo-v8-vit" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 화면 정보 파싱하기 - YOLO-v8 / ViT
+      
+        &gt; 화면 정보 파싱하기 - YOLO-v8 / ViT
+      
     </span>
   </a>
   
@@ -1556,7 +1784,9 @@
           <li class="md-nav__item">
   <a href="#-hid-cronus-zen-xim" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 값 주입하기 - HID Cronus Zen / XIM
+      
+        &gt; 값 주입하기 - HID Cronus Zen / XIM
+      
     </span>
   </a>
   
@@ -1565,7 +1795,9 @@
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 가상머신 이용 핵 시나리오
+      
+        &gt; 가상머신 이용 핵 시나리오
+      
     </span>
   </a>
   
@@ -1574,7 +1806,9 @@
           <li class="md-nav__item">
   <a href="#vmi" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; VMI 치트의 안티치트
+      
+        &gt; VMI 치트의 안티치트
+      
     </span>
   </a>
   
@@ -1583,7 +1817,9 @@
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 핵심 참고 자료
+      
+        &gt; 핵심 참고 자료
+      
     </span>
   </a>
   
@@ -1592,7 +1828,9 @@
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 연구용 최소 재현 환경
+      
+        &gt; 연구용 최소 재현 환경
+      
     </span>
   </a>
   
@@ -1601,7 +1839,9 @@
           <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 설치 모듈
+      
+        &gt; 설치 모듈
+      
     </span>
   </a>
   
@@ -1610,7 +1850,9 @@
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 메모리 위치 찾기
+      
+        &gt; 메모리 위치 찾기
+      
     </span>
   </a>
   
@@ -1619,7 +1861,9 @@
           <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 위치 찾으면
+      
+        &gt; 위치 찾으면
+      
     </span>
   </a>
   
@@ -1628,7 +1872,9 @@
           <li class="md-nav__item">
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 치트 스레드 구현
+      
+        &gt; 치트 스레드 구현
+      
     </span>
   </a>
   
@@ -1637,7 +1883,9 @@
           <li class="md-nav__item">
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 월핵
+      
+        &gt; 월핵
+      
     </span>
   </a>
   
@@ -1646,7 +1894,9 @@
           <li class="md-nav__item">
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
-      &gt; 트리거봇
+      
+        &gt; 트리거봇
+      
     </span>
   </a>
   
@@ -1667,6 +1917,7 @@
           
           
             <div class="md-content" data-md-component="content">
+              
               <article class="md-content__inner md-typeset">
                 
                   
@@ -1869,10 +2120,11 @@ Or_X − Axis.z  Or_Y − Axis.z  Or_Z − Axis.z  T.z<br />
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "content.code.copy", "header.autohide"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "content.code.copy", "header.autohide"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
     
   </body>

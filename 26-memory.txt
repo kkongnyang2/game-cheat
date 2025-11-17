@@ -1,0 +1,138 @@
+rsp(pink)
+
+B821CFF410 7B5E10A9E01
+B821CFF408 7B48C6C0041
+
+B821CFF3E8 0 0 0
+B821CFF3E0 1ED33EF6298 0 0 1ED33EF5D10
+B821CFF3D8
+B821CFF3D0
+B821CFF3C8
+B821CFF3C0
+B821CFF3B8
+B821CFF3B0 B821CFF408
+B821CFF3A8 1EC3B2542D8
+B821CFF3A0 F0FF000100002C04
+B821CFF398 1EC3B2542D8
+B821CFF390 1EDB0433008
+B821CFF388
+B821CFF380 1EDB0433040
+B821CFF378 211D72BA9B83
+B821CFF370
+B821CFF368 1ED33EF5D10
+B821CFF360 80000002(67:64) 00000000(63:60) +1
+B821CFF358 B821CFF368
+B821CFF350 F0(57) FF(56) FFFF(55:54) 00002C04(53:50)
+B821CFF348 B821CFF490
+B821CFF340 F0FF000100002C04
+B821CFF338
+B821CFF330
+B821CFF328
+B821CFF320 1EC3B2513E0
+B821CFF318 B821CFF3E0
+B821CFF310 1EC3B250DC0
+
+rbx(darkturquoise)
+1EDB0433018 7B5E10A9E01
+1EDB0433010 7B48C6C0041
+1EDB0433008
+1EDB0433000 F0FF000100002C04
+1EDB0432FF8
+1EDB0432FF0
+1EDB0432FE8
+
+1EDACFC4D18 1EC46D2BF1C
+
+합쳐서만든주소(darkkhaki)
+1ED79AC0AA0 3E3
+1ED79AC5E38 F0FF000100002C04
+1ED79ACBF18 1ED33EF5D10
+
+초반에 플래그 넣어놨던곳
+1ED33EF62A8 0
+
+새로운 핵심 drakorange
+1ED33EF5D18 0000
+1ED33EF5D10 1EDACFC4D18
+
+r12(darkkhaki)
+1EC3B2513F8 800
+1EC3B2513F0 1ED79ACA000
+1EC3B2513E8 1ED79AC2000
+1EC3B2513E0 1ED79AC0000
+
+
+
+최종 저장위치는 1ED79ACBF18 -> 1ED33EF5D10 -> 1EDACFC4D18 +28
+키 값은 1ED79ACBF18 -> 1ED33EF5D10 -> 1EDACFC4D18 -> 1EC46D2BF1C -> 91E
+
+    Overwatch.exe+20A22D3              - mov r8,[rcx]            # 1EC3B250DC0(최초의 r12)+620에서 값 꺼내기. r8=1ED79AC0000
+    Overwatch.exe+20DDBC8           - mov r8,[rbx-08]             # 1EDB0432FE8(최초의 rbx)+4칸-1칸에서 값 r8=F0FF000100002C04 꺼내기
+    난독 F0FF000100002C04부터 2A8로 완성.
+    Overwatch.exe+20A2338           - mov eax,[r8+rdx*4]      # 드디어 본론. 1ED79AC0000에 2A8*4를 오프셋으로 해서 값 꺼내기. 3E3
+    Overwatch.exe+20A235A           - mov rax,[rsi+10]            # 1EC3B250DC0+620+2칸에서 꺼낸 값 1ED79ACA000
+    Overwatch.exe+20A235E           - lea rdx,[rax+rcx*8]         # 1ED79ACA000에 3E3*8을 오프셋으로 하는 주소 = 1ED79ACBF18
+        Overwatch.exe+52F885           - mov rax,[r12]            # 그 주소에서 꺼낸 값 1ED33EF5D10
+        Overwatch.exe+52F890           - mov [rcx+rdx*8],rax              # 1ED33EF5D10를 rsp쪽 합쳐서 만든 주소 B821CFF368에 넣기
+    Overwatch.exe+20A2487              - mov [rdi],rax               # B821CFF3E0에 1ED33EF5D10 넣기
+Overwatch.exe+20DDBFD              - mov rdx,[rax]                       # 1ED33EF5D10에서 1EDACFC4D18
+
+
+
+델타값은 1EDB0433018 -> 7B5E10A9E01 shift2 -> 0
+Overwatch.exe+20DDCA5           - add rbx,20 { 32 }           # 원래 rbx=1EDB0432FE8이었는데 +4칸
+Overwatch.exe+20DDC05           - mov rcx,[rbx+10]                    # 1EDB0433018에서 7B5E10A9E01
+
+
+
+
+rsp+10-> +2 -> 이 값이 0인지 체크하고 rsp+10에 저장.
+
+0이니 go
+
+rsp+11 -> 이 값이 0인지 체크하고 rsp+10에 저장. rsp+11에는 0 저장.
+
+0이니 dontgo
+
+rbx+3 -> 이 값이 rdi(마지막 엔트리) 랑 같은지 체크.
+현재는 1EDB0433000니 1EDB0433040까지 두번 더할것. 
+
+안같으니 go
+
+rbx -> 이 값이 r15랑 같은지 체크.
+
+같으니 dontgo
+
+D3D12SDKPath+F638 -> 이 값을 rsp-12 이랑 xor 난독화하고 rsp-3에 저장.
+
+rsp-5.5에 80000002 저장.
+
+rsp-6에 0 저장.
+
+rsp-7에 rsp-5 저장.
+
+r12+124 -> 이 값이 0인지 체크.
+
+0 아니니 dontgo
+
+r12+127 -> 이 값을 베이스로 rbx+3 -> 이 값을 난독화한걸 병합해 만든 주소에서 값 뽑아내서 음수인지 체크.
+
+양수이니 dontgo
+
+r12+125 -> 이 값을 베이스로 이전 값을 병합해 만든 주소에서 값 뽑아내서 rbx-1 -> 이 값과 같은지 체크.
+
+같으니 go
+
+r12+126 -> 이 값을 베이스로 이전 값을 병합해 만든 주소가 0인지 체크.
+
+0아니니 dontgo
+
+rsp-6 -> 이 값+1 
+
+rsp-5.5 -> 이 값*2/2
+
+두개 값 비교해서 작거나 같으면 점프
+
+r12+126
+
+

@@ -9,25 +9,28 @@
       
       
       
-        <link rel="prev" href="../17-pyvmi-dump/">
+        <link rel="prev" href="../2-cheats/">
       
       
-        <link rel="next" href="../19-ow-memory/">
+        <link rel="next" href="../21-libvmi-capture/">
+      
+      
+        
       
       
       <link rel="icon" href="../logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
-        <title>18 drakvuf heap - Game-Cheat</title>
+        <title>20 drakvuf trace - Game-Cheat</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -54,7 +57,6 @@
 
     
     
-    
   </head>
   
   
@@ -74,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#drakvuf" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              18 drakvuf heap
+              20 drakvuf trace
             
           </span>
         </div>
@@ -358,13 +360,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="../16-pyvmi-rw/" class="md-tabs__link">
+      <a href="../16-ow-memory/" class="md-tabs__link">
         
   
   
     
   
-  16 pyvmi rw
+  16 ow memory
 
       </a>
     </li>
@@ -377,34 +379,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="../17-pyvmi-dump/" class="md-tabs__link">
+      <a href="../17-pyvmi-rw/" class="md-tabs__link">
         
   
   
     
   
-  17 pyvmi dump
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-    
-  
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
-        
-  
-  
-    
-  
-  18 drakvuf heap
+  17 pyvmi rw
 
       </a>
     </li>
@@ -417,13 +398,32 @@
   
   
     <li class="md-tabs__item">
-      <a href="../19-ow-memory/" class="md-tabs__link">
+      <a href="../18-pyvmi-dump/" class="md-tabs__link">
         
   
   
     
   
-  19 ow memory
+  18 pyvmi dump
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../19-drakvuf-event/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  19 drakvuf event
 
       </a>
     </li>
@@ -453,15 +453,17 @@
   
   
   
+    
   
-    <li class="md-tabs__item">
-      <a href="../20-drakvuf-microtrace/" class="md-tabs__link">
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
         
   
   
     
   
-  20 drakvuf microtrace
+  20 drakvuf trace
 
       </a>
     </li>
@@ -474,13 +476,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="../21-libvmi-microtrace/" class="md-tabs__link">
+      <a href="../21-libvmi-capture/" class="md-tabs__link">
         
   
   
     
   
-  21 libvmi microtrace
+  21 libvmi capture
 
       </a>
     </li>
@@ -493,13 +495,70 @@
   
   
     <li class="md-tabs__item">
-      <a href="../22-main/" class="md-tabs__link">
+      <a href="../22-libvmi-trace/" class="md-tabs__link">
         
   
   
     
   
-  22 main
+  22 libvmi trace
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../23-CE-trace/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  23 CE trace
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../27-report/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Overwatch.exe 어셈블리 트레이스 분석
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../28-main/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  28 main
 
       </a>
     </li>
@@ -639,44 +698,6 @@
   
 
       
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../log/" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Log
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../memo/" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Memo
-
-      </a>
-    </li>
-  
-
-      
     </ul>
   </div>
 </nav>
@@ -721,9 +742,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Home
+  
+
     
   </span>
+  
   
 
       </a>
@@ -743,9 +769,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     1 ow
+  
+
     
   </span>
+  
   
 
       </a>
@@ -765,9 +796,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     10 kvmi v7
+  
+
     
   </span>
+  
   
 
       </a>
@@ -787,9 +823,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     11 xen 22.04
+  
+
     
   </span>
+  
   
 
       </a>
@@ -809,9 +850,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     12 xen backlist
+  
+
     
   </span>
+  
   
 
       </a>
@@ -831,9 +877,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     13 xen pciback
+  
+
     
   </span>
+  
   
 
       </a>
@@ -853,9 +904,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     14 summary
+  
+
     
   </span>
+  
   
 
       </a>
@@ -875,9 +931,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     15 CE tutorial
+  
+
     
   </span>
+  
   
 
       </a>
@@ -892,14 +953,19 @@
   
   
     <li class="md-nav__item">
-      <a href="../16-pyvmi-rw/" class="md-nav__link">
+      <a href="../16-ow-memory/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    16 pyvmi rw
+    
+  
+    16 ow memory
+  
+
     
   </span>
+  
   
 
       </a>
@@ -914,14 +980,100 @@
   
   
     <li class="md-nav__item">
-      <a href="../17-pyvmi-dump/" class="md-nav__link">
+      <a href="../17-pyvmi-rw/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    17 pyvmi dump
+    
+  
+    17 pyvmi rw
+  
+
     
   </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-pyvmi-dump/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18 pyvmi dump
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-drakvuf-event/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19 drakvuf event
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-cheats/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 cheats
+  
+
+    
+  </span>
+  
   
 
       </a>
@@ -948,9 +1100,14 @@
   
   
   <span class="md-ellipsis">
-    18 drakvuf heap
+    
+  
+    20 drakvuf trace
+  
+
     
   </span>
+  
   
 
           <span class="md-nav__icon md-icon"></span>
@@ -961,9 +1118,14 @@
   
   
   <span class="md-ellipsis">
-    18 drakvuf heap
+    
+  
+    20 drakvuf trace
+  
+
     
   </span>
+  
   
 
       </a>
@@ -982,55 +1144,23 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#drakvuf" class="md-nav__link">
     <span class="md-ellipsis">
-      실시간 할당 후보군을 관찰해보자
+      
+        drakvuf로 마이크로트레이스를 시도해보자
+      
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="실시간 할당 후보군을 관찰해보자">
+    <nav class="md-nav" aria-label="drakvuf로 마이크로트레이스를 시도해보자">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#xen" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      xen 페이지 잡기
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#drakvuf" class="md-nav__link">
-    <span class="md-ellipsis">
-      drakvuf 설치
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#drakvuf_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      drakvuf 커스텀 플러그인 제작
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pid_va_writewatch" class="md-nav__link">
-    <span class="md-ellipsis">
-      pid_va_writewatch
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pfn_writewatch" class="md-nav__link">
-    <span class="md-ellipsis">
-      pfn_writewatch
+      
+        만들 코드
+      
     </span>
   </a>
   
@@ -1039,7 +1169,31 @@
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      상위 클러스터 감시
+      
+        코어 수정
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#micro_trace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        micro_trace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실행
+      
     </span>
   </a>
   
@@ -1065,14 +1219,19 @@
   
   
     <li class="md-nav__item">
-      <a href="../19-ow-memory/" class="md-nav__link">
+      <a href="../21-libvmi-capture/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    19 ow memory
+    
+  
+    21 libvmi capture
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1087,14 +1246,19 @@
   
   
     <li class="md-nav__item">
-      <a href="../2-cheats/" class="md-nav__link">
+      <a href="../22-libvmi-trace/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    2 cheats
+    
+  
+    22 libvmi trace
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1109,14 +1273,19 @@
   
   
     <li class="md-nav__item">
-      <a href="../20-drakvuf-microtrace/" class="md-nav__link">
+      <a href="../23-CE-trace/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    20 drakvuf microtrace
+    
+  
+    23 CE trace
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1131,14 +1300,19 @@
   
   
     <li class="md-nav__item">
-      <a href="../21-libvmi-microtrace/" class="md-nav__link">
+      <a href="../27-report/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    21 libvmi microtrace
+    
+  
+    Overwatch.exe 어셈블리 트레이스 분석
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1153,14 +1327,19 @@
   
   
     <li class="md-nav__item">
-      <a href="../22-main/" class="md-nav__link">
+      <a href="../28-main/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    22 main
+    
+  
+    28 main
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1180,9 +1359,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     3 display
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1202,9 +1386,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     4 igpu
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1224,9 +1413,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     5 dgpu
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1246,9 +1440,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     6 two gpu
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1268,9 +1467,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     7 vmi
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1290,9 +1494,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     8 kvm legacy
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1312,53 +1521,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     9 kvmi v12
+  
+
     
   </span>
   
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../log/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Log
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../memo/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Memo
-    
-  </span>
   
 
       </a>
@@ -1391,55 +1561,23 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#drakvuf" class="md-nav__link">
     <span class="md-ellipsis">
-      실시간 할당 후보군을 관찰해보자
+      
+        drakvuf로 마이크로트레이스를 시도해보자
+      
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="실시간 할당 후보군을 관찰해보자">
+    <nav class="md-nav" aria-label="drakvuf로 마이크로트레이스를 시도해보자">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#xen" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      xen 페이지 잡기
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#drakvuf" class="md-nav__link">
-    <span class="md-ellipsis">
-      drakvuf 설치
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#drakvuf_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      drakvuf 커스텀 플러그인 제작
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pid_va_writewatch" class="md-nav__link">
-    <span class="md-ellipsis">
-      pid_va_writewatch
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pfn_writewatch" class="md-nav__link">
-    <span class="md-ellipsis">
-      pfn_writewatch
+      
+        만들 코드
+      
     </span>
   </a>
   
@@ -1448,7 +1586,31 @@
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      상위 클러스터 감시
+      
+        코어 수정
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#micro_trace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        micro_trace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실행
+      
     </span>
   </a>
   
@@ -1469,90 +1631,249 @@
           
           
             <div class="md-content" data-md-component="content">
+              
               <article class="md-content__inner md-typeset">
                 
                   
 
 
 
-  <h1>18 drakvuf heap</h1>
+  <h1>20 drakvuf trace</h1>
 
-<h2 id="_1">실시간 할당 후보군을 관찰해보자</h2>
-<p>작성자: kkongnyang2 작성일: 2025-09-16</p>
+<h2 id="drakvuf">drakvuf로 마이크로트레이스를 시도해보자</h2>
+<p>작성자: kkongnyang2 작성일: 2025-08-27</p>
 <hr />
-<h3 id="xen">xen 페이지 잡기</h3>
-<p>게스트 코드  ──(HP 갱신)──► [가상주소 GVA] → 페이지 테이블 → [게스트물리 GPA]<br />
-                                           │<br />
-                              하이퍼바이저의 2단 변환(EPT/NPT)<br />
-                                           ↓<br />
-             EPT 권한 비트(R/W/X)로 페이지를 의도적으로 막아둠<br />
-                                           ↓<br />
-                 접근 발생 → EPT violation → VM-exit(호스트로)<br />
-                                           ↓<br />
-   VM-exit 정보: 접근종류(R/W/X), GLA(선택적), GPA, RIP, CR3(DTB) 등<br />
-                                           ↓<br />
-  분석기(예: LibVMI/Drakvuf)가 RIP 주변 명령 디코드 → 쓰기 크기/대상 파악<br />
-                                           ↓<br />
-            (옵션) 일시 허용+단일 스텝 후 재보호(re-arm)로 계속 추적</p>
-<p>실시간 vmi 환경에서 할당되는 페이지를 훅킹해 VM-exit 트랩으로 감시</p>
-<h3 id="drakvuf">drakvuf 설치</h3>
-<p>drakvuf 설치<br />
-<div class="highlight"><pre><span></span><code>ubuntu on xen으로 들어가서
-$ sudo apt install meson ninja-build clang llvm lld libglib2.0-dev libjson-c-dev
-$ git clone --recursive https://github.com/tklengyel/drakvuf
-$ cd drakvuf
-$ meson setup build --native-file llvm.ini
+<h3 id="_1">만들 코드</h3>
+<p>CE로 값을 변화시켜가며 확실한 시드 10개 확보<br />
+해당 페이지에 pfn writewatch를 건 상태에서 값을 변화시켜 이벤트가 찍히는지 확인<br />
+store 부터 다음 store까지의 명령어 정보를 다 마이크로 트레이스<br />
+게임 exe가 명령내린 rip만 필터링<br />
+mov [RAX+disp], reg/imm 이게 store 명령어인데 RAX(베이스) 계산하는 블록의 시작 주소가 복호화 루틴 후보<br />
+.rdata의 16바이트 셔플 마스크/곱셈 상수 XREF로 교차확인, 참조 함수 목록이랑 대조해 복호화→주소계산→store 패턴찾기<br />
+복호화 함수 진입/리턴을 잡는 커스텀 플러그인 추가</p>
+<h3 id="_2">코어 수정</h3>
+<p>재빌드<br />
+<div class="highlight"><pre><span></span><code>cd ~/drakvuf/src/libdrakvuf
+code .
+libdrakvuf.h의 313번째 줄(cplusplus 안에 drakvuf_trap_info 구조체 정의 후)에
+// 파일 상단 근처 적절한 곳에:
+typedef event_response_t (*drakvuf_step_observer_t)(drakvuf_t, drakvuf_trap_info_t*);
+// 등록/해제 API (간단 버전: 등록만 제공해도 충분)
+void drakvuf_register_step_observer(drakvuf_t, drakvuf_step_observer_t cb);
+private.h의 258번째 줄에(struck drakvuf 내부)
+GSList* step_observers;  // list of drakvuf_step_observer_t
+vmi.c 143번째 줄에
+/* === 추가: 옵저버 브로드캐스트 === */
+static inline event_response_t notify_step_observers(drakvuf_t d, drakvuf_trap_info_t* info)
+{
+    event_response_t resp = 0;
+    for (GSList* l = d-&gt;step_observers; l; l = l-&gt;next)
+    {
+        drakvuf_step_observer_t cb = (drakvuf_step_observer_t)l-&gt;data;
+        if (cb) resp |= cb(d, info);
+    }
+    return resp;
+}
+
+/* === 추가: 공개 등록 API 구현 === */
+void drakvuf_register_step_observer(drakvuf_t d, drakvuf_step_observer_t cb)
+{
+    if (!d || !cb) return;
+    d-&gt;step_observers = g_slist_prepend(d-&gt;step_observers, (gpointer)cb);
+}
+
+/* === 추가: 반복 싱글스텝용 콜백 ===
+   _post_mem_cb 가 “계속 스텝”이 필요하다고 판단하면
+   step_event[v]-&gt;callback 을 이 함수로 전환한다. */
+static event_response_t step_pump_cb(vmi_instance_t vmi, vmi_event_t* event)
+{
+    (void)vmi;
+    drakvuf_t drakvuf = (drakvuf_t)event-&gt;data;
+
+    drakvuf_trap_info_t info = {
+        .trap       = NULL,
+        .trap_pa    = 0,
+        .regs       = event-&gt;x86_regs,
+        .vcpu       = event-&gt;vcpu_id,
+        .timestamp  = g_get_real_time(),
+    };
+
+    /* 가능하면 현재 프로세스 컨텍스트 채움(필요 없으면 빈 값이어도 ok) */
+    memset(&amp;info.proc_data, 0, sizeof(info.proc_data));
+    memset(&amp;info.attached_proc_data, 0, sizeof(info.attached_proc_data));
+
+    event_response_t rsp = notify_step_observers(drakvuf, &amp;info);
+
+    /* altp2m view 복구 */
+    uint16_t view = drakvuf-&gt;altp2m_idx;
+    if (drakvuf-&gt;enable_cr3_based_interception &amp;&amp; !drakvuf-&gt;vcpu_monitor[event-&gt;vcpu_id])
+        view = drakvuf-&gt;altp2m_idrx;
+    event-&gt;slat_id = view;
+
+    if (rsp &amp; VMI_EVENT_RESPONSE_TOGGLE_SINGLESTEP)
+    {
+        /* 한 스텝 더 진행 */
+        drakvuf-&gt;step_event[event-&gt;vcpu_id]-&gt;callback = step_pump_cb;
+        drakvuf-&gt;step_event[event-&gt;vcpu_id]-&gt;data     = drakvuf;
+        return rsp | VMI_EVENT_RESPONSE_SLAT_ID;
+    }
+    else
+    {
+        /* 스텝 종료: 리셋 콜백으로 전환 + 싱글스텝 끔 */
+        drakvuf-&gt;step_event[event-&gt;vcpu_id]-&gt;callback = vmi_reset_trap;
+        drakvuf-&gt;step_event[event-&gt;vcpu_id]-&gt;data     = drakvuf;
+        return rsp | VMI_EVENT_RESPONSE_TOGGLE_SINGLESTEP | VMI_EVENT_RESPONSE_SLAT_ID;
+    }
+}
+347줄에 _post_mem_cb 갈아끼기
+/* ====== 기존 코드 ====== */
+/* Here we are in singlestep mode already and this is a singlstep cb */
+static event_response_t _post_mem_cb(drakvuf_t drakvuf, vmi_event_t* event)
+{
+    event_response_t rsp = 0;
+    struct memcb_pass* pass = (struct memcb_pass*)event-&gt;data;
+
+    flush_vmi(drakvuf);
+
+    struct wrapper* s = (struct wrapper*)g_hash_table_lookup(drakvuf-&gt;memaccess_lookup_gfn, GSIZE_TO_POINTER(pass-&gt;gfn));
+    if (!s)
+    {
+        PRINT_DEBUG(&quot;Post mem cb @ 0x%lx has been cleared\n&quot;, pass-&gt;gfn);
+        goto done;
+    }
+
+    PRINT_DEBUG(&quot;Post mem cb @ 0x%lx vCPU %u altp2m %u\n&quot;, pass-&gt;pa, event-&gt;vcpu_id, event-&gt;slat_id);
+
+    vmi_pid_t pid = (drakvuf-&gt;os == VMI_OS_WINDOWS) ? pass-&gt;attached_proc_data.pid : pass-&gt;proc_data.pid;
+    if (!drakvuf_is_ignored_process(drakvuf, pid))
+    {
+        drakvuf-&gt;in_callback = 1;
+        GSList* loop = s-&gt;traps;
+        while (loop)
+        {
+            drakvuf_trap_t* trap = (drakvuf_trap_t*)loop-&gt;data;
+
+            if (trap-&gt;cb &amp;&amp; trap-&gt;memaccess.type == POST &amp;&amp;
+                (trap-&gt;memaccess.access &amp; pass-&gt;access))
+            {
+                drakvuf_trap_info_t trap_info =
+                {
+                    .trap       = trap,
+                    .trap_pa    = pass-&gt;pa,
+                    .regs       = event-&gt;x86_regs,
+                    .vcpu       = event-&gt;vcpu_id,
+                    .timestamp  = g_get_real_time(),
+                };
+                copy_proc_data_from_priv(&amp;trap_info.proc_data,          &amp;pass-&gt;proc_data);
+                copy_proc_data_from_priv(&amp;trap_info.attached_proc_data, &amp;pass-&gt;attached_proc_data);
+
+                rsp |= trap-&gt;cb(drakvuf, &amp;trap_info);
+            }
+
+            loop = loop-&gt;next;
+        }
+        drakvuf-&gt;in_callback = 0;
+    }
+
+    process_free_requests(drakvuf);
+
+    if ( pass-&gt;traps &amp;&amp; !refresh_shadow_copy(drakvuf-&gt;vmi, pass) )
+    {
+        fprintf(stderr, &quot;Failed to refresh shadow copy\n&quot;);
+        drakvuf-&gt;interrupted = 1;
+        goto done;
+    }
+
+    /* === 추가: store 직후 첫 스텝에서 옵저버에게 RIP 송신 === */
+    {
+        drakvuf_trap_info_t info_for_step = {
+            .trap       = NULL,
+            .trap_pa    = pass-&gt;pa,
+            .regs       = event-&gt;x86_regs,
+            .vcpu       = event-&gt;vcpu_id,
+            .timestamp  = g_get_real_time(),
+        };
+        copy_proc_data_from_priv(&amp;info_for_step.proc_data,          &amp;pass-&gt;proc_data);
+        copy_proc_data_from_priv(&amp;info_for_step.attached_proc_data, &amp;pass-&gt;attached_proc_data);
+
+        rsp |= notify_step_observers(drakvuf, &amp;info_for_step);
+    }
+
+done:
+    free_proc_data_priv_2(&amp;pass-&gt;proc_data, &amp;pass-&gt;attached_proc_data);
+    g_slice_free(struct memcb_pass, pass);
+
+    uint16_t view = drakvuf-&gt;altp2m_idx;
+    if (drakvuf-&gt;enable_cr3_based_interception &amp;&amp; !drakvuf-&gt;vcpu_monitor[event-&gt;vcpu_id])
+        view = drakvuf-&gt;altp2m_idrx;
+    event-&gt;slat_id = view;
+
+    /* === 변경: 옵저버가 “계속 스텝”을 원하면 step_pump_cb로 전환 === */
+    if (rsp &amp; VMI_EVENT_RESPONSE_TOGGLE_SINGLESTEP)
+    {
+        drakvuf-&gt;step_event[event-&gt;vcpu_id]-&gt;callback = step_pump_cb;
+        drakvuf-&gt;step_event[event-&gt;vcpu_id]-&gt;data     = drakvuf;
+        return rsp | VMI_EVENT_RESPONSE_SLAT_ID;
+    }
+    else
+    {
+        drakvuf-&gt;step_event[event-&gt;vcpu_id]-&gt;callback = vmi_reset_trap;
+        drakvuf-&gt;step_event[event-&gt;vcpu_id]-&gt;data     = drakvuf;
+        return rsp | VMI_EVENT_RESPONSE_TOGGLE_SINGLESTEP | VMI_EVENT_RESPONSE_SLAT_ID;
+    }
+}
+그리고 아래에 있던 
+/*
+ * This function gets called from the singlestep event
+ * after an int3 or a read event happens.
+ */
+static event_response_t vmi_reset_trap(vmi_instance_t vmi, vmi_event_t* event)
+{
+    UNUSED(vmi);
+    drakvuf_t drakvuf = (drakvuf_t)event-&gt;data;
+    uint16_t view = drakvuf-&gt;altp2m_idx;
+
+    if (drakvuf-&gt;enable_cr3_based_interception &amp;&amp; !drakvuf-&gt;vcpu_monitor[event-&gt;vcpu_id])
+        view = drakvuf-&gt;altp2m_idrx;
+
+    PRINT_DEBUG(&quot;reset trap on vCPU %u, switching altp2m %u-&gt;%u\n&quot;, event-&gt;vcpu_id, event-&gt;slat_id, view);
+    event-&gt;slat_id = view;
+
+    return VMI_EVENT_RESPONSE_TOGGLE_SINGLESTEP | // Turn off singlestep
+        VMI_EVENT_RESPONSE_SLAT_ID;
+}
+이걸 지금 추가한 애들 위로 올려주기
+$ cd ~/drakvuf
+$ meson setup build --reconfigure
 $ ninja -C build
 $ sudo ninja -C build install
 $ sudo ldconfig
 </code></pre></div></p>
-<p>기능 확인<br />
-<div class="highlight"><pre><span></span><code>$ sudo xl list        # 몇번인지 확인
-$ sudo drakvuf -r /root/symbols/ntkrnlmp.json -d 1 -a procmon
-</code></pre></div></p>
-<h3 id="drakvuf_1">drakvuf 커스텀 플러그인 제작</h3>
-<p>데이터를 서버에서 받아오면 ntdll.dll이 비어있는 주소에 힙 할당을 하고 그 주소를 리턴해준다. 그러면 overwatch.exe는 그걸 테이블에 저장해뒀다가 필요할때마다 찾아가서 read &amp; write를 해준다. </p>
-<p>그럼 이 할당을 어떻게 잡아올 수 있냐?<br />
-윈도우 내부에서는 커널의 할당 함수들을 쫒는다. vmi 환경에서는 특정 구역들에 vm-exit 걸어놓아 거기에 write하려하면 무조건 예외처리로 확인된다. 이 방식이 drakvuf에 구현되어 있다.</p>
-<p>drakvuf의 syscall + memaccess를 이용해 drakvuf 커스텀 플러그인으로 해주자.<br />
-1. syscalls 후킹: NtAllocateVirtualMemory, NtMapViewOfsection<br />
-2. 리턴 성공 시 *BaseAddress, *RegionSize 읽어서 [base,size) 구간 확보<br />
-3. VA 필터 : (base..base+size)가 0x 0000 0200 0000 0000 ~ 0x 0000 02FF FFFF FFFF와 교차하면 대상 처리<br />
-4. 페이지별 W-트랩 등록: 해당 구간을 4KB 페이지로 쪼개 memaccess 등록<br />
-5. memaccess 콜백: (pid, tid, rip, gva, gfn)로깅 -&gt; 싱글스텝 1회 허용 -&gt; 다시 W 금지<br />
-6. free/unmap 시 : 추적 테이블에서 트랩 해제</p>
-<h3 id="pid_va_writewatch">pid_va_writewatch</h3>
-<p>drakvuf/<br />
-└─ src/<br />
-   └─ plugins/<br />
-      ├─ meson.build              ← 여기에 한 줄 추가<br />
-      └─ pid_va_writewatch/<br />
-         ├─ pid_va_writewatch.cpp ← 새로 추가<br />
-         └─ pid_va_writewatch.h   ← 새로 추가</p>
+<h3 id="micro_trace">micro_trace</h3>
 <p>커스텀 플러그인 제작<br />
 <div class="highlight"><pre><span></span><code>$ cd ~/drakvuf/src/plugins
-$ mkdir pid_va_writewatch
-$ nano pid_va_writewatch/pid_va_writewatch.h
-$ nano pid_va_writewatch/pid_va_writewatch.cpp
+$ mkdir micro_trace
+$ nano micro_trace/micro_trace.h
+$ nano micro_trace/micro_trace.cpp
 $ nano meson.build
 plugin_sources = [
   # (기존들)
-  &#39;pid_va_writewatch/pid_va_writewatch.cpp&#39;,
-  &#39;pid_va_writewatch/pid_va_writewatch.h&#39;,
+  &#39;micro_trace/micro_trace.cpp&#39;,
+  &#39;micro_trace/micro_trace.h&#39;,
 ]
 $ nano plugins.h
 플러그인 리스트 drakvuf_plugin_t 의 마지막 __DRAKVUF_PLUGIN_LIST_MAX 앞줄에
-    PLUGIN_PID_VA_WRITEWATCH,
+    PLUGIN_MICRO_TRACE,
 이름 리스트 static const char* drakvuf_plugin_names[] 에
-    [PLUGIN_PID_VA_WRITEWATCH] = &quot;pid_va_writewatch&quot;,
+    [PLUGIN_MICRO_TRACE] = &quot;micro_trace&quot;,
 os 지원 리스트 drakvuf_plugin_os_support 에
-    [PLUGIN_PID_VA_WRITEWATCH] = { [VMI_OS_WINDOWS] = 1, [VMI_OS_LINUX] = 1 },
+    [PLUGIN_MICRO_TRACE] = { [VMI_OS_WINDOWS] = 1, [VMI_OS_LINUX] = 1 },
 $ nano plugins.cpp
-#include &quot;pid_va_writewatch/pid_va_writewatch.h&quot;
+#include &quot;micro_trace/micro_trace.h&quot;
 drakvuf_plugins::start 안의 큰 switch에 case 추가
-case PLUGIN_PID_VA_WRITEWATCH:
+case PLUGIN_MICRO_TRACE:
 {
-    this-&gt;plugins[plugin_id] = std::make_unique&lt;pid_va_writewatch&gt;(this-&gt;drakvuf, this-&gt;output);
+    this-&gt;plugins[plugin_id] = std::make_unique&lt;micro_trace&gt;(this-&gt;drakvuf, this-&gt;output);
     break;
 }
 </code></pre></div></p>
@@ -1563,80 +1884,23 @@ $ ninja -C build
 $ sudo ninja -C build install
 $ sudo ldconfig
 </code></pre></div></p>
-<p>커맨드<br />
-<div class="highlight"><pre><span></span><code>sudo env WRITEWATCH_PID=4972 \
-         WRITEWATCH_RANGE=0x0000020000000000-0x000002FFFFFFFFFF \
-  drakvuf -r /root/symbols/ntkrnlmp.json -d 1 -a pid_va_writewatch
-</code></pre></div></p>
-<h3 id="pfn_writewatch">pfn_writewatch</h3>
-<p>힙 할당된 va에 값이 변화하는게 CE에서 보임에도 여기서는 같은 seed의 va write를 못잡아옴. 일반 read에서는 읽어오는 걸 보면 프로세스가 아닌 다른 곳에서 해당 gpa에 write 하는 걸로 추정. 즉 결과 write는 읽을 수 있지만 실시간 망에는 포착되지 않는다는 뜻. va를 gpa로 번역한 후 write를 잡아오도록 고친다.</p>
-<p>drakvuf/<br />
-└─ src/<br />
-   └─ plugins/<br />
-      ├─ meson.build              ← 여기에 한 줄 추가<br />
-      └─ pfn_writewatch/<br />
-         ├─ pfn_writewatch.cpp ← 새로 추가<br />
-         └─ pfn_writewatch.h   ← 새로 추가</p>
-<p>커스텀 플러그인 제작<br />
-<div class="highlight"><pre><span></span><code>$ cd ~/drakvuf/src/plugins
-$ mkdir pfn_writewatch
-$ nano pfn_writewatch/pfn_writewatch.h
-$ nano pfn_writewatch/pfn_writewatch.cpp
-$ nano meson.build
-plugin_sources = [
-  # (기존들)
-  &#39;pfn_writewatch/pfn_writewatch.cpp&#39;,
-  &#39;pfn_writewatch/pfn_writewatch.h&#39;,
-]
-$ nano plugins.h
-플러그인 리스트 drakvuf_plugin_t 의 마지막 __DRAKVUF_PLUGIN_LIST_MAX 앞줄에
-    PLUGIN_PFN_WRITEWATCH,
-이름 리스트 static const char* drakvuf_plugin_names[] 에
-    [PLUGIN_PFN_WRITEWATCH] = &quot;pfn_writewatch&quot;,
-os 지원 리스트 drakvuf_plugin_os_support 에
-    [PLUGIN_PFN_WRITEWATCH] = { [VMI_OS_WINDOWS] = 1, [VMI_OS_LINUX] = 1 },
-$ nano plugins.cpp
-#include &quot;pfn_writewatch/pfn_writewatch.h&quot;
-drakvuf_plugins::start 안의 큰 switch에 case 추가
-case PLUGIN_PFN_WRITEWATCH:
-{
-    this-&gt;plugins[plugin_id] = std::make_unique&lt;pfn_writewatch&gt;(this-&gt;drakvuf, this-&gt;output);
-    break;
-}
-</code></pre></div></p>
-<p>재빌드<br />
-<div class="highlight"><pre><span></span><code>$ cd ~/drakvuf
-$ meson setup build --reconfigure
-$ ninja -C build
-$ sudo ninja -C build install
-$ sudo ldconfig
-</code></pre></div></p>
-<p>커맨드<br />
-<div class="highlight"><pre><span></span><code>export WRITEWATCH_PFN_RANGE=0x12abc-0x12ac0
-export WRITEWATCH_SECONDS=5
-drakvuf -r /root/symbols/ntkrnlmp.json -d &lt;domid&gt; -a pfn_writewatch -o json
-</code></pre></div></p>
-<h3 id="_2">상위 클러스터 감시</h3>
-<p>watch_data_ranges.py</p>
-<p>실시간으로 .data 섹션을 덤프하여 heap 포인터로 추정되는 candidate를 전부 찾고 상위 클러스터 범위 다섯개를 추려 pfn_writewatch 플러그인으로 감시하는 코드<br />
-.data 덤프 + candidate 찾기 + 상위 클러스터 만들기 + pfn 번역 + writewatch + 내용 및 델타 바이터 확인</p>
-<p>실행 커맨드<br />
-<div class="highlight"><pre><span></span><code>$ sudo vmi-process-list win10 | grep -i overwatch
-$ cd ~/game-cheat/code
-$ sudo /home/kkongnyang2/vmi-venv/bin/python3 -m dump.watch_data_ranges \
-  --domain win10 --pid 2900 --module Overwatch.exe \
-  --ist-json /root/symbols/ntkrnlmp.json \
-  --python /home/kkongnyang2/vmi-venv/bin/python3 \
-  --dumper-module dump.vmi_dump_section \
-  --project-root ~/game-cheat/code \
-  --drakvuf /usr/local/bin/drakvuf \
-  --watch pfn \
-  --mode cluster --topk 5 --gran-log2 22 --gap-pages 64 --pad 0x10000 \
-  --duration 10 --interval 5 \
-  --ww-mode both --peek-bytes 16 --max-changes 12 \
-  --outdir /home/kkongnyang2/watch_dump --max-pfns 2048
+<h3 id="_3">실행</h3>
+<p><div class="highlight"><pre><span></span><code>$ sudo vmi-process-list win10 | grep -i overwatch
+$ sudo env \
+  MICROTRACE_PID=0 \
+  MICROTRACE_VA_RANGES=&quot;0x2E9FCDCD000-0x2E9FCDCF000&quot; \
+  MICROTRACE_STEP_MAX=100000 \
+  MICROTRACE_MODE=both \
+  MICROTRACE_DURATION_MS=10000 \
+  MICROTRACE_PEEK=16 \
+  MICROTRACE_MAXCHG=8 \
+  drakvuf -r /root/symbols/ntkrnlmp.json -d 2 -a micro_trace -o json \
+  | tee /home/kkongnyang2/watch_dump/logs/microtrace_wide.jsonl
 </code></pre></div><br />
-약간 범위가 빗나감. 난독화 때문에 .data에 있는 포인터들이 부정확 하거나, 힙에 포인터가 있는 거 같음.</p>
+결과가 계속 안나오고 코어 수정하기가 너무 힘들어서 포기</p>
+<ul>
+<li>여기서 작성한 코드는 plugins에 저장되어 있음.</li>
+</ul>
 
 
 
@@ -1685,10 +1949,11 @@ $ sudo /home/kkongnyang2/vmi-venv/bin/python3 -m dump.watch_data_ranges \
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "content.code.copy", "header.autohide"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "content.code.copy", "header.autohide"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
     
   </body>
