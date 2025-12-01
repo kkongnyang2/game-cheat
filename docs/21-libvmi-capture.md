@@ -140,5 +140,14 @@ sudo ./seed_once_watch_v3_1 win10 12904 0x19EAC718000-0x19EAC718FFF 5000
 두번 write 잡는 코드
 
 
+### 단계 6
+
+두번 write, in_access를 rwx다 해서 w 없으면 콜백에서 무효처리, 깔끔한 clear
+
+
+### 단계 7
+
+한번 write, in_access는 w만, 깔끔한 clear
+
 
 * 여기서 작성한 코드는 project4에 저장되어 있음.

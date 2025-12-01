@@ -1,3 +1,7 @@
+CE에서 나오는 값 주소들 전부 캡쳐
+
+나-솔저
+
 kkongnyang2@acer:~/game-cheat/code/project4$ sudo ./seed_once_watch_v3 win10 2032 0x1C59E905468-0x1C59E905469 5000
 === seed_once_watch_v3 ===
 [*] domain=win10 pid=2032 range=[0x1c59e905468..0x1c59e905469) timeout=5000 ms
@@ -57,7 +61,6 @@ kkongnyang2@acer:~/game-cheat/code/project4$ sudo ./seed_once_watch_v3 win10 120
 [*] Watch timeout (5000 ms)
 VMI_ERROR: Caught a memory event that had no handler registered in LibVMI @ GFN 0x72cef (0x72cef81d), access: 6
 [*] Done. (no write)
-
 
 kkongnyang2@acer:~/game-cheat/code/project4$ sudo ./seed_once_watch_v3 win10 3252 0x1A2169C8A78-0x1A2169C8A79 5000
 === seed_once_watch_v3 ===
@@ -203,64 +206,8 @@ VMI_ERROR: Caught a memory event that had no handler registered in LibVMI @ GFN 
 [*] Done. (no write)
 
 
-18개
 
-공통 부분 / 개별 부분
-첫번째: 7fc 468 a78(4) 730(4) b00 b88(4) 2f8 f38 ad0 650 a30 / d04 664 8b8 cd8(4) 6a8(4) 280 120
-두번째: 7fc 468 f38 ad0 650 a78(4) 730(4) b00 b88(4) 2f8 a30 / 3a4 d04 288 680 a48(4) 418(4) e80
-세번째: 468 a78(4) 730(4) b00 b88(4) 2f8 a30 f38 ad0 650 7fc / 1f8(4) 6f8 080 8e4 244 7b8(4) 8a0
-닷번째: 468 f38 ad0 650 a78(4) 730(4) b00 b88(4) 2f8 a30 7fc / 480 530 a48(4) f84 8e4 6f8 6a8(4)
-엿번째: 7fc b88 a78(4) 730(4) b00 b88(4) 2f8 a30 / 520 f84 8e4 ff0 708 c80 d28 570 1f8(4) bc8(4)
-
-트랩성공한거: 468 a78(4) 730(4) b00 b88(4) 2f8 a30 650 / f84 cb4 474 a48(4) 6a8(4) 6f8
-트랩실패한거: f38 7fc ad0 / 174 8e4
-
-성공한거 rip정보
-207a7bb mov dword ptr [rdx + rcx], eax  474 a48 f84 6a8
-
-207cc50부터 트레이스를 걸었더니 call207a710까지는 잘하는데 ja 안가고 jmp rcx에서 207a83f로 넘어가버림. 그리고 ret해서 207cc8e와서는 jne가고 ret해서 207cd86으로. 그리고 또 ret해서 20ff2ae로.
-ret 세번하고 20FF2AE로 감.
-20ff1af시작 call2b54070 call207ce70 jne20ff302 call20fe9d0 call2b54070 call2072ca0 call207b180 call2130a60 call2b54070 call207cd00 여기에 속함 call2072cao call207c410 
-
-jmp rcx에서는 0207a742 0207a763 0207a784 0207a7a5 0207a7c5 0207a7fd 0207a81c 0207a83f 0207a86b
-이 중 0207a7a5를 타고 가면 보인다.
-
-"rax":"0x4360b165","rcx":"0x1c5a5fd3460","rdx":"0x14"
-"rax":"0xe3","rcx":"0x1c5b9d9d9b0","rdx":"0x98"
-"rax":"0x436bc000","rcx":"0x1d6f9218f70","rdx":"0x14"
-"rax":"0xd4","rcx":"0x1d6fc9e4610","rdx":"0x98
-
-20e80cf mov dword ptr [rdx], ecx  a78 730 b88
-2119ad1. jne감. call 20fa6e0 이 안에서 핸들러 20b5e30 선택. 끝나면 다시 2119ad1.
-
-"rcx":"0x71","rdx":"0x1a2169c8a78"
-"rcx":"0xb2","rdx":"0x1a2169c9730"
-"rcx":"0xde","rdx":"0x1a2169d7b88"
-
-20e80a6 mov dword ptr [rdx], ecx  b00 2f8 a30
-
-"rcx":"0x43658445","rdx":"0x1a2169cab00"
-"rcx":"0x436e6486","rdx":"0x1a2169d92f8"
-"rcx":"0x435685f6","rdx":"0x1a216a5da30"
-
-17ecdad mov qword ptr [rbx], rax  468 650
-
-"rax":"0x43540000","rbx":"0x1c59e905468"
-"rax":"0x43624000","rbx":"0x28debfee650"
-
-2071a3d movss dword ptr [rax + rdi], xmm6  cb4
-
-"rax":"0x14","rdi":"0x1c5a5e1eca0"
-
-17f250b mov qword ptr [rbx], rax  6f8
-
-"rax":"0x43710000","rbx":"0x1d6fb74d6f8
-
-
-
-소전
-
-2f8 888 0c0 7fc bb8 820 a78(4) 730(4) b00 b88(4) 2f8 a30 894 1f4 480 d28 a48(4) 418(4)
+나-소전
 
 kkongnyang2@acer:~/game-cheat/code/project4$ sudo ./seed_once_watch_v5 win10 10028 0x1D7F05052F8 5000
 === seed_once_watch_v5 (two-hit) ===
@@ -274,9 +221,6 @@ kkongnyang2@acer:~/game-cheat/code/project4$ sudo ./seed_once_watch_v5 win10 100
 {"evt":"seed_write_pre","ts_us":1764354028306136,"vcpu":4,"pid":10028,"gla":"0x1d7f05052f8","gfn":"0x1586ff","dtb":"0x10eaf4000","cr3":"0x10eaf4000","rip":"0x7ff72678cdad","rsp":"0x28196fdef0","rbp":"0x28196fe000","rflags":"0x10202","module":{"base":"0x7ff724fa0000","rip_off":"0x17ecdad"},"gpr":{"rax":"0x43494000","rbx":"0x1d7f05052f8","rcx":"0x1d7f05052f8","rdx":"0xfffffff7","rsi":"0x1d7f05052a8","rdi":"0x28196fdfe0","r8":"0x7ff72678fe73","r9":"0x3","r10":"0x7ff724fa0000","r11":"0x286","r12":"0x0","r13":"0x1d803d4f640","r14":"0x0","r15":"0x1d803d4f4a8"},"disasm":{"rip":"0x7ff72678cdad","mn":"mov","op":"qword ptr [rbx], rax","mem_write":true,"wkind":"store","ea_calc":"0x1d7f05052f8","ea_match":true},"rip_bytes_len":16,"rip_bytes":"488903488b47084889430833c0488907","pre_len":16,"pre_bytes":"00000000000000000000000000000000","post_len":16,"post_bytes":"00004e","stack_len":64,"stack_bytes":"f85250f0d70100007c0c9225f77f00000807a775c933c99740edd403d801000040edd403d8010000a15af826f77f0000e0df6f1928000000c34fce25f77f0000"}
 [*] Done. seed write trapped (hits=2)
 
-17ecdad mov qword ptr [rbx], rax 2f8
-"rax":"0x43494000","rbx":"0x1d7f05052f8"
-
 kkongnyang2@acer:~/game-cheat/code/project4$ sudo ./seed_once_watch_v5 win10 10028 0x1D848f25a48 5000
 === seed_once_watch_v5 (two-hit) ===
 [*] domain=win10 pid=10028 va=0x1d848f25a48 timeout=5000 ms
@@ -289,9 +233,6 @@ kkongnyang2@acer:~/game-cheat/code/project4$ sudo ./seed_once_watch_v5 win10 100
 {"evt":"seed_write_pre","ts_us":1764354213619045,"vcpu":1,"pid":10028,"gla":"0x1d848f25a48","gfn":"0x11d8b2","dtb":"0x10eaf4000","cr3":"0x10eaf4000","rip":"0x7ff72706caaf","rsp":"0x28196fe260","rbp":"0x28196fe2d0","rflags":"0x10202","module":{"base":"0x7ff724fa0000","rip_off":"0x20ccaaf"},"gpr":{"rax":"0xca","rbx":"0x98001000000008","rcx":"0x1d844639d28","rdx":"0x0","rsi":"0x1d848f259b0","rdi":"0x1d6932d0dc8","r8":"0x98","r9":"0x28196fe350","r10":"0x7ff72706ca86","r11":"0x28196fe338","r12":"0x0","r13":"0x1d7cfd2ab40","r14":"0x0","r15":"0x1d78f02ce20"},"disasm":{"rip":"0x7ff72706caaf","mn":"mov","op":"dword ptr [r8 + rsi], eax","mem_write":true,"wkind":"store","ea_calc":"0x1d848f25a48","ea_match":true},"rip_bytes_len":16,"rip_bytes":"41890430e934010000498b38488d4d20","pre_len":16,"pre_bytes":"0000000000000000c063f444d7010000","post_len":16,"post_bytes":"ce0000","stack_len":64,"stack_bytes":"051b0600010010000000000000000000a1b5873c5e07000000000000000000000000000000000000000000000000000000000000000000000000000000000000"}
 [*] Done. seed write trapped (hits=2)
 
-20ccaaf mov dword ptr [r8 + rsi], eax a48
-"r8":"0x98" "rsi":"0x1d848f259b0" "rax":"0xca"
-
 kkongnyang2@acer:~/game-cheat/code/project4$ sudo ./seed_once_watch_v5 win10 10028 0x1D83EFBE894 5000
 === seed_once_watch_v5 (two-hit) ===
 [*] domain=win10 pid=10028 va=0x1d83efbe894 timeout=5000 ms
@@ -301,3 +242,37 @@ kkongnyang2@acer:~/game-cheat/code/project4$ sudo ./seed_once_watch_v5 win10 100
 [*] Watch timeout (5000 ms)
 VMI_ERROR: Caught a memory event that had no handler registered in LibVMI @ GFN 0x123912 (0x1239121a8), access: 6
 [*] Done. no write (hits=0)
+
+
+
+상대-소전
+
+kkongnyang2@acer:~/game-cheat/code/project4$ sudo ./seed_once_watch_v7 win10 12432 0x1BB19FF2F08-0x1BB19FF2F10 5000
+=== seed_once_watch_v3 ===
+[*] domain=win10 pid=12432 range=[0x1bb19ff2f08..0x1bb19ff2f10) timeout=5000 ms
+[*] libvmi initialized
+[+] DTB resolved via vmi_pid_to_dtb: 0x2d704000
+[*] Armed W-trap: pages=1 registered=1 range=[0x000001bb19ff2000 .. 0x000001bb19ff3000)
+[W] WRITE trap @0x1bb19ff2f08 (vcpu=1, gfn=0x1bef20)
+{"evt":"seed_write_pre","ts_us":1764449165795475,"vcpu":1,"pid":12432,"gla":"0x1bb19ff2f08","gfn":"0x1bef20","dtb":"0x2d704000","cr3":"0x2d704000","rip":"0x7ff607dbcdad","rsp":"0xadb70fe340","rbp":"0xadb70fe400","rflags":"0x10206","module":{"base":"0x7ff6065d0000","rip_off":"0x17ecdad"},"gpr":{"rax":"0x431854ff","rbx":"0x1bb19ff2f08","rcx":"0x1bb19ff2f08","rdx":"0xfffffff7","rsi":"0x1bb19ff2eb8","rdi":"0xadb70fe430","r8":"0x7ff607dbfe73","r9":"0x3","r10":"0x7ff6065d0000","r11":"0x85","r12":"0x0","r13":"0x1bb19744900","r14":"0x0","r15":"0x1bb19744768"},"disasm":{"rip":"0x7ff607dbcdad","mn":"mov","op":"qword ptr [rbx], rax","mem_write":true,"wkind":"store","ea_calc":"0x1bb19ff2f08","ea_match":true},"rip_bytes_len":16,"rip_bytes":"488903488b47084889430833c0488907","pre_len":16,"pre_bytes":"00000000000000000000000000000000","post_len":16,"post_bytes":"8cec17","stack_len":64,"stack_bytes":"082fff19bb0100007c0cf506f67f0000350000003e00000000407419bb01000000407419bb010000a15a5b08f67f000030e40fb7ad000000c34f3107f67f0000"}
+[*] Done. (seed write trapped)
+
+kkongnyang2@acer:~/game-cheat/code/project4$ sudo ./seed_once_watch_v7 win10 12432 0x1BB19FF2F08-0x1BB19FF2F09 5000
+=== seed_once_watch_v3 ===
+[*] domain=win10 pid=12432 range=[0x1bb19ff2f08..0x1bb19ff2f09) timeout=5000 ms
+[*] libvmi initialized
+[+] DTB resolved via vmi_pid_to_dtb: 0x2d704000
+[*] Armed W-trap: pages=1 registered=1 range=[0x000001bb19ff2000 .. 0x000001bb19ff3000)
+[W] WRITE trap @0x1bb19ff2f08 (vcpu=2, gfn=0x1bef20)
+{"evt":"seed_write_pre","ts_us":1764449699143964,"vcpu":2,"pid":12432,"gla":"0x1bb19ff2f08","gfn":"0x1bef20","dtb":"0x2d704000","cr3":"0x2d704000","rip":"0x7ff607dbcdad","rsp":"0xadb70fe460","rbp":"0xadb70fe500","rflags":"0x10206","module":{"base":"0x7ff6065d0000","rip_off":"0x17ecdad"},"gpr":{"rax":"0x432e9898","rbx":"0x1bb19ff2f08","rcx":"0x1bb19ff2f08","rdx":"0xfffffff7","rsi":"0x1bb19ff2eb8","rdi":"0xadb70fe550","r8":"0x7ff607dbfe73","r9":"0x3","r10":"0x7ff6065d0000","r11":"0x4b","r12":"0x0","r13":"0x1bb19744900","r14":"0x0","r15":"0x1bb19744768"},"disasm":{"rip":"0x7ff607dbcdad","mn":"mov","op":"qword ptr [rbx], rax","mem_write":true,"wkind":"store","ea_calc":"0x1bb19ff2f08","ea_match":true},"rip_bytes_len":16,"rip_bytes":"488903488b47084889430833c0488907","pre_len":16,"pre_bytes":"00000000000000000000000000000000","post_len":16,"post_bytes":"25302e","stack_len":64,"stack_bytes":"082fff19bb0100007c0cf506f67f0000350000003e00000000407419bb01000000407419bb010000a15a5b08f67f000050e50fb7ad000000c34f3107f67f0000"}
+[*] Done. (seed write trapped)
+
+kkongnyang2@acer:~/game-cheat/code/project4$ sudo ./seed_once_watch_v7 win10 12432 0x1BB03742F08-0x1BB03742F10 5000
+=== seed_once_watch_v3 ===
+[*] domain=win10 pid=12432 range=[0x1bb03742f08..0x1bb03742f10) timeout=5000 ms
+[*] libvmi initialized
+[+] DTB resolved via vmi_pid_to_dtb: 0x2d704000
+[*] Armed W-trap: pages=1 registered=1 range=[0x000001bb03742000 .. 0x000001bb03743000)
+[W] WRITE trap @0x1bb03742f08 (vcpu=4, gfn=0x8a47d)
+{"evt":"seed_write_pre","ts_us":1764450621498648,"vcpu":4,"pid":12432,"gla":"0x1bb03742f08","gfn":"0x8a47d","dtb":"0x2d704000","cr3":"0x2d704000","rip":"0x7ff607dbcdad","rsp":"0xadb70fe3a0","rbp":"0xadb70fe400","rflags":"0x10206","module":{"base":"0x7ff6065d0000","rip_off":"0x17ecdad"},"gpr":{"rax":"0x4344f5c6","rbx":"0x1bb03742f08","rcx":"0x1bb03742f08","rdx":"0xfffffff7","rsi":"0x1bb03742eb8","rdi":"0xadb70fe490","r8":"0x7ff607dbfe73","r9":"0x3","r10":"0x7ff6065d0000","r11":"0x85","r12":"0x0","r13":"0x1baf7648dc0","r14":"0x0","r15":"0x1baf7648c28"},"disasm":{"rip":"0x7ff607dbcdad","mn":"mov","op":"qword ptr [rbx], rax","mem_write":true,"wkind":"store","ea_calc":"0x1bb03742f08","ea_match":true},"rip_bytes_len":16,"rip_bytes":"488903488b47084889430833c0488907","pre_len":16,"pre_bytes":"00000000000000000000000000000000","post_len":16,"post_bytes":"2e8744","stack_len":64,"stack_bytes":"082f7403bb0100007c0cf506f67f0000350000003e000000c08464f7ba010000c08464f7ba010000a15a5b08f67f000090e40fb7ad000000c34f3107f67f0000"}
+[*] Done. (seed write trapped)

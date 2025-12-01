@@ -1,7 +1,8 @@
-### libvmi 기본 예제
+### singlestep-event-example
 
-singlestep-evnet-example
+libvmi 기본예제에 속함.
 모든 vcpu에 관찰을 키고 모든 명령어를 가져옴
+
 ```
 sudo ./singlestep-event-example win10
 Waiting for events...
@@ -52,8 +53,11 @@ Single-step event: VCPU:0  GFN 3001 GLA fffff8046a801212
 Single-step event: VCPU:2  GFN 2e33 GLA fffff8046a633319
 ```
 
-step-event-example
+### step-event-example
+
+libvmi 기본예제에 속함.
 현재 페이지에 관찰을 켜서 현재의 rip이 다시 올때까지. vcpu 움직임도 관찰해서 현재 프로세스 dtb를 추적.
+
 ```
 Memevent: {
 	PID 11496. RIP 0xfffff80340a06273:
@@ -81,8 +85,11 @@ Memevent: {
 Re-registering event
 ```
 
-mem-event-example
-더 단순하게 현재 페이지 관찰
+### mem-event-example
+
+libvmi 기본예제에 속함.
+더 단순하게 현재 페이지 특정 트랩 관찰
+
 ```
 LibVMI init succeeded!
 Setting X memory event at RIP 0x7fff7df81710, GPA 0x1cc0c2710, GFN 0x1cc0c2
@@ -105,12 +112,6 @@ gcc -O2 -Wall -Wextra -std=gnu11 singlestep-event.c -o singlestep-event   $(pkg-
 
 sudo ./singlestep-event win10
 
-### step-event.c
-
-gcc -O2 -Wall -Wextra -std=gnu11 step-event.c -o step-event   $(pkg-config --cflags libvmi glib-2.0)   $(pkg-config --libs   libvmi glib-2.0)   -Wl,--no-as-needed
-
-sudo ./step-event win10 4320 0xabfeb000 0x7ff6eed21de0 0xb46e3 0xde0 > ss.log 2>&1
-vm이름 pid dtb va gfn offset 순
 
 ### va2gfn.c
 
@@ -122,5 +123,13 @@ pid=4320 dtb=0xabfeb000 va=0x7ff6eed21de0 -> pa=0xb46e3de0 (gfn=0xb46e3, off=0xd
 vm이름 pid va 순
 
 
+### step-event.c
+
+gcc -O2 -Wall -Wextra -std=gnu11 step-event.c -o step-event   $(pkg-config --cflags libvmi glib-2.0)   $(pkg-config --libs   libvmi glib-2.0)   -Wl,--no-as-needed
+
+sudo ./step-event win10 4320 0xabfeb000 0x7ff6eed21de0 0xb46e3 0xde0 > ss.log 2>&1
+vm이름 pid dtb va gfn offset 순
+
+
 * 성공은 했지만 페이지를 하나밖에 못추적해서 다른 페이지로 넘어가면 관찰 불가 한계
-* 여기서 작성한 코드는 project4에 저장되어 있음.
+* 여기서 작성한 코드는 step에 저장되어 있음.
