@@ -1,5 +1,5 @@
 
-
+모듈베이스 7FF6C01A0000
 rsp B821CFF390  rbx 1EDB0432FE8   rdi 1EDB0433040
 Overwatch.exe+20DDC21 - 48 8D 4C 24 50        - lea rcx,[rsp+50]            # 이때 rsp=B821CFF390여서 rcx=B821CFF3E0
 Overwatch.exe+20DDC26 - E8 9548FCFF           - call Overwatch.exe+20A24C0
@@ -245,7 +245,7 @@ Overwatch.exe+20DDC1C - E8 EF0BFEFF           - call Overwatch.exe+20BE810
                 Overwatch.exe+2ADAF42 - C1 E8 10              - shr eax,10 { 16 }   # rax=0
                 Overwatch.exe+2ADAF45 - 0FBD C8               - bsr ecx,eax         # 실패. rcx=더미값 zf=1
                 Overwatch.exe+2ADAF48 - B8 00000000           - mov eax,00000000 { 0 }  # rax=0
-                Overwatch.exe+2ADAF4D - 0F95 C0               - setne al            # rax=0
+                Overwatch.exe+2ADAF4D - 0F95 C0               - setne al            # zf=0일때 al을 1로 세팅. rax=0
                 Overwatch.exe+2ADAF50 - 0FAF C8               - imul ecx,eax        # rcx=0
                 Overwatch.exe+2ADAF53 - D1 E9                 - shr ecx,1           # rcx=0
                 Overwatch.exe+2ADAF55 - 03 C8                 - add ecx,eax         # rcx=0 zf=1
@@ -375,7 +375,6 @@ Overwatch.exe+20DDC1C - E8 EF0BFEFF           - call Overwatch.exe+20BE810
         Overwatch.exe+2015023 - 48 83 C4 20           - add rsp,20 { 32 }
         Overwatch.exe+2015027 - 5F                    - pop rdi                         # rdi=2A92C7EBC30
         Overwatch.exe+2015028 - C3                    - ret 
-        가는 곳 Overwatch.exe+2036213
 
         즉 앞부분은 키에 대한 처리, 뒷부분은 값에 대한 처리이다.
 
@@ -397,10 +396,263 @@ Overwatch.exe+20DDC1C - E8 EF0BFEFF           - call Overwatch.exe+20BE810
     Overwatch.exe+20B5F2B - 4C 8B 42 08           - mov r8,[rdx+08]             # 1EDACFC4D28 에서 B1
     Overwatch.exe+20B5F2F - 48 8B D0              - mov rdx,rax                 # 1EDACFC4CA0
     Overwatch.exe+20B5F32 - E9 A97CFDFF           - jmp Overwatch.exe+208DBE0
-    Overwatch.exe+208DBE0 - 48 8B 02              - mov rax,[rdx]
-    Overwatch.exe+208DBE3 - 44 0FB6 10            - movzx r10d,byte ptr [rax]
+    Overwatch.exe+208DBE0 - 48 8B 02              - mov rax,[rdx]               # 1EDACFC4CA0 에서 1EC46D2BE88 
+    Overwatch.exe+208DBE3 - 44 0FB6 10            - movzx r10d,byte ptr [rax]   # 1EC46D2BE88 에서 14
     Overwatch.exe+208DBE7 - 48 8D 05 A25BDA01     - lea rax,[Overwatch.exe+3E33790] { (7FF662018600) }
+    Overwatch.exe+208DBEE - 4A FF 24 D0           - jmp qword ptr [rax+r10*8]   # 3E33790+14*8
+    Overwatch.exe+2062890                         - mov rax,r8                  # B1
+    Overwatch.exe+2062893                         - shr rax,20                  # 0
+    Overwatch.exe+2062897                         - movzx r10d,ax               # 0
+    Overwatch.exe+206289B                         - mov rax,[rdx+48]            # 1EDACFC4CE8 에서 1EDACFC4CF8
+    Overwatch.exe+206289F                         - cmp word ptr [rax+r10*2],00 # 1EDACFC4CF8+0*2 에서 꺼낸 값과 00 비교
+    Overwatch.exe+20628A5                         - jnl Overwatch.exe+20628B0   # 왼쪽이 크거나 같으면
+    Overwatch.exe+20628B0                         - mov [rsp+20],rbx            # B821CFF3A8 에 1EDB0433008
+    Overwatch.exe+20628B5                         - push rdi                    # B821CFF380 에 1EDB0433040
+    Overwatch.exe+20628B6                         - push r12                    # B821CFF378 에 1EC3B250DC0
+    Overwatch.exe+20628B8                         - push r13                    # B821CFF370 에 1EC3B254460
+    Overwatch.exe+20628BA                         - push r14                    # B821CFF368 에 1EC3B253E50
+    Overwatch.exe+20628BC                         - push r15                    # B821CFF360 에 0
+    Overwatch.exe+20628BE                         - sub rsp,30
+    Overwatch.exe+20628C2                         - mov [rsp+60],rbp            # B821CFF390 에 B821CFF490
+    Overwatch.exe+20628C7                         - lea rbx,[rdx+08]            # 1EDACFC4CA8
+    Overwatch.exe+20628CB                         - xor ebp,ebp                 # 0
+    Overwatch.exe+20628CD                         - movzx r14d,r8w              # B1
+    Overwatch.exe+20628D1                         - test rdx,rdx                # 1EDACFC4CA0
+    Overwatch.exe+20628D4                         - mov r15,r9                  # B821CFF408
+    Overwatch.exe+20628D7                         - mov r13,rdx                 # 1EDACFC4CA0
+    Overwatch.exe+20628DA                         - mov r12,rcx                 # 1EC3B250DC0
+    Overwatch.exe+20628DD                         - cmove rbx,rbp               # 1EDACFC4CA8
+    Overwatch.exe+20628E1                         - mov r10d,ebp                # 0
+    Overwatch.exe+20628E4                         - mov r8d,0000FFFF
+    Overwatch.exe+20628EA                         - cmp [rbx+08],ebp            # 1EDACFC4CB0 에서 꺼낸 값과 0 비교
+    Overwatch.exe+20628ED                         - jle Overwatch.exe+206291E   # 왼쪽이 작거나 같으면
+    Overwatch.exe+206291E                         - mov edi,ebp                 # 0
+    Overwatch.exe+2062920                         - cmp [rbx+08],ebp
+    Overwatch.exe+2062923                         - jng Overwatch.exe+20629BB   # 왼쪽이 작거나 같으면
+    Overwatch.exe+20629BB                         - mov rbp,[rsp+60]            # B821CFF390 에서 B821CFF490
+    Overwatch.exe+20629C0                         - mov eax,00000154
+    Overwatch.exe+20629C5                         - cmp r14w,ax                 # B1과 154 비교
+    Overwatch.exe+20629C9                         - jae Overwatch.exe+2062A61   # 왼쪽이 크거나 같으면
+    Overwatch.exe+20629CF                         - lea rax,[r14+r14*2]         # 213
+    Overwatch.exe+20629D3                         - mov rbx,r14                 # B1
+    Overwatch.exe+20629D6                         - lea rcx,[Overwatch.exe+2F38ED0]
+    Overwatch.exe+20629DD                         - lea rdi,[rcx+rax*8]         # 2F38ED0+213*8
+    Overwatch.exe+20629E1                         - test rdi,rdi                # 7FF6C30D9F68
+    Overwatch.exe+20629E4                         - je Overwatch.exe+2062A61    # 0이면
+    Overwatch.exe+20629E6                         - mov edx,[rdi+04]            # 7FF6C30D9F6C 에서 9
+    Overwatch.exe+20629E9                         - lea rcx,[rsp+70]            # B821CFF3A0
+    Overwatch.exe+20629EE                         - and edx,07FFFFFF            # 9
+    Overwatch.exe+20629F4                         - call Overwatch.exe+2B18610
+        Overwatch.exe+2B18610                         - mov [rcx],edx           # B821CFF3A0 에 9 저장    
+        Overwatch.exe+2B18612                         - mov rax,rcx
+        Overwatch.exe+2B18615                         - ret 
+    Overwatch.exe+20629F9                         - mov rcx,rax
+    Overwatch.exe+20629FC                         - call Overwatch.exe+2B18640
+        Overwatch.exe+2B18640                         - mov eax,[rcx]           # 다시 9 꺼내고
+        Overwatch.exe+2B18642                         - shr eax,10              # 0
+        Overwatch.exe+2B18645                         - bsr r8d,eax             # 최상위비트 위치. FFFF
+        Overwatch.exe+2B18649                         - mov eax,00000000
+        Overwatch.exe+2B1864E                         - mov ecx,eax
+        Overwatch.exe+2B18650                         - setne cl                # 다르면 세팅
+        Overwatch.exe+2B18653                         - imul r8d,ecx
+        Overwatch.exe+2B18657                         - mov edx,r8d
+        Overwatch.exe+2B1865A                         - and r8b,01              # 0
+        Overwatch.exe+2B1865E                         - shr edx,1               # 0
+        Overwatch.exe+2B18660                         - add edx,ecx
+        Overwatch.exe+2B18662                         - movzx ecx,r8b
+        Overwatch.exe+2B18666                         - test edx,edx            # 0
+        Overwatch.exe+2B18668                         - cmovne eax,ecx          # 다르면 mov 0
+        Overwatch.exe+2B1866B                         - ret 
+    Overwatch.exe+2062A01                         - test al,al
+    Overwatch.exe+2062A03                         - je Overwatch.exe+2062A35
+    Overwatch.exe+2062A35                         - mov [rsp+70],FFFFFFFF       # B821CFF3A0 에 FFFFFFFFF
+    Overwatch.exe+2062A3D                         - mov eax,[rsp+70]
+    Overwatch.exe+2062A41                         - cmp [r13+38],eax            # 1EDACFC4CD8 에 있는 값과 FFFFFFFF 비교
+    Overwatch.exe+2062A45                         - je Overwatch.exe+2062A61
+    Overwatch.exe+2062A47                         - mov rax,[r15]               # B821CFF408 에 있는 7B48C6C0041
+    Overwatch.exe+2062A4A                         - mov r8,rdi                  # 7FF6C30D9F68
+    Overwatch.exe+2062A4D                         - mov r9,[r15+08]             # B821CFF410 에 있는 7B5E10A9E01
+    Overwatch.exe+2062A51                         - mov rdx,r13                 # 1EDACFC4CA0
+    Overwatch.exe+2062A54                         - mov rcx,r12
+    Overwatch.exe+2062A57                         - mov [rsp+20],rax
+    Overwatch.exe+2062A5C                         - call Overwatch.exe+20B2670
+        Overwatch.exe+20B2670                         - mov [rsp+18],rbx
+        Overwatch.exe+20B2675                         - mov [rsp+20],rbp
+        Overwatch.exe+20B267A                         - push rsi
+        Overwatch.exe+20B267B                         - push rdi
+        Overwatch.exe+20B267C                         - push r14
+        Overwatch.exe+20B267E                         - sub rsp,20
+        Overwatch.exe+20B2682                         - mov eax,[rdx+38]        # 1EDACFC4CD8 에서 2E20004
+        Overwatch.exe+20B2685                         - mov rbx,r9              # 7B5E10A9E01
+        Overwatch.exe+20B2688                         - movzx r9d,word ptr [r8] # 7FF6C30D9F68 에서 B1
+        Overwatch.exe+20B268C                         - mov rsi,r8              # 7FF6C30D9F68
+        Overwatch.exe+20B268F                         - mov rdi,[rcx]           # B821CFF3C0 에서 B821CFF4F0
+        Overwatch.exe+20B2692                         - lea r8,[rsp+40]         # B821CFF330
+        Overwatch.exe+20B2697                         - shl r9,20               # B100000000
+        Overwatch.exe+20B269B                         - mov rbp,rdx
+        Overwatch.exe+20B269E                         - or r9,rax               # 2E2004를 써서 B102E20004
+        Overwatch.exe+20B26A1                         - lea rdx,[rsp+48]
+        Overwatch.exe+20B26A6                         - mov r14,rcx
+        Overwatch.exe+20B26A9                         - mov [rsp+48],r9         # B821CFF338 에 B102E20004 저장
+        Overwatch.exe+20B26AE                         - lea rcx,[rdi+48]        # B821CFF538
+        Overwatch.exe+20B26B2                         - call Overwatch.exe+8454E0
+            Overwatch.exe+8454E0                          - mov [rsp+08],rbx
+            Overwatch.exe+8454E5                          - mov [rsp+10],rbp
+            Overwatch.exe+8454EA                          - mov [rsp+18],rsi
+            Overwatch.exe+8454EF                          - push rdi
+            Overwatch.exe+8454F0                          - sub rsp,20
+            Overwatch.exe+8454F4                          - cmp qword ptr [rcx],00  # B821CFF538 에 있는 값과 00 비교
+            Overwatch.exe+8454F8                          - mov rsi,r8
+            Overwatch.exe+8454FB                          - mov rdi,rdx
+            Overwatch.exe+8454FE                          - mov rbx,rcx
+            Overwatch.exe+845501                          - jne Overwatch.exe+84550D
+            Overwatch.exe+84550D                          - mov rax,[rdi]           # B821CFF338 에서 B102E20004
+            Overwatch.exe+845510                          - mov r9,rax
+            Overwatch.exe+845513                          - mov byte ptr [rsi],00   # B821CFF330 에 00 저장
+            Overwatch.exe+845516                          - mov r10d,[rbx+18]       # B821CFF550 에서 00000004
+            Overwatch.exe+84551A                          - not rax                 # FFFFFF4EFD1DFFFB
+            Overwatch.exe+84551D                          - shl r9,12               # 02C40B8800100000
+            Overwatch.exe+845521                          - add r9,rax              # 
+            Overwatch.exe+845524                          - mov rax,r9
+            Overwatch.exe+845527                          - shr rax,1F
+            Overwatch.exe+84552B                          - xor rax,r9
+            Overwatch.exe+84552E                          - imul rcx,rax,15
+            Overwatch.exe+845532                          - mov rax,rcx
+            Overwatch.exe+845535                          - shr rax,0B
+            Overwatch.exe+845539                          - xor rax,rcx
+            Overwatch.exe+84553C                          - imul rcx,rax,41         # BEFBF0C285F32CC9
+            Overwatch.exe+845540                          - lea eax,[r10-01]        # 3
+            Overwatch.exe+845544                          - mov rbp,rcx
+            Overwatch.exe+845547                          - shr rbp,16
+            Overwatch.exe+84554B                          - xor ebp,ecx
+            Overwatch.exe+84554D                          - movsxd  rcx,eax
+            Overwatch.exe+845550                          - mov rax,[rbx]           # B821CFF538 에서 1EDB04377E0
+            Overwatch.exe+845553                          - btr ebp,1F              # 6A3026DE
+            Overwatch.exe+845557                          - and rcx,rbp             # 2
+            Overwatch.exe+84555A                          - lea r9,[rax+rcx*4]      # 1EDB04377E0+2*4= 1EDB04377E8
+            Overwatch.exe+84555E                          - mov eax,[rax+rcx*4]     # 값은 FFFFFFFF
+            Overwatch.exe+845561                          - test eax,eax
+            Overwatch.exe+845563                          - js Overwatch.exe+845584 # 음수면 점프
+            Overwatch.exe+845584                          - mov edx,[rbx+24]        # B821CFF55C 에서 00000000
+            Overwatch.exe+845587                          - test edx,edx
+            Overwatch.exe+845589                          - jle Overwatch.exe+8455B5    # 작거나 같으면
+            Overwatch.exe+8455B5                          - cmp [rbx+1C],r10d           # B821CFF554 에 있는 값과 00000004 비교
+            Overwatch.exe+8455B9                          - jne Overwatch.exe+8455D9    # 다르면
+            Overwatch.exe+8455D9                          - mov r8d,[rbx+1C]            # B821CFF554 에서 00000001 가져오기
+            Overwatch.exe+8455DD                          - lea eax,[r8+01]
+            Overwatch.exe+8455E1                          - mov [rbx+1C],eax            # 1 더해서 넣기
+            Overwatch.exe+8455E4                          - mov rax,[rbx+10]            # B821CFF548 에서 1EDB0437830
+            Overwatch.exe+8455E8                          - movsxd  rcx,r8d             # 1
+            Overwatch.exe+8455EB                          - mov rdx,rcx
+            Overwatch.exe+8455EE                          - shl rdx,04                  # 10
+            Overwatch.exe+8455F2                          - add rdx,[rbx+08]            # B821CFF540 에서 꺼낸 값과 더해 1EDB0437800
+            Overwatch.exe+8455F6                          - lea rax,[rax+rcx*4]         # 1EDB0437830+1*4=1EDB0437834
+            Overwatch.exe+8455FA                          - xor ecx,ecx
+            Overwatch.exe+8455FC                          - mov [rax],ecx               # 1EDB0437834 에 0 대입
+            Overwatch.exe+8455FE                          - mov rcx,[rdi]               # B821CFF338 에서 B102E20004 꺼내기
+            Overwatch.exe+845601                          - mov [rdx+08],rcx            # 1EDB0437808 에 B102E20004 넣기
+            Overwatch.exe+845605                          - mov [rdx],ebp               # 1EDB0437800 에 6A3026DE 넣기
+            Overwatch.exe+845607                          - mov ecx,[r9]                # 1EDB04377E8 에서 FFFFFFFF
+            Overwatch.exe+84560A                          - mov [rdx+04],ecx            # 1EDB0437804 에 FFFFFFFF 넣기
+            Overwatch.exe+84560D                          - mov [r9],r8d                # 1EDB04377E8 에 1 넣기. 아깐 FFFFFFFF 여서 왔음
+            Overwatch.exe+845610                          - mov rbx,[rsp+30]
+            Overwatch.exe+845615                          - mov rbp,[rsp+38]
+            Overwatch.exe+84561A                          - mov rsi,[rsp+40]
+            Overwatch.exe+84561F                          - add rsp,20
+            Overwatch.exe+845623                          - pop rdi
+            Overwatch.exe+845624                          - ret 
+        Overwatch.exe+20B26B7                         - mov r8d,[rsi+04]                # 7FF6C30D9F6C 에서 9
+        Overwatch.exe+20B26BB                         - mov r9,rax                      # 1EDB0437834
+        Overwatch.exe+20B26BE                         - bt r8d,1B                       # 1B 번째 비트 값 cf에 저장(0)
+        Overwatch.exe+20B26C3                         - jae Overwatch.exe+20B26CB
+        Overwatch.exe+20B26CB                         - mov rdx,[rdi+38]                # B821CFF528 에서 1EC3B2542F0
+        Overwatch.exe+20B26CF                         - cmp byte ptr [rsp+40],00        # B821CFF330 에 저장되어 있는 값 00과 00 비교
+        Overwatch.exe+20B26D4                         - jne Overwatch.exe+20B271A
+        Overwatch.exe+20B26D6                         - mov eax,[rdx+08]                # 1EC3B2542F8 에서 0
+        Overwatch.exe+20B26D9                         - mov rcx,rdx
+        Overwatch.exe+20B26DC                         - mov [r9],eax                    # 1EDB0437834 에 그값 넣기
+        Overwatch.exe+20B26DF                         - call Overwatch.exe+20B1F70
+            Overwatch.exe+20B1F70                         - mov [rsp+18],rbx
+            Overwatch.exe+20B1F75                         - push rbp
+            Overwatch.exe+20B1F76                         - push rsi
+            Overwatch.exe+20B1F77                         - push rdi
+            Overwatch.exe+20B1F78                         - sub rsp,20
+            Overwatch.exe+20B1F7C                         - mov esi,[rcx+08]            # 1EC3B2542F8 에서 0
+            Overwatch.exe+20B1F7F                         - mov rbx,rcx
+            Overwatch.exe+20B1F82                         - mov ecx,[rcx+0C]            # 1EC3B2542FC 에서 13C
+            Overwatch.exe+20B1F85                         - inc esi                     # 1
+            Overwatch.exe+20B1F87                         - add ecx,ecx                 # 278
+            Overwatch.exe+20B1F89                         - sar ecx,1                   # 13C
+            Overwatch.exe+20B1F8B                         - cmp esi,ecx                 # 비교
+            Overwatch.exe+20B1F8D                         - jng Overwatch.exe+20B2043
+            Overwatch.exe+20B2043                         - movsxd  rax,dword ptr [rbx+08]  # 1EC3B2542F8 에서 0
+            Overwatch.exe+20B2047                         - xor edx,edx
+            Overwatch.exe+20B2049                         - xorps xmm0,xmm0
+            Overwatch.exe+20B204C                         - lea rcx,[rax+rax*4]         # 0
+            Overwatch.exe+20B2050                         - mov rax,[rbx]               # 1EC3B2542F0 에서 1ED743A4010
+            Overwatch.exe+20B2053                         - movups [rax+rcx*8],xmm0     # 1ED743A4010, 1ED743A4018 에 0 넣기(초기화)
+            Overwatch.exe+20B2057                         - movups [rax+rcx*8+10],xmm0  # 1ED743A4020, 1ED743A4028 에 0 넣기(초기화)
+            Overwatch.exe+20B205C                         - mov [rax+rcx*8+18],rdx      # 1ED743A4028 에 0 넣기(초기화)
+            Overwatch.exe+20B2061                         - mov [rax+rcx*8+20],rdx      # 1ED743A4030 에 0 넣기(초기화)
+            Overwatch.exe+20B2066                         - mov [rax+rcx*8+08],FFFFFFFF # 1ED743A4018 에 FFFFFFFF 넣기(초기화)
+            Overwatch.exe+20B206E                         - inc [rbx+08]                # 1EC3B2542F8 에 있는 값 +1
+            Overwatch.exe+20B2071                         - mov eax,[rbx+08]
+            Overwatch.exe+20B2074                         - dec eax
+            Overwatch.exe+20B2076                         - movsxd  rcx,eax
+            Overwatch.exe+20B2079                         - mov rax,[rbx]           # 1EC3B2542F0 에서 1ED743A4010
+            Overwatch.exe+20B207C                         - lea rdx,[rcx+rcx*4]     # 0    
+            Overwatch.exe+20B2080                         - lea rax,[rax+rdx*8]     # 1ED743A4010+0*4
+            Overwatch.exe+20B2084                         - mov rbx,[rsp+50]        # B821CFF300 에서 7B5E10A9E01
+            Overwatch.exe+20B2089                         - add rsp,20
+            Overwatch.exe+20B208D                         - pop rdi
+            Overwatch.exe+20B208E                         - pop rsi
+            Overwatch.exe+20B208F                         - pop rbp
+            Overwatch.exe+20B2090                         - ret 
+        Overwatch.exe+20B26E4                         - mov [rax],rbp               # 1ED743A4010 (아까 초기화한곳)에 1EDACFC4CA0 넣기
+        Overwatch.exe+20B26E7                         - mov ecx,[rbp+38]            # 1EDACFC4CD8 에서 2E20004 꺼내기
+        Overwatch.exe+20B26EA                         - and dword ptr [rax+10],-08  # 1ED743A4020 (아까 초기화한곳)에 있는 값 0과 and
+        Overwatch.exe+20B26EE                         - mov [rax+08],ecx            # 1ED743A4018 (아까 초기화한곳)에 2E20004 넣기
+        Overwatch.exe+20B26F1                         - mov byte ptr [rax+0C],00    # 1ED743A401C (아까 초기화한곳)에 00 넣기
+        Overwatch.exe+20B26F5                         - movzx ecx,word ptr [rsi+02] # 7FF6C30D9F6A 에 있는 값 0002
+        Overwatch.exe+20B26F9                         - mov [rax+14],cx             # 1ED743A4024 에 0002 넣기
+        Overwatch.exe+20B26FD                         - movzx ecx,word ptr [rsi]    # 7FF6C30D9F68 에 있는 값 00B1
+        Overwatch.exe+20B2700                         - mov [rax+16],cx             # 1ED743A4026 에 00B1 넣기
+        Overwatch.exe+20B2704                         - mov rcx,[rsp+60]            # B821CFF350 에서 7B48C6C0041 꺼내기
+        Overwatch.exe+20B2709                         - mov [rax+18],rcx            # 1ED743A4028 에 7B48C6C0041 넣기
+        Overwatch.exe+20B270D                         - mov [rax+10],FFFFFFF8       # 1ED743A4020 에 FFFFFFF8 넣기
+        Overwatch.exe+20B2714                         - mov [rax+20],rbx            # 1ED743A4030 에 7B5E10A9E01 넣기
+        Overwatch.exe+20B2718                         - jmp Overwatch.exe+20B276D
+        Overwatch.exe+20B276D                         - mov rbx,[rsp+50]            # B821CFF340 에서 B1 꺼내기
+        Overwatch.exe+20B2772                         - mov rbp,[rsp+58]            # B821CFF348 에서 B821CFF490 꺼내기
+        Overwatch.exe+20B2777                         - add rsp,20
+        Overwatch.exe+20B277B                         - pop r14                     # B1
+        Overwatch.exe+20B277D                         - pop rdi                     # 7FF6C30D9F68
+        Overwatch.exe+20B277E                         - pop rsi                     # 1EC3B2542D8
+        Overwatch.exe+20B277F                         - ret 
+    Overwatch.exe+2062A61                         - mov rbx,[rsp+78]                # 1EDB0433008
+    Overwatch.exe+2062A66                         - add rsp,30
+    Overwatch.exe+2062A6A                         - pop r15                 # 0
+    Overwatch.exe+2062A6C                         - pop r14                 # 1EC3B253E50
+    Overwatch.exe+2062A6E                         - pop r13                 # 1EC3B254460
+    Overwatch.exe+2062A70                         - pop r12                 # 1EC3B250DC0
+    Overwatch.exe+2062A72                         - pop rdi                 # 1EDB0433040
+    Overwatch.exe+2062A73                         - ret 
+Overwatch.exe+20DDC21 - 48 8D 4C 24 50        - lea rcx,[rsp+50]            # 이때 rsp=B821CFF390여서 rcx=B821CFF3E0
+Overwatch.exe+20DDC26 - E8 9548FCFF           - call Overwatch.exe+20A24C0
+    Overwatch.exe+20A24C0 - 48 8B 01              - mov rax,[rcx]           # 위치 B821CFF390+10칸에서 값 rax=1ED33EF6298 꺼내기
+    Overwatch.exe+20A24C3 - 48 8B 50 10           - mov rdx,[rax+10]        # 위치 1ED33EF6298+2칸에서 값 rdx=0 꺼내기
+    Overwatch.exe+20A24C7 - 48 89 11              - mov [rcx],rdx           # 위치 B821CFF390+10칸에 값 rdx=0 저장하기
+    Overwatch.exe+20A24CA - 48 85 D2              - test rdx,rdx            # zf=1
+    Overwatch.exe+20A24CD - 74 04                 - je Overwatch.exe+20A24D3    # go
+    Overwatch.exe+20A24D3 - 48 8B 41 08           - mov rax,[rcx+08]        # 위치 B821CFF390+10칸+1칸에서 값 rax=0 꺼내기
+    Overwatch.exe+20A24D7 - 48 89 01              - mov [rcx],rax           # 위치 B821CFF390+10칸에 값 rax=0 저장하기
+    Overwatch.exe+20A24DA - 48 89 51 08           - mov [rcx+08],rdx        # 위치 B821CFF390+10칸+1칸에 값 rdx=0 저장하기
+
+
+
+분기점에서 가능한 다른 경로 참고
     Overwatch.exe+208DBEE - 4A FF 24 D0           - jmp qword ptr [rax+r10*8]
+/*
     Overwatch.exe+205F620 - 48 89 5C 24 08        - mov [rsp+08],rbx
     Overwatch.exe+205F625 - 48 89 6C 24 18        - mov [rsp+18],rbp
     Overwatch.exe+205F62A - 48 89 74 24 20        - mov [rsp+20],rsi
@@ -522,14 +774,8 @@ Overwatch.exe+20DDC1C - E8 EF0BFEFF           - call Overwatch.exe+20BE810
     Overwatch.exe+205F6D1 - 5F                    - pop rdi
     Overwatch.exe+205F6D2 - C3                    - ret 
 Overwatch.exe+20DDC21 - 48 8D 4C 24 50        - lea rcx,[rsp+50]
+*/
 
-
-
-
-
-
-
-분기점에서 가능한 다른 경로 참고
 
     Overwatch.exe+206FA7B - 74 56                 - je Overwatch.exe+206FAD3
     /*
